@@ -31,7 +31,7 @@
 		F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 		F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Font.swift"; sourceTree = "<group>"; };
 		F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
-		F88F35F02B44056400BEA743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		F88F35F02B44056400BEA743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,13 +65,13 @@
 			isa = PBXGroup;
 			children = (
 				F88F35F02B44056400BEA743 /* Info.plist */,
+				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
 				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
 				F88F35D72B43FC6500BEA743 /* ContentView.swift */,
-				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
 				F88F35DE2B43FC6600BEA743 /* Persistence.swift */,
 				F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */,
+				F88F35F22B4433D800BEA743 /* Resource */,
 				F88F35F12B44337700BEA743 /* Ext */,
-				F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */,
 				F88F35DB2B43FC6600BEA743 /* Preview Content */,
 			);
 			path = PpuDaeSik;
@@ -93,6 +93,14 @@
 				F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */,
 			);
 			path = Ext;
+			sourceTree = "<group>";
+		};
+		F88F35F22B4433D800BEA743 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */,
+			);
+			path = Resource;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
