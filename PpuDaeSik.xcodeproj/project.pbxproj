@@ -70,10 +70,8 @@
 				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
 				F88F35DE2B43FC6600BEA743 /* Persistence.swift */,
 				F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */,
-				F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */,
-				F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */,
+				F88F35F12B44337700BEA743 /* Ext */,
 				F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */,
-				F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */,
 				F88F35DB2B43FC6600BEA743 /* Preview Content */,
 			);
 			path = PpuDaeSik;
@@ -85,6 +83,16 @@
 				F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F88F35F12B44337700BEA743 /* Ext */ = {
+			isa = PBXGroup;
+			children = (
+				F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */,
+				F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */,
+				F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */,
+			);
+			path = Ext;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
