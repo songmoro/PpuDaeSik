@@ -14,6 +14,7 @@
 		F88F35DF2B43FC6600BEA743 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35DE2B43FC6600BEA743 /* Persistence.swift */; };
 		F88F35E22B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */; };
 		F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */; };
+		F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		F88F35DE2B43FC6600BEA743 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		F88F35E12B43FC6600BEA743 /* PpuDaeSik.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PpuDaeSik.xcdatamodel; sourceTree = "<group>"; };
 		F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIScreen.swift"; sourceTree = "<group>"; };
+		F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
 				F88F35DE2B43FC6600BEA743 /* Persistence.swift */,
 				F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */,
+				F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */,
 				F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */,
 				F88F35DB2B43FC6600BEA743 /* Preview Content */,
 			);
@@ -149,6 +152,7 @@
 				F88F35E22B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld in Sources */,
 				F88F35DF2B43FC6600BEA743 /* Persistence.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
+				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
 				F88F35D82B43FC6500BEA743 /* ContentView.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 			);
