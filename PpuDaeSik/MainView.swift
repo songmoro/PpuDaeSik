@@ -25,8 +25,9 @@ enum Week: String, CaseIterable {
 
 struct MainView: View {
     @State private var selectedCampus = "부산"
-    @State private var selectedDay = "일"
+    @State private var selectedDay = ""
     @State private var isSheetShow = false
+    @State private var weekday: [Week: Int] = [:]
     
     var body: some View {
         ZStack {
@@ -40,7 +41,8 @@ struct MainView: View {
                 Spacer()
             }
             .onAppear {
-                currentWeek()
+                weekday = currentWeek()
+                selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date())].rawValue
             }
         }
     }
@@ -106,10 +108,12 @@ struct MainView: View {
                         selectedDay = day.rawValue
                     } label: {
                         VStack(spacing: 8) {
-                            Text("20")
-                                .foregroundColor(day.rawValue == selectedDay ? .black100 : .black40)
-                                .font(.headline())
-                            
+                            if let weekdate = weekday[day] {
+                                Text("\(weekdate)")
+                                    .foregroundColor(day.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date())].rawValue ? .black100 : .black40)
+                                    .font(.headline())
+                            }
+
                             Rectangle()
                                 .foregroundColor(.clear)
                                 .frame(height: UIScreen.getHeight(5))
@@ -127,7 +131,7 @@ struct MainView: View {
     
     private func currentWeek() -> [Week: Int] {
         var week: [Week: Int] = [:]
-        var current = Calendar.current
+        let current = Calendar.current
         
         if let weekend = current.nextWeekend(startingAfter: Date())?.end {
             for (weekday, interval) in zip(Week.allCases, (-8)...(-2)) {
@@ -137,7 +141,7 @@ struct MainView: View {
             }
         }
         
-        return week.isEmpty ? Dictionary(uniqueKeysWithValues: zip(Week.allCases, 1...7)) : week
+        return week
     }
 }
 
