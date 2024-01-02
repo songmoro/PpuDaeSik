@@ -15,6 +15,8 @@
 		F88F35E22B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */; };
 		F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */; };
 		F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
+		F88F35ED2B4400CA00BEA743 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
+		F88F35EF2B44033400BEA743 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,9 @@
 		F88F35E12B43FC6600BEA743 /* PpuDaeSik.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PpuDaeSik.xcdatamodel; sourceTree = "<group>"; };
 		F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIScreen.swift"; sourceTree = "<group>"; };
 		F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
+		F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Font.swift"; sourceTree = "<group>"; };
+		F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
+		F88F35F02B44056400BEA743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +64,15 @@
 		F88F35D42B43FC6500BEA743 /* PpuDaeSik */ = {
 			isa = PBXGroup;
 			children = (
+				F88F35F02B44056400BEA743 /* Info.plist */,
 				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
 				F88F35D72B43FC6500BEA743 /* ContentView.swift */,
 				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
 				F88F35DE2B43FC6600BEA743 /* Persistence.swift */,
 				F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */,
 				F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */,
+				F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */,
+				F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */,
 				F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */,
 				F88F35DB2B43FC6600BEA743 /* Preview Content */,
 			);
@@ -138,6 +146,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */,
+				F88F35EF2B44033400BEA743 /* Pretendard-Regular.otf in Resources */,
 				F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -154,6 +163,7 @@
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
 				F88F35D82B43FC6500BEA743 /* ContentView.swift in Sources */,
+				F88F35ED2B4400CA00BEA743 /* Ext+Font.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +301,7 @@
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PpuDaeSik/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -320,6 +331,7 @@
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = PpuDaeSik/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
