@@ -39,6 +39,9 @@ struct MainView: View {
                 Divider()
                 Spacer()
             }
+            .onAppear {
+                currentWeek()
+            }
         }
     }
     
@@ -120,6 +123,21 @@ struct MainView: View {
             }
         }
         .padding(.horizontal, UIScreen.getWidth(12))
+    }
+    
+    private func currentWeek() -> [Week: Int] {
+        var week: [Week: Int] = [:]
+        var current = Calendar.current
+        
+        if let weekend = current.nextWeekend(startingAfter: Date())?.end {
+            for (weekday, interval) in zip(Week.allCases, (-8)...(-2)) {
+                if let intervalDate = current.date(byAdding: .day, value: interval, to: weekend), let day = current.dateComponents([.day], from: intervalDate).day {
+                    week[weekday] = day
+                }
+            }
+        }
+        
+        return week.isEmpty ? Dictionary(uniqueKeysWithValues: zip(Week.allCases, 1...7)) : week
     }
 }
 
