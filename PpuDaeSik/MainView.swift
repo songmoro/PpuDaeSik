@@ -13,6 +13,16 @@ enum Campus: String, CaseIterable {
     case yangsan = "양산"
 }
 
+enum Week: String, CaseIterable {
+    case sun = "일"
+    case mon = "월"
+    case tues = "화"
+    case wednes = "수"
+    case thurs = "목"
+    case fri = "금"
+    case satur = "토"
+}
+
 struct MainView: View {
     @State var selectedCampus = "부산"
     @State var isSheetShow = false
