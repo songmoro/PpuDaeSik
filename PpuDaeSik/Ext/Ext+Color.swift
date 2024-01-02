@@ -27,6 +27,7 @@ extension Color {
     static let black20 = Color(hex: "000000").opacity(0.2)
     static let white100 = Color(hex: "FFFFFF")
     static let white40 = Color(hex: "FFFFFF").opacity(0.4)
+    static let gray100 = Color(hex: "F9F9F9")
     static let blue100 = Color(hex: "00AAFF")
     static let yellow100 = Color(hex: "FFCC00")
 }
