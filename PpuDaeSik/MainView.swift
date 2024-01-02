@@ -24,8 +24,9 @@ enum Week: String, CaseIterable {
 }
 
 struct MainView: View {
-    @State var selectedCampus = "부산"
-    @State var isSheetShow = false
+    @State private var selectedCampus = "부산"
+    @State private var selectedDay = "일"
+    @State private var isSheetShow = false
     
     var body: some View {
         ZStack {
@@ -34,12 +35,14 @@ struct MainView: View {
             VStack {
                 title
                 campus
+                week
+                Divider()
                 Spacer()
             }
         }
     }
     
-    var title: some View {
+    private var title: some View {
         HStack {
             Image(isSheetShow ? "LogoEye" : "Logo")
                 .resizable()
@@ -58,32 +61,65 @@ struct MainView: View {
                     .foregroundColor(.blue100)
             }
         }
-        .padding(.horizontal, UIScreen.getWidth(18))
-        .padding(.bottom, UIScreen.getHeight(20))
+        .padding(.horizontal, UIScreen.getWidth(12))
+        .padding(.bottom, UIScreen.getHeight(12))
     }
     
-    var campus: some View {
+    private var campus: some View {
         HStack(spacing: 0) {
             ForEach(Campus.allCases, id: \.self) { location in
                 Button {
                     selectedCampus = location.rawValue
                 } label: {
-                    Text("\(location.rawValue)")
-                        .foregroundColor(location.rawValue == selectedCampus ? .black100 : .black40)
-                        .padding(.bottom, UIScreen.getHeight(6))
-                        .overlay(alignment: .bottom) {
-                            Rectangle()
-                                .foregroundColor(location.rawValue == selectedCampus ? .blue100 : .clear)
-                                .frame(height: UIScreen.getHeight(3))
-                        }
+                    VStack(spacing: 8) {
+                        Text("\(location.rawValue)")
+                            .foregroundColor(location.rawValue == selectedCampus ? .black100 : .black40)
+                        
+                        Rectangle()
+                            .foregroundColor(.clear)
+                            .frame(height: UIScreen.getHeight(5))
+                            .overlay {
+                                Circle()
+                                    .foregroundColor(location.rawValue == selectedCampus ? .blue100 : .clear)
+                            }
+                    }
                 }
-                .padding(.trailing, UIScreen.getWidth(18))
             }
             .font(.title())
-            
-            Spacer()
         }
-        .padding(.horizontal, UIScreen.getWidth(18))
+        .padding(.horizontal, UIScreen.getWidth(12))
+        .padding(.bottom, UIScreen.getHeight(12))
+    }
+    
+    private var week: some View {
+        HStack(spacing: 0) {
+            ForEach(Week.allCases, id: \.self) { day in
+                VStack(spacing: 8) {
+                    Text("\(day.rawValue)")
+                        .foregroundColor(.black100)
+                        .font(.body())
+                    
+                    Button {
+                        selectedDay = day.rawValue
+                    } label: {
+                        VStack(spacing: 8) {
+                            Text("20")
+                                .foregroundColor(day.rawValue == selectedDay ? .black100 : .black40)
+                                .font(.headline())
+                            
+                            Rectangle()
+                                .foregroundColor(.clear)
+                                .frame(height: UIScreen.getHeight(5))
+                                .overlay {
+                                    Circle()
+                                        .foregroundColor(day.rawValue == selectedDay ? .blue100 : .clear)
+                                }
+                        }
+                    }
+                }
+            }
+        }
+        .padding(.horizontal, UIScreen.getWidth(12))
     }
 }
 
