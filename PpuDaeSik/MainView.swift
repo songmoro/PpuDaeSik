@@ -42,7 +42,6 @@ struct MainView: View {
                 campus
                 week
                 Divider()
-                    .padding(.bottom)
                 menu
                 Spacer()
             }
@@ -167,22 +166,31 @@ struct MainView: View {
     }
     
     private var menu: some View {
-        MenuView()
+        ScrollView {
+            if let restaurantByCampus = Campus(rawValue: selectedCampus)?.restaurant {
+                ForEach(restaurantByCampus, id: \.self) { restaurant in
+                    MenuView(restaurant: restaurant)
+                }
+            }
+        }
     }
     
     private struct MenuView: View {
         @State private var isFavorite = false
+        let restaurant: String
         
         var body: some View {
             VStack {
                 title
                 card
             }
+            .padding(.horizontal)
+            .padding(.bottom)
         }
         
         private var title: some View {
             HStack {
-                Text("금정회관 학생")
+                Text(restaurant)
                     .font(.headline())
                     .foregroundColor(.black100)
                 
