@@ -8,19 +8,11 @@
 import SwiftUI
 
 enum Campus: String, CaseIterable {
-    case busan = "부산"
-    case milyang = "밀양"
-    case yangsan = "양산"
+    case 부산, 밀양, 양산
 }
 
 enum Week: String, CaseIterable {
-    case sun = "일"
-    case mon = "월"
-    case tues = "화"
-    case wednes = "수"
-    case thurs = "목"
-    case fri = "금"
-    case satur = "토"
+    case 일, 월, 화, 수, 목, 금, 토
 }
 
 struct MainView: View {
