@@ -133,7 +133,7 @@ struct MainView: View {
                         }
                     }
                 }
-                .padding(.horizontal)
+                .padding(.horizontal, UIScreen.getWidth(15))
             }
         }
         .padding(.horizontal)
