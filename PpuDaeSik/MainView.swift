@@ -9,6 +9,17 @@ import SwiftUI
 
 enum Campus: String, CaseIterable {
     case 부산, 밀양, 양산
+    
+    var restaurant: [String] {
+        switch self {
+        case .부산:
+            ["금정회관 학생", "금정회관 교직원", "샛벌회관", "학생회관 학생", "진리관", "웅비관", "자유관"]
+        case .밀양:
+            ["학생회관 학생", "학생회관 교직원", "비마관"]
+        case .양산:
+            ["편의동", "행림관"]
+        }
+    }
 }
 
 enum Week: String, CaseIterable {
