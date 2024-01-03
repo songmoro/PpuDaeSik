@@ -47,7 +47,7 @@ struct MainView: View {
         HStack {
             Image(isSheetShow ? "LogoEye" : "Logo")
                 .resizable()
-                .frame(width: UIScreen.getWidth(50), height: UIScreen.getHeight(50))
+                .frame(width: UIScreen.getWidth(50), height: UIScreen.getWidth(50))
             
             Text("뿌대식")
                 .font(.largeTitle())
