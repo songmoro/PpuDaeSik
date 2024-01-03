@@ -171,6 +171,7 @@ struct MainView: View {
         private var title: some View {
             HStack {
                 Text("금정회관 학생")
+                    .font(.headline())
                 
                 Spacer()
                 
