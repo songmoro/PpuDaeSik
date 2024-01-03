@@ -96,10 +96,9 @@ struct MainView: View {
                     }
                 }
                 .onTapGesture {
-                    withAnimation {
-                        selectedCampus = location.rawValue
-                    }
+                    selectedCampus = location.rawValue
                 }
+                .animation(.default, value: selectedCampus)
                 .padding(.trailing)
             }
             .font(.title())
@@ -138,10 +137,9 @@ struct MainView: View {
                         }
                     }
                     .onTapGesture {
-                        withAnimation {
-                            selectedDay = day.rawValue
-                        }
+                        selectedDay = day.rawValue
                     }
+                    .animation(.default, value: selectedDay)
                 }
                 .padding(.trailing)
             }
