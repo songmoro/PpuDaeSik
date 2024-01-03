@@ -26,6 +26,11 @@ enum Week: String, CaseIterable {
     case 일, 월, 화, 수, 목, 금, 토
 }
 
+struct Menu {
+    var restaurant: String
+    var menuBycategory: [String: [String]] = ["조식": [], "중식": [], "석식": []]
+}
+
 struct MainView: View {
     @Namespace private var namespcae
     @State private var selectedCampus = "부산"
