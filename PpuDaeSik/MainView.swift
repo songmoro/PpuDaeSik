@@ -69,16 +69,16 @@ struct MainView: View {
                     .foregroundColor(.blue100)
             }
         }
-        .padding(.horizontal, UIScreen.getWidth(12))
-        .padding(.bottom, UIScreen.getHeight(12))
+        .padding(.horizontal)
     }
     
     private var campus: some View {
         HStack {
             ForEach(Campus.allCases, id: \.self) { location in
-                VStack(spacing: 6) {
+                VStack(spacing: 0) {
                     Text("\(location.rawValue)")
                         .foregroundColor(location.rawValue == selectedCampus ? .black100 : .black40)
+                        .padding(.bottom, UIScreen.getHeight(6))
                     
                     if location.rawValue == selectedCampus {
                         Circle()
@@ -104,13 +104,13 @@ struct MainView: View {
             Spacer()
         }
         .padding(.horizontal)
-        .padding(.bottom, 8)
+        .padding(.bottom, UIScreen.getHeight(8))
     }
     
     private var week: some View {
         HStack {
             ForEach(Week.allCases, id: \.self) { day in
-                VStack(spacing: 6) {
+                VStack(spacing: 0) {
                     Text("\(day.rawValue)")
                         .foregroundColor(.black100)
                         .font(.body())
@@ -120,6 +120,7 @@ struct MainView: View {
                             Text("\(weekdate)")
                                 .foregroundColor(day.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date())].rawValue ? .black100 : .black40)
                                 .font(.headline())
+                                .padding(.bottom, UIScreen.getHeight(6))
                         }
                         
                         if day.rawValue == selectedDay  {
@@ -144,7 +145,7 @@ struct MainView: View {
             }
         }
         .padding(.horizontal)
-        .padding(.bottom, 2)
+        .padding(.bottom, UIScreen.getHeight(2))
     }
     
     private func currentWeek() -> [Week: Int] {
