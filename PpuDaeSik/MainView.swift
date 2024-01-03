@@ -51,6 +51,7 @@ struct MainView: View {
             
             Text("뿌대식")
                 .font(.largeTitle())
+                .foregroundColor(.black100)
             
             Spacer()
             
@@ -172,6 +173,7 @@ struct MainView: View {
             HStack {
                 Text("금정회관 학생")
                     .font(.headline())
+                    .foregroundColor(.black100)
                 
                 Spacer()
                 
@@ -189,10 +191,12 @@ struct MainView: View {
             VStack(alignment: .leading) {
                 Text("중식")
                     .font(.subhead())
+                    .foregroundColor(.black100)
                     .padding(.bottom, UIScreen.getHeight(6))
                 
                 Text("아직 식단이 없어요!")
                     .font(.body())
+                    .foregroundColor(.black100)
             }
             .padding()
             .frame(width: UIScreen.getWidth(350), alignment: .leading)
