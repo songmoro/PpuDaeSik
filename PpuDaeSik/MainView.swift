@@ -24,6 +24,7 @@ enum Week: String, CaseIterable {
 }
 
 struct MainView: View {
+    @Namespace private var namespcae
     @State private var selectedCampus = "부산"
     @State private var selectedDay = ""
     @State private var isSheetShow = false
@@ -71,62 +72,77 @@ struct MainView: View {
     }
     
     private var campus: some View {
-        HStack(spacing: 0) {
+        HStack {
             ForEach(Campus.allCases, id: \.self) { location in
-                Button {
-                    selectedCampus = location.rawValue
-                } label: {
-                    VStack(spacing: 8) {
-                        Text("\(location.rawValue)")
-                            .foregroundColor(location.rawValue == selectedCampus ? .black100 : .black40)
-                        
-                        Rectangle()
+                VStack(spacing: 6) {
+                    Text("\(location.rawValue)")
+                        .foregroundColor(location.rawValue == selectedCampus ? .black100 : .black40)
+                    
+                    if location.rawValue == selectedCampus {
+                        Circle()
+                            .foregroundColor(.blue100)
+                            .frame(height: UIScreen.getHeight(5))
+                            .matchedGeometryEffect(id: "campus", in: namespcae)
+                    }
+                    else {
+                        Circle()
                             .foregroundColor(.clear)
                             .frame(height: UIScreen.getHeight(5))
-                            .overlay {
-                                Circle()
-                                    .foregroundColor(location.rawValue == selectedCampus ? .blue100 : .clear)
-                            }
                     }
                 }
+                .onTapGesture {
+                    withAnimation {
+                        selectedCampus = location.rawValue
+                    }
+                }
+                .padding(.horizontal)
             }
             .font(.title())
+            
+            Spacer()
         }
-        .padding(.horizontal, UIScreen.getWidth(12))
-        .padding(.bottom, UIScreen.getHeight(12))
+        .padding(.horizontal)
+        .padding(.bottom, 8)
     }
     
     private var week: some View {
-        HStack(spacing: 0) {
+        HStack {
             ForEach(Week.allCases, id: \.self) { day in
-                VStack(spacing: 8) {
+                VStack(spacing: 6) {
                     Text("\(day.rawValue)")
                         .foregroundColor(.black100)
                         .font(.body())
                     
-                    Button {
-                        selectedDay = day.rawValue
-                    } label: {
-                        VStack(spacing: 8) {
-                            if let weekdate = weekday[day] {
-                                Text("\(weekdate)")
-                                    .foregroundColor(day.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date())].rawValue ? .black100 : .black40)
-                                    .font(.headline())
-                            }
-
-                            Rectangle()
+                    Group {
+                        if let weekdate = weekday[day] {
+                            Text("\(weekdate)")
+                                .foregroundColor(day.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date())].rawValue ? .black100 : .black40)
+                                .font(.headline())
+                        }
+                        
+                        if day.rawValue == selectedDay  {
+                            Circle()
+                                .foregroundColor(.blue100)
+                                .frame(height: UIScreen.getHeight(5))
+                                .matchedGeometryEffect(id: "weekday", in: namespcae)
+                        }
+                        else {
+                            Circle()
                                 .foregroundColor(.clear)
                                 .frame(height: UIScreen.getHeight(5))
-                                .overlay {
-                                    Circle()
-                                        .foregroundColor(day.rawValue == selectedDay ? .blue100 : .clear)
-                                }
+                        }
+                    }
+                    .onTapGesture {
+                        withAnimation {
+                            selectedDay = day.rawValue
                         }
                     }
                 }
+                .padding(.horizontal)
             }
         }
-        .padding(.horizontal, UIScreen.getWidth(12))
+        .padding(.horizontal)
+        .padding(.bottom, 2)
     }
     
     private func currentWeek() -> [Week: Int] {
