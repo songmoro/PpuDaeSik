@@ -35,9 +35,10 @@ struct MainView: View {
                 menu
                 Spacer()
             }
+            .frame(width: UIScreen.getWidth(350))
             .onAppear {
                 weekday = currentWeek()
-                selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date())].rawValue
+                selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
             }
         }
     }
@@ -61,11 +62,10 @@ struct MainView: View {
                     .foregroundColor(.blue100)
             }
         }
-        .padding(.horizontal)
     }
     
     private var campus: some View {
-        HStack {
+        HStack(spacing: 0) {
             ForEach(Campus.allCases, id: \.self) { location in
                 VStack(spacing: 0) {
                     Text("\(location.rawValue)")
@@ -89,18 +89,17 @@ struct MainView: View {
                         selectedCampus = location.rawValue
                     }
                 }
-                .padding(.horizontal)
+                .padding(.trailing)
             }
             .font(.title())
             
             Spacer()
         }
-        .padding(.horizontal)
         .padding(.bottom, UIScreen.getHeight(8))
     }
     
     private var week: some View {
-        HStack {
+        HStack(spacing: 0) {
             ForEach(Week.allCases, id: \.self) { day in
                 VStack(spacing: 0) {
                     Text("\(day.rawValue)")
@@ -110,7 +109,7 @@ struct MainView: View {
                     Group {
                         if let weekdate = weekday[day] {
                             Text("\(weekdate)")
-                                .foregroundColor(day.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date())].rawValue ? .black100 : .black40)
+                                .foregroundColor(day.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue ? .black100 : .black40)
                                 .font(.headline())
                                 .padding(.bottom, UIScreen.getHeight(6))
                         }
@@ -133,10 +132,10 @@ struct MainView: View {
                         }
                     }
                 }
-                .padding(.horizontal, UIScreen.getWidth(15))
+                .padding(.trailing)
             }
+            .frame(width: UIScreen.getWidth(350 / 7))
         }
-        .padding(.horizontal)
         .padding(.bottom, UIScreen.getHeight(2))
     }
     
@@ -168,8 +167,6 @@ struct MenuView: View {
             title
             card
         }
-        .frame(width: UIScreen.getWidth(350))
-        .padding(.horizontal)
     }
     
     private var title: some View {
