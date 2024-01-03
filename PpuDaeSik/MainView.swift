@@ -157,49 +157,49 @@ struct MainView: View {
     private var menu: some View {
         MenuView()
     }
-}
-
-struct MenuView: View {
-    @State private var isFavorite = false
     
-    var body: some View {
-        VStack {
-            title
-            card
-        }
-    }
-    
-    private var title: some View {
-        HStack {
-            Text("금정회관 학생")
-            
-            Spacer()
-            
-            Button {
-                isFavorite = true
-            } label: {
-                Image(systemName: "star.fill")
-                    .font(.headline())
-                    .foregroundColor(isFavorite ? .yellow100 : .black20)
+    private struct MenuView: View {
+        @State private var isFavorite = false
+        
+        var body: some View {
+            VStack {
+                title
+                card
             }
         }
-    }
-    
-    private var card: some View {
-        VStack(alignment: .leading) {
-            Text("중식")
-                .font(.subhead())
-                .padding(.bottom, UIScreen.getHeight(6))
-            
-            Text("아직 식단이 없어요!")
-                .font(.body())
+        
+        private var title: some View {
+            HStack {
+                Text("금정회관 학생")
+                
+                Spacer()
+                
+                Button {
+                    isFavorite = true
+                } label: {
+                    Image(systemName: "star.fill")
+                        .font(.headline())
+                        .foregroundColor(isFavorite ? .yellow100 : .black20)
+                }
+            }
         }
-        .padding()
-        .frame(width: UIScreen.getWidth(350), alignment: .leading)
-        .background {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(.white100)
-                .shadow(radius: 2)
+        
+        private var card: some View {
+            VStack(alignment: .leading) {
+                Text("중식")
+                    .font(.subhead())
+                    .padding(.bottom, UIScreen.getHeight(6))
+                
+                Text("아직 식단이 없어요!")
+                    .font(.body())
+            }
+            .padding()
+            .frame(width: UIScreen.getWidth(350), alignment: .leading)
+            .background {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(.white100)
+                    .shadow(radius: 2)
+            }
         }
     }
 }
