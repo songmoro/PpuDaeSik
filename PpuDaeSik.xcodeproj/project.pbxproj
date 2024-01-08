@@ -22,6 +22,8 @@
 		F88F35F92B459D3A00BEA743 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35F82B459D3A00BEA743 /* Moya */; };
 		F88F35FB2B459D3A00BEA743 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35FA2B459D3A00BEA743 /* ReactiveMoya */; };
 		F88F35FD2B459D3A00BEA743 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35FC2B459D3A00BEA743 /* RxMoya */; };
+		F88F35FF2B45E64700BEA743 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
+		F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F36002B45E96300BEA743 /* MainViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +40,8 @@
 		F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F88F35F02B44056400BEA743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F88F35F32B4434BE00BEA743 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F88F35FE2B45E64700BEA743 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		F88F36002B45E96300BEA743 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,7 +83,9 @@
 				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
 				F88F35D72B43FC6500BEA743 /* ContentView.swift */,
 				F88F35F32B4434BE00BEA743 /* MainView.swift */,
+				F88F36002B45E96300BEA743 /* MainViewModel.swift */,
 				F88F35DE2B43FC6600BEA743 /* Persistence.swift */,
+				F88F35FE2B45E64700BEA743 /* API.swift */,
 				F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */,
 				F88F35F22B4433D800BEA743 /* Resource */,
 				F88F35F12B44337700BEA743 /* Ext */,
@@ -199,8 +205,10 @@
 				F88F35DF2B43FC6600BEA743 /* Persistence.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
+				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
 				F88F35D82B43FC6500BEA743 /* ContentView.swift in Sources */,
 				F88F35ED2B4400CA00BEA743 /* Ext+Font.swift in Sources */,
+				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
