@@ -70,6 +70,21 @@ enum Category: String, CaseIterable, Hashable {
     case 조식, 중식, 석식
 }
 
+enum Restaurant: String, CaseIterable, Hashable {
+    case 금정회관학생 = "금정회관 학생"
+    case 금정회관교직원 = "금정회관 교직원"
+    case 샛벌회관
+    case 학생회관학생 = "학생회관 학생"
+    case 진리관
+    case 웅비관
+    case 자유관
+    // 학생회관 학생
+    case 학생회관교직원 = "학생회관 교직원"
+    case 비마관
+    case 편의동
+    case 행림관
+}
+
 struct Meal: Hashable {
     var foodByCategory: [Category: String] = [:]
 }
