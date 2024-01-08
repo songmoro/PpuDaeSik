@@ -53,7 +53,6 @@ class MainViewModel: ObservableObject {
                                 }
                             }
                         }
-                        print(self.menu)
                     }
                 }
             case .failure(let error):
