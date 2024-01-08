@@ -37,6 +37,7 @@ struct MainView: View {
     @State private var selectedDay = ""
     @State private var isSheetShow = false
     @State private var weekday: [Week: Int] = [:]
+    @StateObject private var vm = MainViewModel()
     
     var body: some View {
         ZStack {
@@ -54,6 +55,7 @@ struct MainView: View {
             .onAppear {
                 weekday = currentWeek()
                 selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
+                vm.requestCampusDatabase(Campus(rawValue: selectedCampus)!)
             }
         }
     }
@@ -101,6 +103,7 @@ struct MainView: View {
                     }
                 }
                 .onTapGesture {
+                    vm.requestCampusDatabase(location)
                     selectedCampus = location.rawValue
                 }
                 .animation(.default, value: selectedCampus)
