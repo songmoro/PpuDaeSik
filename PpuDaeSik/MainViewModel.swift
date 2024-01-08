@@ -9,11 +9,13 @@ import SwiftUI
 import Moya
 
 class MainViewModel: ObservableObject {
-    @Published var menu: [Week: [String: Meal]] = [:]
+    @Published var menu: [Week: [Restaurant: Meal]] = [:]
     
     func requestCampusDatabase(_ campus: Campus) {
         _ = Week.allCases.map {
-            menu[$0] = [:]
+            menu[$0] = {
+                Dictionary(uniqueKeysWithValues: zip(campus.restaurant, Array(repeating: Meal(), count: campus.restaurant.count)))
+            }()
         }
         
         let provider = MoyaProvider<API>()
@@ -24,12 +26,12 @@ class MainViewModel: ObservableObject {
                 if (200..<300).contains(response.statusCode) {
                     if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
                         _ = decodedData.results.map { queryProperties in
-                            var restaurant: String?
+                            var restaurant: Restaurant?
                             var category: Category?
                             let menuByWeekday: [Week: String] = queryProperties.properties.reduce([:]) { partialResult, property in
                                 switch property.key {
                                 case "식당":
-                                    restaurant = property.value.select!["name"]
+                                    restaurant = Restaurant(rawValue: property.value.select!["name"]!)
                                 case "식사 분류":
                                     category = Category(rawValue: property.value.select!["name"]!)
                                 case "일", "월", "화", "수", "목", "금", "토":
