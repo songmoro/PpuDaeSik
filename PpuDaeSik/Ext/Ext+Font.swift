@@ -8,7 +8,7 @@
 import SwiftUI
 
 extension Font {
-    private func setFontSize() -> Double {
+    static func setFontSize() -> Double {
         return switch UIScreen.screenHeight {
         case 480.0:
             0.85
@@ -30,22 +30,22 @@ extension Font {
     }
     
     static func largeTitle() -> Font {
-        Font.custom("Pretendard-Regular", size: 24)
+        Font.custom("Pretendard-Regular", size: 24 * setFontSize())
     }
     
     static func title() -> Font {
-        Font.custom("Pretendard-Regular", size: 20)
+        Font.custom("Pretendard-Regular", size: 20 * setFontSize())
     }
     
     static func headline() -> Font {
-        Font.custom("Pretendard-Regular", size: 18)
+        Font.custom("Pretendard-Regular", size: 18 * setFontSize())
     }
     
     static func subhead() -> Font {
-        Font.custom("Pretendard-Regular", size: 16)
+        Font.custom("Pretendard-Regular", size: 16 * setFontSize())
     }
     
     static func body() -> Font {
-        Font.custom("Pretendard-Regular", size: 12)
+        Font.custom("Pretendard-Regular", size: 12 * setFontSize())
     }
 }
