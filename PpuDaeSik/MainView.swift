@@ -173,9 +173,9 @@ struct MainView: View {
     
     private var menu: some View {
         ScrollView {
-            if let restaurantByCampus = Campus(rawValue: selectedCampus)?.restaurant {
-                ForEach(restaurantByCampus, id: \.self) { restaurant in
-                    MenuView(restaurant: restaurant)
+            if let selectedWeekday = Week(rawValue: selectedDay), let selectedMenu = vm.menu[selectedWeekday] {
+                ForEach(Array(selectedMenu), id: \.key) {
+                    MenuView(restaurant: $0.key, meal: $0.value)
                 }
             }
         }
@@ -184,6 +184,7 @@ struct MainView: View {
     private struct MenuView: View {
         @State private var isFavorite = false
         let restaurant: String
+        let meal: Meal
         
         var body: some View {
             VStack {
@@ -214,14 +215,19 @@ struct MainView: View {
         
         private var card: some View {
             VStack(alignment: .leading) {
-                Text("중식")
-                    .font(.subhead())
-                    .foregroundColor(.black100)
-                    .padding(.bottom, UIScreen.getHeight(6))
-                
-                Text("아직 식단이 없어요!")
-                    .font(.body())
-                    .foregroundColor(.black100)
+                ForEach(Category.allCases, id: \.self) {
+                    if let food = meal.foodByCategory[$0] {
+                        Text("\($0.rawValue)")
+                            .font(.subhead())
+                            .foregroundColor(.black100)
+                            .padding(.bottom, UIScreen.getHeight(2))
+                        
+                        Text("\(food)")
+                            .font(.body())
+                            .foregroundColor(.black100)
+                            .padding(.bottom, UIScreen.getHeight(6))
+                    }
+                }
             }
             .padding()
             .frame(width: UIScreen.getWidth(350), alignment: .leading)
