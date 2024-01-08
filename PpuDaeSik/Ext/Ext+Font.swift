@@ -30,22 +30,22 @@ extension Font {
     }
     
     static func largeTitle() -> Font {
-        Font.custom("Pretendard-Regular", size: 24 * setFontSize())
+        Font.custom("Pretendard-Regular", size: 26 * setFontSize())
     }
     
     static func title() -> Font {
-        Font.custom("Pretendard-Regular", size: 20 * setFontSize())
+        Font.custom("Pretendard-Regular", size: 22 * setFontSize())
     }
     
     static func headline() -> Font {
-        Font.custom("Pretendard-Regular", size: 18 * setFontSize())
+        Font.custom("Pretendard-Regular", size: 20 * setFontSize())
     }
     
     static func subhead() -> Font {
-        Font.custom("Pretendard-Regular", size: 16 * setFontSize())
+        Font.custom("Pretendard-Regular", size: 19 * setFontSize())
     }
     
     static func body() -> Font {
-        Font.custom("Pretendard-Regular", size: 12 * setFontSize())
+        Font.custom("Pretendard-Regular", size: 17 * setFontSize())
     }
 }
