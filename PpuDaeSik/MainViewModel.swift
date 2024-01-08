@@ -9,10 +9,14 @@ import SwiftUI
 import Moya
 
 class MainViewModel: ObservableObject {
-    @Published var menu: [Week: [Meal]] = [:]
+    @Published var menu: [Week: [String: Meal]] = [:]
     
     func requestCampusDatabase(_ campus: Campus) {
-        menu = [:]
+        _ = Week.allCases.map {
+            menu[$0] = [:]
+        }
+        print(menu)
+        
         let provider = MoyaProvider<API>()
         
         provider.request(.queryDatabase(campus)) { result in
@@ -44,11 +48,12 @@ class MainViewModel: ObservableObject {
                             }
                             
                             if let restaurant = restaurant, let category = category {
-                                _ = menuByWeekday.map {
-                                    if self.menu[$0.key] == nil {
-                                        self.menu[$0.key] = [Meal(restaurant: restaurant, category: category, food: $0.value)]
-                                    } else {
-                                        self.menu[$0.key]?.append(Meal(restaurant: restaurant, category: category, food: $0.value))
+                                _ = menuByWeekday.map { dict in
+                                    if self.menu[dict.key]![restaurant] == nil {
+                                        self.menu[dict.key]!.updateValue(Meal(foodByCategory: [category: dict.value]), forKey: restaurant)
+                                    }
+                                    else {
+                                        self.menu[dict.key]![restaurant]?.foodByCategory.updateValue(dict.value, forKey: category)
                                     }
                                 }
                             }
@@ -62,14 +67,12 @@ class MainViewModel: ObservableObject {
     }
 }
 
-enum Category: String, CaseIterable {
+enum Category: String, CaseIterable, Hashable {
     case 조식, 중식, 석식
 }
 
 struct Meal: Hashable {
-    var restaurant: String
-    var category: Category
-    var food: String
+    var foodByCategory: [Category: String] = [:]
 }
 
 struct QueryDatabase: Codable {
