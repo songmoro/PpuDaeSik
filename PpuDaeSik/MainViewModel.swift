@@ -15,7 +15,6 @@ class MainViewModel: ObservableObject {
         _ = Week.allCases.map {
             menu[$0] = [:]
         }
-        print(menu)
         
         let provider = MoyaProvider<API>()
         
