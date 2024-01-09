@@ -10,8 +10,6 @@
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
-		F88F35DF2B43FC6600BEA743 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35DE2B43FC6600BEA743 /* Persistence.swift */; };
-		F88F35E22B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */; };
 		F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */; };
 		F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
 		F88F35ED2B4400CA00BEA743 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
@@ -32,8 +30,6 @@
 		F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikApp.swift; sourceTree = "<group>"; };
 		F88F35D92B43FC6600BEA743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F88F35DE2B43FC6600BEA743 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
-		F88F35E12B43FC6600BEA743 /* PpuDaeSik.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = PpuDaeSik.xcdatamodel; sourceTree = "<group>"; };
 		F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+UIScreen.swift"; sourceTree = "<group>"; };
 		F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 		F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Font.swift"; sourceTree = "<group>"; };
@@ -86,10 +82,8 @@
 				F88F35F32B4434BE00BEA743 /* MainView.swift */,
 				F8ABD22E2B4DA9E90038195F /* Sheet.swift */,
 				F88F36002B45E96300BEA743 /* MainViewModel.swift */,
-				F88F35DE2B43FC6600BEA743 /* Persistence.swift */,
 				F88F35FE2B45E64700BEA743 /* API.swift */,
 				F8ABD22C2B4D82C30038195F /* Model.swift */,
-				F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */,
 				F88F35F22B4433D800BEA743 /* Resource */,
 				F88F35F12B44337700BEA743 /* Ext */,
 				F88F35DB2B43FC6600BEA743 /* Preview Content */,
@@ -203,9 +197,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F88F35E22B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld in Sources */,
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
-				F88F35DF2B43FC6600BEA743 /* Persistence.swift in Sources */,
 				F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
@@ -455,19 +447,6 @@
 			productName = RxMoya;
 		};
 /* End XCSwiftPackageProductDependency section */
-
-/* Begin XCVersionGroup section */
-		F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				F88F35E12B43FC6600BEA743 /* PpuDaeSik.xcdatamodel */,
-			);
-			currentVersion = F88F35E12B43FC6600BEA743 /* PpuDaeSik.xcdatamodel */;
-			path = PpuDaeSik.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = F88F35CA2B43FC6500BEA743 /* Project object */;
 }
