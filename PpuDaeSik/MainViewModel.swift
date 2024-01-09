@@ -91,11 +91,11 @@ class MainViewModel: ObservableObject {
     }
     
     func restaurantByBookmark() -> [Restaurant] {
-        var bookmarkRestaurant = bookmark.map {
+        let bookmarkRestaurant = bookmark.map {
             Restaurant(rawValue: $0)!
         }
         
-        var campusRestaurant = Campus(rawValue: selectedCampus)!.restaurant.filter {
+        let campusRestaurant = Campus(rawValue: selectedCampus)!.restaurant.filter {
             !bookmarkRestaurant.contains($0)
         }
         
