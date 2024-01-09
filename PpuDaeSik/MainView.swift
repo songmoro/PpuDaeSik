@@ -29,6 +29,9 @@ struct MainView: View {
                 vm.selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
                 vm.requestCampusDatabase()
             }
+            .sheet(isPresented: $vm.isSheetShow) {
+                Sheet()
+            }
         }
     }
     
