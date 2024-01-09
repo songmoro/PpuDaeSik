@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
-		F88F35D82B43FC6500BEA743 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D72B43FC6500BEA743 /* ContentView.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
 		F88F35DF2B43FC6600BEA743 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35DE2B43FC6600BEA743 /* Persistence.swift */; };
@@ -31,7 +30,6 @@
 /* Begin PBXFileReference section */
 		F88F35D22B43FC6500BEA743 /* PpuDaeSik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PpuDaeSik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikApp.swift; sourceTree = "<group>"; };
-		F88F35D72B43FC6500BEA743 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F88F35D92B43FC6600BEA743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F88F35DE2B43FC6600BEA743 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
@@ -85,7 +83,6 @@
 				F88F35F02B44056400BEA743 /* Info.plist */,
 				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
 				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
-				F88F35D72B43FC6500BEA743 /* ContentView.swift */,
 				F88F35F32B4434BE00BEA743 /* MainView.swift */,
 				F8ABD22E2B4DA9E90038195F /* Sheet.swift */,
 				F88F36002B45E96300BEA743 /* MainViewModel.swift */,
@@ -213,7 +210,6 @@
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
-				F88F35D82B43FC6500BEA743 /* ContentView.swift in Sources */,
 				F88F35ED2B4400CA00BEA743 /* Ext+Font.swift in Sources */,
 				F8ABD22D2B4D82C30038195F /* Model.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
