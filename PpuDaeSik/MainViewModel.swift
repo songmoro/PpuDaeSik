@@ -14,6 +14,8 @@ class MainViewModel: ObservableObject {
     @Published var selectedDay = ""
     @Published var isSheetShow = false
     @Published var weekday: [Week: Int] = [:]
+    @Published var defaultCampus = "부산"
+    @Published var bookmark: [String] = []
     
     func currentWeek() {
         var week: [Week: Int] = [:]
@@ -86,5 +88,45 @@ class MainViewModel: ObservableObject {
                 fatalError(error.localizedDescription)
             }
         }
+    }
+    
+    func restaurantByBookmark() -> [Restaurant] {
+        var bookmarkRestaurant = bookmark.map {
+            Restaurant(rawValue: $0)!
+        }
+        
+        var campusRestaurant = Campus(rawValue: selectedCampus)!.restaurant.filter {
+            !bookmarkRestaurant.contains($0)
+        }
+        
+        return bookmarkRestaurant + campusRestaurant
+    }
+    
+    func saveDefaultCampus() {
+        UserDefaults.standard.setValue(defaultCampus, forKey: "defaultCampus")
+    }
+    
+    func saveBookmark() {
+        UserDefaults.standard.setValue(bookmark, forKey: "bookmark")
+    }
+    
+    func loadDefaultCampus() {
+        guard let defaultCampus = UserDefaults.standard.string(forKey: "defaultCampus") else {
+            self.defaultCampus = "부산"
+            selectedCampus = "부산"
+            requestCampusDatabase()
+            return
+        }
+        self.defaultCampus = defaultCampus
+        selectedCampus = defaultCampus
+        requestCampusDatabase()
+    }
+    
+    func loadBookmark() {
+        guard let bookmark = UserDefaults.standard.stringArray(forKey: "bookmark") else {
+            self.bookmark = []
+            return
+        }
+        self.bookmark = bookmark
     }
 }

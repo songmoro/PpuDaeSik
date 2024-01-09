@@ -27,7 +27,8 @@ struct MainView: View {
             .onAppear {
                 vm.currentWeek()
                 vm.selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
-                vm.requestCampusDatabase()
+                vm.loadDefaultCampus()
+                vm.loadBookmark()
             }
             .sheet(isPresented: $vm.isSheetShow) {
                 Sheet()
@@ -134,17 +135,20 @@ struct MainView: View {
     private var menu: some View {
         ScrollView {
             if let selectedWeekday = Week(rawValue: vm.selectedDay) {
-                ForEach(Campus(rawValue: vm.selectedCampus)!.restaurant, id: \.rawValue) {
+                ForEach(vm.restaurantByBookmark(), id: \.rawValue) {
                     if let restaurant = vm.menu[selectedWeekday]![$0] {
-                        MenuView(restaurant: $0.rawValue, meal: restaurant)
+                        MenuView(bookmark: $vm.bookmark, restaurant: $0.rawValue, meal: restaurant)
                     }
+                }
+                .onChange(of: vm.bookmark) { _, newValue in
+                    vm.saveBookmark()
                 }
             }
         }
     }
     
     private struct MenuView: View {
-        @State private var isFavorite = false
+        @Binding var bookmark: [String]
         let restaurant: String
         let meal: Meal
         
@@ -166,11 +170,18 @@ struct MainView: View {
                 Spacer()
                 
                 Button {
-                    isFavorite = true
+                    if bookmark.contains(restaurant) {
+                        bookmark.removeAll {
+                            $0 == restaurant
+                        }
+                    }
+                    else {
+                        bookmark.append(restaurant)
+                    }
                 } label: {
                     Image(systemName: "star.fill")
                         .font(.headline())
-                        .foregroundColor(isFavorite ? .yellow100 : .black20)
+                        .foregroundColor(bookmark.contains(restaurant) ? .yellow100 : .black20)
                 }
             }
         }
