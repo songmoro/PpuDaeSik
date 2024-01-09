@@ -30,7 +30,9 @@ class MainViewModel: ObservableObject {
         weekday = week
     }
     
-    func requestCampusDatabase(_ campus: Campus) {
+    func requestCampusDatabase() {
+        guard let campus = Campus(rawValue: selectedCampus) else { return }
+        
         _ = Week.allCases.map {
             menu[$0] = {
                 Dictionary(uniqueKeysWithValues: zip(campus.restaurant, Array(repeating: Meal(), count: campus.restaurant.count)))

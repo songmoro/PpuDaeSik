@@ -27,7 +27,7 @@ struct MainView: View {
             .onAppear {
                 vm.currentWeek()
                 vm.selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
-                vm.requestCampusDatabase(Campus(rawValue: vm.selectedCampus)!)
+                vm.requestCampusDatabase()
             }
         }
     }
@@ -75,8 +75,8 @@ struct MainView: View {
                     }
                 }
                 .onTapGesture {
-                    vm.requestCampusDatabase(location)
                     vm.selectedCampus = location.rawValue
+                    vm.requestCampusDatabase()
                 }
                 .animation(.default, value: vm.selectedCampus)
                 .padding(.trailing)
