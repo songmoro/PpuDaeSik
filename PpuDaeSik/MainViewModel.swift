@@ -10,6 +10,25 @@ import Moya
 
 class MainViewModel: ObservableObject {
     @Published var menu: [Week: [Restaurant: Meal]] = [:]
+    @Published var selectedCampus = "부산"
+    @Published var selectedDay = ""
+    @Published var isSheetShow = false
+    @Published var weekday: [Week: Int] = [:]
+    
+    func currentWeek() {
+        var week: [Week: Int] = [:]
+        let current = Calendar.current
+        
+        if let weekend = current.nextWeekend(startingAfter: Date())?.end {
+            for (weekday, interval) in zip(Week.allCases, (-8)...(-2)) {
+                if let intervalDate = current.date(byAdding: .day, value: interval, to: weekend), let day = current.dateComponents([.day], from: intervalDate).day {
+                    week[weekday] = day
+                }
+            }
+        }
+        
+        weekday = week
+    }
     
     func requestCampusDatabase(_ campus: Campus) {
         _ = Week.allCases.map {

@@ -9,10 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @Namespace private var namespcae
-    @State private var selectedCampus = "부산"
-    @State private var selectedDay = ""
-    @State private var isSheetShow = false
-    @State private var weekday: [Week: Int] = [:]
     @StateObject private var vm = MainViewModel()
     
     var body: some View {
@@ -29,16 +25,16 @@ struct MainView: View {
             }
             .frame(width: UIScreen.getWidth(350))
             .onAppear {
-                weekday = currentWeek()
-                selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
-                vm.requestCampusDatabase(Campus(rawValue: selectedCampus)!)
+                vm.currentWeek()
+                vm.selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
+                vm.requestCampusDatabase(Campus(rawValue: vm.selectedCampus)!)
             }
         }
     }
     
     private var title: some View {
         HStack {
-            Image(isSheetShow ? "LogoEye" : "Logo")
+            Image(vm.isSheetShow ? "LogoEye" : "Logo")
                 .resizable()
                 .frame(width: UIScreen.getWidth(50), height: UIScreen.getWidth(50))
             
@@ -49,7 +45,7 @@ struct MainView: View {
             Spacer()
             
             Button {
-                isSheetShow = true
+                vm.isSheetShow = true
             } label: {
                 Image(systemName: "gearshape.fill")
                     .font(.largeTitle())
@@ -63,10 +59,10 @@ struct MainView: View {
             ForEach(Campus.allCases, id: \.self) { location in
                 VStack(spacing: 0) {
                     Text("\(location.rawValue)")
-                        .foregroundColor(location.rawValue == selectedCampus ? .black100 : .black40)
+                        .foregroundColor(location.rawValue == vm.selectedCampus ? .black100 : .black40)
                         .padding(.bottom, UIScreen.getHeight(6))
                     
-                    if location.rawValue == selectedCampus {
+                    if location.rawValue == vm.selectedCampus {
                         Circle()
                             .foregroundColor(.blue100)
                             .frame(height: UIScreen.getHeight(5))
@@ -80,9 +76,9 @@ struct MainView: View {
                 }
                 .onTapGesture {
                     vm.requestCampusDatabase(location)
-                    selectedCampus = location.rawValue
+                    vm.selectedCampus = location.rawValue
                 }
-                .animation(.default, value: selectedCampus)
+                .animation(.default, value: vm.selectedCampus)
                 .padding(.trailing)
             }
             .font(.title())
@@ -101,14 +97,14 @@ struct MainView: View {
                         .font(.body())
                     
                     Group {
-                        if let weekdate = weekday[day] {
+                        if let weekdate = vm.weekday[day] {
                             Text("\(weekdate)")
                                 .foregroundColor(day.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue ? .black100 : .black40)
                                 .font(.headline())
                                 .padding(.bottom, UIScreen.getHeight(6))
                         }
                         
-                        if day.rawValue == selectedDay  {
+                        if day.rawValue == vm.selectedDay  {
                             Circle()
                                 .foregroundColor(.blue100)
                                 .frame(height: UIScreen.getHeight(5))
@@ -121,9 +117,9 @@ struct MainView: View {
                         }
                     }
                     .onTapGesture {
-                        selectedDay = day.rawValue
+                        vm.selectedDay = day.rawValue
                     }
-                    .animation(.default, value: selectedDay)
+                    .animation(.default, value: vm.selectedDay)
                 }
                 .padding(.trailing)
             }
@@ -132,25 +128,10 @@ struct MainView: View {
         .padding(.bottom, UIScreen.getHeight(2))
     }
     
-    private func currentWeek() -> [Week: Int] {
-        var week: [Week: Int] = [:]
-        let current = Calendar.current
-        
-        if let weekend = current.nextWeekend(startingAfter: Date())?.end {
-            for (weekday, interval) in zip(Week.allCases, (-8)...(-2)) {
-                if let intervalDate = current.date(byAdding: .day, value: interval, to: weekend), let day = current.dateComponents([.day], from: intervalDate).day {
-                    week[weekday] = day
-                }
-            }
-        }
-        
-        return week
-    }
-    
     private var menu: some View {
         ScrollView {
-            if let selectedWeekday = Week(rawValue: selectedDay) {
-                ForEach(Campus(rawValue: selectedCampus)!.restaurant, id: \.rawValue) {
+            if let selectedWeekday = Week(rawValue: vm.selectedDay) {
+                ForEach(Campus(rawValue: vm.selectedCampus)!.restaurant, id: \.rawValue) {
                     if let restaurant = vm.menu[selectedWeekday]![$0] {
                         MenuView(restaurant: $0.rawValue, meal: restaurant)
                     }
