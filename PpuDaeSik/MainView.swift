@@ -31,7 +31,10 @@ struct MainView: View {
                 vm.loadBookmark()
             }
             .sheet(isPresented: $vm.isSheetShow) {
-                Sheet()
+                Sheet(defaultCampus: $vm.defaultCampus)
+                    .onChange(of: vm.defaultCampus) { _, newValue in
+                        vm.saveDefaultCampus()
+                    }
             }
         }
     }

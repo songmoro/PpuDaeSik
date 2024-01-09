@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Sheet: View {
-    @State var selectedCampus = Campus.부산
+    @Binding var defaultCampus: String
     
     var body: some View {
         VStack {
@@ -22,9 +22,10 @@ struct Sheet: View {
                 
                 Spacer()
                 
-                Picker(selection: $selectedCampus) {
+                Picker(selection: $defaultCampus) {
                     ForEach(Campus.allCases, id: \.self) {
                         Text($0.rawValue)
+                            .tag($0.rawValue)
                     }
                     .foregroundColor(.blue100)
                 } label: { }
@@ -42,5 +43,5 @@ struct Sheet: View {
 }
 
 #Preview {
-    Sheet()
+    Sheet(defaultCampus: .constant("밀양"))
 }
