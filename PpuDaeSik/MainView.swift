@@ -7,25 +7,6 @@
 
 import SwiftUI
 
-enum Campus: String, CaseIterable {
-    case 부산, 밀양, 양산
-    
-    var restaurant: [Restaurant] {
-        switch self {
-        case .부산:
-            [Restaurant.금정회관학생, Restaurant.금정회관교직원, Restaurant.샛벌회관, Restaurant.학생회관학생, Restaurant.진리관, Restaurant.웅비관, Restaurant.자유관]
-        case .밀양:
-            [Restaurant.학생회관학생, Restaurant.학생회관교직원, Restaurant.비마관]
-        case .양산:
-            [Restaurant.편의동, Restaurant.행림관]
-        }
-    }
-}
-
-enum Week: String, CaseIterable {
-    case 일, 월, 화, 수, 목, 금, 토
-}
-
 struct MainView: View {
     @Namespace private var namespcae
     @State private var selectedCampus = "부산"

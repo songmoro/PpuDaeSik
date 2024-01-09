@@ -24,6 +24,7 @@
 		F88F35FD2B459D3A00BEA743 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35FC2B459D3A00BEA743 /* RxMoya */; };
 		F88F35FF2B45E64700BEA743 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
 		F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F36002B45E96300BEA743 /* MainViewModel.swift */; };
+		F8ABD22D2B4D82C30038195F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ABD22C2B4D82C30038195F /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		F88F35F32B4434BE00BEA743 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F88F35FE2B45E64700BEA743 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F88F36002B45E96300BEA743 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
+		F8ABD22C2B4D82C30038195F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				F88F36002B45E96300BEA743 /* MainViewModel.swift */,
 				F88F35DE2B43FC6600BEA743 /* Persistence.swift */,
 				F88F35FE2B45E64700BEA743 /* API.swift */,
+				F8ABD22C2B4D82C30038195F /* Model.swift */,
 				F88F35E02B43FC6600BEA743 /* PpuDaeSik.xcdatamodeld */,
 				F88F35F22B4433D800BEA743 /* Resource */,
 				F88F35F12B44337700BEA743 /* Ext */,
@@ -208,6 +211,7 @@
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
 				F88F35D82B43FC6500BEA743 /* ContentView.swift in Sources */,
 				F88F35ED2B4400CA00BEA743 /* Ext+Font.swift in Sources */,
+				F8ABD22D2B4D82C30038195F /* Model.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 			);
