@@ -10,7 +10,7 @@ import Moya
 
 class MainViewModel: ObservableObject {
     @Published var menu: [Week: [Restaurant: Meal]] = [:]
-    @Published var selectedCampus = "부산"
+    @Published var selectedCampus = ""
     @Published var selectedDay = ""
     @Published var isSheetShow = false
     @Published var weekday: [Week: Int] = [:]
