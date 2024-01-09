@@ -227,7 +227,7 @@ struct MainView: View {
                         Text("\(food)")
                             .font(.body())
                             .foregroundColor(.black100)
-                            .padding(.bottom, UIScreen.getHeight(6))
+                            .padding(.bottom, UIScreen.getHeight(18))
                     }
                 }
             }
