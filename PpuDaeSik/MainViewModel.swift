@@ -62,7 +62,11 @@ class MainViewModel: ObservableObject {
                                     let plainText = property.value.rich_text?.compactMap { plainText in
                                         plainText.plain_text
                                     }.joined()
-                                    dict.updateValue(plainText ?? "", forKey: Week(rawValue: property.key)!)
+                                    
+                                    if let plainText = plainText {
+                                        dict.updateValue(plainText == "" ? "아직 식단이 없어요!" : plainText, forKey: Week(rawValue: property.key)!)
+                                    }
+                                    
                                     return dict
                                 default:
                                     break
