@@ -48,46 +48,74 @@ class MainViewModel: ObservableObject {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {
                     if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                        _ = decodedData.results.map { queryProperties in
-                            var restaurant: Restaurant?
-                            var category: Category?
-                            let menuByWeekday: [Week: String] = queryProperties.properties.reduce([:]) { partialResult, property in
-                                switch property.key {
-                                case "식당":
-                                    restaurant = Restaurant(rawValue: property.value.select!["name"]!)
-                                case "식사 분류":
-                                    category = Category(rawValue: property.value.select!["name"]!)
-                                case "일", "월", "화", "수", "목", "금", "토":
-                                    var dict = partialResult
-                                    let plainText = property.value.rich_text?.compactMap { plainText in
+                        var responseRestaurant = decodedData.results.compactMap { queryProperties in
+                            var unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
+                                let key = $1.key
+                                
+                                if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
+                                    let text = rich_text.map { plainText in
                                         plainText.plain_text
-                                    }.joined()
-                                    
-                                    if let plainText = plainText {
-                                        dict.updateValue(plainText == "" ? "아직 식단이 없어요!" : plainText, forKey: Week(rawValue: property.key)!)
                                     }
                                     
-                                    return dict
-                                default:
-                                    break
+                                    $0[key] = text.first!
                                 }
-                                
-                                return partialResult
+                                if let title = $1.value.rich_text, !title.isEmpty {
+                                    let text = title.map { plainText in
+                                        plainText.plain_text
+                                    }
+                                    
+                                    $0[key] = text.first!
+                                }
                             }
                             
-                            if let restaurant = restaurant, let category = category {
-                                _ = menuByWeekday.map { dict in
-                                    if self.menu[dict.key]![restaurant] == nil {
-                                        self.menu[dict.key]!.updateValue(Meal(foodByCategory: [category: dict.value]), forKey: restaurant)
-                                    }
-                                    else {
-                                        self.menu[dict.key]![restaurant]?.foodByCategory.updateValue(dict.value, forKey: category)
-                                    }
-                                }
-                            }
+                            return NewRestaurantResponse(unwrappedValue: unwrappedValue)
                         }
+                        
+                        print(responseRestaurant)
                     }
                 }
+//                if (200..<300).contains(response.statusCode) {
+//                    if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
+//                        _ = decodedData.results.map { queryProperties in
+//                            var restaurant: Restaurant?
+//                            var category: Category?
+//                            let menuByWeekday: [Week: String] = queryProperties.properties.reduce([:]) { partialResult, property in
+//                                switch property.key {
+//                                case "식당":
+//                                    restaurant = Restaurant(rawValue: property.value.select!["name"]!)
+//                                case "식사 분류":
+//                                    category = Category(rawValue: property.value.select!["name"]!)
+//                                case "일", "월", "화", "수", "목", "금", "토":
+//                                    var dict = partialResult
+//                                    let plainText = property.value.rich_text?.compactMap { plainText in
+//                                        plainText.plain_text
+//                                    }.joined()
+//                                    
+//                                    if let plainText = plainText {
+//                                        dict.updateValue(plainText == "" ? "아직 식단이 없어요!" : plainText, forKey: Week(rawValue: property.key)!)
+//                                    }
+//                                    
+//                                    return dict
+//                                default:
+//                                    break
+//                                }
+//                                
+//                                return partialResult
+//                            }
+//                            
+//                            if let restaurant = restaurant, let category = category {
+//                                _ = menuByWeekday.map { dict in
+//                                    if self.menu[dict.key]![restaurant] == nil {
+//                                        self.menu[dict.key]!.updateValue(Meal(foodByCategory: [category: dict.value]), forKey: restaurant)
+//                                    }
+//                                    else {
+//                                        self.menu[dict.key]![restaurant]?.foodByCategory.updateValue(dict.value, forKey: category)
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }
+//                }
             case .failure(let error):
                 fatalError(error.localizedDescription)
             }

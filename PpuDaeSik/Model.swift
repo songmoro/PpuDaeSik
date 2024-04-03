@@ -57,8 +57,8 @@ struct QueryDatabase: Codable {
 
         struct QueryProperty: Codable {
             var type: String
+            var title: [RichText]?
             var rich_text: [RichText]?
-            var select: [String: String]?
             
             struct RichText: Codable {
                 var plain_text: String
@@ -93,6 +93,20 @@ enum NewRestaurant: String, CaseIterable, Hashable {
 }
 
 struct NewRestaurantResponse: Codable {
+    init(unwrappedValue: [String: String]) {
+        self.MENU_DATE = unwrappedValue["MENU_DATE"] ?? ""
+        self.BUILDING_NAME = unwrappedValue["BUILDING_NAME"] ?? ""
+        self.RESTAURANT_NAME = unwrappedValue["RESTAURANT_NAME"] ?? ""
+        self.RESTAURANT_CODE = unwrappedValue["RESTAURANT_CODE"] ?? ""
+        self.MENU_TYPE = unwrappedValue["MENU_TYPE"] ?? ""
+        self.MENU_TITLE = unwrappedValue["MENU_TITLE"] ?? ""
+        self.MENU_CONTENT = unwrappedValue["MENU_CONTENT"] ?? ""
+        self.BREAKFAST_TIME = unwrappedValue["BREAKFAST_TIME"] ?? ""
+        self.LUNCH_TIME = unwrappedValue["LUNCH_TIME"] ?? ""
+        self.DINNER_TIME = unwrappedValue["DINNER_TIME"] ?? ""
+        self.TEL = unwrappedValue["TEL"] ?? ""
+    }
+    
     var MENU_DATE: String
     var BUILDING_NAME: String
     var RESTAURANT_NAME: String
