@@ -81,3 +81,21 @@ struct DomitoryResponse: Codable {
     var codeNm: String
     var mealNm: String
 }
+
+enum NewRestaurant: String, CaseIterable, Hashable {
+    case Geumjeong, Saesbeol, Pusan, Miryang, Yangsan
+}
+
+struct NewRestaurantResponse: Codable {
+    var MENU_DATE: String
+    var BUILDING_NAME: String
+    var RESTAURANT_NAME: String
+    var RESTAURANT_CODE: String
+    var MENU_TYPE: String
+    var MENU_TITLE: String
+    var MENU_CONTENT: String
+    var BREAKFAST_TIME: String
+    var LUNCH_TIME: String
+    var DINNER_TIME: String
+    var TEL: String
+}
