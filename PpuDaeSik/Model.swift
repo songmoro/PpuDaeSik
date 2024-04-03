@@ -83,7 +83,13 @@ struct DomitoryResponse: Codable {
 }
 
 enum NewRestaurant: String, CaseIterable, Hashable {
-    case Geumjeong, Saesbeol, Pusan, Miryang, Yangsan
+    case 금정회관교직원식당 = "금정회관 교직원 식당"
+    case 금정회관학생식당 = "금정회관 학생 식당"
+    case 샛벌회관식당 = "샛벌회관 식당"
+    case 학생회관학생식당 = "학생회관 학생 식당"
+    case 학생회관밀양학생식당 = "학생회관(밀양) 학생 식당"
+    case 학생회관밀양교직원식당 = "학생회관(밀양) 교직원 식당"
+    case 편의동2층양산식당 = "편의동 2층(양산) 식당"
 }
 
 struct NewRestaurantResponse: Codable {
