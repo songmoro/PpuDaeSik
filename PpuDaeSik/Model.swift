@@ -66,3 +66,18 @@ struct QueryDatabase: Codable {
         }
     }
 }
+
+enum Domitory: Int, CaseIterable, Hashable {
+    case 진리관 = 2
+    case 웅비관 = 11
+    case 자유관 = 13
+    case 비마관 = 3
+    case 행림관 = 12
+}
+
+struct DomitoryResponse: Codable {
+    var mealDate: String
+    var mealKindGcd: String
+    var codeNm: String
+    var mealNm: String
+}
