@@ -25,11 +25,11 @@ extension API: TargetType {
             var databaseID: String {
                 switch campus {
                 case .부산:
-                    "9d1235c8a69c4492926e565b2b6aefaa"
+                    "da22b69d795c4e879b77dd657948ea4e"
                 case .밀양:
-                    "0bb80c54af3844a2b20f05ad80defb98"
+                    "da22b69d795c4e879b77dd657948ea4e"
                 case .양산:
-                    "a9872a2826e9469ebea9721e3ebc20c4"
+                    "da22b69d795c4e879b77dd657948ea4e"
                 }
             }
             return "/databases/\(databaseID)/query"
@@ -46,7 +46,23 @@ extension API: TargetType {
     var task: Moya.Task {
         switch self {
         case .queryDatabase:
-            return .requestPlain
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY-MM-dd"
+            
+            let current = Calendar.current
+            var date = [String]()
+            
+            if let weekend = current.nextWeekend(startingAfter: Date())?.end {
+                for interval in (-8)...(-2) {
+                    if let intervalDate = current.date(byAdding: .day, value: interval, to: weekend) {
+                        date.append(dateFormatter.string(from: intervalDate))
+                    }
+                }
+            }
+            
+            let data = FilterRequest(property: "MENU_DATE", date: date)
+            
+            return .requestJSONEncodable(data)
         }
     }
     
