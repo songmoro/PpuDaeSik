@@ -81,12 +81,14 @@ enum Domitory: Int, CaseIterable, Hashable {
 
 struct DomitoryResponse: Codable {
     init(unwrappedValue: [String: String]) {
+        self.no = unwrappedValue["no"] ?? ""
         self.mealDate = unwrappedValue["mealDate"] ?? ""
         self.mealKindGcd = unwrappedValue["mealKindGcd"] ?? ""
         self.codeNm = unwrappedValue["codeNm"] ?? ""
         self.mealNm = unwrappedValue["mealNm"] ?? ""
     }
     
+    var no: String
     var mealDate: String
     var mealKindGcd: String
     var codeNm: String
@@ -105,6 +107,7 @@ enum NewRestaurant: String, CaseIterable, Hashable {
 
 struct NewRestaurantResponse: Codable {
     init(unwrappedValue: [String: String]) {
+        self.NAME = unwrappedValue["NAME"] ?? ""
         self.MENU_DATE = unwrappedValue["MENU_DATE"] ?? ""
         self.BUILDING_NAME = unwrappedValue["BUILDING_NAME"] ?? ""
         self.RESTAURANT_NAME = unwrappedValue["RESTAURANT_NAME"] ?? ""
@@ -118,6 +121,7 @@ struct NewRestaurantResponse: Codable {
         self.TEL = unwrappedValue["TEL"] ?? ""
     }
     
+    var NAME: String
     var MENU_DATE: String
     var BUILDING_NAME: String
     var RESTAURANT_NAME: String
