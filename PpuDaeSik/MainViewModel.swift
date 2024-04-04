@@ -9,7 +9,6 @@ import SwiftUI
 import Moya
 
 class MainViewModel: ObservableObject {
-    @Published var menu: [Week: [Restaurant: Meal]] = [:]
     @Published var selectedCampus = ""
     @Published var selectedDay = ""
     @Published var isSheetShow = false
@@ -83,52 +82,6 @@ class MainViewModel: ObservableObject {
                                     self.requestDatabase(queryType, true)
                                 }
                             }
-                        }
-                    }
-                }
-            case .failure(let error):
-                fatalError(error.localizedDescription)
-            }
-        }
-    }
-    
-    func requestCampusDatabase() {
-        guard let campus = Campus(rawValue: selectedCampus) else { return }
-        
-        _ = Week.allCases.map {
-            menu[$0] = {
-                Dictionary(uniqueKeysWithValues: zip(campus.restaurant, Array(repeating: Meal(), count: campus.restaurant.count)))
-            }()
-        }
-        
-        let provider = MoyaProvider<API>()
-        
-        provider.request(.queryDatabase(campus)) { result in
-            switch result {
-            case .success(let response):
-                if (200..<300).contains(response.statusCode) {
-                    if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                        self.domitory = decodedData.results.compactMap { queryProperties in
-                            let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
-                                let key = $1.key
-                                
-                                if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
-                                    let text = rich_text.map { plainText in
-                                        plainText.plain_text
-                                    }
-                                    
-                                    $0[key] = text.first!
-                                }
-                                if let title = $1.value.rich_text, !title.isEmpty {
-                                    let text = title.map { plainText in
-                                        plainText.plain_text
-                                    }
-                                    
-                                    $0[key] = text.first!
-                                }
-                            }
-                            
-                            return DomitoryResponse(unwrappedValue: unwrappedValue)
                         }
                     }
                 }
@@ -237,12 +190,12 @@ class MainViewModel: ObservableObject {
         guard let defaultCampus = UserDefaults.standard.string(forKey: "defaultCampus") else {
             self.defaultCampus = "부산"
             selectedCampus = "부산"
-            requestCampusDatabase()
+//            requestCampusDatabase()
             return
         }
         self.defaultCampus = defaultCampus
         selectedCampus = defaultCampus
-        requestCampusDatabase()
+//        requestCampusDatabase()
     }
     
     func loadBookmark() {

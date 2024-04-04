@@ -84,9 +84,9 @@ struct MainView: View {
                 .onTapGesture {
                     vm.selectedCampus = location.rawValue
                 }
-                .onChange(of: vm.selectedCampus) { _, newValue in
-                    vm.requestCampusDatabase()
-                }
+//                .onChange(of: vm.selectedCampus) { _, newValue in
+//                    vm.requestCampusDatabase()
+//                }
                 .animation(.default, value: vm.selectedCampus)
                 .padding(.trailing)
             }
