@@ -76,6 +76,13 @@ enum Domitory: Int, CaseIterable, Hashable {
 }
 
 struct DomitoryResponse: Codable {
+    init(unwrappedValue: [String: String]) {
+        self.mealDate = unwrappedValue["mealDate"] ?? ""
+        self.mealKindGcd = unwrappedValue["mealKindGcd"] ?? ""
+        self.codeNm = unwrappedValue["codeNm"] ?? ""
+        self.mealNm = unwrappedValue["mealNm"] ?? ""
+    }
+    
     var mealDate: String
     var mealKindGcd: String
     var codeNm: String
