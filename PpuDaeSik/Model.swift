@@ -67,7 +67,7 @@ struct QueryDatabase: Codable {
     }
 }
 
-enum QueryType {
+enum QueryType: String, CaseIterable {
     case restaurant, domitory
 }
 
@@ -135,6 +135,23 @@ struct NewRestaurantResponse: Codable {
     var TEL: String
 }
 
+struct CheckDatabase: Codable {
+    var results: [CheckProperties]
+    
+    struct CheckProperties: Codable {
+        var properties: [String: CheckProperty]
+
+        struct CheckProperty: Codable {
+            var type: String
+            var title: [RichText]?
+            var rich_text: [RichText]?
+            
+            struct RichText: Codable {
+                var plain_text: String
+            }
+        }
+    }
+}
 
 struct FilterRequest: Codable {
     init(property: String, date: [String]) {
