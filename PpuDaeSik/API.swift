@@ -9,8 +9,9 @@ import Moya
 import SwiftUI
 
 enum API {
+    case checkStatus
     case queryDatabase(_ campus: Campus)
-    case query(_ type: QueryType)
+    case query(_ type: QueryType, _ backup: Bool? = nil)
 }
 
 extension API: TargetType {
@@ -22,6 +23,8 @@ extension API: TargetType {
     
     var path: String {
         switch self {
+        case .checkStatus:
+            return "/databases/" + "233f1075520f4e38b9fb8350901219fb" + "/query"
         case .queryDatabase(let campus):
             var databaseID: String {
                 switch campus {
@@ -35,21 +38,38 @@ extension API: TargetType {
             }
             return "/databases/\(databaseID)/query"
             
-        case .query(let type):
-            var databaseId: String {
-                switch type {
-                case .restaurant:
-                    "da22b69d795c4e879b77dd657948ea4e"
-                case .domitory:
-                    "264bceb5a8ef45a0befbec5d407b37f9"
+        case .query(let type, let backup):
+            if backup == nil {
+                var databaseId: String {
+                    switch type {
+                    case .restaurant:
+                        "da22b69d795c4e879b77dd657948ea4e"
+                    case .domitory:
+                        "264bceb5a8ef45a0befbec5d407b37f9"
+                    }
                 }
+                
+                return "/databases/\(databaseId)/query"
             }
-            return "/databases/\(databaseId)/query"
+            else {
+                var databaseId: String {
+                    switch type {
+                    case .restaurant:
+                        "912baee21c7643628355569d16aeb8b8"
+                    case .domitory:
+                        "656bc1391c7843e292a7d89be6567f74"
+                    }
+                }
+                
+                return "/databases/\(databaseId)/query"
+            }
         }
     }
     
     var method: Moya.Method {
         switch self {
+        case .checkStatus:
+            return .post
         case .queryDatabase:
             return .post
         case .query:
@@ -59,6 +79,8 @@ extension API: TargetType {
     
     var task: Moya.Task {
         switch self {
+        case .checkStatus:
+            return .requestPlain
         case .queryDatabase:
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY-MM-dd"
@@ -77,7 +99,7 @@ extension API: TargetType {
             let data = FilterRequest(property: "MENU_DATE", date: date)
             
             return .requestJSONEncodable(data)
-        case .query(let type):
+        case .query(let type, _):
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY-MM-dd"
             
