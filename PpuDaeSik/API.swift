@@ -10,6 +10,7 @@ import SwiftUI
 
 enum API {
     case queryDatabase(_ campus: Campus)
+    case query(_ type: QueryType)
 }
 
 extension API: TargetType {
@@ -33,12 +34,25 @@ extension API: TargetType {
                 }
             }
             return "/databases/\(databaseID)/query"
+            
+        case .query(let type):
+            var databaseId: String {
+                switch type {
+                case .restaurant:
+                    "da22b69d795c4e879b77dd657948ea4e"
+                case .domitory:
+                    "264bceb5a8ef45a0befbec5d407b37f9"
+                }
+            }
+            return "/databases/\(databaseId)/query"
         }
     }
     
     var method: Moya.Method {
         switch self {
         case .queryDatabase:
+            return .post
+        case .query:
             return .post
         }
     }
@@ -61,6 +75,31 @@ extension API: TargetType {
             }
             
             let data = FilterRequest(property: "MENU_DATE", date: date)
+            
+            return .requestJSONEncodable(data)
+        case .query(let type):
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YYYY-MM-dd"
+            
+            let current = Calendar.current
+            var date = [String]()
+            
+            if let weekend = current.nextWeekend(startingAfter: Date())?.end {
+                for interval in (-8)...(-2) {
+                    if let intervalDate = current.date(byAdding: .day, value: interval, to: weekend) {
+                        date.append(dateFormatter.string(from: intervalDate))
+                    }
+                }
+            }
+            
+            var data: FilterRequest {
+                switch type {
+                case .restaurant:
+                    FilterRequest(property: "MENU_DATE", date: date)
+                case .domitory:
+                    FilterRequest(property: "mealDate", date: date)
+                }
+            }
             
             return .requestJSONEncodable(data)
         }

@@ -67,6 +67,10 @@ struct QueryDatabase: Codable {
     }
 }
 
+enum QueryType {
+    case restaurant, domitory
+}
+
 enum Domitory: Int, CaseIterable, Hashable {
     case 진리관 = 2
     case 웅비관 = 11
