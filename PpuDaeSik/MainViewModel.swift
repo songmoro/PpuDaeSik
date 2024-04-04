@@ -16,6 +16,7 @@ class MainViewModel: ObservableObject {
     @Published var weekday: [Week: Int] = [:]
     @Published var defaultCampus = "부산"
     @Published var bookmark: [String] = []
+    @Published var newRestaurant = [NewRestaurantResponse]()
     
     func currentWeek() {
         var week: [Week: Int] = [:]
@@ -48,7 +49,7 @@ class MainViewModel: ObservableObject {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {
                     if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                        let responseRestaurant = decodedData.results.compactMap { queryProperties in
+                        self.newRestaurant = decodedData.results.compactMap { queryProperties in
                             let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
                                 let key = $1.key
                                 
@@ -70,8 +71,6 @@ class MainViewModel: ObservableObject {
                             
                             return NewRestaurantResponse(unwrappedValue: unwrappedValue)
                         }
-                        
-                        
                     }
                 }
 //                if (200..<300).contains(response.statusCode) {
