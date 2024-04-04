@@ -48,8 +48,8 @@ class MainViewModel: ObservableObject {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {
                     if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                        var responseRestaurant = decodedData.results.compactMap { queryProperties in
-                            var unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
+                        let responseRestaurant = decodedData.results.compactMap { queryProperties in
+                            let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
                                 let key = $1.key
                                 
                                 if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
@@ -71,7 +71,7 @@ class MainViewModel: ObservableObject {
                             return NewRestaurantResponse(unwrappedValue: unwrappedValue)
                         }
                         
-                        print(responseRestaurant)
+                        
                     }
                 }
 //                if (200..<300).contains(response.statusCode) {
