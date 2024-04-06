@@ -270,17 +270,17 @@ class MainViewModel: ObservableObject {
     
     func sortedByBookmark() -> [String] {
         let restaurant = NewRestaurant.allCases.filter {
-            ($0.campus().rawValue == selectedCampus)
+            !bookmark.contains($0.rawValue) && ($0.campus().rawValue == selectedCampus)
         }.sorted {
-            (bookmark.contains($0.rawValue) ? 0 : 1, $0.order()) < (bookmark.contains($1.rawValue) ? 0 : 1, $1.order())
+            ($0.order()) < ($1.order())
         }.map({ $0.rawValue })
         
         let domitory = Domitory.allCases.filter {
-            ($0.campus().rawValue == selectedCampus)
+            !bookmark.contains($0.name()) && ($0.campus().rawValue == selectedCampus)
         }.sorted {
-            (bookmark.contains($0.name()) ? 0 : 1, $0.order()) < (bookmark.contains($1.name()) ? 0 : 1, $1.order())
+            ($0.order()) < ($1.order())
         }.map({ $0.name() })
-        return restaurant + domitory
+        return bookmark + restaurant + domitory
     }
     
     func filterByRestaurant(_ restaurant: String) -> [NewRestaurantResponse] {
