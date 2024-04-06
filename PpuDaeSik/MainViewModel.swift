@@ -188,10 +188,10 @@ class MainViewModel: ObservableObject {
     
     func requestByCampusDatabase(_ queryType: QueryType, _ campus: Campus, _ backup: Bool? = nil) {
         let provider = MoyaProvider<API>()
-        
+
         switch queryType {
         case .restaurant:
-            provider.request(.queryByCampus(.restaurant, campus)) { result in
+            provider.request(.queryByCampus(.restaurant, campus, backup)) { result in
                 switch result {
                 case .success(let response):
                     if (200..<300).contains(response.statusCode) {
@@ -225,7 +225,7 @@ class MainViewModel: ObservableObject {
                 }
             }
         case .domitory:
-            provider.request(.queryByCampus(.domitory, campus)) { result in
+            provider.request(.queryByCampus(.domitory, campus, backup)) { result in
                 switch result {
                 case .success(let response):
                     if (200..<300).contains(response.statusCode) {
