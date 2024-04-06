@@ -114,12 +114,50 @@ enum QueryType: String, CaseIterable {
     case restaurant, domitory
 }
 
-enum Domitory: Int, CaseIterable, Hashable {
+enum Domitory: Int, CaseIterable, Hashable, Codable {
     case 진리관 = 2
-    case 웅비관 = 11
-    case 자유관 = 13
     case 비마관 = 3
+    case 웅비관 = 11
     case 행림관 = 12
+    case 자유관 = 13
+    
+    func order() -> Int {
+        switch self {
+        case .진리관: 0
+        case .웅비관: 1
+        case .자유관: 2
+        case .비마관: 3
+        case .행림관: 4
+        }
+    }
+    
+    func campus() -> Campus {
+        switch self {
+        case .진리관, .웅비관, .자유관: Campus.부산
+        case .비마관: Campus.밀양
+        case .행림관: Campus.양산
+        }
+    }
+    
+    func code() -> String {
+        switch self {
+        case .진리관: "2"
+        case .웅비관: "11"
+        case .자유관: "13"
+        case .비마관: "3"
+        case .행림관: "12"
+        }
+    }
+    
+    func name() -> String {
+        switch self {
+        case .진리관: "진리관"
+        case .웅비관: "웅비관"
+        case .자유관: "자유관"
+        case .비마관: "비마관"
+        case .행림관: "행림관"
+        }
+    }
 }
 
 struct DomitoryResponse: Codable {
@@ -129,13 +167,32 @@ struct DomitoryResponse: Codable {
         self.mealKindGcd = unwrappedValue["mealKindGcd"] ?? ""
         self.codeNm = unwrappedValue["codeNm"] ?? ""
         self.mealNm = unwrappedValue["mealNm"] ?? ""
+        
+        self.campus = switch self.no {
+        case "2", "11", "13": .부산
+        case "3": .밀양
+        case "12": .양산
+        default: .부산
+        }
+        self.domitory = Domitory(rawValue: Int(self.no)!)!
+        self.category = switch self.mealKindGcd {
+        case "01": .조기
+        case "02": .조식
+        case "03": .중식
+        case "04": .석식
+        default: .조기
+        }
     }
     
+    var uuid = UUID()
     var no: String
     var mealDate: String
     var mealKindGcd: String
     var codeNm: String
     var mealNm: String
+    var campus: Campus
+    var domitory: Domitory
+    var category: Category
 }
 
 enum NewRestaurant: String, CaseIterable, Hashable, Codable {
@@ -280,8 +337,17 @@ struct FilterRequest: Codable {
 
 struct FilterByCampusRequest: Codable {
     init(property: String, campus: Campus, date: [String]) {
-        let code = campus.newRestaurant.map { c in
-            Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code()))
+        var code: [Filter.Or.ConditionalExpression]
+        
+        if property == "MENU_DATE" {
+            code = campus.newRestaurant.map { c in
+                Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code()))
+            }
+        }
+        else {
+            code = campus.domitory.map { c in
+                Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code()))
+            }
         }
         
         let condition = date.map { d in

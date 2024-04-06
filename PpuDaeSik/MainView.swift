@@ -140,23 +140,31 @@ struct MainView: View {
     private var menu: some View {
         ScrollView {
             ForEach(vm.sortedByBookmark(), id: \.self) { sorted in
-                let restaurant = vm.filterByRestaurant(sorted)
-                
-                if !restaurant.isEmpty {
-                    MenuView(bookmark: $vm.bookmark, name: sorted.rawValue, restaurant: restaurant)
-                        .padding(.bottom)
-                        .onChange(of: vm.bookmark) { _, newValue in
-                            vm.saveBookmark()
-                        }
-                }
-                else {
-                    EmptyView()
+                VStack {
+                    let restaurant = vm.filterByRestaurant(sorted)
+                    if !restaurant.isEmpty {
+                        RestaurantMenuView(bookmark: $vm.bookmark, name: sorted, restaurant: restaurant)
+                            .padding(.bottom)
+                        //                        .onChange(of: vm.bookmark) { _, newValue in
+                        //                            vm.saveBookmark()
+                        //                        }
+                    }
+                    
+                    let domitory = vm.filterByDomitory(sorted)
+//                    else if vm.checkType(sorted) == .domitory,
+                    if !domitory.isEmpty {
+                        DomitoryMenuView(bookmark: $vm.bookmark, name: sorted, domitory: domitory)
+                            .padding(.bottom)
+                        //                        .onChange(of: vm.bookmark) { _, newValue in
+                        //                            vm.saveBookmark()
+                        //                        }
+                    }
                 }
             }
         }
     }
     
-    private struct MenuView: View {
+    private struct RestaurantMenuView: View {
         @Binding var bookmark: [String]
         let name: String
         let restaurant: [NewRestaurantResponse]
@@ -214,12 +222,87 @@ struct MainView: View {
         
         private func card(_ restaurant: NewRestaurantResponse) -> some View {
             VStack(alignment: .leading) {
-                Text(restaurant.MENU_TITLE)
-                    .font(.subhead())
-                    .foregroundColor(.black100)
-                    .padding(.bottom, UIScreen.getHeight(2))
+                if !restaurant.MENU_TITLE.isEmpty {
+                    Text(restaurant.MENU_TITLE)
+                        .font(.subhead())
+                        .foregroundColor(.black100)
+                        .padding(.bottom, UIScreen.getHeight(2))
+                }
                 
                 Text(restaurant.MENU_CONTENT)
+                    .font(.body())
+                    .foregroundColor(.black100)
+                    .padding(.bottom, UIScreen.getHeight(2))
+            }
+            .padding()
+            .frame(width: UIScreen.getWidth(300), alignment: .leading)
+            .background {
+                RoundedRectangle(cornerRadius: 12)
+                    .foregroundColor(.white100)
+                    .shadow(radius: 2)
+            }
+        }
+    }
+    
+    private struct DomitoryMenuView: View {
+        @Binding var bookmark: [String]
+        let name: String
+        let domitory: [DomitoryResponse]
+        
+        var body: some View {
+            VStack {
+                title
+                
+                ForEach(Category.allCases, id: \.self) { category in
+                    if !domitory.filter({$0.category == category}).isEmpty {
+                        VStack {
+                            Text(category.rawValue)
+                                .font(.body())
+                                .foregroundColor(.black40)
+                                .frame(width: UIScreen.getWidth(300), alignment: .leading)
+                            
+                            ForEach(domitory, id: \.uuid) {
+                                if $0.category == category {
+                                    card($0)
+                                }
+                            }
+                        }
+                        .padding(.bottom)
+                    }
+                }
+            }
+            .padding(.horizontal)
+        }
+        
+        private var title: some View {
+            HStack {
+                Text(name)
+                    .font(.headline())
+                    .foregroundColor(.black100)
+                
+                Spacer()
+                
+                Button {
+                    if bookmark.contains(name) {
+                        bookmark.removeAll {
+                            $0 == name
+                        }
+                    }
+                    else {
+                        bookmark.append(name)
+                    }
+                } label: {
+                    Image(systemName: "star.fill")
+                        .font(.headline())
+                        .foregroundColor(bookmark.contains(name) ? .yellow100 : .black20)
+                }
+            }
+            .padding(.bottom, UIScreen.getHeight(2))
+        }
+        
+        private func card(_ restaurant: DomitoryResponse) -> some View {
+            VStack(alignment: .leading) {
+                Text(restaurant.mealNm)
                     .font(.body())
                     .foregroundColor(.black100)
                     .padding(.bottom, UIScreen.getHeight(2))

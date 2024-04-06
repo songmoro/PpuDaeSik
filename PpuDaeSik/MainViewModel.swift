@@ -218,7 +218,6 @@ class MainViewModel: ObservableObject {
                                 
                                 return NewRestaurantResponse(unwrappedValue: unwrappedValue)
                             }
-//                            print(self.newRestaurant)
                         }
                     }
                 case .failure(let error):
@@ -226,7 +225,7 @@ class MainViewModel: ObservableObject {
                 }
             }
         case .domitory:
-            provider.request(.query(.domitory)) { result in
+            provider.request(.queryByCampus(.domitory, campus)) { result in
                 switch result {
                 case .success(let response):
                     if (200..<300).contains(response.statusCode) {
@@ -235,6 +234,13 @@ class MainViewModel: ObservableObject {
                                 let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
                                     let key = $1.key
                                     
+                                    if let subject = $1.value.title, !subject.isEmpty {
+                                        let text = subject.map { plainText in
+                                            plainText.plain_text
+                                        }
+                                        
+                                        $0[key] = text.first!
+                                    }
                                     if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
                                         let text = rich_text.map { plainText in
                                             plainText.plain_text
@@ -250,7 +256,7 @@ class MainViewModel: ObservableObject {
                                         $0[key] = text.first!
                                     }
                                 }
-                                
+
                                 return DomitoryResponse(unwrappedValue: unwrappedValue)
                             }
                         }
@@ -262,24 +268,50 @@ class MainViewModel: ObservableObject {
         }
     }
     
-    func sortedByBookmark() -> [NewRestaurant] {
-        NewRestaurant.allCases.filter {
+    func sortedByBookmark() -> [String] {
+        let restaurant = NewRestaurant.allCases.filter {
             ($0.campus().rawValue == selectedCampus)
         }.sorted {
             (bookmark.contains($0.rawValue) ? 0 : 1, $0.order()) < (bookmark.contains($1.rawValue) ? 0 : 1, $1.order())
-        }
+        }.map({ $0.rawValue })
+        
+        let domitory = Domitory.allCases.filter {
+            ($0.campus().rawValue == selectedCampus)
+        }.sorted {
+            (bookmark.contains($0.name()) ? 0 : 1, $0.order()) < (bookmark.contains($1.name()) ? 0 : 1, $1.order())
+        }.map({ $0.name() })
+        return restaurant + domitory
     }
     
-    func filterByRestaurant(_ restaurant: NewRestaurant) -> [NewRestaurantResponse] {
+    func filterByRestaurant(_ restaurant: String) -> [NewRestaurantResponse] {
         if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
             return newRestaurant.filter {
-                ($0.RESTAURANT == restaurant) && (Int($0.MENU_DATE.suffix(2)) == day)
+                ($0.RESTAURANT.rawValue == restaurant) && (Int($0.MENU_DATE.suffix(2)) == day)
             }.sorted {
                 $0.CATEGORY.order() < $1.CATEGORY.order()
             }
         }
         
         return []
+    }
+    
+    func filterByDomitory(_ restaurant: String) -> [DomitoryResponse] {
+        if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
+            return domitory.filter {
+                ($0.domitory.name() == restaurant) && (Int($0.mealDate.suffix(2)) == day)
+            }
+        }
+        
+        return []
+    }
+    
+    func checkType(_ restaurant: String) -> QueryType {
+        if (NewRestaurant.allCases.map({ $0.rawValue }).contains(restaurant)) {
+            .restaurant
+        }
+        else {
+            .domitory
+        }
     }
     
     func filterByCategory(_ category: Category, _ restaurant: [NewRestaurantResponse]) -> [NewRestaurantResponse] {
