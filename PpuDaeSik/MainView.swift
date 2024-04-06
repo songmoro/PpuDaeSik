@@ -145,19 +145,18 @@ struct MainView: View {
                     if !restaurant.isEmpty {
                         RestaurantMenuView(bookmark: $vm.bookmark, name: sorted, restaurant: restaurant)
                             .padding(.bottom)
-                        //                        .onChange(of: vm.bookmark) { _, newValue in
-                        //                            vm.saveBookmark()
-                        //                        }
+                            .onChange(of: vm.bookmark) { _, newValue in
+                                vm.saveBookmark()
+                            }
                     }
                     
                     let domitory = vm.filterByDomitory(sorted)
-//                    else if vm.checkType(sorted) == .domitory,
                     if !domitory.isEmpty {
                         DomitoryMenuView(bookmark: $vm.bookmark, name: sorted, domitory: domitory)
                             .padding(.bottom)
-                        //                        .onChange(of: vm.bookmark) { _, newValue in
-                        //                            vm.saveBookmark()
-                        //                        }
+                            .onChange(of: vm.bookmark) { _, newValue in
+                                vm.saveBookmark()
+                            }
                     }
                 }
             }
