@@ -84,9 +84,9 @@ struct MainView: View {
                 .onTapGesture {
                     vm.selectedCampus = location.rawValue
                 }
-//                .onChange(of: vm.selectedCampus) { _, newValue in
-//                    vm.requestCampusDatabase()
-//                }
+                .onChange(of: vm.selectedCampus) { _, newValue in
+                    vm.checkDatabaseStatus()
+                }
                 .animation(.default, value: vm.selectedCampus)
                 .padding(.trailing)
             }
@@ -139,14 +139,18 @@ struct MainView: View {
     
     private var menu: some View {
         ScrollView {
-            if let selectedWeekday = Week(rawValue: vm.selectedDay) {
-                ForEach(vm.restaurantByBookmark(), id: \.rawValue) {
-                    if let restaurant = vm.menu[selectedWeekday]![$0] {
-                        MenuView(bookmark: $vm.bookmark, restaurant: $0.rawValue, meal: restaurant)
-                    }
+            ForEach(vm.sortedByBookmark(), id: \.self) { sorted in
+                let restaurant = vm.filterByRestaurant(sorted)
+                
+                if !restaurant.isEmpty {
+                    MenuView(bookmark: $vm.bookmark, name: sorted.rawValue, restaurant: restaurant)
+                        .padding(.bottom)
+                        .onChange(of: vm.bookmark) { _, newValue in
+                            vm.saveBookmark()
+                        }
                 }
-                .onChange(of: vm.bookmark) { _, newValue in
-                    vm.saveBookmark()
+                else {
+                    EmptyView()
                 }
             }
         }
@@ -154,61 +158,74 @@ struct MainView: View {
     
     private struct MenuView: View {
         @Binding var bookmark: [String]
-        let restaurant: String
-        let meal: Meal
+        let name: String
+        let restaurant: [NewRestaurantResponse]
         
         var body: some View {
             VStack {
                 title
-                card
+                
+                ForEach(Category.allCases, id: \.self) { category in
+                    if !restaurant.filter({$0.CATEGORY == category}).isEmpty {
+                        VStack {
+                            Text(category.rawValue)
+                                .font(.body())
+                                .foregroundColor(.black40)
+                                .frame(width: UIScreen.getWidth(300), alignment: .leading)
+                            
+                            ForEach(restaurant, id: \.uuid) {
+                                if $0.CATEGORY == category {
+                                    card($0)
+                                }
+                            }
+                        }
+                        .padding(.bottom)
+                    }
+                }
             }
             .padding(.horizontal)
-            .padding(.bottom)
         }
         
         private var title: some View {
             HStack {
-                Text(restaurant)
+                Text(name)
                     .font(.headline())
                     .foregroundColor(.black100)
                 
                 Spacer()
                 
                 Button {
-                    if bookmark.contains(restaurant) {
+                    if bookmark.contains(name) {
                         bookmark.removeAll {
-                            $0 == restaurant
+                            $0 == name
                         }
                     }
                     else {
-                        bookmark.append(restaurant)
+                        bookmark.append(name)
                     }
                 } label: {
                     Image(systemName: "star.fill")
                         .font(.headline())
-                        .foregroundColor(bookmark.contains(restaurant) ? .yellow100 : .black20)
+                        .foregroundColor(bookmark.contains(name) ? .yellow100 : .black20)
                 }
             }
+            .padding(.bottom, UIScreen.getHeight(2))
         }
         
-        private var card: some View {
+        private func card(_ restaurant: NewRestaurantResponse) -> some View {
             VStack(alignment: .leading) {
-                ForEach(Category.allCases, id: \.self) {
-                    if let food = meal.foodByCategory[$0] {
-                        Text("\($0.rawValue)")
-                            .font(.subhead())
-                            .foregroundColor(.black100)
-                            .padding(.bottom, UIScreen.getHeight(2))
-                        
-                        Text("\(food)")
-                            .font(.body())
-                            .foregroundColor(.black100)
-                            .padding(.bottom, UIScreen.getHeight(18))
-                    }
-                }
+                Text(restaurant.MENU_TITLE)
+                    .font(.subhead())
+                    .foregroundColor(.black100)
+                    .padding(.bottom, UIScreen.getHeight(2))
+                
+                Text(restaurant.MENU_CONTENT)
+                    .font(.body())
+                    .foregroundColor(.black100)
+                    .padding(.bottom, UIScreen.getHeight(2))
             }
             .padding()
-            .frame(width: UIScreen.getWidth(350), alignment: .leading)
+            .frame(width: UIScreen.getWidth(300), alignment: .leading)
             .background {
                 RoundedRectangle(cornerRadius: 12)
                     .foregroundColor(.white100)

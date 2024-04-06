@@ -94,12 +94,12 @@ class MainViewModel: ObservableObject {
                         status.forEach {
                             if $0["Status"] == "Done" {
                                 if let DB = $0["DB"], let queryType = QueryType(rawValue: DB) {
-                                    self.requestDatabase(queryType)
+                                    self.requestByCampusDatabase(queryType, Campus(rawValue: self.selectedCampus)!)
                                 }
                             }
                             else {
                                 if let DB = $0["DB"], let queryType = QueryType(rawValue: DB) {
-                                    self.requestDatabase(queryType, true)
+                                    self.requestByCampusDatabase(queryType, Campus(rawValue: self.selectedCampus)!, true)
                                 }
                             }
                         }
@@ -116,7 +116,7 @@ class MainViewModel: ObservableObject {
         
         switch queryType {
         case .restaurant:
-            provider.request(.query(.restaurant)) { result in
+                provider.request(.query(.restaurant)) { result in
                 switch result {
                 case .success(let response):
                     if (200..<300).contains(response.statusCode) {
@@ -184,6 +184,128 @@ class MainViewModel: ObservableObject {
                 }
             }
         }
+    }
+    
+    func requestByCampusDatabase(_ queryType: QueryType, _ campus: Campus, _ backup: Bool? = nil) {
+        let provider = MoyaProvider<API>()
+        
+        switch queryType {
+        case .restaurant:
+            provider.request(.queryByCampus(.restaurant, campus)) { result in
+                switch result {
+                case .success(let response):
+                    if (200..<300).contains(response.statusCode) {
+                        if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
+                            self.newRestaurant = decodedData.results.compactMap { queryProperties in
+                                let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
+                                    let key = $1.key
+                                    
+                                    if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
+                                        let text = rich_text.map { plainText in
+                                            plainText.plain_text
+                                        }
+                                        
+                                        $0[key] = text.first!
+                                    }
+                                    if let title = $1.value.rich_text, !title.isEmpty {
+                                        let text = title.map { plainText in
+                                            plainText.plain_text
+                                        }
+                                        
+                                        $0[key] = text.first!
+                                    }
+                                }
+                                
+                                return NewRestaurantResponse(unwrappedValue: unwrappedValue)
+                            }
+//                            print(self.newRestaurant)
+                        }
+                    }
+                case .failure(let error):
+                    fatalError(error.localizedDescription)
+                }
+            }
+        case .domitory:
+            provider.request(.query(.domitory)) { result in
+                switch result {
+                case .success(let response):
+                    if (200..<300).contains(response.statusCode) {
+                        if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
+                            self.domitory = decodedData.results.compactMap { queryProperties in
+                                let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
+                                    let key = $1.key
+                                    
+                                    if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
+                                        let text = rich_text.map { plainText in
+                                            plainText.plain_text
+                                        }
+                                        
+                                        $0[key] = text.first!
+                                    }
+                                    if let title = $1.value.rich_text, !title.isEmpty {
+                                        let text = title.map { plainText in
+                                            plainText.plain_text
+                                        }
+                                        
+                                        $0[key] = text.first!
+                                    }
+                                }
+                                
+                                return DomitoryResponse(unwrappedValue: unwrappedValue)
+                            }
+                        }
+                    }
+                case .failure(let error):
+                    fatalError(error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    func sortedByBookmark() -> [NewRestaurant] {
+        NewRestaurant.allCases.filter {
+            ($0.campus().rawValue == selectedCampus)
+        }.sorted {
+            (bookmark.contains($0.rawValue) ? 0 : 1, $0.order()) < (bookmark.contains($1.rawValue) ? 0 : 1, $1.order())
+        }
+    }
+    
+    func filterByRestaurant(_ restaurant: NewRestaurant) -> [NewRestaurantResponse] {
+        if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
+            return newRestaurant.filter {
+                ($0.RESTAURANT == restaurant) && (Int($0.MENU_DATE.suffix(2)) == day)
+            }.sorted {
+                $0.CATEGORY.order() < $1.CATEGORY.order()
+            }
+        }
+        
+        return []
+    }
+    
+    func filterByCategory(_ category: Category, _ restaurant: [NewRestaurantResponse]) -> [NewRestaurantResponse] {
+        restaurant.filter {
+            $0.CATEGORY == category
+        }
+    }
+    
+    func sortedRestaurant() -> [NewRestaurantResponse] {
+        if let selectedWeekday = Week(rawValue: selectedDay), let day = weekday[selectedWeekday] {
+            let bookmarkRestaurant = newRestaurant.filter { restaurant in
+                (bookmark.contains(restaurant.NAME)) && (restaurant.CAMPUS.rawValue == selectedCampus) && (Int(restaurant.MENU_DATE.suffix(2)) == day)
+            }.sorted {
+                ($0.RESTAURANT.order(), $0.CATEGORY.order()) < ($1.RESTAURANT.order(), $1.CATEGORY.order())
+            }
+            
+            let restaurant = newRestaurant.filter {
+                (!bookmark.contains($0.NAME)) && ($0.CAMPUS.rawValue == selectedCampus) && (Int($0.MENU_DATE.suffix(2)) == day)
+            }.sorted {
+                ($0.RESTAURANT.order(), $0.CATEGORY.order()) < ($1.RESTAURANT.order(), $1.CATEGORY.order())
+            }
+            
+            return (bookmarkRestaurant + restaurant)
+        }
+        
+        return []
     }
     
     func restaurantByBookmark() -> [Restaurant] {

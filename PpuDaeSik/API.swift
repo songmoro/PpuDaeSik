@@ -12,6 +12,7 @@ enum API {
     case checkStatus
     case queryDatabase(_ campus: Campus)
     case query(_ type: QueryType, _ backup: Bool? = nil)
+    case queryByCampus(_ type: QueryType, _ campus: Campus, _ backup: Bool? = nil)
 }
 
 extension API: TargetType {
@@ -63,6 +64,31 @@ extension API: TargetType {
                 
                 return "/databases/\(databaseId)/query"
             }
+        case .queryByCampus(let type, _, let backup):
+            if backup == nil {
+                var databaseId: String {
+                    switch type {
+                    case .restaurant:
+                        "da22b69d795c4e879b77dd657948ea4e"
+                    case .domitory:
+                        "264bceb5a8ef45a0befbec5d407b37f9"
+                    }
+                }
+                
+                return "/databases/\(databaseId)/query"
+            }
+            else {
+                var databaseId: String {
+                    switch type {
+                    case .restaurant:
+                        "912baee21c7643628355569d16aeb8b8"
+                    case .domitory:
+                        "656bc1391c7843e292a7d89be6567f74"
+                    }
+                }
+                
+                return "/databases/\(databaseId)/query"
+            }
         }
     }
     
@@ -74,6 +100,8 @@ extension API: TargetType {
             return .post
         case .query:
             return .post
+        case .queryByCampus:
+            return.post
         }
     }
     
@@ -120,6 +148,47 @@ extension API: TargetType {
                     FilterRequest(property: "MENU_DATE", date: date)
                 case .domitory:
                     FilterRequest(property: "mealDate", date: date)
+                }
+            }
+            
+            return .requestJSONEncodable(data)
+            
+        case .queryByCampus(let type, let campus, _):
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+            
+            let calendar: Calendar = {
+                var calendar = Calendar.current
+                calendar.locale = Locale(identifier: "ko_KR")
+                calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
+                
+                return calendar
+            }()
+            
+            let interval: [Int] = switch calendar.component(.weekday, from: Date()) {
+            case 1: [ 0,  1,  2,  3,  4,  5,  6]
+            case 2: [-1,  0,  1,  2,  3,  4,  5]
+            case 3: [-2, -1,  0,  1,  2,  3,  4]
+            case 4: [-3, -2, -1,  0,  1,  2,  3]
+            case 5: [-4, -3, -2, -1,  0,  1,  2]
+            case 6: [-5, -4, -3, -2, -1,  0,  1]
+            case 7: [-6, -5, -4, -3, -2, -1,  0]
+            default: []
+            }
+            
+            let date = interval.map {
+                let date = calendar.date(byAdding: .day, value: $0, to: Date())
+                
+                return dateFormatter.string(from: date!)
+            }.compactMap({ $0 })
+            
+            var data: FilterByCampusRequest {
+                switch type {
+                case .restaurant:
+                    FilterByCampusRequest(property: "MENU_DATE", campus: campus, date: date)
+                case .domitory:
+                    FilterByCampusRequest(property: "mealDate", campus: campus, date: date)
                 }
             }
             

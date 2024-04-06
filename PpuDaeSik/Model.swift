@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Campus: String, CaseIterable {
+enum Campus: String, CaseIterable, Codable {
     case 부산, 밀양, 양산
     
     var restaurant: [Restaurant] {
@@ -20,14 +20,57 @@ enum Campus: String, CaseIterable {
             [Restaurant.편의동, Restaurant.행림관]
         }
     }
+    
+    var newRestaurant: [NewRestaurant] {
+        switch self {
+        case .부산:
+            [.금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당]
+        case .밀양:
+            [.학생회관밀양학생식당, .학생회관밀양교직원식당]
+        case .양산:
+            [.편의동2층양산식당]
+        }
+    }
+    
+    var domitory: [Domitory] {
+        switch self {
+        case .부산:
+            [.진리관, .웅비관, .자유관]
+        case .밀양:
+            [.비마관]
+        case .양산:
+            [.행림관]
+        }
+    }
 }
 
 enum Week: String, CaseIterable {
     case 일, 월, 화, 수, 목, 금, 토
+    
+    func weekday() -> Int {
+        switch self {
+        case .일: 1
+        case .월: 2
+        case .화: 3
+        case .수: 4
+        case .목: 5
+        case .금: 6
+        case .토: 7
+        }
+    }
 }
 
-enum Category: String, CaseIterable, Hashable {
-    case 조식, 중식, 석식
+enum Category: String, CaseIterable, Hashable, Codable {
+    case 조기, 조식, 중식, 석식
+    
+    func order() -> Int {
+        switch self {
+        case .조기: 0
+        case .조식: 1
+        case .중식: 2
+        case .석식: 3
+        }
+    }
 }
 
 enum Restaurant: String, CaseIterable, Hashable {
@@ -95,14 +138,49 @@ struct DomitoryResponse: Codable {
     var mealNm: String
 }
 
-enum NewRestaurant: String, CaseIterable, Hashable {
+enum NewRestaurant: String, CaseIterable, Hashable, Codable {
     case 금정회관교직원식당 = "금정회관 교직원 식당"
     case 금정회관학생식당 = "금정회관 학생 식당"
     case 샛벌회관식당 = "샛벌회관 식당"
     case 학생회관학생식당 = "학생회관 학생 식당"
     case 학생회관밀양학생식당 = "학생회관(밀양) 학생 식당"
     case 학생회관밀양교직원식당 = "학생회관(밀양) 교직원 식당"
-    case 편의동2층양산식당 = "편의동 2층(양산) 식당"
+    case 편의동2층양산식당 = "편의동2층(양산) 식당"
+    
+    func order() -> Int {
+        switch self {
+        case .금정회관교직원식당: 0
+        case .금정회관학생식당: 1
+        case .샛벌회관식당: 2
+        case .학생회관학생식당: 3
+        case .학생회관밀양학생식당: 4
+        case .학생회관밀양교직원식당: 5
+        case .편의동2층양산식당: 6
+        }
+    }
+    
+    func campus() -> Campus {
+        switch self {
+        case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당:
+            Campus.부산
+        case .학생회관밀양학생식당, .학생회관밀양교직원식당:
+            Campus.밀양
+        case .편의동2층양산식당:
+            Campus.양산
+        }
+    }
+    
+    func code() -> String {
+        switch self {
+        case .금정회관교직원식당: "PG001"
+        case .금정회관학생식당: "PG002"
+        case .샛벌회관식당: "PS001"
+        case .학생회관학생식당: "PH002"
+        case .학생회관밀양학생식당: "M001"
+        case .학생회관밀양교직원식당: "M002"
+        case .편의동2층양산식당: "Y001"
+        }
+    }
 }
 
 struct NewRestaurantResponse: Codable, Hashable {
@@ -112,32 +190,49 @@ struct NewRestaurantResponse: Codable, Hashable {
         self.BUILDING_NAME = unwrappedValue["BUILDING_NAME"] ?? ""
         self.RESTAURANT_NAME = unwrappedValue["RESTAURANT_NAME"] ?? ""
         self.RESTAURANT_CODE = unwrappedValue["RESTAURANT_CODE"] ?? ""
-        self.MENU_TYPE = switch unwrappedValue["MENU_TYPE"] {
-        case "B": 3
-        case "L": 2
-        case "D": 1
-        default: 0
-        }
+        self.MENU_TYPE = unwrappedValue["MENU_TYPE"] ?? ""
         self.MENU_TITLE = unwrappedValue["MENU_TITLE"] ?? ""
         self.MENU_CONTENT = unwrappedValue["MENU_CONTENT"] ?? ""
         self.BREAKFAST_TIME = unwrappedValue["BREAKFAST_TIME"] ?? ""
         self.LUNCH_TIME = unwrappedValue["LUNCH_TIME"] ?? ""
         self.DINNER_TIME = unwrappedValue["DINNER_TIME"] ?? ""
         self.TEL = unwrappedValue["TEL"] ?? ""
+        
+        self.RESTAURANT = NewRestaurant(rawValue: self.NAME) ?? .금정회관교직원식당
+        self.CAMPUS = switch self.RESTAURANT_CODE {
+        case "PG001", "PG002", "PS001", "PH002":
+                .부산
+        case "M001", "M002":
+                .밀양
+        case "Y001":
+                .양산
+        default:
+                .부산
+        }
+        self.CATEGORY = switch self.MENU_TYPE {
+        case "B": .조식
+        case "L": .중식
+        case "D": .석식
+        default: .조기
+        }
     }
     
+    var uuid = UUID()
     var NAME: String
     var MENU_DATE: String
     var BUILDING_NAME: String
     var RESTAURANT_NAME: String
     var RESTAURANT_CODE: String
-    var MENU_TYPE: Int
+    var MENU_TYPE: String
     var MENU_TITLE: String
     var MENU_CONTENT: String
     var BREAKFAST_TIME: String
     var LUNCH_TIME: String
     var DINNER_TIME: String
     var TEL: String
+    var CAMPUS: Campus
+    var RESTAURANT: NewRestaurant
+    var CATEGORY: Category
 }
 
 struct CheckDatabase: Codable {
@@ -178,6 +273,40 @@ struct FilterRequest: Codable {
             
             struct RichText: Codable {
                 var equals: String
+            }
+        }
+    }
+}
+
+struct FilterByCampusRequest: Codable {
+    init(property: String, campus: Campus, date: [String]) {
+        let code = campus.newRestaurant.map { c in
+            Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code()))
+        }
+        
+        let condition = date.map { d in
+            Filter.Or.ConditionalExpression(property: property, rich_text: Filter.Or.ConditionalExpression.RichText(equals: d))
+        }
+        
+        
+        self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: condition)])
+    }
+    
+    var filter: Filter
+    
+    struct Filter: Codable {
+        var and: [Or]
+        
+        struct Or: Codable {
+            var or: [ConditionalExpression]
+            
+            struct ConditionalExpression: Codable {
+                var property: String
+                var rich_text: RichText
+                
+                struct RichText: Codable {
+                    var equals: String
+                }
             }
         }
     }
