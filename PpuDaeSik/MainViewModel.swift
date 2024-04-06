@@ -13,24 +13,44 @@ class MainViewModel: ObservableObject {
     @Published var selectedDay = ""
     @Published var isSheetShow = false
     @Published var weekday: [Week: Int] = [:]
+    @Published var week: [Week: DateComponents] = [:]
     @Published var defaultCampus = "부산"
     @Published var bookmark: [String] = []
     @Published var newRestaurant = [NewRestaurantResponse]()
     @Published var domitory = [DomitoryResponse]()
     
     func currentWeek() {
-        var week: [Week: Int] = [:]
-        let current = Calendar.current
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
         
-        if let weekend = current.nextWeekend(startingAfter: Date())?.end {
-            for (weekday, interval) in zip(Week.allCases, (-8)...(-2)) {
-                if let intervalDate = current.date(byAdding: .day, value: interval, to: weekend), let day = current.dateComponents([.day], from: intervalDate).day {
-                    week[weekday] = day
-                }
-            }
+        let calendar: Calendar = {
+            var calendar = Calendar.current
+            calendar.locale = Locale(identifier: "ko_KR")
+            calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
+            
+            return calendar
+        }()
+        
+        let interval: [Int] = switch calendar.component(.weekday, from: Date()) {
+        case 1: [ 0,  1,  2,  3,  4,  5,  6]
+        case 2: [-1,  0,  1,  2,  3,  4,  5]
+        case 3: [-2, -1,  0,  1,  2,  3,  4]
+        case 4: [-3, -2, -1,  0,  1,  2,  3]
+        case 5: [-4, -3, -2, -1,  0,  1,  2]
+        case 6: [-5, -4, -3, -2, -1,  0,  1]
+        case 7: [-6, -5, -4, -3, -2, -1,  0]
+        default: []
         }
         
-        weekday = week
+        let week = interval.map {
+            let date = calendar.date(byAdding: .day, value: $0, to: Date())
+
+            return calendar.dateComponents([.year, .month, .day, .weekday], from: date!)
+        }.compactMap({ $0 })
+        
+        
+        self.week = Dictionary(uniqueKeysWithValues: zip(Week.allCases, week.sorted(by: { $0.weekday! < $1.weekday! })))
     }
     
     func checkDatabaseStatus() {

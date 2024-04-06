@@ -99,21 +99,21 @@ struct MainView: View {
     
     private var week: some View {
         HStack(spacing: 0) {
-            ForEach(Week.allCases, id: \.self) { day in
+            ForEach(Week.allCases, id: \.self) { weekday in
                 VStack(spacing: 0) {
-                    Text("\(day.rawValue)")
+                    Text("\(weekday.rawValue)")
                         .foregroundColor(.black100)
                         .font(.body())
                     
                     Group {
-                        if let weekdate = vm.weekday[day] {
-                            Text("\(weekdate)")
-                                .foregroundColor(day.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue ? .black100 : .black40)
+                        if let day = vm.week[weekday]?.day {
+                            Text("\(day)")
+                                .foregroundColor(weekday.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue ? .black100 : .black40)
                                 .font(.headline())
                                 .padding(.bottom, UIScreen.getHeight(6))
                         }
                         
-                        if day.rawValue == vm.selectedDay  {
+                        if weekday.rawValue == vm.selectedDay  {
                             Circle()
                                 .foregroundColor(.blue100)
                                 .frame(height: UIScreen.getHeight(5))
@@ -126,7 +126,7 @@ struct MainView: View {
                         }
                     }
                     .onTapGesture {
-                        vm.selectedDay = day.rawValue
+                        vm.selectedDay = weekday.rawValue
                     }
                     .animation(.default, value: vm.selectedDay)
                 }
