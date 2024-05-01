@@ -88,10 +88,6 @@ enum Restaurant: String, CaseIterable, Hashable {
     case 행림관
 }
 
-struct Meal: Hashable {
-    var foodByCategory: [Category: String] = [:]
-}
-
 struct QueryDatabase: Codable {
     var results: [QueryProperties]
     
