@@ -10,7 +10,7 @@ import SwiftUI
 enum Campus: String, CaseIterable, Codable {
     case 부산, 밀양, 양산
     
-    var newRestaurant: [NewRestaurant] {
+    var restaurant: [Restaurant] {
         switch self {
         case .부산:
             [.금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당]
@@ -165,7 +165,7 @@ struct DomitoryResponse: Codable {
     var category: Category
 }
 
-enum NewRestaurant: String, CaseIterable, Hashable, Codable {
+enum Restaurant: String, CaseIterable, Hashable, Codable {
     case 금정회관교직원식당 = "금정회관 교직원 식당"
     case 금정회관학생식당 = "금정회관 학생 식당"
     case 샛벌회관식당 = "샛벌회관 식당"
@@ -210,7 +210,7 @@ enum NewRestaurant: String, CaseIterable, Hashable, Codable {
     }
 }
 
-struct NewRestaurantResponse: Codable, Hashable {
+struct RestaurantResponse: Codable, Hashable {
     init(unwrappedValue: [String: String]) {
         self.NAME = (unwrappedValue["BUILDING_NAME"] ?? "") + " " + (unwrappedValue["RESTAURANT_NAME"] ?? "")
         self.MENU_DATE = unwrappedValue["MENU_DATE"] ?? ""
@@ -225,7 +225,7 @@ struct NewRestaurantResponse: Codable, Hashable {
         self.DINNER_TIME = unwrappedValue["DINNER_TIME"] ?? ""
         self.TEL = unwrappedValue["TEL"] ?? ""
         
-        self.RESTAURANT = NewRestaurant(rawValue: self.NAME) ?? .금정회관교직원식당
+        self.RESTAURANT = Restaurant(rawValue: self.NAME) ?? .금정회관교직원식당
         self.CAMPUS = switch self.RESTAURANT_CODE {
         case "PG001", "PG002", "PS001", "PH002":
                 .부산
@@ -258,7 +258,7 @@ struct NewRestaurantResponse: Codable, Hashable {
     var DINNER_TIME: String
     var TEL: String
     var CAMPUS: Campus
-    var RESTAURANT: NewRestaurant
+    var RESTAURANT: Restaurant
     var CATEGORY: Category
 }
 
@@ -310,7 +310,7 @@ struct FilterByCampusRequest: Codable {
         var code: [Filter.Or.ConditionalExpression]
         
         if property == "MENU_DATE" {
-            code = campus.newRestaurant.map { c in
+            code = campus.restaurant.map { c in
                 Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code()))
             }
         }

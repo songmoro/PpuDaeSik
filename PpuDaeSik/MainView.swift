@@ -166,7 +166,7 @@ struct MainView: View {
     private struct RestaurantMenuView: View {
         @Binding var bookmark: [String]
         let name: String
-        let restaurant: [NewRestaurantResponse]
+        let restaurant: [RestaurantResponse]
         
         var body: some View {
             VStack {
@@ -219,7 +219,7 @@ struct MainView: View {
             .padding(.bottom, UIScreen.getHeight(2))
         }
         
-        private func card(_ restaurant: NewRestaurantResponse) -> some View {
+        private func card(_ restaurant: RestaurantResponse) -> some View {
             VStack(alignment: .leading) {
                 if !restaurant.MENU_TITLE.isEmpty {
                     Text(restaurant.MENU_TITLE)
