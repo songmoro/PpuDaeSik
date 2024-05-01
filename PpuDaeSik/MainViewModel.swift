@@ -340,18 +340,6 @@ class MainViewModel: ObservableObject {
         return []
     }
     
-    func restaurantByBookmark() -> [Restaurant] {
-        let bookmarkRestaurant = bookmark.map {
-            Restaurant(rawValue: $0)!
-        }
-        
-        let campusRestaurant = Campus(rawValue: selectedCampus)!.restaurant.filter {
-            !bookmarkRestaurant.contains($0)
-        }
-        
-        return bookmarkRestaurant + campusRestaurant
-    }
-    
     func saveDefaultCampus() {
         UserDefaults.standard.setValue(defaultCampus, forKey: "defaultCampus")
     }

@@ -10,17 +10,6 @@ import SwiftUI
 enum Campus: String, CaseIterable, Codable {
     case 부산, 밀양, 양산
     
-    var restaurant: [Restaurant] {
-        switch self {
-        case .부산:
-            [Restaurant.금정회관학생, Restaurant.금정회관교직원, Restaurant.샛벌회관, Restaurant.학생회관장전학생, Restaurant.진리관, Restaurant.웅비관, Restaurant.자유관]
-        case .밀양:
-            [Restaurant.학생회관밀양학생, Restaurant.학생회관밀양교직원, Restaurant.비마관]
-        case .양산:
-            [Restaurant.편의동, Restaurant.행림관]
-        }
-    }
-    
     var newRestaurant: [NewRestaurant] {
         switch self {
         case .부산:
@@ -71,21 +60,6 @@ enum Category: String, CaseIterable, Hashable, Codable {
         case .석식: 3
         }
     }
-}
-
-enum Restaurant: String, CaseIterable, Hashable {
-    case 금정회관학생 = "금정회관 학생"
-    case 금정회관교직원 = "금정회관 교직원"
-    case 샛벌회관
-    case 학생회관장전학생 = "학생회관(장전) 학생"
-    case 진리관
-    case 웅비관
-    case 자유관
-    case 학생회관밀양학생 = "학생회관(밀양) 학생"
-    case 학생회관밀양교직원 = "학생회관(밀양) 교직원"
-    case 비마관
-    case 편의동
-    case 행림관
 }
 
 struct QueryDatabase: Codable {
