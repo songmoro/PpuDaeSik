@@ -13,17 +13,6 @@ enum Campus: String, CaseIterable, Codable {
     var restaurant: [Restaurant] {
         switch self {
         case .부산:
-            [Restaurant.금정회관학생, Restaurant.금정회관교직원, Restaurant.샛벌회관, Restaurant.학생회관장전학생, Restaurant.진리관, Restaurant.웅비관, Restaurant.자유관]
-        case .밀양:
-            [Restaurant.학생회관밀양학생, Restaurant.학생회관밀양교직원, Restaurant.비마관]
-        case .양산:
-            [Restaurant.편의동, Restaurant.행림관]
-        }
-    }
-    
-    var newRestaurant: [NewRestaurant] {
-        switch self {
-        case .부산:
             [.금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당]
         case .밀양:
             [.학생회관밀양학생식당, .학생회관밀양교직원식당]
@@ -71,25 +60,6 @@ enum Category: String, CaseIterable, Hashable, Codable {
         case .석식: 3
         }
     }
-}
-
-enum Restaurant: String, CaseIterable, Hashable {
-    case 금정회관학생 = "금정회관 학생"
-    case 금정회관교직원 = "금정회관 교직원"
-    case 샛벌회관
-    case 학생회관장전학생 = "학생회관(장전) 학생"
-    case 진리관
-    case 웅비관
-    case 자유관
-    case 학생회관밀양학생 = "학생회관(밀양) 학생"
-    case 학생회관밀양교직원 = "학생회관(밀양) 교직원"
-    case 비마관
-    case 편의동
-    case 행림관
-}
-
-struct Meal: Hashable {
-    var foodByCategory: [Category: String] = [:]
 }
 
 struct QueryDatabase: Codable {
@@ -195,7 +165,7 @@ struct DomitoryResponse: Codable {
     var category: Category
 }
 
-enum NewRestaurant: String, CaseIterable, Hashable, Codable {
+enum Restaurant: String, CaseIterable, Hashable, Codable {
     case 금정회관교직원식당 = "금정회관 교직원 식당"
     case 금정회관학생식당 = "금정회관 학생 식당"
     case 샛벌회관식당 = "샛벌회관 식당"
@@ -240,7 +210,7 @@ enum NewRestaurant: String, CaseIterable, Hashable, Codable {
     }
 }
 
-struct NewRestaurantResponse: Codable, Hashable {
+struct RestaurantResponse: Codable, Hashable {
     init(unwrappedValue: [String: String]) {
         self.NAME = (unwrappedValue["BUILDING_NAME"] ?? "") + " " + (unwrappedValue["RESTAURANT_NAME"] ?? "")
         self.MENU_DATE = unwrappedValue["MENU_DATE"] ?? ""
@@ -255,7 +225,7 @@ struct NewRestaurantResponse: Codable, Hashable {
         self.DINNER_TIME = unwrappedValue["DINNER_TIME"] ?? ""
         self.TEL = unwrappedValue["TEL"] ?? ""
         
-        self.RESTAURANT = NewRestaurant(rawValue: self.NAME) ?? .금정회관교직원식당
+        self.RESTAURANT = Restaurant(rawValue: self.NAME) ?? .금정회관교직원식당
         self.CAMPUS = switch self.RESTAURANT_CODE {
         case "PG001", "PG002", "PS001", "PH002":
                 .부산
@@ -288,7 +258,7 @@ struct NewRestaurantResponse: Codable, Hashable {
     var DINNER_TIME: String
     var TEL: String
     var CAMPUS: Campus
-    var RESTAURANT: NewRestaurant
+    var RESTAURANT: Restaurant
     var CATEGORY: Category
 }
 
@@ -340,7 +310,7 @@ struct FilterByCampusRequest: Codable {
         var code: [Filter.Or.ConditionalExpression]
         
         if property == "MENU_DATE" {
-            code = campus.newRestaurant.map { c in
+            code = campus.restaurant.map { c in
                 Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code()))
             }
         }

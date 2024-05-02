@@ -16,7 +16,7 @@ class MainViewModel: ObservableObject {
     @Published var week: [Week: DateComponents] = [:]
     @Published var defaultCampus = "부산"
     @Published var bookmark: [String] = []
-    @Published var newRestaurant = [NewRestaurantResponse]()
+    @Published var restaurant = [RestaurantResponse]()
     @Published var domitory = [DomitoryResponse]()
     
     func currentWeek() {
@@ -121,7 +121,7 @@ class MainViewModel: ObservableObject {
                 case .success(let response):
                     if (200..<300).contains(response.statusCode) {
                         if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                            self.newRestaurant = decodedData.results.compactMap { queryProperties in
+                            self.restaurant = decodedData.results.compactMap { queryProperties in
                                 let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
                                     let key = $1.key
                                     
@@ -141,7 +141,7 @@ class MainViewModel: ObservableObject {
                                     }
                                 }
                                 
-                                return NewRestaurantResponse(unwrappedValue: unwrappedValue)
+                                return RestaurantResponse(unwrappedValue: unwrappedValue)
                             }
                         }
                     }
@@ -196,7 +196,7 @@ class MainViewModel: ObservableObject {
                 case .success(let response):
                     if (200..<300).contains(response.statusCode) {
                         if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                            self.newRestaurant = decodedData.results.compactMap { queryProperties in
+                            self.restaurant = decodedData.results.compactMap { queryProperties in
                                 let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
                                     let key = $1.key
                                     
@@ -216,7 +216,7 @@ class MainViewModel: ObservableObject {
                                     }
                                 }
                                 
-                                return NewRestaurantResponse(unwrappedValue: unwrappedValue)
+                                return RestaurantResponse(unwrappedValue: unwrappedValue)
                             }
                         }
                     }
@@ -269,7 +269,7 @@ class MainViewModel: ObservableObject {
     }
     
     func sortedByBookmark() -> [String] {
-        let restaurant = NewRestaurant.allCases.filter {
+        let restaurant = Restaurant.allCases.filter {
             !bookmark.contains($0.rawValue) && ($0.campus().rawValue == selectedCampus)
         }.sorted {
             ($0.order()) < ($1.order())
@@ -283,10 +283,10 @@ class MainViewModel: ObservableObject {
         return bookmark + restaurant + domitory
     }
     
-    func filterByRestaurant(_ restaurant: String) -> [NewRestaurantResponse] {
+    func filterByRestaurant(_ restaurantName: String) -> [RestaurantResponse] {
         if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
-            return newRestaurant.filter {
-                ($0.RESTAURANT.rawValue == restaurant) && (Int($0.MENU_DATE.suffix(2)) == day)
+            return restaurant.filter {
+                ($0.RESTAURANT.rawValue == restaurantName) && (Int($0.MENU_DATE.suffix(2)) == day)
             }.sorted {
                 $0.CATEGORY.order() < $1.CATEGORY.order()
             }
@@ -306,7 +306,7 @@ class MainViewModel: ObservableObject {
     }
     
     func checkType(_ restaurant: String) -> QueryType {
-        if (NewRestaurant.allCases.map({ $0.rawValue }).contains(restaurant)) {
+        if (Restaurant.allCases.map({ $0.rawValue }).contains(restaurant)) {
             .restaurant
         }
         else {
@@ -314,21 +314,21 @@ class MainViewModel: ObservableObject {
         }
     }
     
-    func filterByCategory(_ category: Category, _ restaurant: [NewRestaurantResponse]) -> [NewRestaurantResponse] {
+    func filterByCategory(_ category: Category, _ restaurant: [RestaurantResponse]) -> [RestaurantResponse] {
         restaurant.filter {
             $0.CATEGORY == category
         }
     }
     
-    func sortedRestaurant() -> [NewRestaurantResponse] {
+    func sortedRestaurant() -> [RestaurantResponse] {
         if let selectedWeekday = Week(rawValue: selectedDay), let day = weekday[selectedWeekday] {
-            let bookmarkRestaurant = newRestaurant.filter { restaurant in
+            let bookmarkRestaurant = restaurant.filter { restaurant in
                 (bookmark.contains(restaurant.NAME)) && (restaurant.CAMPUS.rawValue == selectedCampus) && (Int(restaurant.MENU_DATE.suffix(2)) == day)
             }.sorted {
                 ($0.RESTAURANT.order(), $0.CATEGORY.order()) < ($1.RESTAURANT.order(), $1.CATEGORY.order())
             }
             
-            let restaurant = newRestaurant.filter {
+            let restaurant = restaurant.filter {
                 (!bookmark.contains($0.NAME)) && ($0.CAMPUS.rawValue == selectedCampus) && (Int($0.MENU_DATE.suffix(2)) == day)
             }.sorted {
                 ($0.RESTAURANT.order(), $0.CATEGORY.order()) < ($1.RESTAURANT.order(), $1.CATEGORY.order())
@@ -338,18 +338,6 @@ class MainViewModel: ObservableObject {
         }
         
         return []
-    }
-    
-    func restaurantByBookmark() -> [Restaurant] {
-        let bookmarkRestaurant = bookmark.map {
-            Restaurant(rawValue: $0)!
-        }
-        
-        let campusRestaurant = Campus(rawValue: selectedCampus)!.restaurant.filter {
-            !bookmarkRestaurant.contains($0)
-        }
-        
-        return bookmarkRestaurant + campusRestaurant
     }
     
     func saveDefaultCampus() {
