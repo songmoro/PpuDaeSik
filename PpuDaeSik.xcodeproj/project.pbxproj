@@ -10,6 +10,17 @@
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		F8334D602BE4C934000B85E9 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D5F2BE4C934000B85E9 /* CombineMoya */; };
+		F8334D622BE4C934000B85E9 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D612BE4C934000B85E9 /* Moya */; };
+		F8334D642BE4C934000B85E9 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D632BE4C934000B85E9 /* ReactiveMoya */; };
+		F8334D662BE4C934000B85E9 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D652BE4C934000B85E9 /* RxMoya */; };
+		F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D552BE4C7E9000B85E9 /* Ext+Provider.swift */; };
+		F8334D682BE4C968000B85E9 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D572BE4C7E9000B85E9 /* AppIntent.swift */; };
+		F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */; };
+		F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5B2BE4C7E9000B85E9 /* PpuDaeSikWidgetBundle.swift */; };
+		F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5C2BE4C7E9000B85E9 /* WidgetAPI.swift */; };
+		F8334D6E2BE4C968000B85E9 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5D2BE4C7E9000B85E9 /* WidgetModel.swift */; };
+		F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8334D582BE4C7E9000B85E9 /* Assets.xcassets */; };
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
@@ -85,8 +96,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8334D662BE4C934000B85E9 /* RxMoya in Frameworks */,
 				F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */,
 				F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */,
+				F8334D622BE4C934000B85E9 /* Moya in Frameworks */,
+				F8334D642BE4C934000B85E9 /* ReactiveMoya in Frameworks */,
+				F8334D602BE4C934000B85E9 /* CombineMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +230,12 @@
 			dependencies = (
 			);
 			name = PpuDaeSikWidgetExtension;
+			packageProductDependencies = (
+				F8334D5F2BE4C934000B85E9 /* CombineMoya */,
+				F8334D612BE4C934000B85E9 /* Moya */,
+				F8334D632BE4C934000B85E9 /* ReactiveMoya */,
+				F8334D652BE4C934000B85E9 /* RxMoya */,
+			);
 			productName = PpuDaeSikWidgetExtension;
 			productReference = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
@@ -290,6 +311,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,6 +332,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */,
+				F8334D682BE4C968000B85E9 /* AppIntent.swift in Sources */,
+				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
+				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
+				F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */,
+				F8334D6E2BE4C968000B85E9 /* WidgetModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +546,7 @@
 		F88F35E62B43FC6600BEA743 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -553,6 +582,7 @@
 		F88F35E72B43FC6600BEA743 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -629,6 +659,26 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		F8334D5F2BE4C934000B85E9 /* CombineMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
+			productName = CombineMoya;
+		};
+		F8334D612BE4C934000B85E9 /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
+			productName = Moya;
+		};
+		F8334D632BE4C934000B85E9 /* ReactiveMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
+			productName = ReactiveMoya;
+		};
+		F8334D652BE4C934000B85E9 /* RxMoya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
+			productName = RxMoya;
+		};
 		F88F35F62B459D3A00BEA743 /* CombineMoya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
