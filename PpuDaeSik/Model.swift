@@ -328,6 +328,24 @@ struct FilterByCampusRequest: Codable {
         self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: condition)])
     }
     
+    init(property: String, name: String, date: [String]) {
+        var code: [Filter.Or.ConditionalExpression]
+        
+        if property == "MENU_DATE" {
+            code = [Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: name))]
+        }
+        else {
+            code = [Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: name))]
+        }
+        
+        let condition = date.map { d in
+            Filter.Or.ConditionalExpression(property: property, rich_text: Filter.Or.ConditionalExpression.RichText(equals: d))
+        }
+        
+        
+        self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: condition)])
+    }
+    
     var filter: Filter
     
     struct Filter: Codable {
