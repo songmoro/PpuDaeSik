@@ -20,7 +20,7 @@ struct Provider: IntentTimelineProvider {
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         checkDatabase { isUpdate in
-            let code = selected(for: configuration)
+            let code = getCode(for: configuration)
             let currentDate = Date()
             let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
             
@@ -45,7 +45,7 @@ struct Provider: IntentTimelineProvider {
         }
     }
     
-    func selected(for configuration: ConfigurationIntent) -> String {
+    func getCode(for configuration: ConfigurationIntent) -> String {
         switch configuration.RestaurantEnum {
         case .d001:
             Domitory.진리관.code()
