@@ -19,12 +19,16 @@ struct Provider: TimelineProvider {
     }
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
-        let currentDate = Date()
-        let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
-        let entry = SimpleEntry(date: currentDate, emoji: "😀")
+        checkDatabase()
+//        checkDatabase { str in
+            let currentDate = Date()
+            let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
+            let entry = SimpleEntry(date: currentDate, emoji: "")
 
-        let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
-        completion(timeline)
+            let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
+            
+            completion(timeline)
+//        }
     }
 }
 

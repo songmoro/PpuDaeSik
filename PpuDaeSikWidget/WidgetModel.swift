@@ -1,8 +1,30 @@
+////
+////  WidgetModel.swift
+////  PpuDaeSik
+////
+////  Created by 송재훈 on 5/3/24.
+////
 //
-//  WidgetModel.swift
-//  PpuDaeSik
+//import Foundation
 //
-//  Created by 송재훈 on 5/3/24.
+//struct CheckDatabase: Codable {
+//    var results: [CheckProperties]
+//    
+//    struct CheckProperties: Codable {
+//        var properties: [String: CheckProperty]
+//        
+//        struct CheckProperty: Codable {
+//            var type: String
+//            var title: [RichText]?
+//            var rich_text: [RichText]?
+//            
+//            struct RichText: Codable {
+//                var plain_text: String
+//            }
+//        }
+//    }
+//}
 //
-
-import Foundation
+//enum QueryType: String, CaseIterable {
+//    case restaurant, domitory
+//}
