@@ -67,8 +67,9 @@ struct PpuDaeSikWidget: Widget {
                     .background()
             }
         }
-        .configurationDisplayName("My Widget")
-        .description("This is an example widget.")
+        .configurationDisplayName("뿌대식")
+        .description("메뉴를 좀 더 간편하게 확인해보세요!")
+        .supportedFamilies([.systemSmall])
     }
 }
 
