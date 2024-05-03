@@ -21,6 +21,7 @@ struct Provider: IntentTimelineProvider {
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         checkDatabase { isUpdate in
             let code = getCode(for: configuration)
+            let type = getType(for: configuration)
             let currentDate = Date()
             let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
             
@@ -73,6 +74,17 @@ struct Provider: IntentTimelineProvider {
             Restaurant.편의동2층양산식당.code()
         case .unknown:
             ""
+        }
+    }
+    
+    func getType(for configuration: ConfigurationIntent) -> QueryType {
+        switch configuration.RestaurantEnum {
+        case .d001, .d002, .d003, .d004, .d005:
+            QueryType.domitory
+        case .g001, .g002, .h001, .m001, .m002, .s001, .y001:
+            QueryType.restaurant
+        case .unknown:
+            QueryType.restaurant
         }
     }
 }
