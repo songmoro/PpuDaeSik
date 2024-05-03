@@ -22,6 +22,7 @@
 		F8334D6E2BE4C968000B85E9 /* WidgetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5D2BE4C7E9000B85E9 /* WidgetModel.swift */; };
 		F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8334D582BE4C7E9000B85E9 /* Assets.xcassets */; };
 		F8334D712BE4D664000B85E9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ABD22C2B4D82C30038195F /* Model.swift */; };
+		F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */; };
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
@@ -62,6 +63,16 @@
 			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F8334D852BE4E322000B85E9 /* Embed ExtensionKit Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(EXTENSIONS_FOLDER_PATH)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed ExtensionKit Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +87,7 @@
 		F8334D5B2BE4C7E9000B85E9 /* PpuDaeSikWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikWidgetBundle.swift; sourceTree = "<group>"; };
 		F8334D5C2BE4C7E9000B85E9 /* WidgetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAPI.swift; sourceTree = "<group>"; };
 		F8334D5D2BE4C7E9000B85E9 /* WidgetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetModel.swift; sourceTree = "<group>"; };
+		F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PpuDaeSikWidget.intentdefinition; sourceTree = "<group>"; };
 		F88F35D22B43FC6500BEA743 /* PpuDaeSik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PpuDaeSik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikApp.swift; sourceTree = "<group>"; };
 		F88F35D92B43FC6600BEA743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -145,6 +157,7 @@
 				F8334D582BE4C7E9000B85E9 /* Assets.xcassets */,
 				F8334D592BE4C7E9000B85E9 /* Info.plist */,
 				F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */,
+				F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */,
 				F8334D5B2BE4C7E9000B85E9 /* PpuDaeSikWidgetBundle.swift */,
 				F8334D5C2BE4C7E9000B85E9 /* WidgetAPI.swift */,
 				F8334D5D2BE4C7E9000B85E9 /* WidgetModel.swift */,
@@ -249,6 +262,7 @@
 				F88F35CF2B43FC6500BEA743 /* Frameworks */,
 				F88F35D02B43FC6500BEA743 /* Resources */,
 				F8334D452BE4C74A000B85E9 /* Embed Foundation Extensions */,
+				F8334D852BE4E322000B85E9 /* Embed ExtensionKit Extensions */,
 			);
 			buildRules = (
 			);
@@ -339,6 +353,7 @@
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
 				F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */,
+				F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */,
 				F8334D6E2BE4C968000B85E9 /* WidgetModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
