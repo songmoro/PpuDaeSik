@@ -28,6 +28,7 @@ extension WidgetAPI: TargetType {
             if isUpdate {
                 var databaseId: String {
                     "da22b69d795c4e879b77dd657948ea4e"
+//                    "264bceb5a8ef45a0befbec5d407b37f9"
                 }
                 
                 return "/databases/\(databaseId)/query"
@@ -35,6 +36,7 @@ extension WidgetAPI: TargetType {
             else {
                 var databaseId: String {
                     "912baee21c7643628355569d16aeb8b8"
+//                    "656bc1391c7843e292a7d89be6567f74"
                 }
                 
                 return "/databases/\(databaseId)/query"
@@ -62,7 +64,7 @@ extension WidgetAPI: TargetType {
             let date = dateFormatter.string(from: Date())
             
             let data = FilterByCampusRequest(property: "MENU_DATE", name: code, date: [date])
-//            print(data)
+
             return .requestJSONEncodable(data)
         }
     }
