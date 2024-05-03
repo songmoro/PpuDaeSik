@@ -10,7 +10,7 @@ import Moya
 
 enum WidgetAPI {
     case checkStatus
-    case queryByRestaurant(isUpdate: Bool)
+    case queryByRestaurant(isUpdate: Bool, code: String)
 }
 
 extension WidgetAPI: TargetType {
@@ -24,7 +24,7 @@ extension WidgetAPI: TargetType {
         switch self {
         case .checkStatus:
             return "/databases/" + "233f1075520f4e38b9fb8350901219fb" + "/query"
-        case .queryByRestaurant(let isUpdate):
+        case .queryByRestaurant(let isUpdate, _):
             if isUpdate {
                 var databaseId: String {
                     "da22b69d795c4e879b77dd657948ea4e"
@@ -55,14 +55,14 @@ extension WidgetAPI: TargetType {
         switch self {
         case .checkStatus:
             return .requestPlain
-        case .queryByRestaurant:
+        case .queryByRestaurant(_, let code):
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY-MM-dd"
             
             let date = dateFormatter.string(from: Date())
             
-            let data = FilterRequest(property: "MENU_DATE", date: [date])
-            print(data)
+            let data = FilterByCampusRequest(property: "MENU_DATE", name: code, date: [date])
+//            print(data)
             return .requestJSONEncodable(data)
         }
     }

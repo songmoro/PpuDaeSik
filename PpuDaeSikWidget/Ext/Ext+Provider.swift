@@ -9,7 +9,7 @@ import SwiftUI
 import Moya
 
 extension Provider {
-    func checkDatabase() {
+    func checkDatabase(completion: @escaping (Bool) -> ()) {
         let provider = MoyaProvider<WidgetAPI>()
         
         provider.request(.checkStatus) { result in
@@ -48,10 +48,10 @@ extension Provider {
                         }
                         
                         if status.contains(where: { $0["Status"] == "Done" }) {
-                            queryDatabase(true)
+                            completion(true)
                         }
                         else {
-                            queryDatabase(false)
+                            completion(false)
                         }
                     }
                 }
@@ -61,10 +61,10 @@ extension Provider {
         }
     }
     
-    func queryDatabase(_ isUpdate: Bool) {
+    func queryDatabase(_ isUpdate: Bool, _ code: String, completion: @escaping (String) -> ()) {
         let provider = MoyaProvider<WidgetAPI>()
         
-        provider.request(.queryByRestaurant(isUpdate: isUpdate)) { result in
+        provider.request(.queryByRestaurant(isUpdate: isUpdate, code: code)) { result in
             switch result {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {
@@ -92,7 +92,7 @@ extension Provider {
                             return RestaurantResponse(unwrappedValue: unwrappedValue)
                         }
                         
-                        print(restrant)
+                        completion(restrant.first?.MENU_CONTENT ?? "")
                     }
                 }
             case .failure(let error):
