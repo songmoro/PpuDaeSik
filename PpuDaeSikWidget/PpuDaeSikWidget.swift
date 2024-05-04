@@ -100,7 +100,7 @@ struct PpuDaeSikWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        ZStack {
+        ZStack(alignment: .topLeading) {
             Color.gray100.ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 0) {
@@ -111,12 +111,12 @@ struct PpuDaeSikWidgetEntryView : View {
                     Text("조식")
                         .foregroundColor(.black40)
                 }
-                .font(.caption)
+                .font(.subheadline)
                 .padding(.bottom, 4)
                 
                 HStack {
                     Text(entry.emoji)
-                        .font(.caption2)
+                        .font(.caption)
                 }
             }
             .foregroundColor(.black100)
