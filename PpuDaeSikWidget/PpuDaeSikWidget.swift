@@ -20,13 +20,14 @@ struct Provider: IntentTimelineProvider {
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
         checkDatabase { isUpdate in
+            // let (code, type) = get~
             let code = getCode(for: configuration)
             let type = getType(for: configuration)
             let currentDate = Date()
             let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
-            
+
             if isUpdate {
-                queryDatabase(true, code) {
+                queryDatabase(true, code, type) {
                     let entry = SimpleEntry(configuration: configuration, date: currentDate, emoji: $0)
                     
                     let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
@@ -35,7 +36,7 @@ struct Provider: IntentTimelineProvider {
                 }
             }
             else {
-                queryDatabase(false, code) {
+                queryDatabase(false, code, type) {
                     let entry = SimpleEntry(configuration: configuration, date: currentDate, emoji: $0)
                     
                     let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
@@ -116,7 +117,7 @@ struct PpuDaeSikWidget: Widget {
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             PpuDaeSikWidgetEntryView(entry: entry)
-                .containerBackground(.fill.tertiary, for: .widget)
+                .containerBackground(.white, for: .widget)
         }
         .configurationDisplayName("뿌대식")
         .description("메뉴를 좀 더 간편하게 확인해보세요!")

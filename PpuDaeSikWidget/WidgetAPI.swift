@@ -10,7 +10,7 @@ import Moya
 
 enum WidgetAPI {
     case checkStatus
-    case queryByRestaurant(isUpdate: Bool, code: String)
+    case queryByRestaurant(isUpdate: Bool, code: String, type: QueryType)
 }
 
 extension WidgetAPI: TargetType {
@@ -24,19 +24,27 @@ extension WidgetAPI: TargetType {
         switch self {
         case .checkStatus:
             return "/databases/" + "233f1075520f4e38b9fb8350901219fb" + "/query"
-        case .queryByRestaurant(let isUpdate, _):
+        case .queryByRestaurant(let isUpdate, _, let type):
             if isUpdate {
                 var databaseId: String {
-                    "da22b69d795c4e879b77dd657948ea4e"
-//                    "264bceb5a8ef45a0befbec5d407b37f9"
+                    switch type {
+                    case .restaurant:
+                        "da22b69d795c4e879b77dd657948ea4e"
+                    case .domitory:
+                        "264bceb5a8ef45a0befbec5d407b37f9"
+                    }
                 }
                 
                 return "/databases/\(databaseId)/query"
             }
             else {
                 var databaseId: String {
-                    "912baee21c7643628355569d16aeb8b8"
-//                    "656bc1391c7843e292a7d89be6567f74"
+                    switch type {
+                    case .restaurant:
+                        "912baee21c7643628355569d16aeb8b8"
+                    case .domitory:
+                        "656bc1391c7843e292a7d89be6567f74"
+                    }
                 }
                 
                 return "/databases/\(databaseId)/query"
@@ -57,14 +65,21 @@ extension WidgetAPI: TargetType {
         switch self {
         case .checkStatus:
             return .requestPlain
-        case .queryByRestaurant(_, let code):
+        case .queryByRestaurant(_, let code, let type):
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY-MM-dd"
             
             let date = dateFormatter.string(from: Date())
             
-            let data = FilterByCampusRequest(property: "MENU_DATE", name: code, date: [date])
-
+            var data: FilterByCampusRequest {
+                switch type {
+                case .restaurant:
+                    FilterByCampusRequest(property: "MENU_DATE", name: code, date: [date])
+                case .domitory:
+                    FilterByCampusRequest(property: "mealDate", name: code, date: [date])
+                }
+            }
+            
             return .requestJSONEncodable(data)
         }
     }
