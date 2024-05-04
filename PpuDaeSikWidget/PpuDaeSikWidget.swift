@@ -100,13 +100,15 @@ struct PpuDaeSikWidgetEntryView : View {
     var entry: Provider.Entry
 
     var body: some View {
-        VStack {
-//            Text("Time:")
-//            Text(entry.date, style: .time)
-//
-//            Text("Emoji:")
-            Text(entry.emoji)
-                .font(.caption)
+        ZStack {
+            Color.gray100.ignoresSafeArea()
+            
+            VStack {
+                Text("금정회관")
+                
+                Text(entry.emoji)
+                    .font(.caption)
+            }
         }
     }
 }
@@ -117,7 +119,12 @@ struct PpuDaeSikWidget: Widget {
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             PpuDaeSikWidgetEntryView(entry: entry)
-                .containerBackground(.white, for: .widget)
+//                .background {
+//                    Color.gray100.ignoresSafeArea()
+//                }
+                .containerBackground(for: .widget) {
+                    Color.gray100.ignoresSafeArea()
+                }
         }
         .configurationDisplayName("뿌대식")
         .description("메뉴를 좀 더 간편하게 확인해보세요!")

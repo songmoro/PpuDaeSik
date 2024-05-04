@@ -22,12 +22,14 @@
 		F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8334D582BE4C7E9000B85E9 /* Assets.xcassets */; };
 		F8334D712BE4D664000B85E9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ABD22C2B4D82C30038195F /* Model.swift */; };
 		F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */; };
+		F8334D9C2BE5EF88000B85E9 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */; };
+		F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
+		F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
 		F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */; };
 		F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
-		F88F35ED2B4400CA00BEA743 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
 		F88F35EF2B44033400BEA743 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */; };
 		F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35F32B4434BE00BEA743 /* MainView.swift */; };
 		F88F35F72B459D3A00BEA743 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35F62B459D3A00BEA743 /* CombineMoya */; };
@@ -326,6 +328,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */,
+				F8334D9C2BE5EF88000B85E9 /* Pretendard-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +354,7 @@
 				F8334D682BE4C968000B85E9 /* AppIntent.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
+				F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */,
 				F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */,
 				F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */,
 			);
@@ -364,8 +368,8 @@
 				F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
+				F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
-				F88F35ED2B4400CA00BEA743 /* Ext+Font.swift in Sources */,
 				F8ABD22D2B4D82C30038195F /* Model.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
