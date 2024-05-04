@@ -74,9 +74,9 @@ extension WidgetAPI: TargetType {
             var data: FilterByCampusRequest {
                 switch type {
                 case .restaurant:
-                    FilterByCampusRequest(property: "MENU_DATE", name: code, date: [date])
+                    FilterByCampusRequest(property: "MENU_DATE", name: code, date: date)
                 case .domitory:
-                    FilterByCampusRequest(property: "mealDate", name: code, date: [date])
+                    FilterByCampusRequest(property: "mealDate", name: code, date: date)
                 }
             }
             

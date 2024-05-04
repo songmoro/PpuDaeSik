@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(configuration: ConfigurationIntent(), date: Date(), emoji: "😀")
+        SimpleEntry(configuration: ConfigurationIntent(), date: Date(), meal: "😀")
     }
     
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(configuration: configuration, date: Date(), emoji: "😀")
+        let entry = SimpleEntry(configuration: configuration, date: Date(), meal: "😀")
         completion(entry)
     }
     
@@ -28,7 +28,7 @@ struct Provider: IntentTimelineProvider {
 
             if isUpdate {
                 queryDatabase(true, code, type) {
-                    let entry = SimpleEntry(configuration: configuration, date: currentDate, emoji: $0)
+                    let entry = SimpleEntry(configuration: configuration, date: currentDate, meal: $0)
                     
                     let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
                     
@@ -37,7 +37,7 @@ struct Provider: IntentTimelineProvider {
             }
             else {
                 queryDatabase(false, code, type) {
-                    let entry = SimpleEntry(configuration: configuration, date: currentDate, emoji: $0)
+                    let entry = SimpleEntry(configuration: configuration, date: currentDate, meal: $0)
                     
                     let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
                     
@@ -93,7 +93,7 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
     let date: Date
-    let emoji: String
+    let meal: String
 }
 
 struct PpuDaeSikWidgetEntryView : View {
@@ -115,7 +115,7 @@ struct PpuDaeSikWidgetEntryView : View {
                 .padding(.bottom, 4)
                 
                 HStack {
-                    Text(entry.emoji)
+                    Text(entry.meal)
                         .font(.caption)
                 }
             }
@@ -142,6 +142,6 @@ struct PpuDaeSikWidget: Widget {
 #Preview(as: .systemSmall) {
     PpuDaeSikWidget()
 } timeline: {
-    SimpleEntry(configuration: ConfigurationIntent(), date: .now, emoji: "😀")
-    SimpleEntry(configuration: ConfigurationIntent(), date: .now, emoji: "🤩")
+    SimpleEntry(configuration: ConfigurationIntent(), date: .now, meal: "😀")
+    SimpleEntry(configuration: ConfigurationIntent(), date: .now, meal: "🤩")
 }
