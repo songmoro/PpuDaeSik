@@ -94,9 +94,10 @@ extension Provider {
                                 return RestaurantResponse(unwrappedValue: unwrappedValue)
                             }
                             
+                            print(restrant)
                             completion(restrant.first?.MENU_CONTENT ?? "")
                         case .domitory:
-                            let domitoy = decodedData.results.compactMap { queryProperties in
+                            let domitory = decodedData.results.compactMap { queryProperties in
                                 let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
                                     let key = $1.key
                                     
@@ -126,7 +127,8 @@ extension Provider {
                                 return DomitoryResponse(unwrappedValue: unwrappedValue)
                             }
                             
-                            completion(domitoy.first?.mealNm ?? "")
+                            print(domitory)
+                            completion(domitory.first?.mealNm ?? "")
                         }
                     }
                 }

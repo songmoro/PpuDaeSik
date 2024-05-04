@@ -103,12 +103,23 @@ struct PpuDaeSikWidgetEntryView : View {
         ZStack {
             Color.gray100.ignoresSafeArea()
             
-            VStack {
-                Text("금정회관")
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    Text("금정회관")
+                        .bold()
+                    
+                    Text("조식")
+                        .foregroundColor(.black40)
+                }
+                .font(.caption)
+                .padding(.bottom, 4)
                 
-                Text(entry.emoji)
-                    .font(.caption)
+                HStack {
+                    Text(entry.emoji)
+                        .font(.caption2)
+                }
             }
+            .foregroundColor(.black100)
         }
     }
 }
@@ -119,9 +130,6 @@ struct PpuDaeSikWidget: Widget {
     var body: some WidgetConfiguration {
         IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
             PpuDaeSikWidgetEntryView(entry: entry)
-//                .background {
-//                    Color.gray100.ignoresSafeArea()
-//                }
                 .containerBackground(for: .widget) {
                     Color.gray100.ignoresSafeArea()
                 }
