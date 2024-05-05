@@ -94,7 +94,6 @@ extension Provider {
                                 return RestaurantResponse(unwrappedValue: unwrappedValue)
                             }
                             
-                            print(restrant)
                             if let restrant = restrant.first {
                                 completion([restrant.NAME, restrant.CATEGORY.rawValue, restrant.MENU_CONTENT])
                             }
@@ -132,7 +131,6 @@ extension Provider {
                                 return DomitoryResponse(unwrappedValue: unwrappedValue)
                             }
                             
-                            print(domitory)
                             if let domitory = domitory.first {
                                 completion([domitory.domitory.name(), domitory.category.rawValue, domitory.mealNm])
                             }
