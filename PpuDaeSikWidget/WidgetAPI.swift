@@ -10,7 +10,7 @@ import Moya
 
 enum WidgetAPI {
     case checkStatus
-    case queryByRestaurant(isUpdate: Bool, code: String, type: QueryType)
+    case queryByRestaurant(isUpdate: Bool, code: String, type: QueryType, category: [String])
 }
 
 extension WidgetAPI: TargetType {
@@ -24,7 +24,7 @@ extension WidgetAPI: TargetType {
         switch self {
         case .checkStatus:
             return "/databases/" + "233f1075520f4e38b9fb8350901219fb" + "/query"
-        case .queryByRestaurant(let isUpdate, _, let type):
+        case .queryByRestaurant(let isUpdate, _, let type, _):
             if isUpdate {
                 var databaseId: String {
                     switch type {
@@ -65,18 +65,38 @@ extension WidgetAPI: TargetType {
         switch self {
         case .checkStatus:
             return .requestPlain
-        case .queryByRestaurant(_, let code, let type):
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY-MM-dd"
+        case .queryByRestaurant(_, let code, let type, let category):
             
-            let date = dateFormatter.string(from: Date())
+            let calendar: Calendar = {
+                var calendar = Calendar.current
+                calendar.locale = Locale(identifier: "ko_KR")
+                calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
+                
+                return calendar
+            }()
+            
+            let date: String = {
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "YYYY-MM-dd"
+                dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+                var date: Date
+                
+                if calendar.component(.hour, from: Date()) >= 20 {
+                    date = calendar.date(byAdding: .day, value: 1, to: Date())!
+                }
+                else {
+                    date = Date()
+                }
+                
+                return dateFormatter.string(from: date)
+            }()
             
             var data: FilterByCampusRequest {
                 switch type {
                 case .restaurant:
-                    FilterByCampusRequest(property: "MENU_DATE", name: code, date: date)
+                    FilterByCampusRequest(property: "MENU_DATE", name: code, date: date, category: category)
                 case .domitory:
-                    FilterByCampusRequest(property: "mealDate", name: code, date: date)
+                    FilterByCampusRequest(property: "mealDate", name: code, date: date, category: category)
                 }
             }
             

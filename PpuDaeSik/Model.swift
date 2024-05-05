@@ -328,20 +328,27 @@ struct FilterByCampusRequest: Codable {
         self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: condition)])
     }
     
-    init(property: String, name: String, date: String) {
+    init(property: String, name: String, date: String, category: [String]) {
         var code: [Filter.Or.ConditionalExpression]
+        var categoryType: [Filter.Or.ConditionalExpression]
         
         if property == "MENU_DATE" {
             code = [Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: name))]
+            categoryType = category.map {
+                Filter.Or.ConditionalExpression(property: "MENU_TYPE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: $0))
+            }
         }
         else {
             code = [Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: name))]
+            categoryType = category.map {
+                 Filter.Or.ConditionalExpression(property: "mealKindGcd", rich_text: Filter.Or.ConditionalExpression.RichText(equals: $0))
+            }
         }
         
         let condition = Filter.Or.ConditionalExpression(property: property, rich_text: Filter.Or.ConditionalExpression.RichText(equals: date))
         
         
-        self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: [condition])])
+        self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: [condition]), Filter.Or(or: categoryType)])
     }
     
     var filter: Filter

@@ -23,11 +23,12 @@ struct Provider: IntentTimelineProvider {
             // let (code, type) = get~
             let code = getCode(for: configuration)
             let type = getType(for: configuration)
+            let category = getCategory(for: configuration)
             let currentDate = Date()
             let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
 
             if isUpdate {
-                queryDatabase(true, code, type) {
+                queryDatabase(true, code, type, category: category) {
                     let entry = SimpleEntry(configuration: configuration, date: currentDate, meal: $0)
                     
                     let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
@@ -36,7 +37,7 @@ struct Provider: IntentTimelineProvider {
                 }
             }
             else {
-                queryDatabase(false, code, type) {
+                queryDatabase(false, code, type, category: category) {
                     let entry = SimpleEntry(configuration: configuration, date: currentDate, meal: $0)
                     
                     let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
@@ -86,6 +87,50 @@ struct Provider: IntentTimelineProvider {
             QueryType.restaurant
         case .unknown:
             QueryType.restaurant
+        }
+    }
+    
+    func getCategory(for configuration: ConfigurationIntent) -> [String] {
+        let hour = Calendar.current.component(.hour, from: Date())
+        
+        return switch configuration.RestaurantEnum {
+        case .d001, .d002, .d003, .d004, .d005:
+            switch hour {
+            case 20...23:
+                ["01", "02"]
+            case 0...8:
+                ["01", "02"]
+            case 9...13:
+                ["03"]
+            case 14...19:
+                ["04"]
+            default:
+                ["01"]
+            }
+        case .g002, .y001:
+            switch hour {
+            case 20...23:
+                ["B"]
+            case 0...8:
+                ["B"]
+            case 9...13:
+                ["L"]
+            case 14...19:
+                ["D"]
+            default:
+                ["B"]
+            }
+        case .g001, .h001, .s001, .m001, .m002:
+            switch hour {
+            case 0...14:
+                ["L"]
+            case 15...23:
+                ["D"]
+            default:
+                ["L"]
+            }
+        case .unknown:
+            ["L"]
         }
     }
 }

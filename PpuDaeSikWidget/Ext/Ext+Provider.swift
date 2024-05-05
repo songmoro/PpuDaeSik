@@ -61,10 +61,10 @@ extension Provider {
         }
     }
     
-    func queryDatabase(_ isUpdate: Bool, _ code: String, _ type: QueryType, completion: @escaping (String) -> ()) {
+    func queryDatabase(_ isUpdate: Bool, _ code: String, _ type: QueryType, category: [String], completion: @escaping (String) -> ()) {
         let provider = MoyaProvider<WidgetAPI>()
         
-        provider.request(.queryByRestaurant(isUpdate: isUpdate, code: code, type: type)) { result in
+        provider.request(.queryByRestaurant(isUpdate: isUpdate, code: code, type: type, category: category)) { result in
             switch result {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {
