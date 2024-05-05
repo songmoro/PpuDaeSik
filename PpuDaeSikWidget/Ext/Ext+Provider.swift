@@ -61,7 +61,7 @@ extension Provider {
         }
     }
     
-    func queryDatabase(_ isUpdate: Bool, _ code: String, _ type: QueryType, category: [String], completion: @escaping (String) -> ()) {
+    func queryDatabase(_ isUpdate: Bool, _ code: String, _ type: QueryType, category: [String], completion: @escaping ([String]) -> ()) {
         let provider = MoyaProvider<WidgetAPI>()
         
         provider.request(.queryByRestaurant(isUpdate: isUpdate, code: code, type: type, category: category)) { result in
@@ -94,7 +94,13 @@ extension Provider {
                                 return RestaurantResponse(unwrappedValue: unwrappedValue)
                             }
                             
-                            completion(restrant.first?.MENU_CONTENT ?? "")
+                            print(restrant)
+                            if let restrant = restrant.first {
+                                completion([restrant.NAME, restrant.CATEGORY.rawValue, restrant.MENU_CONTENT])
+                            }
+                            else {
+                                completion(["", "", "식단이 존재하지 않아요"])
+                            }
                         case .domitory:
                             let domitory = decodedData.results.compactMap { queryProperties in
                                 let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
@@ -126,7 +132,13 @@ extension Provider {
                                 return DomitoryResponse(unwrappedValue: unwrappedValue)
                             }
                             
-                            completion(domitory.first?.mealNm ?? "")
+                            print(domitory)
+                            if let domitory = domitory.first {
+                                completion([domitory.domitory.name(), domitory.category.rawValue, domitory.mealNm])
+                            }
+                            else {
+                                completion(["", "", "식단이 존재하지 않아요"])
+                            }
                         }
                     }
                 }

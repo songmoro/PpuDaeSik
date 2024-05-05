@@ -10,11 +10,11 @@ import SwiftUI
 
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
-        SimpleEntry(configuration: ConfigurationIntent(), date: Date(), meal: "😀")
+        SimpleEntry(configuration: ConfigurationIntent(), date: Date(), name: "금정회관", category: "중식", meal: "탄탄면\n마카로니콘샐러드\n단무지")
     }
     
     func getSnapshot(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (SimpleEntry) -> Void) {
-        let entry = SimpleEntry(configuration: configuration, date: Date(), meal: "😀")
+        let entry = SimpleEntry(configuration: ConfigurationIntent(), date: Date(), name: "금정회관", category: "중식", meal: "탄탄면\n마카로니콘샐러드\n단무지")
         completion(entry)
     }
     
@@ -29,7 +29,7 @@ struct Provider: IntentTimelineProvider {
 
             if isUpdate {
                 queryDatabase(true, code, type, category: category) {
-                    let entry = SimpleEntry(configuration: configuration, date: currentDate, meal: $0)
+                    let entry = SimpleEntry(configuration: configuration, date: currentDate, name: $0[0], category: $0[1], meal: $0[2])
                     
                     let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
                     
@@ -38,7 +38,7 @@ struct Provider: IntentTimelineProvider {
             }
             else {
                 queryDatabase(false, code, type, category: category) {
-                    let entry = SimpleEntry(configuration: configuration, date: currentDate, meal: $0)
+                    let entry = SimpleEntry(configuration: configuration, date: currentDate, name: $0[0], category: $0[1], meal: $0[2])
                     
                     let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
                     
@@ -138,6 +138,8 @@ struct Provider: IntentTimelineProvider {
 struct SimpleEntry: TimelineEntry {
     let configuration: ConfigurationIntent
     let date: Date
+    let name: String
+    let category: String
     let meal: String
 }
 
@@ -150,10 +152,10 @@ struct PpuDaeSikWidgetEntryView : View {
             
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
-                    Text("금정회관")
+                    Text("\(entry.name)")
                         .bold()
                     
-                    Text("조식")
+                    Text("\(entry.category)")
                         .foregroundColor(.black40)
                 }
                 .font(.subheadline)
@@ -187,6 +189,5 @@ struct PpuDaeSikWidget: Widget {
 #Preview(as: .systemSmall) {
     PpuDaeSikWidget()
 } timeline: {
-    SimpleEntry(configuration: ConfigurationIntent(), date: .now, meal: "😀")
-    SimpleEntry(configuration: ConfigurationIntent(), date: .now, meal: "🤩")
+    SimpleEntry(configuration: ConfigurationIntent(), date: Date(), name: "금정회관", category: "중식", meal: "탄탄면\n마카로니콘샐러드\n단무지")
 }
