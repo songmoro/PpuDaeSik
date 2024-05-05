@@ -183,6 +183,58 @@ struct PpuDaeSikWidget: Widget {
         }
         .configurationDisplayName("뿌대식")
         .description("메뉴를 좀 더 간편하게 확인해보세요!")
+        .supportedFamilies([.systemSmall])
+    }
+}
+
+struct ShortCutProvider: TimelineProvider {
+    func placeholder(in context: Context) -> ShortCutEntry {
+        ShortCutEntry(date: Date())
+    }
+    
+    func getSnapshot(in context: Context, completion: @escaping (Entry) -> Void) {
+        let entry = ShortCutEntry(date: Date())
+        
+        completion(entry)
+    }
+    
+    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> Void) {
+        let timeline = Timeline(entries: [ShortCutEntry(date: Date())], policy: .never)
+        completion(timeline)
+    }
+}
+
+struct PpuDaeSikShortCutWidget: Widget {
+    let kind: String = "PpuDaeSikShortCutWidget"
+    
+    var body: some WidgetConfiguration {
+        StaticConfiguration(kind: kind, provider: ShortCutProvider()) { entry in
+            PpuDaeSikShortCutWidgetEntryView(entry: entry)
+                .containerBackground(for: .widget) {
+                    Color.blue100.ignoresSafeArea()
+                }
+        }
+        .configurationDisplayName("뿌대식")
+        .description("귀여워요!")
+        .supportedFamilies([.systemSmall])
+    }
+}
+
+struct ShortCutEntry: TimelineEntry {
+    let date: Date
+}
+
+struct PpuDaeSikShortCutWidgetEntryView : View {
+    var entry: ShortCutEntry
+
+    var body: some View {
+        ZStack {
+            Color.blue100.ignoresSafeArea()
+            
+            Image("Logo")
+                .resizable()
+                .frame(width: 100, height: 100)
+        }
     }
 }
 

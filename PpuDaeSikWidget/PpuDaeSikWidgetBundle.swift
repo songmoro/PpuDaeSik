@@ -12,5 +12,6 @@ import SwiftUI
 struct PpuDaeSikWidgetBundle: WidgetBundle {
     var body: some Widget {
         PpuDaeSikWidget()
+        PpuDaeSikShortCutWidget()
     }
 }
