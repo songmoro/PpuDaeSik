@@ -160,7 +160,7 @@ struct PpuDaeSikWidgetEntryView : View {
                     Text("\(entry.category)")
                         .foregroundColor(.black40)
                 }
-                .font(.subheadline)
+                .font(.footnote)
                 .padding(.bottom, 4)
                 
                 HStack {
