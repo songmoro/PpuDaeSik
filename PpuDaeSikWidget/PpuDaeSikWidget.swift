@@ -124,8 +124,10 @@ struct Provider: IntentTimelineProvider {
             switch hour {
             case 0...14:
                 ["L"]
-            case 15...23:
+            case 15...19:
                 ["D"]
+            case 20...23:
+                ["L"]
             default:
                 ["L"]
             }
