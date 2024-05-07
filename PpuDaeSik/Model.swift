@@ -208,6 +208,25 @@ enum Restaurant: String, CaseIterable, Hashable, Codable {
         case .편의동2층양산식당: "Y001"
         }
     }
+    
+    func shortName() -> String {
+        switch self {
+        case .금정회관교직원식당:
+            "금정 교직원"
+        case .금정회관학생식당:
+            "금정 학생"
+        case .샛벌회관식당:
+            "샛벌회관"
+        case .학생회관학생식당:
+            "학생회관"
+        case .학생회관밀양학생식당:
+            "밀양 학생"
+        case .학생회관밀양교직원식당:
+            "밀양 교직원"
+        case .편의동2층양산식당:
+            "편의동"
+        }
+    }
 }
 
 struct RestaurantResponse: Codable, Hashable {
