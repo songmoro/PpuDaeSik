@@ -10,7 +10,6 @@ import SwiftUI
 
 enum API {
     case checkStatus
-    case queryDatabase(_ campus: Campus)
     case query(_ type: QueryType, _ backup: Bool? = nil)
     case queryByCampus(_ type: QueryType, _ campus: Campus, _ backup: Bool? = nil)
 }
@@ -26,19 +25,6 @@ extension API: TargetType {
         switch self {
         case .checkStatus:
             return NotionDatabase.status.path()
-        case .queryDatabase(let campus):
-            var databaseID: String {
-                switch campus {
-                case .부산:
-                    "da22b69d795c4e879b77dd657948ea4e"
-                case .밀양:
-                    "da22b69d795c4e879b77dd657948ea4e"
-                case .양산:
-                    "da22b69d795c4e879b77dd657948ea4e"
-                }
-            }
-            return "/databases/\(databaseID)/query"
-            
         case .query(let type, let backup):
             if backup == nil {
                 var databasePath: String {
@@ -95,7 +81,6 @@ extension API: TargetType {
     var method: Moya.Method {
         switch self {
         case .checkStatus: .post
-        case .queryDatabase: .post
         case .query: .post
         case .queryByCampus: .post
         }
@@ -105,24 +90,6 @@ extension API: TargetType {
         switch self {
         case .checkStatus:
             return .requestPlain
-        case .queryDatabase:
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY-MM-dd"
-            
-            let current = Calendar.current
-            var date = [String]()
-            
-            if let weekend = current.nextWeekend(startingAfter: Date())?.end {
-                for interval in (-8)...(-2) {
-                    if let intervalDate = current.date(byAdding: .day, value: interval, to: weekend) {
-                        date.append(dateFormatter.string(from: intervalDate))
-                    }
-                }
-            }
-            
-            let data = FilterRequest(property: "MENU_DATE", date: date)
-            
-            return .requestJSONEncodable(data)
         case .query(let type, _):
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YYYY-MM-dd"
