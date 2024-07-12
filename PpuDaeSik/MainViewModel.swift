@@ -277,12 +277,10 @@ class MainViewModel: ObservableObject {
         guard let defaultCampus = UserDefaults.standard.string(forKey: "defaultCampus") else {
             self.defaultCampus = "부산"
             selectedCampus = "부산"
-//            requestCampusDatabase()
             return
         }
         self.defaultCampus = defaultCampus
         selectedCampus = defaultCampus
-//        requestCampusDatabase()
     }
     
     func loadBookmark() {
