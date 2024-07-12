@@ -20,9 +20,7 @@ class MainViewModel: ObservableObject {
     @Published var domitory = [DomitoryResponse]()
     
     func currentWeek() {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+        let dateFormatter = DateFormatter(format: "yyyy-MM-dd HH:mm:ss")
         
         let calendar: Calendar = {
             var calendar = Calendar.current

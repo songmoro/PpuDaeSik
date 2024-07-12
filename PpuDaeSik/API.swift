@@ -41,9 +41,7 @@ extension API: TargetType {
         case .checkStatus:
             return .requestPlain
         case .queryByCampus(let type, let campus, _):
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd"
-            dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
+            let dateFormatter = DateFormatter(format: "yyyy-MM-dd")
             
             let calendar: Calendar = {
                 var calendar = Calendar.current

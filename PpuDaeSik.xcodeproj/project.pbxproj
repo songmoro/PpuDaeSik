@@ -11,7 +11,10 @@
 		F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F81129452C4183DD00F71C03 /* DeploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129442C4183DD00F71C03 /* DeploymentStatus.swift */; };
 		F81129482C41960B00F71C03 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
-		F811294A2C41A16700F71C03 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129492C41A16700F71C03 /* Serializable.swift */; };
+		F811294F2C41A68C00F71C03 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129492C41A16700F71C03 /* Serializable.swift */; };
+		F81129502C41A68D00F71C03 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129492C41A16700F71C03 /* Serializable.swift */; };
+		F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
+		F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -87,6 +90,7 @@
 		F81129442C4183DD00F71C03 /* DeploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeploymentStatus.swift; sourceTree = "<group>"; };
 		F81129472C41960B00F71C03 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		F81129492C41A16700F71C03 /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
+		F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -264,6 +268,7 @@
 				F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */,
 				F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */,
 				F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */,
+				F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -396,9 +401,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
 				F8334D712BE4D664000B85E9 /* Model.swift in Sources */,
 				F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */,
 				F8334D682BE4C968000B85E9 /* AppIntent.swift in Sources */,
+				F811294F2C41A68C00F71C03 /* Serializable.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
 				F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */,
@@ -411,10 +418,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
+				F81129502C41A68D00F71C03 /* Serializable.swift in Sources */,
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
 				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
 				F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */,
-				F811294A2C41A16700F71C03 /* Serializable.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
