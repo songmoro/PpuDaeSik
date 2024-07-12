@@ -15,6 +15,8 @@
 		F81129502C41A68D00F71C03 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129492C41A16700F71C03 /* Serializable.swift */; };
 		F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
 		F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
+		F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
+		F81129562C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -91,6 +93,7 @@
 		F81129472C41960B00F71C03 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		F81129492C41A16700F71C03 /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
+		F81129542C41A80B00F71C03 /* Ext+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Calendar.swift"; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -269,6 +272,7 @@
 				F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */,
 				F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */,
 				F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */,
+				F81129542C41A80B00F71C03 /* Ext+Calendar.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -403,6 +407,7 @@
 			files = (
 				F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
 				F8334D712BE4D664000B85E9 /* Model.swift in Sources */,
+				F81129562C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
 				F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */,
 				F8334D682BE4C968000B85E9 /* AppIntent.swift in Sources */,
 				F811294F2C41A68C00F71C03 /* Serializable.swift in Sources */,
@@ -433,6 +438,7 @@
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 				F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */,
+				F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
