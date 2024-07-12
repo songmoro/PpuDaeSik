@@ -389,7 +389,3 @@ struct FilterByCampusRequest: Codable {
         }
     }
 }
-
-protocol Serializable {
-    init(_ unwrappedValue: [String: String])
-}
