@@ -199,7 +199,7 @@ extension API: TargetType {
     var headers: [String: String]? {
         switch self {
         default:
-            return ["Content-Type": "application/json", "Notion-Version": "2022-02-22", "Authorization": "Bearer secret_pjqPKFig0CIkvnm5BwFC8NWueGnV7MuXOYM0qXJeOzr"]
+            return MoyaHeader
         }
     }
 }
