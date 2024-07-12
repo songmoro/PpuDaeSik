@@ -54,134 +54,24 @@ class MainViewModel: ObservableObject {
     }
     
     func checkDatabaseStatus() {
-        let provider = MoyaProvider<API>()
-        
-        provider.request(.checkStatus) { result in
-            switch result {
-            case .success(let response):
-                if (200..<300).contains(response.statusCode) {
-                    if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                        let status = decodedData.results.compactMap { queryProperties in
-                            let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
-                                let key = $1.key
-                                
-                                if let subject = $1.value.title, !subject.isEmpty {
-                                    let text = subject.map { plainText in
-                                        plainText.plain_text
-                                    }
-                                    
-                                    $0[key] = text.first!
-                                }
-                                if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
-                                    let text = rich_text.map { plainText in
-                                        plainText.plain_text
-                                    }
-                                    
-                                    $0[key] = text.first!
-                                }
-                                if let title = $1.value.rich_text, !title.isEmpty {
-                                    let text = title.map { plainText in
-                                        plainText.plain_text
-                                    }
-                                    
-                                    $0[key] = text.first!
-                                }
-                            }
-                            
-                            return unwrappedValue
-                        }
-                        
-                        status.forEach {
-                            if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"] {
-                                self.requestByCampusDatabase(queryType, Campus(rawValue: self.selectedCampus)!, DeploymentStatus.getStatus(status))
-                            }
-                        }
-                    }
+        RequestManager.request(.checkStatus) { status in
+            status.forEach {
+                if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"] {
+                    self.requestByCampusDatabase(queryType, Campus(rawValue: self.selectedCampus)!, DeploymentStatus.getStatus(status))
                 }
-            case .failure(let error):
-                fatalError(error.localizedDescription)
             }
         }
     }
     
     func requestByCampusDatabase(_ queryType: QueryType, _ campus: Campus, _ deploymentStatus: DeploymentStatus) {
-        let provider = MoyaProvider<API>()
-
         switch queryType {
         case .restaurant:
-            provider.request(.queryByCampus(.restaurant, campus, deploymentStatus)) { result in
-                switch result {
-                case .success(let response):
-                    if (200..<300).contains(response.statusCode) {
-                        if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                            self.restaurant = decodedData.results.compactMap { queryProperties in
-                                let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
-                                    let key = $1.key
-                                    
-                                    if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
-                                        let text = rich_text.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                    if let title = $1.value.rich_text, !title.isEmpty {
-                                        let text = title.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                }
-                                
-                                return RestaurantResponse(unwrappedValue: unwrappedValue)
-                            }
-                        }
-                    }
-                case .failure(let error):
-                    fatalError(error.localizedDescription)
-                }
+            RequestManager.request(.queryByCampus(.restaurant, campus, deploymentStatus), RestaurantResponse.self) {
+                self.restaurant = $0
             }
         case .domitory:
-            provider.request(.queryByCampus(.domitory, campus, deploymentStatus)) { result in
-                switch result {
-                case .success(let response):
-                    if (200..<300).contains(response.statusCode) {
-                        if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                            self.domitory = decodedData.results.compactMap { queryProperties in
-                                let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
-                                    let key = $1.key
-                                    
-                                    if let subject = $1.value.title, !subject.isEmpty {
-                                        let text = subject.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                    if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
-                                        let text = rich_text.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                    if let title = $1.value.rich_text, !title.isEmpty {
-                                        let text = title.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                }
-
-                                return DomitoryResponse(unwrappedValue: unwrappedValue)
-                            }
-                        }
-                    }
-                case .failure(let error):
-                    fatalError(error.localizedDescription)
-                }
+            RequestManager.request(.queryByCampus(.domitory, campus, deploymentStatus), DomitoryResponse.self) {
+                self.domitory = $0
             }
         }
     }
