@@ -33,10 +33,7 @@ extension API: TargetType {
     }
     
     var method: Moya.Method {
-        switch self {
-        case .checkStatus: .post
-        case .queryByCampus: .post
-        }
+        .post
     }
     
     var task: Moya.Task {
@@ -87,9 +84,6 @@ extension API: TargetType {
     }
     
     var headers: [String: String]? {
-        switch self {
-        default:
-            return MoyaHeader
-        }
+        MoyaHeader
     }
 }
