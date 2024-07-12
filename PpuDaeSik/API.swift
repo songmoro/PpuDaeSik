@@ -10,7 +10,6 @@ import SwiftUI
 
 enum API {
     case checkStatus
-    case query(_ type: QueryType, _ backup: Bool? = nil)
     case queryByCampus(_ type: QueryType, _ campus: Campus, _ backup: Bool? = nil)
 }
 
@@ -25,31 +24,6 @@ extension API: TargetType {
         switch self {
         case .checkStatus:
             return NotionDatabase.status.path()
-        case .query(let type, let backup):
-            if backup == nil {
-                var databasePath: String {
-                    switch type {
-                    case .restaurant:
-                        NotionDatabase.restaurant(.done).path()
-                    case .domitory:
-                        NotionDatabase.domitory(.done).path()
-                    }
-                }
-                
-                return databasePath
-            }
-            else {
-                var databasePath: String {
-                    switch type {
-                    case .restaurant:
-                        NotionDatabase.restaurant(.backup).path()
-                    case .domitory:
-                        NotionDatabase.domitory(.backup).path()
-                    }
-                }
-                
-                return databasePath
-            }
         case .queryByCampus(let type, _, let backup):
             if backup == nil {
                 var databasePath: String {
@@ -81,7 +55,6 @@ extension API: TargetType {
     var method: Moya.Method {
         switch self {
         case .checkStatus: .post
-        case .query: .post
         case .queryByCampus: .post
         }
     }
@@ -90,32 +63,6 @@ extension API: TargetType {
         switch self {
         case .checkStatus:
             return .requestPlain
-        case .query(let type, _):
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY-MM-dd"
-            
-            let current = Calendar.current
-            var date = [String]()
-            
-            if let weekend = current.nextWeekend(startingAfter: Date())?.end {
-                for interval in (-8)...(-2) {
-                    if let intervalDate = current.date(byAdding: .day, value: interval, to: weekend) {
-                        date.append(dateFormatter.string(from: intervalDate))
-                    }
-                }
-            }
-            
-            var data: FilterRequest {
-                switch type {
-                case .restaurant:
-                    FilterRequest(property: "MENU_DATE", date: date)
-                case .domitory:
-                    FilterRequest(property: "mealDate", date: date)
-                }
-            }
-            
-            return .requestJSONEncodable(data)
-            
         case .queryByCampus(let type, let campus, _):
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd"
