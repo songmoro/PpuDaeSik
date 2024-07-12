@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
 		F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
+		F81129452C4183DD00F71C03 /* DeploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129442C4183DD00F71C03 /* DeploymentStatus.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -81,6 +82,7 @@
 /* Begin PBXFileReference section */
 		F811293E2C417B8800F71C03 /* MoyaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaHeader.swift; sourceTree = "<group>"; };
 		F81129422C417EF800F71C03 /* NotionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDatabase.swift; sourceTree = "<group>"; };
+		F81129442C4183DD00F71C03 /* DeploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeploymentStatus.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -149,6 +151,7 @@
 			isa = PBXGroup;
 			children = (
 				F81129422C417EF800F71C03 /* NotionDatabase.swift */,
+				F81129442C4183DD00F71C03 /* DeploymentStatus.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 				F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
 				F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */,
+				F81129452C4183DD00F71C03 /* DeploymentStatus.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
 				F8ABD22D2B4D82C30038195F /* Model.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,

@@ -44,9 +44,9 @@ extension API: TargetType {
                 var databasePath: String {
                     switch type {
                     case .restaurant:
-                        NotionDatabase.restaurant.path()
+                        NotionDatabase.restaurant(.done).path()
                     case .domitory:
-                        NotionDatabase.domitory.path()
+                        NotionDatabase.domitory(.done).path()
                     }
                 }
                 
@@ -56,9 +56,9 @@ extension API: TargetType {
                 var databasePath: String {
                     switch type {
                     case .restaurant:
-                        NotionDatabase.restaurantBackup.path()
+                        NotionDatabase.restaurant(.backup).path()
                     case .domitory:
-                        NotionDatabase.domitoryBackup.path()
+                        NotionDatabase.domitory(.backup).path()
                     }
                 }
                 
@@ -69,9 +69,9 @@ extension API: TargetType {
                 var databasePath: String {
                     switch type {
                     case .restaurant:
-                        NotionDatabase.restaurant.path()
+                        NotionDatabase.restaurant(.done).path()
                     case .domitory:
-                        NotionDatabase.domitory.path()
+                        NotionDatabase.domitory(.done).path()
                     }
                 }
                 
@@ -81,9 +81,9 @@ extension API: TargetType {
                 var databasePath: String {
                     switch type {
                     case .restaurant:
-                        NotionDatabase.restaurantBackup.path()
+                        NotionDatabase.restaurant(.backup).path()
                     case .domitory:
-                        NotionDatabase.domitoryBackup.path()
+                        NotionDatabase.domitory(.backup).path()
                     }
                 }
                 
