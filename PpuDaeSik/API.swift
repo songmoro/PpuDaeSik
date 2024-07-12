@@ -25,7 +25,7 @@ extension API: TargetType {
     var path: String {
         switch self {
         case .checkStatus:
-            return "/databases/" + "233f1075520f4e38b9fb8350901219fb" + "/query"
+            return NotionDatabase.status.path()
         case .queryDatabase(let campus):
             var databaseID: String {
                 switch campus {
@@ -41,67 +41,63 @@ extension API: TargetType {
             
         case .query(let type, let backup):
             if backup == nil {
-                var databaseId: String {
+                var databasePath: String {
                     switch type {
                     case .restaurant:
-                        "da22b69d795c4e879b77dd657948ea4e"
+                        NotionDatabase.restaurant.path()
                     case .domitory:
-                        "264bceb5a8ef45a0befbec5d407b37f9"
+                        NotionDatabase.domitory.path()
                     }
                 }
                 
-                return "/databases/\(databaseId)/query"
+                return databasePath
             }
             else {
-                var databaseId: String {
+                var databasePath: String {
                     switch type {
                     case .restaurant:
-                        "912baee21c7643628355569d16aeb8b8"
+                        NotionDatabase.restaurantBackup.path()
                     case .domitory:
-                        "656bc1391c7843e292a7d89be6567f74"
+                        NotionDatabase.domitoryBackup.path()
                     }
                 }
                 
-                return "/databases/\(databaseId)/query"
+                return databasePath
             }
         case .queryByCampus(let type, _, let backup):
             if backup == nil {
-                var databaseId: String {
+                var databasePath: String {
                     switch type {
                     case .restaurant:
-                        "da22b69d795c4e879b77dd657948ea4e"
+                        NotionDatabase.restaurant.path()
                     case .domitory:
-                        "264bceb5a8ef45a0befbec5d407b37f9"
+                        NotionDatabase.domitory.path()
                     }
                 }
                 
-                return "/databases/\(databaseId)/query"
+                return databasePath
             }
             else {
-                var databaseId: String {
+                var databasePath: String {
                     switch type {
                     case .restaurant:
-                        "912baee21c7643628355569d16aeb8b8"
+                        NotionDatabase.restaurantBackup.path()
                     case .domitory:
-                        "656bc1391c7843e292a7d89be6567f74"
+                        NotionDatabase.domitoryBackup.path()
                     }
                 }
                 
-                return "/databases/\(databaseId)/query"
+                return databasePath
             }
         }
     }
     
     var method: Moya.Method {
         switch self {
-        case .checkStatus:
-            return .post
-        case .queryDatabase:
-            return .post
-        case .query:
-            return .post
-        case .queryByCampus:
-            return.post
+        case .checkStatus: .post
+        case .queryDatabase: .post
+        case .query: .post
+        case .queryByCampus: .post
         }
     }
     
