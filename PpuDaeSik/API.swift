@@ -10,7 +10,7 @@ import SwiftUI
 
 enum API {
     case checkStatus
-    case queryByCampus(_ type: QueryType, _ campus: Campus, _ backup: Bool? = nil)
+    case queryByCampus(_ type: QueryType, _ campus: Campus, _ deploymentStatus: DeploymentStatus)
 }
 
 extension API: TargetType {
@@ -24,30 +24,10 @@ extension API: TargetType {
         switch self {
         case .checkStatus:
             return NotionDatabase.status.path()
-        case .queryByCampus(let type, _, let backup):
-            if backup == nil {
-                var databasePath: String {
-                    switch type {
-                    case .restaurant:
-                        NotionDatabase.restaurant(.done).path()
-                    case .domitory:
-                        NotionDatabase.domitory(.done).path()
-                    }
-                }
-                
-                return databasePath
-            }
-            else {
-                var databasePath: String {
-                    switch type {
-                    case .restaurant:
-                        NotionDatabase.restaurant(.backup).path()
-                    case .domitory:
-                        NotionDatabase.domitory(.backup).path()
-                    }
-                }
-                
-                return databasePath
+        case .queryByCampus(let type, _, let deploymentStatus):
+            switch type {
+            case .restaurant: return NotionDatabase.restaurant(deploymentStatus).path()
+            case .domitory: return NotionDatabase.domitory(deploymentStatus).path()
             }
         }
     }

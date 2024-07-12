@@ -92,15 +92,8 @@ class MainViewModel: ObservableObject {
                         }
                         
                         status.forEach {
-                            if $0["Status"] == "Done" {
-                                if let DB = $0["DB"], let queryType = QueryType(rawValue: DB) {
-                                    self.requestByCampusDatabase(queryType, Campus(rawValue: self.selectedCampus)!)
-                                }
-                            }
-                            else {
-                                if let DB = $0["DB"], let queryType = QueryType(rawValue: DB) {
-                                    self.requestByCampusDatabase(queryType, Campus(rawValue: self.selectedCampus)!, true)
-                                }
+                            if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"] {
+                                self.requestByCampusDatabase(queryType, Campus(rawValue: self.selectedCampus)!, DeploymentStatus.getStatus(status))
                             }
                         }
                     }
@@ -111,12 +104,12 @@ class MainViewModel: ObservableObject {
         }
     }
     
-    func requestByCampusDatabase(_ queryType: QueryType, _ campus: Campus, _ backup: Bool? = nil) {
+    func requestByCampusDatabase(_ queryType: QueryType, _ campus: Campus, _ deploymentStatus: DeploymentStatus) {
         let provider = MoyaProvider<API>()
 
         switch queryType {
         case .restaurant:
-            provider.request(.queryByCampus(.restaurant, campus, backup)) { result in
+            provider.request(.queryByCampus(.restaurant, campus, deploymentStatus)) { result in
                 switch result {
                 case .success(let response):
                     if (200..<300).contains(response.statusCode) {
@@ -150,7 +143,7 @@ class MainViewModel: ObservableObject {
                 }
             }
         case .domitory:
-            provider.request(.queryByCampus(.domitory, campus, backup)) { result in
+            provider.request(.queryByCampus(.domitory, campus, deploymentStatus)) { result in
                 switch result {
                 case .success(let response):
                     if (200..<300).contains(response.statusCode) {
