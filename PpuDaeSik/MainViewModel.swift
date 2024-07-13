@@ -64,9 +64,9 @@ class MainViewModel: ObservableObject {
     
     func sortedByBookmark() -> [String] {
         let restaurant = Restaurant.allCases.filter {
-            !bookmark.contains($0.rawValue) && ($0.campus().rawValue == selectedCampus)
+            !bookmark.contains($0.rawValue) && ($0.campus.rawValue == selectedCampus)
         }.sorted {
-            ($0.order()) < ($1.order())
+            ($0.order) < ($1.order)
         }.map({ $0.rawValue })
         
         let domitory = Domitory.allCases.filter {
@@ -119,13 +119,13 @@ class MainViewModel: ObservableObject {
             let bookmarkRestaurant = restaurant.filter { restaurant in
                 (bookmark.contains(restaurant.NAME)) && (restaurant.CAMPUS.rawValue == selectedCampus) && (Int(restaurant.MENU_DATE.suffix(2)) == day)
             }.sorted {
-                ($0.RESTAURANT.order(), $0.CATEGORY.order) < ($1.RESTAURANT.order(), $1.CATEGORY.order)
+                ($0.RESTAURANT.order, $0.CATEGORY.order) < ($1.RESTAURANT.order, $1.CATEGORY.order)
             }
             
             let restaurant = restaurant.filter {
                 (!bookmark.contains($0.NAME)) && ($0.CAMPUS.rawValue == selectedCampus) && (Int($0.MENU_DATE.suffix(2)) == day)
             }.sorted {
-                ($0.RESTAURANT.order(), $0.CATEGORY.order) < ($1.RESTAURANT.order(), $1.CATEGORY.order)
+                ($0.RESTAURANT.order, $0.CATEGORY.order) < ($1.RESTAURANT.order, $1.CATEGORY.order)
             }
             
             return (bookmarkRestaurant + restaurant)

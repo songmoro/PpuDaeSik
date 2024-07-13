@@ -16,7 +16,7 @@ enum Restaurant: String, CaseIterable, Hashable, Codable {
     case 학생회관밀양교직원식당 = "학생회관(밀양) 교직원 식당"
     case 편의동2층양산식당 = "편의동2층(양산) 식당"
     
-    func order() -> Int {
+    var order: Int {
         switch self {
         case .금정회관교직원식당: 0
         case .금정회관학생식당: 1
@@ -28,7 +28,7 @@ enum Restaurant: String, CaseIterable, Hashable, Codable {
         }
     }
     
-    func campus() -> Campus {
+    var campus: Campus {
         switch self {
         case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당:
             Campus.부산
@@ -39,7 +39,7 @@ enum Restaurant: String, CaseIterable, Hashable, Codable {
         }
     }
     
-    func code() -> String {
+    var code: String {
         switch self {
         case .금정회관교직원식당: "PG001"
         case .금정회관학생식당: "PG002"
@@ -51,7 +51,7 @@ enum Restaurant: String, CaseIterable, Hashable, Codable {
         }
     }
     
-    func shortName() -> String {
+    var shortName: String {
         switch self {
         case .금정회관교직원식당:
             "금정 교직원"

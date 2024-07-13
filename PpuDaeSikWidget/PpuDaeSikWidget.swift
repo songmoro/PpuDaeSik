@@ -61,19 +61,19 @@ struct Provider: IntentTimelineProvider {
         case .d005:
             Domitory.행림관.code
         case .g001:
-            Restaurant.금정회관교직원식당.code()
+            Restaurant.금정회관교직원식당.code
         case .g002:
-            Restaurant.금정회관학생식당.code()
+            Restaurant.금정회관학생식당.code
         case .h001:
-            Restaurant.학생회관학생식당.code()
+            Restaurant.학생회관학생식당.code
         case .m001:
-            Restaurant.학생회관밀양교직원식당.code()
+            Restaurant.학생회관밀양교직원식당.code
         case .m002:
-            Restaurant.학생회관밀양학생식당.code()
+            Restaurant.학생회관밀양학생식당.code
         case .s001:
-            Restaurant.샛벌회관식당.code()
+            Restaurant.샛벌회관식당.code
         case .y001:
-            Restaurant.편의동2층양산식당.code()
+            Restaurant.편의동2층양산식당.code
         case .unknown:
             ""
         }
