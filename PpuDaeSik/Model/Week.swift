@@ -10,7 +10,7 @@ import SwiftUI
 enum Week: String, CaseIterable {
     case 일, 월, 화, 수, 목, 금, 토
     
-    func weekday() -> Int {
+    var weekday: Int {
         switch self {
         case .일: 1
         case .월: 2

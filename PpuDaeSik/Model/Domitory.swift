@@ -14,7 +14,7 @@ enum Domitory: Int, CaseIterable, Hashable, Codable {
     case 행림관 = 12
     case 자유관 = 13
     
-    func order() -> Int {
+    var order: Int {
         switch self {
         case .진리관: 0
         case .웅비관: 1
@@ -24,7 +24,7 @@ enum Domitory: Int, CaseIterable, Hashable, Codable {
         }
     }
     
-    func campus() -> Campus {
+    var campus: Campus {
         switch self {
         case .진리관, .웅비관, .자유관: Campus.부산
         case .비마관: Campus.밀양
@@ -32,7 +32,7 @@ enum Domitory: Int, CaseIterable, Hashable, Codable {
         }
     }
     
-    func code() -> String {
+    var code: String {
         switch self {
         case .진리관: "2"
         case .웅비관: "11"
@@ -42,7 +42,7 @@ enum Domitory: Int, CaseIterable, Hashable, Codable {
         }
     }
     
-    func name() -> String {
+    var name: String {
         switch self {
         case .진리관: "진리관"
         case .웅비관: "웅비관"

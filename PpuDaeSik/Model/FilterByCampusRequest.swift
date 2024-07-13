@@ -13,12 +13,12 @@ struct FilterByCampusRequest: Codable {
         
         if property == "MENU_DATE" {
             code = campus.restaurant.map { c in
-                Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code()))
+                Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code))
             }
         }
         else {
             code = campus.domitory.map { c in
-                Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code()))
+                Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code))
             }
         }
         

@@ -10,7 +10,7 @@ import SwiftUI
 enum Category: String, CaseIterable, Hashable, Codable {
     case 조기, 조식, 중식, 석식
     
-    func order() -> Int {
+    var order: Int {
         switch self {
         case .조기: 0
         case .조식: 1

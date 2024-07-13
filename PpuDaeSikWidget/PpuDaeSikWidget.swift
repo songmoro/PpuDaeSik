@@ -51,29 +51,29 @@ struct Provider: IntentTimelineProvider {
     func getCode(for configuration: ConfigurationIntent) -> String {
         switch configuration.RestaurantEnum {
         case .d001:
-            Domitory.진리관.code()
+            Domitory.진리관.code
         case .d002:
-            Domitory.웅비관.code()
+            Domitory.웅비관.code
         case .d003:
-            Domitory.자유관.code()
+            Domitory.자유관.code
         case .d004:
-            Domitory.비마관.code()
+            Domitory.비마관.code
         case .d005:
-            Domitory.행림관.code()
+            Domitory.행림관.code
         case .g001:
-            Restaurant.금정회관교직원식당.code()
+            Restaurant.금정회관교직원식당.code
         case .g002:
-            Restaurant.금정회관학생식당.code()
+            Restaurant.금정회관학생식당.code
         case .h001:
-            Restaurant.학생회관학생식당.code()
+            Restaurant.학생회관학생식당.code
         case .m001:
-            Restaurant.학생회관밀양교직원식당.code()
+            Restaurant.학생회관밀양교직원식당.code
         case .m002:
-            Restaurant.학생회관밀양학생식당.code()
+            Restaurant.학생회관밀양학생식당.code
         case .s001:
-            Restaurant.샛벌회관식당.code()
+            Restaurant.샛벌회관식당.code
         case .y001:
-            Restaurant.편의동2층양산식당.code()
+            Restaurant.편의동2층양산식당.code
         case .unknown:
             ""
         }
