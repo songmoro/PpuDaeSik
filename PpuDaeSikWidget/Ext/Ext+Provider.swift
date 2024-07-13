@@ -91,7 +91,7 @@ extension Provider {
                                     }
                                 }
                                 
-                                return RestaurantResponse(unwrappedValue: unwrappedValue)
+                                return RestaurantResponse(unwrappedValue)
                             }
                             
                             if let restrant = restrant.first {
@@ -128,7 +128,7 @@ extension Provider {
                                     }
                                 }
 
-                                return DomitoryResponse(unwrappedValue: unwrappedValue)
+                                return DomitoryResponse(unwrappedValue)
                             }
                             
                             if let domitory = domitory.first {
