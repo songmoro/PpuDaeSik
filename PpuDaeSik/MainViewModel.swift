@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Moya
 
 class MainViewModel: ObservableObject {
     @Published var selectedCampus = ""
@@ -20,8 +19,6 @@ class MainViewModel: ObservableObject {
     @Published var domitory = [DomitoryResponse]()
     
     func currentWeek() {
-        let dateFormatter = DateFormatter(format: "yyyy-MM-dd HH:mm:ss")
-        
         let calendar: Calendar = {
             var calendar = Calendar.current
             calendar.locale = Locale(identifier: "ko_KR")
