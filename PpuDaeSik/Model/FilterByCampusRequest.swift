@@ -18,7 +18,7 @@ struct FilterByCampusRequest: Codable {
         }
         else {
             code = campus.domitory.map { c in
-                Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code()))
+                Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code))
             }
         }
         

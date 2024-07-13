@@ -70,10 +70,10 @@ class MainViewModel: ObservableObject {
         }.map({ $0.rawValue })
         
         let domitory = Domitory.allCases.filter {
-            !bookmark.contains($0.name()) && ($0.campus().rawValue == selectedCampus)
+            !bookmark.contains($0.name) && ($0.campus.rawValue == selectedCampus)
         }.sorted {
-            ($0.order()) < ($1.order())
-        }.map({ $0.name() })
+            ($0.order) < ($1.order)
+        }.map({ $0.name })
         return bookmark + restaurant + domitory
     }
     
@@ -92,7 +92,7 @@ class MainViewModel: ObservableObject {
     func filterByDomitory(_ restaurant: String) -> [DomitoryResponse] {
         if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
             return domitory.filter {
-                ($0.domitory.name() == restaurant) && (Int($0.mealDate.suffix(2)) == day)
+                ($0.domitory.name == restaurant) && (Int($0.mealDate.suffix(2)) == day)
             }
         }
         

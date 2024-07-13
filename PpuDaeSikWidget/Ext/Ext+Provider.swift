@@ -132,7 +132,7 @@ extension Provider {
                             }
                             
                             if let domitory = domitory.first {
-                                completion([domitory.domitory.name(), domitory.category.rawValue, domitory.mealNm])
+                                completion([domitory.domitory.name, domitory.category.rawValue, domitory.mealNm])
                             }
                             else {
                                 completion(["", "", "식단이 존재하지 않아요"])
