@@ -31,6 +31,35 @@ struct DomitoryResponse: Codable, Serializable {
         }
     }
     
+    init(_ no: String, _ mealDate: String, _ mealKindGcd: String, _ codeNm: String, _ mealNm: String, _ campus: Campus, _ domitory: Domitory, _ category: Category) {
+        self.no = no
+        self.mealDate = mealDate
+        self.mealKindGcd = mealKindGcd
+        self.codeNm = codeNm
+        self.mealNm = mealNm
+        self.campus = campus
+        self.domitory = domitory
+        self.category = category
+    }
+    
+    init?(_ properties: Properties) {
+        let properties = properties.toDict()
+        
+        guard let no = properties["no"],
+              let mealDate = properties["mealDate"],
+              let mealKindGcd = properties["mealKindGcd"],
+              let codeNm = properties["codeNm"],
+              let mealNm = properties["mealNm"]
+        else { return nil }
+        
+        self.init(
+            no, mealDate, mealKindGcd, codeNm, mealNm,
+            Campus.getCampus(no: no),
+            Domitory.getDomitory(no),
+            Category.getCategory(mealKindGcd: mealKindGcd)
+        )
+    }
+    
     var uuid = UUID()
     var no: String
     var mealDate: String

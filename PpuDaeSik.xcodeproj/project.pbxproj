@@ -41,6 +41,10 @@
 		F81129792C42A06500F71C03 /* FilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129772C42A06500F71C03 /* FilterRequest.swift */; };
 		F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */; };
 		F811297C2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */; };
+		F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297F2C42E29B00F71C03 /* NotionResponse.swift */; };
+		F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297F2C42E29B00F71C03 /* NotionResponse.swift */; };
+		F81129832C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
+		F81129842C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -128,6 +132,8 @@
 		F81129742C42A04F00F71C03 /* CheckDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDatabase.swift; sourceTree = "<group>"; };
 		F81129772C42A06500F71C03 /* FilterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRequest.swift; sourceTree = "<group>"; };
 		F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByCampusRequest.swift; sourceTree = "<group>"; };
+		F811297F2C42E29B00F71C03 /* NotionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionResponse.swift; sourceTree = "<group>"; };
+		F81129822C43C86200F71C03 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -212,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				F81129492C41A16700F71C03 /* Serializable.swift */,
+				F81129822C43C86200F71C03 /* Properties.swift */,
 			);
 			path = Protocol;
 			sourceTree = "<group>";
@@ -223,6 +230,7 @@
 				F811295B2C429FA800F71C03 /* Week.swift */,
 				F811295D2C429FBE00F71C03 /* Category.swift */,
 				F81129622C429FDB00F71C03 /* QueryDatabase.swift */,
+				F811297F2C42E29B00F71C03 /* NotionResponse.swift */,
 				F81129652C429FEE00F71C03 /* QueryType.swift */,
 				F81129682C42A00900F71C03 /* Domitory.swift */,
 				F811296B2C42A01A00F71C03 /* DomitoryResponse.swift */,
@@ -457,6 +465,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F81129842C43C86200F71C03 /* Properties.swift in Sources */,
 				F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
 				F81129792C42A06500F71C03 /* FilterRequest.swift in Sources */,
 				F81129672C429FF000F71C03 /* QueryType.swift in Sources */,
@@ -466,6 +475,7 @@
 				F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */,
 				F8334D682BE4C968000B85E9 /* AppIntent.swift in Sources */,
 				F81129642C429FE200F71C03 /* QueryDatabase.swift in Sources */,
+				F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */,
 				F811294F2C41A68C00F71C03 /* Serializable.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
 				F81129602C429FCB00F71C03 /* Week.swift in Sources */,
@@ -487,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
+				F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */,
 				F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
 				F81129722C42A03900F71C03 /* RestaurantResponse.swift in Sources */,
 				F81129502C41A68D00F71C03 /* Serializable.swift in Sources */,
@@ -497,6 +508,7 @@
 				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
 				F81129632C429FDB00F71C03 /* QueryDatabase.swift in Sources */,
 				F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */,
+				F81129832C43C86200F71C03 /* Properties.swift in Sources */,
 				F811295C2C429FA800F71C03 /* Week.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */,
