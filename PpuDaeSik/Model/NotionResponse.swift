@@ -15,6 +15,18 @@ struct Result<T: Codable>: Codable {
     let properties: T
 }
 
+struct DeploymentProperties: Codable, Properties {
+    let DB: Title
+    let Status: Property
+    
+    func toDict() -> [String : String] {
+        [
+            "DB": DB.title[0].plainText,
+            "Status": Status.richText[0].plainText
+        ]
+    }
+}
+
 struct RestaurantProperties: Codable, Properties {
     let restaurantName, menuDate, buildingName: Property
     let breakfastTime, menuContent, dinnerTime: Property
@@ -36,7 +48,7 @@ struct RestaurantProperties: Codable, Properties {
     }
     
     func toDict() -> [String : String] {
-        let dict = [
+        [
             "restaurantName": restaurantName.richText[0].plainText,
             "menuDate": menuDate.richText[0].plainText,
             "buildingName": buildingName.richText[0].plainText,
@@ -49,8 +61,6 @@ struct RestaurantProperties: Codable, Properties {
             "menuType": menuType.richText[0].plainText,
             "name": name.title[0].plainText
         ]
-        
-        return dict
     }
 }
 
@@ -60,15 +70,13 @@ struct DomitoryProperties: Codable, Properties {
     let no: Title
     
     func toDict() -> [String : String] {
-        let dict = [
+        [
             "no": no.title[0].plainText,
             "mealDate": mealDate.richText[0].plainText,
             "mealKindGcd": mealKindGcd.richText[0].plainText,
             "codeNm": codeNm.richText[0].plainText,
             "mealNm": mealNm.richText[0].plainText
         ]
-        
-        return dict
     }
 }
 
