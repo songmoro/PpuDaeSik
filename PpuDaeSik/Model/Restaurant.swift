@@ -69,4 +69,8 @@ enum Restaurant: String, CaseIterable, Hashable, Codable {
             "편의동"
         }
     }
+    
+    static func getRestaurant(_ name: String) -> Self {
+        Restaurant(rawValue: name) ?? .금정회관교직원식당
+    }
 }

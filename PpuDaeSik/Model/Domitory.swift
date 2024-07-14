@@ -51,4 +51,8 @@ enum Domitory: Int, CaseIterable, Hashable, Codable {
         case .행림관: "행림관"
         }
     }
+    
+    static func getDomitory(_ no: String) -> Self {
+        Domitory(rawValue: Int(no) ?? 0) ?? .진리관
+    }
 }

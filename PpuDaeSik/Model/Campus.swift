@@ -31,4 +31,22 @@ enum Campus: String, CaseIterable, Codable {
             [.행림관]
         }
     }
+    
+    static func getCampus(no: String) -> Self {
+        switch Int(no) {
+        case 2, 11, 13: .부산
+        case 3: .밀양
+        case 12: .양산
+        default: .부산
+        }
+    }
+    
+    static func getCampus(code: String) -> Self {
+        switch code {
+        case "PG001", "PG002", "PS001", "PH002": .부산
+        case "M001", "M002": .밀양
+        case "Y001": .양산
+        default: .부산
+        }
+    }
 }
