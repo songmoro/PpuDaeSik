@@ -17,6 +17,34 @@
 		F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
 		F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
 		F81129562C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
+		F811295A2C429F9B00F71C03 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129592C429F9B00F71C03 /* Campus.swift */; };
+		F811295C2C429FA800F71C03 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295B2C429FA800F71C03 /* Week.swift */; };
+		F811295E2C429FBE00F71C03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295D2C429FBE00F71C03 /* Category.swift */; };
+		F811295F2C429FC900F71C03 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129592C429F9B00F71C03 /* Campus.swift */; };
+		F81129602C429FCB00F71C03 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295B2C429FA800F71C03 /* Week.swift */; };
+		F81129612C429FCD00F71C03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295D2C429FBE00F71C03 /* Category.swift */; };
+		F81129632C429FDB00F71C03 /* QueryDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129622C429FDB00F71C03 /* QueryDatabase.swift */; };
+		F81129642C429FE200F71C03 /* QueryDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129622C429FDB00F71C03 /* QueryDatabase.swift */; };
+		F81129662C429FEE00F71C03 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129652C429FEE00F71C03 /* QueryType.swift */; };
+		F81129672C429FF000F71C03 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129652C429FEE00F71C03 /* QueryType.swift */; };
+		F81129692C42A00900F71C03 /* Domitory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129682C42A00900F71C03 /* Domitory.swift */; };
+		F811296A2C42A00900F71C03 /* Domitory.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129682C42A00900F71C03 /* Domitory.swift */; };
+		F811296C2C42A01A00F71C03 /* DomitoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811296B2C42A01A00F71C03 /* DomitoryResponse.swift */; };
+		F811296D2C42A01A00F71C03 /* DomitoryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811296B2C42A01A00F71C03 /* DomitoryResponse.swift */; };
+		F811296F2C42A02600F71C03 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811296E2C42A02600F71C03 /* Restaurant.swift */; };
+		F81129702C42A02600F71C03 /* Restaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811296E2C42A02600F71C03 /* Restaurant.swift */; };
+		F81129722C42A03900F71C03 /* RestaurantResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129712C42A03900F71C03 /* RestaurantResponse.swift */; };
+		F81129732C42A03900F71C03 /* RestaurantResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129712C42A03900F71C03 /* RestaurantResponse.swift */; };
+		F81129752C42A04F00F71C03 /* CheckDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129742C42A04F00F71C03 /* CheckDatabase.swift */; };
+		F81129762C42A04F00F71C03 /* CheckDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129742C42A04F00F71C03 /* CheckDatabase.swift */; };
+		F81129782C42A06500F71C03 /* FilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129772C42A06500F71C03 /* FilterRequest.swift */; };
+		F81129792C42A06500F71C03 /* FilterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129772C42A06500F71C03 /* FilterRequest.swift */; };
+		F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */; };
+		F811297C2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */; };
+		F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297F2C42E29B00F71C03 /* NotionResponse.swift */; };
+		F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297F2C42E29B00F71C03 /* NotionResponse.swift */; };
+		F81129832C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
+		F81129842C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -30,7 +58,6 @@
 		F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5B2BE4C7E9000B85E9 /* PpuDaeSikWidgetBundle.swift */; };
 		F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5C2BE4C7E9000B85E9 /* WidgetAPI.swift */; };
 		F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8334D582BE4C7E9000B85E9 /* Assets.xcassets */; };
-		F8334D712BE4D664000B85E9 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ABD22C2B4D82C30038195F /* Model.swift */; };
 		F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */; };
 		F8334D9C2BE5EF88000B85E9 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */; };
 		F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
@@ -48,7 +75,6 @@
 		F88F35FD2B459D3A00BEA743 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35FC2B459D3A00BEA743 /* RxMoya */; };
 		F88F35FF2B45E64700BEA743 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
 		F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F36002B45E96300BEA743 /* MainViewModel.swift */; };
-		F8ABD22D2B4D82C30038195F /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ABD22C2B4D82C30038195F /* Model.swift */; };
 		F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ABD22E2B4DA9E90038195F /* Sheet.swift */; };
 /* End PBXBuildFile section */
 
@@ -94,6 +120,20 @@
 		F81129492C41A16700F71C03 /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
 		F81129542C41A80B00F71C03 /* Ext+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Calendar.swift"; sourceTree = "<group>"; };
+		F81129592C429F9B00F71C03 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
+		F811295B2C429FA800F71C03 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		F811295D2C429FBE00F71C03 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F81129622C429FDB00F71C03 /* QueryDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryDatabase.swift; sourceTree = "<group>"; };
+		F81129652C429FEE00F71C03 /* QueryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
+		F81129682C42A00900F71C03 /* Domitory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domitory.swift; sourceTree = "<group>"; };
+		F811296B2C42A01A00F71C03 /* DomitoryResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DomitoryResponse.swift; sourceTree = "<group>"; };
+		F811296E2C42A02600F71C03 /* Restaurant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Restaurant.swift; sourceTree = "<group>"; };
+		F81129712C42A03900F71C03 /* RestaurantResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestaurantResponse.swift; sourceTree = "<group>"; };
+		F81129742C42A04F00F71C03 /* CheckDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckDatabase.swift; sourceTree = "<group>"; };
+		F81129772C42A06500F71C03 /* FilterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRequest.swift; sourceTree = "<group>"; };
+		F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByCampusRequest.swift; sourceTree = "<group>"; };
+		F811297F2C42E29B00F71C03 /* NotionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionResponse.swift; sourceTree = "<group>"; };
+		F81129822C43C86200F71C03 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -118,7 +158,6 @@
 		F88F35F32B4434BE00BEA743 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F88F35FE2B45E64700BEA743 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F88F36002B45E96300BEA743 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		F8ABD22C2B4D82C30038195F /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		F8ABD22E2B4DA9E90038195F /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -179,8 +218,29 @@
 			isa = PBXGroup;
 			children = (
 				F81129492C41A16700F71C03 /* Serializable.swift */,
+				F81129822C43C86200F71C03 /* Properties.swift */,
 			);
 			path = Protocol;
+			sourceTree = "<group>";
+		};
+		F81129582C429F8C00F71C03 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F81129592C429F9B00F71C03 /* Campus.swift */,
+				F811295B2C429FA800F71C03 /* Week.swift */,
+				F811295D2C429FBE00F71C03 /* Category.swift */,
+				F81129622C429FDB00F71C03 /* QueryDatabase.swift */,
+				F811297F2C42E29B00F71C03 /* NotionResponse.swift */,
+				F81129652C429FEE00F71C03 /* QueryType.swift */,
+				F81129682C42A00900F71C03 /* Domitory.swift */,
+				F811296B2C42A01A00F71C03 /* DomitoryResponse.swift */,
+				F811296E2C42A02600F71C03 /* Restaurant.swift */,
+				F81129712C42A03900F71C03 /* RestaurantResponse.swift */,
+				F81129742C42A04F00F71C03 /* CheckDatabase.swift */,
+				F81129772C42A06500F71C03 /* FilterRequest.swift */,
+				F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F8334D352BE4C749000B85E9 /* Frameworks */ = {
@@ -245,7 +305,7 @@
 				F8ABD22E2B4DA9E90038195F /* Sheet.swift */,
 				F88F36002B45E96300BEA743 /* MainViewModel.swift */,
 				F88F35FE2B45E64700BEA743 /* API.swift */,
-				F8ABD22C2B4D82C30038195F /* Model.swift */,
+				F81129582C429F8C00F71C03 /* Model */,
 				F811294B2C41A17F00F71C03 /* Protocol */,
 				F81129462C4195BC00F71C03 /* Request */,
 				F81129412C417EE300F71C03 /* Database */,
@@ -405,17 +465,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F81129842C43C86200F71C03 /* Properties.swift in Sources */,
 				F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
-				F8334D712BE4D664000B85E9 /* Model.swift in Sources */,
+				F81129792C42A06500F71C03 /* FilterRequest.swift in Sources */,
+				F81129672C429FF000F71C03 /* QueryType.swift in Sources */,
+				F81129762C42A04F00F71C03 /* CheckDatabase.swift in Sources */,
 				F81129562C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
+				F811296A2C42A00900F71C03 /* Domitory.swift in Sources */,
 				F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */,
 				F8334D682BE4C968000B85E9 /* AppIntent.swift in Sources */,
+				F81129642C429FE200F71C03 /* QueryDatabase.swift in Sources */,
+				F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */,
 				F811294F2C41A68C00F71C03 /* Serializable.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
+				F81129602C429FCB00F71C03 /* Week.swift in Sources */,
+				F81129732C42A03900F71C03 /* RestaurantResponse.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
+				F811295F2C429FC900F71C03 /* Campus.swift in Sources */,
+				F811296D2C42A01A00F71C03 /* DomitoryResponse.swift in Sources */,
+				F81129702C42A02600F71C03 /* Restaurant.swift in Sources */,
+				F811297C2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
 				F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */,
 				F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */,
 				F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */,
+				F81129612C429FCD00F71C03 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,19 +497,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
+				F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */,
+				F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
+				F81129722C42A03900F71C03 /* RestaurantResponse.swift in Sources */,
 				F81129502C41A68D00F71C03 /* Serializable.swift in Sources */,
+				F81129692C42A00900F71C03 /* Domitory.swift in Sources */,
+				F811295E2C429FBE00F71C03 /* Category.swift in Sources */,
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
+				F81129662C429FEE00F71C03 /* QueryType.swift in Sources */,
 				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
+				F81129632C429FDB00F71C03 /* QueryDatabase.swift in Sources */,
 				F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */,
+				F81129832C43C86200F71C03 /* Properties.swift in Sources */,
+				F811295C2C429FA800F71C03 /* Week.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */,
+				F811295A2C429F9B00F71C03 /* Campus.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
+				F81129752C42A04F00F71C03 /* CheckDatabase.swift in Sources */,
 				F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */,
 				F81129452C4183DD00F71C03 /* DeploymentStatus.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
-				F8ABD22D2B4D82C30038195F /* Model.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
+				F81129782C42A06500F71C03 /* FilterRequest.swift in Sources */,
+				F811296F2C42A02600F71C03 /* Restaurant.swift in Sources */,
+				F811296C2C42A01A00F71C03 /* DomitoryResponse.swift in Sources */,
 				F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */,
 				F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
 			);
