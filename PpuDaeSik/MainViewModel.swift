@@ -92,7 +92,7 @@ class MainViewModel: ObservableObject {
     func filterByDomitory(_ restaurant: String) -> [DomitoryResponse] {
         if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
             return domitory.filter {
-                ($0.domitory.name == restaurant) && (Int($0.mealDate.suffix(2)) == day)
+                ($0.integratedRestaurant.name == restaurant) && (Int($0.mealDate.suffix(2)) == day)
             }
         }
         

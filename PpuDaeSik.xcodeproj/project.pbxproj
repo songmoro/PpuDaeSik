@@ -63,6 +63,7 @@
 		F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
 		F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
 		F874F2842C6B7AC20025F1FE /* IntegratedRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* IntegratedRestaurant.swift */; };
+		F874F2852C6BC9620025F1FE /* IntegratedRestaurant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* IntegratedRestaurant.swift */; };
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
@@ -491,6 +492,7 @@
 				F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */,
 				F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */,
 				F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */,
+				F874F2852C6BC9620025F1FE /* IntegratedRestaurant.swift in Sources */,
 				F81129612C429FCD00F71C03 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
