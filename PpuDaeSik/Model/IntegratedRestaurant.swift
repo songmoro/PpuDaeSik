@@ -61,5 +61,25 @@ enum IntegratedRestaurant {
             Campus.양산
         }
     }
+    
+    init?(code: String) {
+        let restaurant: IntegratedRestaurant? = switch code {
+        case "PG001": .금정회관교직원식당
+        case "PG002": .금정회관학생식당
+        case "PS001": .샛벌회관식당
+        case "PH002": .학생회관학생식당
+        case "M001": .학생회관밀양학생식당
+        case "M002": .학생회관밀양교직원식당
+        case "Y001": .편의동2층양산식당
+        case "2": .진리관
+        case "11": .웅비관
+        case "13": .자유관
+        case "3": .비마관
+        case "12": .행림관
+        default: nil
+        }
+        
+        guard let restaurant = restaurant else { return nil }
+        self = restaurant
+    }
 }
-
