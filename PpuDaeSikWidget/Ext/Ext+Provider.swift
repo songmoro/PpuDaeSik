@@ -95,7 +95,7 @@ extension Provider {
                             }
                             
                             if let restrant = restrant.first {
-                                completion([restrant.RESTAURANT.shortName, restrant.CATEGORY.rawValue, restrant.MENU_CONTENT])
+                                completion([restrant.integratedRestaurant.shortName, restrant.category.rawValue, restrant.content])
                             }
                             else {
                                 completion(["", "", "식단이 존재하지 않아요"])

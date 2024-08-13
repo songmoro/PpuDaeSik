@@ -173,7 +173,7 @@ struct MainView: View {
                 title
                 
                 ForEach(Category.allCases, id: \.self) { category in
-                    if !restaurant.filter({$0.CATEGORY == category}).isEmpty {
+                    if !restaurant.filter({$0.category == category}).isEmpty {
                         VStack {
                             Text(category.rawValue)
                                 .font(.body())
@@ -181,7 +181,7 @@ struct MainView: View {
                                 .frame(width: UIScreen.getWidth(300), alignment: .leading)
                             
                             ForEach(restaurant, id: \.uuid) {
-                                if $0.CATEGORY == category {
+                                if $0.category == category {
                                     card($0)
                                 }
                             }
@@ -221,14 +221,14 @@ struct MainView: View {
         
         private func card(_ restaurant: RestaurantResponse) -> some View {
             VStack(alignment: .leading) {
-                if !restaurant.MENU_TITLE.isEmpty {
-                    Text(restaurant.MENU_TITLE)
+                if !restaurant.title.isEmpty {
+                    Text(restaurant.title)
                         .font(.subhead())
                         .foregroundColor(.black100)
                         .padding(.bottom, UIScreen.getHeight(2))
                 }
                 
-                Text(restaurant.MENU_CONTENT)
+                Text(restaurant.content)
                     .font(.body())
                     .foregroundColor(.black100)
                     .padding(.bottom, UIScreen.getHeight(2))

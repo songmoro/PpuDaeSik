@@ -28,38 +28,24 @@ struct DeploymentProperties: Codable, Properties {
 }
 
 struct RestaurantProperties: Codable, Properties {
-    let restaurantName, menuDate, buildingName: Property
-    let breakfastTime, menuContent, dinnerTime: Property
-    let restaurantCode, menuTitle, lunchTime, menuType: Property
-    let name: Title
+    let menuDate, menuType: Property
+    let restaurantCode, menuTitle, menuContent: Property
     
     enum CodingKeys: String, CodingKey {
-        case restaurantName = "RESTAURANT_NAME"
         case menuDate = "MENU_DATE"
-        case buildingName = "BUILDING_NAME"
-        case breakfastTime = "BREAKFAST_TIME"
         case menuContent = "MENU_CONTENT"
-        case dinnerTime = "DINNER_TIME"
         case restaurantCode = "RESTAURANT_CODE"
         case menuTitle = "MENU_TITLE"
-        case lunchTime = "LUNCH_TIME"
         case menuType = "MENU_TYPE"
-        case name = "NAME"
     }
     
     func toDict() -> [String : String] {
         [
-            "restaurantName": restaurantName.richText[0].plainText,
             "menuDate": menuDate.richText[0].plainText,
-            "buildingName": buildingName.richText[0].plainText,
-            "breakfastTime": breakfastTime.richText[0].plainText,
             "menuContent": menuContent.richText[0].plainText,
-            "dinnerTime": dinnerTime.richText[0].plainText,
             "restaurantCode": restaurantCode.richText[0].plainText,
             "menuTitle": menuTitle.richText[0].plainText,
-            "lunchTime": lunchTime.richText[0].plainText,
             "menuType": menuType.richText[0].plainText,
-            "name": name.title[0].plainText
         ]
     }
 }
