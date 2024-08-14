@@ -72,6 +72,8 @@ class MainViewModel: ObservableObject {
 /// 데이터베이스
 extension MainViewModel {
     func checkDatabaseStatus() {
+        self.integratedResponseArray = []
+        
         RequestManager.request(.checkStatus) { status in
             status.forEach {
                 guard let DB = $0["DB"],
@@ -88,9 +90,6 @@ extension MainViewModel {
     func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType, _ deploymentStatus: DeploymentStatus) {
         RequestManager.request(.queryByCampus(queryType, campus, deploymentStatus), IntegratedResponse.self) {
             self.integratedResponseArray += $0
-            self.integratedResponseArray.removeAll { response in
-                self.integratedResponseArray.filter({ response.content == $0.content && response.category == $0.category && response.restaurant == $0.restaurant }).count != 1
-            }
         }
     }
 }
