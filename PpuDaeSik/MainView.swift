@@ -86,9 +86,6 @@ struct MainView: View {
             Spacer()
         }
         .padding(.bottom, UIScreen.getHeight(8))
-        .onChange(of: vm.selectedCampus) { _, newValue in
-            vm.checkDatabaseStatus()
-        }
     }
     
     private var week: some View {

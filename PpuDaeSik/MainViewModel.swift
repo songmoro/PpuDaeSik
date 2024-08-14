@@ -8,7 +8,6 @@
 import SwiftUI
 
 class MainViewModel: ObservableObject {
-    @Published var selectedCampus = ""
     @Published var selectedDay = ""
     @Published var isSheetShow = false
     @Published var weekday: [Week: Int] = [:]
@@ -16,6 +15,11 @@ class MainViewModel: ObservableObject {
     @Published var defaultCampus = "부산"
     @Published var bookmark: [String] = []
     @Published var integratedResponseArray = [IntegratedResponse]()
+    @Published var selectedCampus = "" {
+        didSet {
+            checkDatabaseStatus()
+        }
+    }
     
     init() {
         currentWeek()
