@@ -46,10 +46,11 @@ struct RestaurantResponse: Codable, Hashable, Serializable {
               let menuDate = properties["menuDate"],
               let menuType = properties["menuType"],
               let menuTitle = properties["menuTitle"],
-              let menuContent = properties["menuContent"]
+              let menuContent = properties["menuContent"],
+              let category = Category.init(rawValue: menuType)
         else { return nil }
 
-        self.init(integratedRestaurant: integratedRestaurant, MENU_DATE: menuDate, MENU_TYPE: menuType, MENU_TITLE: menuTitle, MENU_CONTENT: menuContent, CATEGORY: Category.getCategory(menuType: menuType))
+        self.init(integratedRestaurant: integratedRestaurant, MENU_DATE: menuDate, MENU_TYPE: menuType, MENU_TITLE: menuTitle, MENU_CONTENT: menuContent, CATEGORY: category)
     }
     
     var uuid = UUID()

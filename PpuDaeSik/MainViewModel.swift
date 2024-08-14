@@ -15,8 +15,6 @@ class MainViewModel: ObservableObject {
     @Published var week: [Week: DateComponents] = [:]
     @Published var defaultCampus = "부산"
     @Published var bookmark: [String] = []
-    @Published var restaurant = [RestaurantResponse]()
-    @Published var domitory = [DomitoryResponse]()
     @Published var integratedResponseArray = [IntegratedResponse]()
     
     func currentWeek() {
@@ -63,28 +61,6 @@ class MainViewModel: ObservableObject {
         return bookmark + IntegratedRestaurant.allCases.filter({ !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus }).map({ $0.name })
     }
     
-    func filterByRestaurant(_ restaurantName: String) -> [RestaurantResponse] {
-        if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
-            return restaurant.filter {
-                ($0.integratedRestaurant.name == restaurantName) && (Int($0.date.suffix(2)) == day)
-            }.sorted {
-                $0.category.order < $1.category.order
-            }
-        }
-        
-        return []
-    }
-    
-    func filterByDomitory(_ restaurant: String) -> [DomitoryResponse] {
-        if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
-            return domitory.filter {
-                ($0.integratedRestaurant.name == restaurant) && (Int($0.mealDate.suffix(2)) == day)
-            }
-        }
-        
-        return []
-    }
-    
     func checkType(_ restaurant: String) -> QueryType {
         if (Restaurant.allCases.map({ $0.rawValue }).contains(restaurant)) {
             .restaurant
@@ -92,34 +68,6 @@ class MainViewModel: ObservableObject {
         else {
             .domitory
         }
-    }
-    
-    func filterByCategory(_ category: Category, _ restaurant: [RestaurantResponse]) -> [RestaurantResponse] {
-        restaurant.filter {
-            $0.category == category
-        }
-    }
-    
-    func sortedRestaurant() -> [RestaurantResponse] {
-        if let selectedWeekday = Week(rawValue: selectedDay), let day = weekday[selectedWeekday] {
-            let bookmarkRestaurant = restaurant.filter { restaurant in
-                (bookmark.contains(restaurant.integratedRestaurant.name)) && (restaurant.integratedRestaurant.campus.rawValue == selectedCampus) && (Int(restaurant.date.suffix(2)) == day)
-            }.sorted {
-//                ($0.RESTAURANT.order, $0.CATEGORY.order) < ($1.RESTAURANT.order, $1.CATEGORY.order)
-                $0.category.order < $1.category.order
-            }
-            
-            let restaurant = restaurant.filter {
-                (!bookmark.contains($0.integratedRestaurant.name)) && ($0.integratedRestaurant.campus.rawValue == selectedCampus) && (Int($0.date.suffix(2)) == day)
-            }.sorted {
-//                ($0.RESTAURANT.order, $0.CATEGORY.order) < ($1.RESTAURANT.order, $1.CATEGORY.order)
-                $0.category.order < $1.category.order
-            }
-            
-            return (bookmarkRestaurant + restaurant)
-        }
-        
-        return []
     }
     
     func saveDefaultCampus() {

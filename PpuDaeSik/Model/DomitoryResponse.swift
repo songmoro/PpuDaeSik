@@ -46,10 +46,11 @@ struct DomitoryResponse: Codable, Serializable {
               let mealKindGcd = properties["mealKindGcd"],
               let codeNm = properties["codeNm"],
               let mealNm = properties["mealNm"],
-              let integratedRestaurant = IntegratedRestaurant(code: no)
+              let integratedRestaurant = IntegratedRestaurant(code: no),
+              let category = Category.init(rawValue: mealKindGcd)
         else { fatalError("기숙사 초기화 실패") }
         
-        self.init(integratedRestaurant: integratedRestaurant, mealDate: mealDate, mealKindGcd: mealKindGcd, codeNm: codeNm, mealNm: mealNm, category: Category.getCategory(mealKindGcd: mealKindGcd))
+        self.init(integratedRestaurant: integratedRestaurant, mealDate: mealDate, mealKindGcd: mealKindGcd, codeNm: codeNm, mealNm: mealNm, category: category)
     }
     
     var uuid = UUID()
