@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// 기숙사, 식당 통합한 enum
-enum IntegratedRestaurant: Codable {
+enum IntegratedRestaurant: Codable, CaseIterable {
     /// 학생 식당
     case 금정회관교직원식당, 금정회관학생식당, 샛벌회관식당, 학생회관학생식당, 학생회관밀양학생식당, 학생회관밀양교직원식당, 편의동2층양산식당
     /// 기숙사

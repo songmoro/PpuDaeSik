@@ -43,36 +43,24 @@ class MainViewModel: ObservableObject {
     func checkDatabaseStatus() {
         RequestManager.request(.checkStatus) { status in
             status.forEach {
-                if let DB = $0["DB"], let _ = QueryType(rawValue: DB), let status = $0["Status"] {
-                    self.requestByCampusDatabase(Campus(rawValue: self.selectedCampus)!, DeploymentStatus.getStatus(status))
+                if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"] {
+                    self.requestByCampusDatabase(Campus(rawValue: self.selectedCampus)!, queryType, DeploymentStatus.getStatus(status))
                 }
             }
         }
     }
     
-    func requestByCampusDatabase(_ campus: Campus, _ deploymentStatus: DeploymentStatus) {
-        RequestManager.request(.queryByCampus(.restaurant, campus, deploymentStatus), IntegratedResponse.self) {
+    func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType, _ deploymentStatus: DeploymentStatus) {
+        RequestManager.request(.queryByCampus(queryType, campus, deploymentStatus), IntegratedResponse.self) {
             self.integratedResponseArray += $0
-        }
-        
-        RequestManager.request(.queryByCampus(.domitory, campus, deploymentStatus), IntegratedResponse.self) {
-            self.integratedResponseArray += $0
+            self.integratedResponseArray.removeAll { response in
+                self.integratedResponseArray.filter({ response.content == $0.content && response.category == $0.category && response.restaurant == $0.restaurant }).count != 1
+            }
         }
     }
     
     func sortedByBookmark() -> [String] {
-        let restaurant = Restaurant.allCases.filter {
-            !bookmark.contains($0.rawValue) && ($0.campus.rawValue == selectedCampus)
-        }.sorted {
-            ($0.order) < ($1.order)
-        }.map({ $0.rawValue })
-        
-        let domitory = Domitory.allCases.filter {
-            !bookmark.contains($0.name) && ($0.campus.rawValue == selectedCampus)
-        }.sorted {
-            ($0.order) < ($1.order)
-        }.map({ $0.name })
-        return bookmark + restaurant + domitory
+        return bookmark + IntegratedRestaurant.allCases.filter({ !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus }).map({ $0.name })
     }
     
     func filterByRestaurant(_ restaurantName: String) -> [RestaurantResponse] {
