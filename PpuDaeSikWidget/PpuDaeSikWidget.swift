@@ -19,120 +19,84 @@ struct Provider: IntentTimelineProvider {
     }
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
-        checkDatabase { isUpdate in
-            // let (code, type) = get~
-            let code = getCode(for: configuration)
-            let type = getType(for: configuration)
-            let category = getCategory(for: configuration)
-            let currentDate = Date()
-            let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
-
-            if isUpdate {
-                queryDatabase(true, code, type, category: category) {
-                    let entry = SimpleEntry(configuration: configuration, date: currentDate, name: $0[0], category: $0[1], meal: $0[2])
-                    
-                    let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
-                    
-                    completion(timeline)
-                }
-            }
-            else {
-                queryDatabase(false, code, type, category: category) {
-                    let entry = SimpleEntry(configuration: configuration, date: currentDate, name: $0[0], category: $0[1], meal: $0[2])
-                    
-                    let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
-                    
-                    completion(timeline)
-                }
+        guard let restaurant = getIntegratedRestaurant(for: configuration),
+              let category = getCategory(for: configuration)
+        else { return }
+        let currentDate = Date()
+        let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
+        
+        checkStatus { status in
+            queryDatabase(restaurant, category: category, status) {
+                let entry = SimpleEntry(configuration: configuration, date: currentDate, name: $0[0], category: $0[1], meal: $0[2])
+                
+                let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
+                
+                completion(timeline)
             }
         }
     }
     
-    func getCode(for configuration: ConfigurationIntent) -> String {
+    func getIntegratedRestaurant(for configuration: ConfigurationIntent) -> IntegratedRestaurant? {
         switch configuration.RestaurantEnum {
-        case .d001:
-            Domitory.진리관.code
-        case .d002:
-            Domitory.웅비관.code
-        case .d003:
-            Domitory.자유관.code
-        case .d004:
-            Domitory.비마관.code
-        case .d005:
-            Domitory.행림관.code
-        case .g001:
-            Restaurant.금정회관교직원식당.code
-        case .g002:
-            Restaurant.금정회관학생식당.code
-        case .h001:
-            Restaurant.학생회관학생식당.code
-        case .m001:
-            Restaurant.학생회관밀양교직원식당.code
-        case .m002:
-            Restaurant.학생회관밀양학생식당.code
-        case .s001:
-            Restaurant.샛벌회관식당.code
-        case .y001:
-            Restaurant.편의동2층양산식당.code
-        case .unknown:
-            ""
+        case .d001: .진리관
+        case .d002: .웅비관
+        case .d003: .자유관
+        case .d004: .비마관
+        case .d005: .행림관
+        case .g001: .금정회관교직원식당
+        case .g002: .금정회관학생식당
+        case .h001: .학생회관학생식당
+        case .m001: .학생회관밀양교직원식당
+        case .m002: .학생회관밀양학생식당
+        case .s001: .샛벌회관식당
+        case .y001: .편의동2층양산식당
+        case .unknown: nil
         }
     }
     
-    func getType(for configuration: ConfigurationIntent) -> QueryType {
-        switch configuration.RestaurantEnum {
-        case .d001, .d002, .d003, .d004, .d005:
-            QueryType.domitory
-        case .g001, .g002, .h001, .m001, .m002, .s001, .y001:
-            QueryType.restaurant
-        case .unknown:
-            QueryType.restaurant
-        }
-    }
-    
-    func getCategory(for configuration: ConfigurationIntent) -> [String] {
+    func getCategory(for configuration: ConfigurationIntent) -> String? {
         let hour = Calendar.current.component(.hour, from: Date())
         
         return switch configuration.RestaurantEnum {
         case .d001, .d002, .d003, .d004, .d005:
             switch hour {
             case 20...23:
-                ["01", "02"]
+                "01"
             case 0...8:
-                ["01", "02"]
+                "02"
             case 9...13:
-                ["03"]
+                "03"
             case 14...19:
-                ["04"]
+                "04"
             default:
-                ["01"]
+                nil
             }
         case .g002, .y001:
             switch hour {
             case 20...23:
-                ["B"]
+                "B"
             case 0...8:
-                ["B"]
+                "B"
             case 9...13:
-                ["L"]
+                "L"
             case 14...19:
-                ["D"]
+                "D"
             default:
-                ["B"]
+                nil
             }
         case .g001, .h001, .s001, .m001, .m002:
             switch hour {
             case 0...14:
-                ["L"]
+                "L"
             case 15...19:
-                ["D"]
+                "D"
             case 20...23:
-                ["L"]
+                "L"
             default:
-                ["L"]
+                nil
             }
         case .unknown:
-            ["L"]
+            nil
         }
     }
 }

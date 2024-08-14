@@ -45,6 +45,11 @@
 		F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297F2C42E29B00F71C03 /* NotionResponse.swift */; };
 		F81129832C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
 		F81129842C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
+		F820CB8E2C6D2A62008694EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
+		F820CB8F2C6D2A86008694EC /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
+		F820CB902C6D2A99008694EC /* DeploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129442C4183DD00F71C03 /* DeploymentStatus.swift */; };
+		F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
+		F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -53,7 +58,6 @@
 		F8334D642BE4C934000B85E9 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D632BE4C934000B85E9 /* ReactiveMoya */; };
 		F8334D662BE4C934000B85E9 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D652BE4C934000B85E9 /* RxMoya */; };
 		F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D552BE4C7E9000B85E9 /* Ext+Provider.swift */; };
-		F8334D682BE4C968000B85E9 /* AppIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D572BE4C7E9000B85E9 /* AppIntent.swift */; };
 		F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */; };
 		F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5B2BE4C7E9000B85E9 /* PpuDaeSikWidgetBundle.swift */; };
 		F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5C2BE4C7E9000B85E9 /* WidgetAPI.swift */; };
@@ -142,7 +146,6 @@
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 		F8334D552BE4C7E9000B85E9 /* Ext+Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Provider.swift"; sourceTree = "<group>"; };
-		F8334D572BE4C7E9000B85E9 /* AppIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIntent.swift; sourceTree = "<group>"; };
 		F8334D582BE4C7E9000B85E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8334D592BE4C7E9000B85E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikWidget.swift; sourceTree = "<group>"; };
@@ -273,7 +276,6 @@
 			isa = PBXGroup;
 			children = (
 				F8334D562BE4C7E9000B85E9 /* Ext */,
-				F8334D572BE4C7E9000B85E9 /* AppIntent.swift */,
 				F8334D582BE4C7E9000B85E9 /* Assets.xcassets */,
 				F8334D592BE4C7E9000B85E9 /* Info.plist */,
 				F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */,
@@ -480,9 +482,11 @@
 				F81129762C42A04F00F71C03 /* CheckDatabase.swift in Sources */,
 				F81129562C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
 				F811296A2C42A00900F71C03 /* Domitory.swift in Sources */,
+				F820CB8E2C6D2A62008694EC /* API.swift in Sources */,
 				F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */,
-				F8334D682BE4C968000B85E9 /* AppIntent.swift in Sources */,
 				F81129642C429FE200F71C03 /* QueryDatabase.swift in Sources */,
+				F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */,
+				F820CB8F2C6D2A86008694EC /* RequestManager.swift in Sources */,
 				F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */,
 				F811294F2C41A68C00F71C03 /* Serializable.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
@@ -494,6 +498,8 @@
 				F81129702C42A02600F71C03 /* Restaurant.swift in Sources */,
 				F811297C2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
 				F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */,
+				F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */,
+				F820CB902C6D2A99008694EC /* DeploymentStatus.swift in Sources */,
 				F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */,
 				F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */,
 				F874F2882C6CBA580025F1FE /* IntegratedResponse.swift in Sources */,
