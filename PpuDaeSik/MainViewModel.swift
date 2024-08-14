@@ -57,6 +57,19 @@ class MainViewModel: ObservableObject {
         self.week = Dictionary(uniqueKeysWithValues: zip(Week.allCases, week.sorted(by: { $0.weekday! < $1.weekday! })))
     }
     
+    func sortedByBookmark() -> [String] {
+        let exceptBookmark = IntegratedRestaurant.allCases.filter {
+            !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus
+        }.map {
+            $0.name
+        }
+              
+        return bookmark + exceptBookmark
+    }
+}
+
+/// 데이터베이스
+extension MainViewModel {
     func checkDatabaseStatus() {
         RequestManager.request(.checkStatus) { status in
             status.forEach {
@@ -75,17 +88,10 @@ class MainViewModel: ObservableObject {
             }
         }
     }
-    
-    func sortedByBookmark() -> [String] {
-        let exceptBookmark = IntegratedRestaurant.allCases.filter {
-            !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus
-        }.map {
-            $0.name
-        }
-              
-        return bookmark + exceptBookmark
-    }
-    
+}
+
+/// 유저 디폴트
+extension MainViewModel {
     func saveDefaultCampus() {
         UserDefaults.standard.setValue(defaultCampus, forKey: "defaultCampus")
     }
