@@ -9,14 +9,15 @@ import SwiftUI
 
 enum DeploymentStatus {
     case done, backup
-}
-
-extension DeploymentStatus {
-    static func getStatus(_ status: String) -> Self {
-        switch status {
+    
+    init?(status: String) {
+        let status: DeploymentStatus? = switch status {
         case "Done": .done
         case "Backup": .backup
-        default: .backup
+        default: nil
         }
+        
+        guard let status = status else { return nil }
+        self = status
     }
 }

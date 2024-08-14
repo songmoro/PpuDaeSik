@@ -1,5 +1,5 @@
 //
-//  IntegratedRestaurant.swift
+//  Cafeteria.swift
 //  PpuDaeSik
 //
 //  Created by 송재훈 on 8/13/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// 기숙사, 식당 통합한 enum
-enum IntegratedRestaurant: Codable, CaseIterable {
+enum Cafeteria: Codable, CaseIterable {
     /// 학생 식당
     case 금정회관교직원식당, 금정회관학생식당, 샛벌회관식당, 학생회관학생식당, 학생회관밀양학생식당, 학생회관밀양교직원식당, 편의동2층양산식당
     /// 기숙사
@@ -53,18 +53,6 @@ enum IntegratedRestaurant: Codable, CaseIterable {
     /// 식당 이름
     var name: String {
         switch self {
-//        case .금정회관교직원식당: "금정회관 교직원 식당"
-//        case .금정회관학생식당: "금정회관 학생 식당"
-//        case .샛벌회관식당: "샛벌회관"
-//        case .학생회관학생식당: "학생회관 학생 식당"
-//        case .학생회관밀양학생식당: "학생회관(밀양) 학생 식당"
-//        case .학생회관밀양교직원식당: "학생회관(밀양) 교직원 식당"
-//        case .편의동2층양산식당: "편의동2층(양산)"
-//        case .진리관: "진리관"
-//        case .웅비관: "웅비관"
-//        case .자유관: "자유관"
-//        case .비마관: "비마관"
-//        case .행림관: "행림관"
         case .금정회관교직원식당: "금정회관 교직원 식당"
         case .금정회관학생식당: "금정회관 학생 식당"
         case .샛벌회관식당: "샛벌회관 식당"
@@ -93,8 +81,8 @@ enum IntegratedRestaurant: Codable, CaseIterable {
     }
     
     /// 옵셔널 초기화
-    init?(code: String) {
-        let restaurant: IntegratedRestaurant? = switch code {
+    init?(_ code: String) {
+        let cafeteria: Cafeteria? = switch code {
         case "PG001": .금정회관교직원식당
         case "PG002": .금정회관학생식당
         case "PS001": .샛벌회관식당
@@ -110,7 +98,7 @@ enum IntegratedRestaurant: Codable, CaseIterable {
         default: nil
         }
         
-        guard let restaurant = restaurant else { return nil }
-        self = restaurant
+        guard let cafeteria = cafeteria else { return nil }
+        self = cafeteria
     }
 }
