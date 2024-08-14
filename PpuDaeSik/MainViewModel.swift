@@ -61,15 +61,6 @@ class MainViewModel: ObservableObject {
         return bookmark + IntegratedRestaurant.allCases.filter({ !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus }).map({ $0.name })
     }
     
-    func checkType(_ restaurant: String) -> QueryType {
-        if (Restaurant.allCases.map({ $0.rawValue }).contains(restaurant)) {
-            .restaurant
-        }
-        else {
-            .domitory
-        }
-    }
-    
     func saveDefaultCampus() {
         UserDefaults.standard.setValue(defaultCampus, forKey: "defaultCampus")
     }
