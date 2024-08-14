@@ -12,10 +12,10 @@ class MainViewModel: ObservableObject {
     @Published var isSheetShow = false
     @Published var weekday: [Week: Int] = [:]
     @Published var week: [Week: DateComponents] = [:]
-    @Published var integratedResponseArray = [IntegratedResponse]()
+    @Published var cafeteriaResponseArray = [CafeteriaResponse]()
     @Published var selectedCampus: Campus = .부산 {
         didSet {
-            integratedResponseArray = []
+            cafeteriaResponseArray = []
             checkDatabaseStatus()
         }
     }
@@ -87,8 +87,8 @@ extension MainViewModel {
     }
     
     func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType, _ deploymentStatus: DeploymentStatus) {
-        RequestManager.request(.queryByCampus(queryType, campus, deploymentStatus), IntegratedResponse.self) {
-            self.integratedResponseArray += $0
+        RequestManager.request(.queryByCampus(queryType, campus, deploymentStatus), CafeteriaResponse.self) {
+            self.cafeteriaResponseArray += $0
         }
     }
 }

@@ -24,8 +24,8 @@ extension WidgetAPI: TargetType {
         switch self {
         case .checkStatus:
             return NotionDatabase.status.path()
-        case .query(let integratedRestaurant, _, let deploymentStatus):
-            switch integratedRestaurant {
+        case .query(let cafeteria, _, let deploymentStatus):
+            switch cafeteria {
             case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당, .학생회관밀양학생식당, .학생회관밀양교직원식당, .편의동2층양산식당:
                 return NotionDatabase.restaurant(deploymentStatus).path()
             case .진리관, .웅비관, .자유관, .비마관, .행림관:
@@ -42,7 +42,7 @@ extension WidgetAPI: TargetType {
         switch self {
         case .checkStatus:
             return .requestPlain
-        case .query(let integratedRestaurant, let category, _):
+        case .query(let cafeteria, let category, _):
             let calendar: Calendar = {
                 var calendar = Calendar.current
                 calendar.locale = Locale(identifier: "ko_KR")
@@ -68,11 +68,11 @@ extension WidgetAPI: TargetType {
             }()
             
             var data: FilterByCampusRequest {
-                switch integratedRestaurant {
+                switch cafeteria {
                 case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당, .학생회관밀양학생식당, .학생회관밀양교직원식당, .편의동2층양산식당:
-                    FilterByCampusRequest(property: "MENU_DATE", name: integratedRestaurant.code, date: date, category: category)
+                    FilterByCampusRequest(property: "MENU_DATE", name: cafeteria.code, date: date, category: category)
                 case .진리관, .웅비관, .자유관, .비마관, .행림관:
-                    FilterByCampusRequest(property: "mealDate", name: integratedRestaurant.code, date: date, category: category)
+                    FilterByCampusRequest(property: "mealDate", name: cafeteria.code, date: date, category: category)
                 }
             }
             

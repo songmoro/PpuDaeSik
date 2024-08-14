@@ -54,8 +54,8 @@
 		F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
 		F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* Cafeteria.swift */; };
 		F874F2852C6BC9620025F1FE /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* Cafeteria.swift */; };
-		F874F2872C6CBA580025F1FE /* IntegratedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* IntegratedResponse.swift */; };
-		F874F2882C6CBA580025F1FE /* IntegratedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* IntegratedResponse.swift */; };
+		F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */; };
+		F874F2882C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */; };
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
@@ -133,7 +133,7 @@
 		F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PpuDaeSikWidget.intentdefinition; sourceTree = "<group>"; };
 		F8334D8E2BE4F4BD000B85E9 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		F874F2832C6B7AC20025F1FE /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
-		F874F2862C6CBA580025F1FE /* IntegratedResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegratedResponse.swift; sourceTree = "<group>"; };
+		F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaResponse.swift; sourceTree = "<group>"; };
 		F88F35D22B43FC6500BEA743 /* PpuDaeSik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PpuDaeSik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikApp.swift; sourceTree = "<group>"; };
 		F88F35D92B43FC6600BEA743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -221,7 +221,7 @@
 				F81129652C429FEE00F71C03 /* QueryType.swift */,
 				F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */,
 				F874F2832C6B7AC20025F1FE /* Cafeteria.swift */,
-				F874F2862C6CBA580025F1FE /* IntegratedResponse.swift */,
+				F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -467,7 +467,7 @@
 				F820CB902C6D2A99008694EC /* DeploymentStatus.swift in Sources */,
 				F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */,
 				F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */,
-				F874F2882C6CBA580025F1FE /* IntegratedResponse.swift in Sources */,
+				F874F2882C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
 				F874F2852C6BC9620025F1FE /* Cafeteria.swift in Sources */,
 				F81129612C429FCD00F71C03 /* Category.swift in Sources */,
 			);
@@ -483,7 +483,7 @@
 				F81129502C41A68D00F71C03 /* Serializable.swift in Sources */,
 				F811295E2C429FBE00F71C03 /* Category.swift in Sources */,
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
-				F874F2872C6CBA580025F1FE /* IntegratedResponse.swift in Sources */,
+				F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
 				F81129662C429FEE00F71C03 /* QueryType.swift in Sources */,
 				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
 				F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */,

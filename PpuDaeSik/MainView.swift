@@ -129,7 +129,7 @@ struct MainView: View {
         ScrollView {
             ForEach(vm.sortedByBookmark(), id: \.self) { sorted in
                 VStack {
-                    let filtered = vm.integratedResponseArray.filter { response in
+                    let filtered = vm.cafeteriaResponseArray.filter { response in
                         guard let last = response.date.split(separator: "-").last,
                               let day = Int(last),
                               let selectedWeekday = Week(rawValue: vm.selectedDay),
@@ -139,7 +139,7 @@ struct MainView: View {
                         return response.cafeteria.name == sorted && day == selectedDay
                     }
                     
-                    MenuView(bookmark: $vm.bookmark, name: sorted, restaurant: filtered)
+                    MenuView(bookmark: $vm.bookmark, name: sorted, responseArray: filtered)
                         .padding(.bottom)
                 }
             }
@@ -149,21 +149,21 @@ struct MainView: View {
     private struct MenuView: View {
         @Binding var bookmark: [String]
         let name: String
-        let restaurant: [IntegratedResponse]
+        let responseArray: [CafeteriaResponse]
         
         var body: some View {
             VStack {
                 title
                 
                 ForEach(Category.allCases, id: \.self) { category in
-                    if !restaurant.filter({ $0.category == category }).isEmpty {
+                    if !responseArray.filter({ $0.category == category }).isEmpty {
                         VStack {
                             Text(category.rawValue)
                                 .font(.body())
                                 .foregroundColor(.black40)
                                 .frame(width: UIScreen.getWidth(300), alignment: .leading)
                             
-                            ForEach(restaurant.filter({ $0.category == category }), id: \.uuid) {
+                            ForEach(responseArray.filter({ $0.category == category }), id: \.uuid) {
                                 if $0.category == category {
                                     card($0)
                                 }
@@ -202,16 +202,16 @@ struct MainView: View {
             .padding(.bottom, UIScreen.getHeight(2))
         }
         
-        private func card(_ restaurant: IntegratedResponse) -> some View {
+        private func card(_ response: CafeteriaResponse) -> some View {
             VStack(alignment: .leading) {
-                if let title = restaurant.title {
+                if let title = response.title {
                     Text(title)
                         .font(.subhead())
                         .foregroundColor(.black100)
                         .padding(.bottom, UIScreen.getHeight(2))
                 }
                 
-                Text(restaurant.content)
+                Text(response.content)
                     .font(.body())
                     .foregroundColor(.black100)
                     .padding(.bottom, UIScreen.getHeight(2))

@@ -1,5 +1,5 @@
 //
-//  IntegratedResponse.swift
+//  CafeteriaResponse.swift
 //  PpuDaeSik
 //
 //  Created by 송재훈 on 8/14/24.
@@ -8,7 +8,7 @@
 import Foundation
 
 /// 기숙사, 학생 식당 응답
-struct IntegratedResponse: Serializable {
+struct CafeteriaResponse: Serializable {
     internal init(cafeteria: Cafeteria, date: String, category: Category, title: String? = nil, content: String) {
         self.cafeteria = cafeteria
         self.date = date
