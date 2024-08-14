@@ -141,9 +141,6 @@ struct MainView: View {
                     
                     MenuView(bookmark: $vm.bookmark, name: sorted, restaurant: filtered)
                         .padding(.bottom)
-                        .onChange(of: vm.bookmark) { _, newValue in
-                            vm.saveBookmark()
-                        }
                 }
             }
         }
