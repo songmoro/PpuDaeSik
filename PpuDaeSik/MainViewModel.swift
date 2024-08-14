@@ -74,9 +74,13 @@ extension MainViewModel {
     func checkDatabaseStatus() {
         RequestManager.request(.checkStatus) { status in
             status.forEach {
-                if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"], let deploymentStatus = DeploymentStatus(status: status) {
-                    self.requestByCampusDatabase(Campus(rawValue: self.selectedCampus.rawValue)!, queryType, deploymentStatus)
-                }
+                guard let DB = $0["DB"],
+                      let queryType = QueryType(rawValue: DB),
+                      let status = $0["Status"],
+                      let deploymentStatus = DeploymentStatus(status: status)
+                else { return }
+                
+                self.requestByCampusDatabase(self.selectedCampus, queryType, deploymentStatus)
             }
         }
     }
