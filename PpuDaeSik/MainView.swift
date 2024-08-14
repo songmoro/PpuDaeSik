@@ -57,13 +57,13 @@ struct MainView: View {
     
     private var campus: some View {
         HStack(spacing: 0) {
-            ForEach(Campus.allCases, id: \.self) { location in
+            ForEach(Campus.allCases, id: \.self) { campus in
                 VStack(spacing: 0) {
-                    Text("\(location.rawValue)")
-                        .foregroundColor(location.rawValue == vm.selectedCampus ? .black100 : .black40)
+                    Text("\(campus.rawValue)")
+                        .foregroundColor(campus.rawValue == vm.selectedCampus ? .black100 : .black40)
                         .padding(.bottom, UIScreen.getHeight(6))
                     
-                    if location.rawValue == vm.selectedCampus {
+                    if campus.rawValue == vm.selectedCampus {
                         Circle()
                             .foregroundColor(.blue100)
                             .frame(height: UIScreen.getHeight(5))
@@ -76,7 +76,7 @@ struct MainView: View {
                     }
                 }
                 .onTapGesture {
-                    vm.selectedCampus = location.rawValue
+                    vm.selectedCampus = campus.rawValue
                 }
                 .onChange(of: vm.selectedCampus) { _, newValue in
                     vm.checkDatabaseStatus()
