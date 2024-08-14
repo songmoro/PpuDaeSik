@@ -58,10 +58,11 @@ class MainViewModel: ObservableObject {
     }
     
     func sortedByBookmark() -> [String] {
-        let exceptBookmark = IntegratedRestaurant.allCases.filter {
-            !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus
-        }.map {
-            $0.name
+        let exceptBookmark: [String] = IntegratedRestaurant.allCases.compactMap {
+            if !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus {
+                return $0.name
+            }
+            return nil
         }
               
         return bookmark + exceptBookmark
