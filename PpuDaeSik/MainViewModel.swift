@@ -17,6 +17,13 @@ class MainViewModel: ObservableObject {
     @Published var bookmark: [String] = []
     @Published var integratedResponseArray = [IntegratedResponse]()
     
+    init() {
+        currentWeek()
+        selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
+        loadDefaultCampus()
+        loadBookmark()
+    }
+    
     func currentWeek() {
         let calendar: Calendar = {
             var calendar = Calendar.current

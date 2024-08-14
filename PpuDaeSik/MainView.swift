@@ -24,12 +24,6 @@ struct MainView: View {
                 Spacer()
             }
             .frame(width: UIScreen.getWidth(350))
-            .onAppear {
-                vm.currentWeek()
-                vm.selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
-                vm.loadDefaultCampus()
-                vm.loadBookmark()
-            }
             .sheet(isPresented: $vm.isSheetShow) {
                 Sheet(defaultCampus: $vm.defaultCampus)
                     .onChange(of: vm.defaultCampus) { _, newValue in
