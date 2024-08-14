@@ -37,14 +37,14 @@ extension Provider {
         }
     }
     
-    func queryDatabase(_ integratedRestaurant: IntegratedRestaurant, category: String, _ deploymentStatus: DeploymentStatus, completion: @escaping ([String]) -> ()) {
+    func queryDatabase(_ cafeteria: Cafeteria, category: String, _ deploymentStatus: DeploymentStatus, completion: @escaping ([String]) -> ()) {
         let provider = MoyaProvider<WidgetAPI>()
         
-        provider.request(.query(integratedRestaurant: integratedRestaurant, category, deploymentStatus)) { result in
+        provider.request(.query(cafeteria: cafeteria, category, deploymentStatus)) { result in
             switch result {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {
-                    switch integratedRestaurant {
+                    switch cafeteria {
                     case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당, .학생회관밀양학생식당, .학생회관밀양교직원식당, .편의동2층양산식당:
                         guard let decodedData = try? JSONDecoder().decode(NotionResponse<RestaurantProperties>.self, from: response.data),
                               let first = decodedData.results.compactMap({ IntegratedResponse($0.properties) }).first
@@ -53,7 +53,7 @@ extension Provider {
                             return
                         }
                         
-                        completion([first.restaurant.shortName, first.category.rawValue, first.content])
+                        completion([first.cafeteria.shortName, first.category.rawValue, first.content])
                     case .진리관, .웅비관, .자유관, .비마관, .행림관:
                         guard let decodedData = try? JSONDecoder().decode(NotionResponse<DomitoryProperties>.self, from: response.data),
                               let first = decodedData.results.compactMap({ IntegratedResponse($0.properties) }).first
@@ -62,7 +62,7 @@ extension Provider {
                             return
                         }
                         
-                        completion([first.restaurant.shortName, first.category.rawValue, first.content])
+                        completion([first.cafeteria.shortName, first.category.rawValue, first.content])
                     }
                 }
             case .failure(let error):

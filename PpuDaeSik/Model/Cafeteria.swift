@@ -1,5 +1,5 @@
 //
-//  IntegratedRestaurant.swift
+//  Cafeteria.swift
 //  PpuDaeSik
 //
 //  Created by 송재훈 on 8/13/24.
@@ -8,7 +8,7 @@
 import SwiftUI
 
 /// 기숙사, 식당 통합한 enum
-enum IntegratedRestaurant: Codable, CaseIterable {
+enum Cafeteria: Codable, CaseIterable {
     /// 학생 식당
     case 금정회관교직원식당, 금정회관학생식당, 샛벌회관식당, 학생회관학생식당, 학생회관밀양학생식당, 학생회관밀양교직원식당, 편의동2층양산식당
     /// 기숙사
@@ -82,7 +82,7 @@ enum IntegratedRestaurant: Codable, CaseIterable {
     
     /// 옵셔널 초기화
     init?(_ code: String) {
-        let restaurant: IntegratedRestaurant? = switch code {
+        let cafeteria: Cafeteria? = switch code {
         case "PG001": .금정회관교직원식당
         case "PG002": .금정회관학생식당
         case "PS001": .샛벌회관식당
@@ -98,7 +98,7 @@ enum IntegratedRestaurant: Codable, CaseIterable {
         default: nil
         }
         
-        guard let restaurant = restaurant else { return nil }
-        self = restaurant
+        guard let cafeteria = cafeteria else { return nil }
+        self = cafeteria
     }
 }

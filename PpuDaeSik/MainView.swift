@@ -136,7 +136,7 @@ struct MainView: View {
                               let selectedDay = vm.week[selectedWeekday]?.day
                         else { return false }
 
-                        return response.restaurant.name == sorted && day == selectedDay
+                        return response.cafeteria.name == sorted && day == selectedDay
                     }
                     
                     MenuView(bookmark: $vm.bookmark, name: sorted, restaurant: filtered)

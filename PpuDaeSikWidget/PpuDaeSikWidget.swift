@@ -19,14 +19,14 @@ struct Provider: IntentTimelineProvider {
     }
     
     func getTimeline(for configuration: ConfigurationIntent, in context: Context, completion: @escaping (Timeline<SimpleEntry>) -> Void) {
-        guard let restaurant = getIntegratedRestaurant(for: configuration),
+        guard let cafeteria = getCafeteria(for: configuration),
               let category = getCategory(for: configuration)
         else { return }
         let currentDate = Date()
         let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
         
         checkStatus { status in
-            queryDatabase(restaurant, category: category, status) {
+            queryDatabase(cafeteria, category: category, status) {
                 let entry = SimpleEntry(configuration: configuration, date: currentDate, name: $0[0], category: $0[1], meal: $0[2])
                 
                 let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
@@ -36,7 +36,7 @@ struct Provider: IntentTimelineProvider {
         }
     }
     
-    func getIntegratedRestaurant(for configuration: ConfigurationIntent) -> IntegratedRestaurant? {
+    func getCafeteria(for configuration: ConfigurationIntent) -> Cafeteria? {
         switch configuration.RestaurantEnum {
         case .d001: .진리관
         case .d002: .웅비관

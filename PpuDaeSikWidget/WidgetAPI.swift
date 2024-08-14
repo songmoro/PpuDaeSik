@@ -10,7 +10,7 @@ import Moya
 
 enum WidgetAPI {
     case checkStatus
-    case query(integratedRestaurant: IntegratedRestaurant, _ categoty: String, _ deploymentStatus: DeploymentStatus)
+    case query(cafeteria: Cafeteria, _ categoty: String, _ deploymentStatus: DeploymentStatus)
 }
 
 extension WidgetAPI: TargetType {

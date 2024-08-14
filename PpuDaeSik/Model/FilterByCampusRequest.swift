@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilterByCampusRequest: Codable {
     init(property: String, campus: Campus, date: [String]) {
-        let restaurantArray = IntegratedRestaurant.allCases.filter({ $0.campus == campus })
+        let restaurantArray = Cafeteria.allCases.filter({ $0.campus == campus })
         var code: [Filter.Or.ConditionalExpression]
         
         
