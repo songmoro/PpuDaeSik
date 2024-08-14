@@ -41,8 +41,8 @@ class MainViewModel: ObservableObject {
     func checkDatabaseStatus() {
         RequestManager.request(.checkStatus) { status in
             status.forEach {
-                if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"] {
-                    self.requestByCampusDatabase(Campus(rawValue: self.selectedCampus)!, queryType, DeploymentStatus.getStatus(status))
+                if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"], let deploymentStatus = DeploymentStatus(status: status) {
+                    self.requestByCampusDatabase(Campus(rawValue: self.selectedCampus)!, queryType, deploymentStatus)
                 }
             }
         }
