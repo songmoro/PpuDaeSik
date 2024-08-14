@@ -15,6 +15,7 @@ class MainViewModel: ObservableObject {
     @Published var integratedResponseArray = [IntegratedResponse]()
     @Published var selectedCampus: Campus = .부산 {
         didSet {
+            integratedResponseArray = []
             checkDatabaseStatus()
         }
     }
@@ -72,8 +73,6 @@ class MainViewModel: ObservableObject {
 /// 데이터베이스
 extension MainViewModel {
     func checkDatabaseStatus() {
-        self.integratedResponseArray = []
-        
         RequestManager.request(.checkStatus) { status in
             status.forEach {
                 guard let DB = $0["DB"],
