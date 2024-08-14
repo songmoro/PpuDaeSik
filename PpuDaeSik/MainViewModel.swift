@@ -77,7 +77,13 @@ class MainViewModel: ObservableObject {
     }
     
     func sortedByBookmark() -> [String] {
-        return bookmark + IntegratedRestaurant.allCases.filter({ !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus }).map({ $0.name })
+        let exceptBookmark = IntegratedRestaurant.allCases.filter {
+            !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus
+        }.map {
+            $0.name
+        }
+              
+        return bookmark + exceptBookmark
     }
     
     func saveDefaultCampus() {
