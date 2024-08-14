@@ -28,40 +28,37 @@ struct DeploymentProperties: Codable, Properties {
 }
 
 struct RestaurantProperties: Codable, Properties {
-    let menuDate, menuType: Property
-    let restaurantCode, menuTitle, menuContent: Property
+    let restaurantCode, menuTitle, menuDate, menuType, menuContent: Property
     
     enum CodingKeys: String, CodingKey {
-        case menuDate = "MENU_DATE"
-        case menuContent = "MENU_CONTENT"
         case restaurantCode = "RESTAURANT_CODE"
         case menuTitle = "MENU_TITLE"
+        case menuDate = "MENU_DATE"
         case menuType = "MENU_TYPE"
+        case menuContent = "MENU_CONTENT"
     }
     
-    func toDict() -> [String : String] {
+    func toDict() -> [String: String] {
         [
-            "menuDate": menuDate.richText[0].plainText,
-            "menuContent": menuContent.richText[0].plainText,
-            "restaurantCode": restaurantCode.richText[0].plainText,
-            "menuTitle": menuTitle.richText[0].plainText,
-            "menuType": menuType.richText[0].plainText,
+            "code": restaurantCode.richText[0].plainText,
+            "title": menuTitle.richText[0].plainText,
+            "date": menuDate.richText[0].plainText,
+            "category": menuType.richText[0].plainText,
+            "content": menuContent.richText[0].plainText,
         ]
     }
 }
 
 struct DomitoryProperties: Codable, Properties {
-    let codeNm, mealNm, mealDate: Property
-    let mealKindGcd: Property
     let no: Title
+    let mealDate, mealKindGcd, mealNm: Property
     
-    func toDict() -> [String : String] {
+    func toDict() -> [String: String] {
         [
-            "no": no.title[0].plainText,
-            "mealDate": mealDate.richText[0].plainText,
-            "mealKindGcd": mealKindGcd.richText[0].plainText,
-            "codeNm": codeNm.richText[0].plainText,
-            "mealNm": mealNm.richText[0].plainText
+            "code": no.title[0].plainText,
+            "date": mealDate.richText[0].plainText,
+            "category": mealKindGcd.richText[0].plainText,
+            "content": mealNm.richText[0].plainText
         ]
     }
 }

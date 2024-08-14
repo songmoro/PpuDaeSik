@@ -56,4 +56,32 @@ class RequestManager {
             }
         }
     }
+    
+    static func request<T: Serializable>(_ target: API, queryType: QueryType, completion: @escaping ([T]) -> (Void)) {
+        provider.request(target) { result in
+            switch result {
+            case .success(let response):
+                switch queryType {
+                case .restaurant:
+                    if let decodedData = try? JSONDecoder().decode(NotionResponse<RestaurantProperties>.self, from: response.data) {
+                        let mappedValue = decodedData.results.compactMap {
+                            T($0.properties)
+                        }
+                        
+                        completion(mappedValue)
+                    }
+                case .domitory:
+                    if let decodedData = try? JSONDecoder().decode(NotionResponse<DomitoryProperties>.self, from: response.data) {
+                        let mappedValue = decodedData.results.compactMap {
+                            T($0.properties)
+                        }
+                        
+                        completion(mappedValue)
+                    }
+                }
+            case .failure(let error):
+                fatalError(error.localizedDescription)
+            }
+        }
+    }
 }

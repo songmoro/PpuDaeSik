@@ -17,6 +17,7 @@ class MainViewModel: ObservableObject {
     @Published var bookmark: [String] = []
     @Published var restaurant = [RestaurantResponse]()
     @Published var domitory = [DomitoryResponse]()
+    @Published var integratedResponseArray = [IntegratedResponse]()
     
     func currentWeek() {
         let calendar: Calendar = {
@@ -42,23 +43,20 @@ class MainViewModel: ObservableObject {
     func checkDatabaseStatus() {
         RequestManager.request(.checkStatus) { status in
             status.forEach {
-                if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"] {
-                    self.requestByCampusDatabase(queryType, Campus(rawValue: self.selectedCampus)!, DeploymentStatus.getStatus(status))
+                if let DB = $0["DB"], let _ = QueryType(rawValue: DB), let status = $0["Status"] {
+                    self.requestByCampusDatabase(Campus(rawValue: self.selectedCampus)!, DeploymentStatus.getStatus(status))
                 }
             }
         }
     }
     
-    func requestByCampusDatabase(_ queryType: QueryType, _ campus: Campus, _ deploymentStatus: DeploymentStatus) {
-        switch queryType {
-        case .restaurant:
-            RequestManager.request(.queryByCampus(.restaurant, campus, deploymentStatus), RestaurantResponse.self) {
-                self.restaurant = $0
-            }
-        case .domitory:
-            RequestManager.request(.queryByCampus(.domitory, campus, deploymentStatus), DomitoryResponse.self) {
-                self.domitory = $0
-            }
+    func requestByCampusDatabase(_ campus: Campus, _ deploymentStatus: DeploymentStatus) {
+        RequestManager.request(.queryByCampus(.restaurant, campus, deploymentStatus), IntegratedResponse.self) {
+            self.integratedResponseArray += $0
+        }
+        
+        RequestManager.request(.queryByCampus(.domitory, campus, deploymentStatus), IntegratedResponse.self) {
+            self.integratedResponseArray += $0
         }
     }
     

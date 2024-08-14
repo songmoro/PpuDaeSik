@@ -37,4 +37,17 @@ enum Category: String, CaseIterable, Hashable, Codable {
         default: .조기
         }
     }
+    
+    init?(rawValue: String) {
+        let category: Category? = switch rawValue {
+        case "01": .조기
+        case "02", "B": .조식
+        case "03", "L": .중식
+        case "04", "D": .석식
+        default: nil
+        }
+        
+        guard let category = category else { return nil }
+        self = category
+    }
 }
