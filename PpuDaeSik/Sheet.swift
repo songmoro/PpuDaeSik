@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Sheet: View {
-    @Binding var defaultCampus: String
+    @Binding var defaultCampus: Campus
     
     var body: some View {
         ZStack {
@@ -47,5 +47,5 @@ struct Sheet: View {
 }
 
 #Preview {
-    Sheet(defaultCampus: .constant("밀양"))
+    Sheet(defaultCampus: .constant(.밀양))
 }

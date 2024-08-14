@@ -57,10 +57,10 @@ struct MainView: View {
             ForEach(Campus.allCases, id: \.self) { campus in
                 VStack(spacing: 0) {
                     Text("\(campus.rawValue)")
-                        .foregroundColor(campus.rawValue == vm.selectedCampus ? .black100 : .black40)
+                        .foregroundColor(campus == vm.selectedCampus ? .black100 : .black40)
                         .padding(.bottom, UIScreen.getHeight(6))
                     
-                    if campus.rawValue == vm.selectedCampus {
+                    if campus == vm.selectedCampus {
                         Circle()
                             .foregroundColor(.blue100)
                             .frame(height: UIScreen.getHeight(5))
@@ -73,7 +73,7 @@ struct MainView: View {
                     }
                 }
                 .onTapGesture {
-                    vm.selectedCampus = campus.rawValue
+                    vm.selectedCampus = campus
                 }
                 .animation(.default, value: vm.selectedCampus)
                 .padding(.trailing)

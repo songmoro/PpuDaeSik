@@ -13,12 +13,12 @@ class MainViewModel: ObservableObject {
     @Published var weekday: [Week: Int] = [:]
     @Published var week: [Week: DateComponents] = [:]
     @Published var integratedResponseArray = [IntegratedResponse]()
-    @Published var selectedCampus = "" {
+    @Published var selectedCampus: Campus = .부산 {
         didSet {
             checkDatabaseStatus()
         }
     }
-    @Published var defaultCampus = "부산" {
+    @Published var defaultCampus: Campus = .부산 {
         didSet {
             saveDefaultCampus()
         }
@@ -59,7 +59,7 @@ class MainViewModel: ObservableObject {
     
     func sortedByBookmark() -> [String] {
         let exceptBookmark: [String] = IntegratedRestaurant.allCases.compactMap {
-            if !bookmark.contains($0.name) && $0.campus.rawValue == self.selectedCampus {
+            if !bookmark.contains($0.name) && $0.campus == self.selectedCampus {
                 return $0.name
             }
             return nil
@@ -75,7 +75,7 @@ extension MainViewModel {
         RequestManager.request(.checkStatus) { status in
             status.forEach {
                 if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"], let deploymentStatus = DeploymentStatus(status: status) {
-                    self.requestByCampusDatabase(Campus(rawValue: self.selectedCampus)!, queryType, deploymentStatus)
+                    self.requestByCampusDatabase(Campus(rawValue: self.selectedCampus.rawValue)!, queryType, deploymentStatus)
                 }
             }
         }
@@ -94,7 +94,7 @@ extension MainViewModel {
 /// 유저 디폴트
 extension MainViewModel {
     func saveDefaultCampus() {
-        UserDefaults.standard.setValue(defaultCampus, forKey: "defaultCampus")
+        UserDefaults.standard.setValue(defaultCampus.rawValue, forKey: "defaultCampus")
     }
     
     func saveBookmark() {
@@ -102,9 +102,9 @@ extension MainViewModel {
     }
     
     func loadDefaultCampus() {
-        guard let campus = UserDefaults.standard.string(forKey: "defaultCampus") else {
-            defaultCampus = "부산"
-            selectedCampus = "부산"
+        guard let storedCampus = UserDefaults.standard.string(forKey: "defaultCampus"), let campus =  Campus(storedCampus) else {
+            defaultCampus = .부산
+            selectedCampus = .부산
             return
         }
         
