@@ -78,9 +78,6 @@ struct MainView: View {
                 .onTapGesture {
                     vm.selectedCampus = campus.rawValue
                 }
-                .onChange(of: vm.selectedCampus) { _, newValue in
-                    vm.checkDatabaseStatus()
-                }
                 .animation(.default, value: vm.selectedCampus)
                 .padding(.trailing)
             }
@@ -89,6 +86,9 @@ struct MainView: View {
             Spacer()
         }
         .padding(.bottom, UIScreen.getHeight(8))
+        .onChange(of: vm.selectedCampus) { _, newValue in
+            vm.checkDatabaseStatus()
+        }
     }
     
     private var week: some View {
