@@ -24,7 +24,7 @@ struct RestaurantResponse: Codable, Hashable, Serializable {
         self.content = unwrappedValue["MENU_CONTENT"] ?? ""
         
         let code = unwrappedValue["RESTAURANT_NAME"] ?? ""
-        guard let integratedRestaurant = IntegratedRestaurant(code: code) else {
+        guard let integratedRestaurant = IntegratedRestaurant(code) else {
             fatalError("식당 분류 실패")
         }
         
@@ -42,12 +42,12 @@ struct RestaurantResponse: Codable, Hashable, Serializable {
         let properties = properties.toDict()
         
         guard let restaurantCode = properties["restaurantCode"],
-              let integratedRestaurant = IntegratedRestaurant(code: restaurantCode),
+              let integratedRestaurant = IntegratedRestaurant(restaurantCode),
               let menuDate = properties["menuDate"],
               let menuType = properties["menuType"],
               let menuTitle = properties["menuTitle"],
               let menuContent = properties["menuContent"],
-              let category = Category.init(rawValue: menuType)
+              let category = Category(menuType)
         else { return nil }
 
         self.init(integratedRestaurant: integratedRestaurant, MENU_DATE: menuDate, MENU_TYPE: menuType, MENU_TITLE: menuTitle, MENU_CONTENT: menuContent, CATEGORY: category)

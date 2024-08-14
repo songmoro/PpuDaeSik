@@ -27,10 +27,10 @@ struct IntegratedResponse: Serializable {
         let title = properties["title"]
         
         guard let code = properties["code"],
-              let integratedRestaurant = IntegratedRestaurant(code: code),
+              let integratedRestaurant = IntegratedRestaurant(code),
               let date = properties["date"],
               let rawCategory = properties["category"],
-              let category = Category(rawValue: rawCategory),
+              let category = Category(rawCategory),
               let content = properties["content"]
         else { return nil }
         

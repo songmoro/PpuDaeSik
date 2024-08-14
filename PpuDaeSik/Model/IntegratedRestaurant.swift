@@ -93,7 +93,7 @@ enum IntegratedRestaurant: Codable, CaseIterable {
     }
     
     /// 옵셔널 초기화
-    init?(code: String) {
+    init?(_ code: String) {
         let restaurant: IntegratedRestaurant? = switch code {
         case "PG001": .금정회관교직원식당
         case "PG002": .금정회관학생식당

@@ -25,7 +25,7 @@ struct DomitoryResponse: Codable, Serializable {
         self.mealNm = unwrappedValue["mealNm"] ?? ""
         
         let no = unwrappedValue["no"] ?? ""
-        guard let integratedRestaurant = IntegratedRestaurant(code: no) else {
+        guard let integratedRestaurant = IntegratedRestaurant(no) else {
             fatalError("식당 분류 실패")
         }
         self.integratedRestaurant = integratedRestaurant
@@ -46,8 +46,8 @@ struct DomitoryResponse: Codable, Serializable {
               let mealKindGcd = properties["mealKindGcd"],
               let codeNm = properties["codeNm"],
               let mealNm = properties["mealNm"],
-              let integratedRestaurant = IntegratedRestaurant(code: no),
-              let category = Category.init(rawValue: mealKindGcd)
+              let integratedRestaurant = IntegratedRestaurant(no),
+              let category = Category(mealKindGcd)
         else { fatalError("기숙사 초기화 실패") }
         
         self.init(integratedRestaurant: integratedRestaurant, mealDate: mealDate, mealKindGcd: mealKindGcd, codeNm: codeNm, mealNm: mealNm, category: category)
