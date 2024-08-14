@@ -26,9 +26,6 @@ struct MainView: View {
             .frame(width: UIScreen.getWidth(350))
             .sheet(isPresented: $vm.isSheetShow) {
                 Sheet(defaultCampus: $vm.defaultCampus)
-                    .onChange(of: vm.defaultCampus) { _, newValue in
-                        vm.saveDefaultCampus()
-                    }
             }
         }
     }

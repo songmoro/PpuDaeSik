@@ -12,12 +12,16 @@ class MainViewModel: ObservableObject {
     @Published var isSheetShow = false
     @Published var weekday: [Week: Int] = [:]
     @Published var week: [Week: DateComponents] = [:]
-    @Published var defaultCampus = "부산"
     @Published var bookmark: [String] = []
     @Published var integratedResponseArray = [IntegratedResponse]()
     @Published var selectedCampus = "" {
         didSet {
             checkDatabaseStatus()
+        }
+    }
+    @Published var defaultCampus = "부산" {
+        didSet {
+            saveDefaultCampus()
         }
     }
     
