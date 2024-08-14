@@ -9,16 +9,18 @@ import SwiftUI
 
 struct FilterByCampusRequest: Codable {
     init(property: String, campus: Campus, date: [String]) {
+        let restaurantArray = IntegratedRestaurant.allCases.filter({ $0.campus == campus })
         var code: [Filter.Or.ConditionalExpression]
         
+        
         if property == "MENU_DATE" {
-            code = campus.restaurant.map { c in
-                Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code))
+            code = restaurantArray.map { restaurant in
+                Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: restaurant.code))
             }
         }
         else {
-            code = campus.domitory.map { c in
-                Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: c.code))
+            code = restaurantArray.map { restaurant in
+                Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: restaurant.code))
             }
         }
         
