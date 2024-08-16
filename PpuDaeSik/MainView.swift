@@ -16,7 +16,7 @@ struct MainView: View {
             Color.gray100.ignoresSafeArea()
             
             VStack {
-                title
+                HeaderView(isSheetShow: $vm.isSheetShow)
                 campus
                 week
                 Divider()
@@ -26,22 +26,6 @@ struct MainView: View {
             .frame(width: UIScreen.getWidth(350))
             .sheet(isPresented: $vm.isSheetShow) {
                 Sheet(defaultCampus: $vm.defaultCampus)
-            }
-        }
-    }
-    
-    private var title: some View {
-        HStack {
-            ImageComponent.logo(vm.isSheetShow)
-            
-            TextComponent.mainTitle
-            
-            Spacer()
-            
-            Button {
-                vm.isSheetShow = true
-            } label: {
-                ImageComponent.setting
             }
         }
     }

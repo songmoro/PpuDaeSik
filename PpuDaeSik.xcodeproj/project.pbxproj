@@ -41,6 +41,7 @@
 		F820CB9B2C6F9491008694EC /* CircleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9A2C6F9491008694EC /* CircleComponent.swift */; };
 		F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9C2C6F991F008694EC /* ImageComponent.swift */; };
 		F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9E2C6F9B43008694EC /* RectangleComponent.swift */; };
+		F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA02C6FA2E7008694EC /* HeaderView.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -131,6 +132,7 @@
 		F820CB9A2C6F9491008694EC /* CircleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleComponent.swift; sourceTree = "<group>"; };
 		F820CB9C2C6F991F008694EC /* ImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComponent.swift; sourceTree = "<group>"; };
 		F820CB9E2C6F9B43008694EC /* RectangleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleComponent.swift; sourceTree = "<group>"; };
+		F820CBA02C6FA2E7008694EC /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -239,6 +241,7 @@
 		F820CB952C6F6848008694EC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F820CBA02C6FA2E7008694EC /* HeaderView.swift */,
 				F820CB962C6F685C008694EC /* MenuView.swift */,
 				F820CB982C6F6D0D008694EC /* TextComponent.swift */,
 				F820CB9A2C6F9491008694EC /* CircleComponent.swift */,
@@ -525,6 +528,7 @@
 				F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
+				F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 				F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */,
 				F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */,
