@@ -21,7 +21,7 @@ struct WeekView: View {
                     
                     Group {
                         if let day = week[weekday]?.day {
-                            TextComponent.dayText(day.description, weekday.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue)
+                            TextComponent.dayText(day.description, weekday.rawValue == Day.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue)
                         }
                         
                         switch selectedDay {
