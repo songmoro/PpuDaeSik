@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct CircleComponent {
+    /// 선택된 탭 점
+    /// - 선택한 캠퍼스, 요일 파란 점
     static var selectedComponentDot: some View {
         Circle()
             .foregroundColor(.blue100)
             .frame(height: UIScreen.getHeight(5))
     }
     
+    /// 선택되지 않은 탭 점
+    /// - 선택되지 않은 캠퍼스, 요일 빈 점
     static var unselectedComponentDot: some View {
         Circle()
             .foregroundColor(.clear)
