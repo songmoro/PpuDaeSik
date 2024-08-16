@@ -28,6 +28,7 @@ class MainViewModel: ObservableObject {
         }
     }
     @Published var selectedDay: Day = .일
+    // TODO: currentCafeteriaArray 만들어서 selectedDay, selectedCampus에 따른 계산된 변수 만들어주기.
     
     init() {
         currentWeek()
