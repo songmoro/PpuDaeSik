@@ -10,7 +10,7 @@ import Moya
 
 enum WidgetAPI {
     case checkStatus
-    case queryByRestaurant(isUpdate: Bool, code: String, type: QueryType, category: [String])
+    case query(cafeteria: Cafeteria, _ categoty: String, _ deploymentStatus: DeploymentStatus)
 }
 
 extension WidgetAPI: TargetType {
@@ -23,50 +23,26 @@ extension WidgetAPI: TargetType {
     var path: String {
         switch self {
         case .checkStatus:
-            return "/databases/" + "233f1075520f4e38b9fb8350901219fb" + "/query"
-        case .queryByRestaurant(let isUpdate, _, let type, _):
-            if isUpdate {
-                var databaseId: String {
-                    switch type {
-                    case .restaurant:
-                        "da22b69d795c4e879b77dd657948ea4e"
-                    case .domitory:
-                        "264bceb5a8ef45a0befbec5d407b37f9"
-                    }
-                }
-                
-                return "/databases/\(databaseId)/query"
-            }
-            else {
-                var databaseId: String {
-                    switch type {
-                    case .restaurant:
-                        "912baee21c7643628355569d16aeb8b8"
-                    case .domitory:
-                        "656bc1391c7843e292a7d89be6567f74"
-                    }
-                }
-                
-                return "/databases/\(databaseId)/query"
+            return NotionDatabase.status.path()
+        case .query(let cafeteria, _, let deploymentStatus):
+            switch cafeteria {
+            case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당, .학생회관밀양학생식당, .학생회관밀양교직원식당, .편의동2층양산식당:
+                return NotionDatabase.restaurant(deploymentStatus).path()
+            case .진리관, .웅비관, .자유관, .비마관, .행림관:
+                return NotionDatabase.domitory(deploymentStatus).path()
             }
         }
     }
     
     var method: Moya.Method {
-        switch self {
-        case .checkStatus:
-            return .post
-        case .queryByRestaurant:
-            return .post
-        }
+        .post
     }
     
     var task: Moya.Task {
         switch self {
         case .checkStatus:
             return .requestPlain
-        case .queryByRestaurant(_, let code, let type, let category):
-            
+        case .query(let cafeteria, let category, _):
             let calendar: Calendar = {
                 var calendar = Calendar.current
                 calendar.locale = Locale(identifier: "ko_KR")
@@ -92,11 +68,11 @@ extension WidgetAPI: TargetType {
             }()
             
             var data: FilterByCampusRequest {
-                switch type {
-                case .restaurant:
-                    FilterByCampusRequest(property: "MENU_DATE", name: code, date: date, category: category)
-                case .domitory:
-                    FilterByCampusRequest(property: "mealDate", name: code, date: date, category: category)
+                switch cafeteria {
+                case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당, .학생회관밀양학생식당, .학생회관밀양교직원식당, .편의동2층양산식당:
+                    FilterByCampusRequest(property: "MENU_DATE", name: cafeteria.code, date: date, category: category)
+                case .진리관, .웅비관, .자유관, .비마관, .행림관:
+                    FilterByCampusRequest(property: "mealDate", name: cafeteria.code, date: date, category: category)
                 }
             }
             
@@ -105,9 +81,6 @@ extension WidgetAPI: TargetType {
     }
     
     var headers: [String: String]? {
-        switch self {
-        default:
-            return ["Content-Type": "application/json", "Notion-Version": "2022-02-22", "Authorization": "Bearer secret_pjqPKFig0CIkvnm5BwFC8NWueGnV7MuXOYM0qXJeOzr"]
-        }
+        MoyaHeader.Notion.header()
     }
 }

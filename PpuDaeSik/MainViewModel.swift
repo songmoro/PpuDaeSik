@@ -8,15 +8,34 @@
 import SwiftUI
 
 class MainViewModel: ObservableObject {
-    @Published var selectedCampus = ""
     @Published var selectedDay = ""
     @Published var isSheetShow = false
     @Published var weekday: [Week: Int] = [:]
     @Published var week: [Week: DateComponents] = [:]
-    @Published var defaultCampus = "부산"
-    @Published var bookmark: [String] = []
-    @Published var restaurant = [RestaurantResponse]()
-    @Published var domitory = [DomitoryResponse]()
+    @Published var cafeteriaResponseArray = [CafeteriaResponse]()
+    @Published var selectedCampus: Campus = .부산 {
+        didSet {
+            cafeteriaResponseArray = []
+            checkDatabaseStatus()
+        }
+    }
+    @Published var defaultCampus: Campus = .부산 {
+        didSet {
+            saveDefaultCampus()
+        }
+    }
+    @Published var bookmark: [String] = [] {
+        didSet {
+            saveBookmark()
+        }
+    }
+    
+    init() {
+        currentWeek()
+        selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
+        loadDefaultCampus()
+        loadBookmark()
+    }
     
     func currentWeek() {
         let calendar: Calendar = {
@@ -39,103 +58,45 @@ class MainViewModel: ObservableObject {
         self.week = Dictionary(uniqueKeysWithValues: zip(Week.allCases, week.sorted(by: { $0.weekday! < $1.weekday! })))
     }
     
+    func sortedByBookmark() -> [String] {
+        let exceptBookmark: [String] = Cafeteria.allCases.compactMap {
+            if !bookmark.contains($0.name) && $0.campus == self.selectedCampus {
+                return $0.name
+            }
+            return nil
+        }
+              
+        return bookmark + exceptBookmark
+    }
+}
+
+/// 데이터베이스
+extension MainViewModel {
     func checkDatabaseStatus() {
         RequestManager.request(.checkStatus) { status in
             status.forEach {
-                if let DB = $0["DB"], let queryType = QueryType(rawValue: DB), let status = $0["Status"] {
-                    self.requestByCampusDatabase(queryType, Campus(rawValue: self.selectedCampus)!, DeploymentStatus.getStatus(status))
-                }
+                guard let DB = $0["DB"],
+                      let queryType = QueryType(rawValue: DB),
+                      let status = $0["Status"],
+                      let deploymentStatus = DeploymentStatus(status: status)
+                else { return }
+                
+                self.requestByCampusDatabase(self.selectedCampus, queryType, deploymentStatus)
             }
         }
     }
     
-    func requestByCampusDatabase(_ queryType: QueryType, _ campus: Campus, _ deploymentStatus: DeploymentStatus) {
-        switch queryType {
-        case .restaurant:
-            RequestManager.request(.queryByCampus(.restaurant, campus, deploymentStatus), RestaurantResponse.self) {
-                self.restaurant = $0
-            }
-        case .domitory:
-            RequestManager.request(.queryByCampus(.domitory, campus, deploymentStatus), DomitoryResponse.self) {
-                self.domitory = $0
-            }
+    func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType, _ deploymentStatus: DeploymentStatus) {
+        RequestManager.request(.queryByCampus(queryType, campus, deploymentStatus), CafeteriaResponse.self) {
+            self.cafeteriaResponseArray += $0
         }
     }
-    
-    func sortedByBookmark() -> [String] {
-        let restaurant = Restaurant.allCases.filter {
-            !bookmark.contains($0.rawValue) && ($0.campus.rawValue == selectedCampus)
-        }.sorted {
-            ($0.order) < ($1.order)
-        }.map({ $0.rawValue })
-        
-        let domitory = Domitory.allCases.filter {
-            !bookmark.contains($0.name) && ($0.campus.rawValue == selectedCampus)
-        }.sorted {
-            ($0.order) < ($1.order)
-        }.map({ $0.name })
-        return bookmark + restaurant + domitory
-    }
-    
-    func filterByRestaurant(_ restaurantName: String) -> [RestaurantResponse] {
-        if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
-            return restaurant.filter {
-                ($0.RESTAURANT.rawValue == restaurantName) && (Int($0.MENU_DATE.suffix(2)) == day)
-            }.sorted {
-                $0.CATEGORY.order < $1.CATEGORY.order
-            }
-        }
-        
-        return []
-    }
-    
-    func filterByDomitory(_ restaurant: String) -> [DomitoryResponse] {
-        if let selectedWeekday = Week(rawValue: selectedDay), let day = week[selectedWeekday]?.day {
-            return domitory.filter {
-                ($0.domitory.name == restaurant) && (Int($0.mealDate.suffix(2)) == day)
-            }
-        }
-        
-        return []
-    }
-    
-    func checkType(_ restaurant: String) -> QueryType {
-        if (Restaurant.allCases.map({ $0.rawValue }).contains(restaurant)) {
-            .restaurant
-        }
-        else {
-            .domitory
-        }
-    }
-    
-    func filterByCategory(_ category: Category, _ restaurant: [RestaurantResponse]) -> [RestaurantResponse] {
-        restaurant.filter {
-            $0.CATEGORY == category
-        }
-    }
-    
-    func sortedRestaurant() -> [RestaurantResponse] {
-        if let selectedWeekday = Week(rawValue: selectedDay), let day = weekday[selectedWeekday] {
-            let bookmarkRestaurant = restaurant.filter { restaurant in
-                (bookmark.contains(restaurant.NAME)) && (restaurant.CAMPUS.rawValue == selectedCampus) && (Int(restaurant.MENU_DATE.suffix(2)) == day)
-            }.sorted {
-                ($0.RESTAURANT.order, $0.CATEGORY.order) < ($1.RESTAURANT.order, $1.CATEGORY.order)
-            }
-            
-            let restaurant = restaurant.filter {
-                (!bookmark.contains($0.NAME)) && ($0.CAMPUS.rawValue == selectedCampus) && (Int($0.MENU_DATE.suffix(2)) == day)
-            }.sorted {
-                ($0.RESTAURANT.order, $0.CATEGORY.order) < ($1.RESTAURANT.order, $1.CATEGORY.order)
-            }
-            
-            return (bookmarkRestaurant + restaurant)
-        }
-        
-        return []
-    }
-    
+}
+
+/// 유저 디폴트
+extension MainViewModel {
     func saveDefaultCampus() {
-        UserDefaults.standard.setValue(defaultCampus, forKey: "defaultCampus")
+        UserDefaults.standard.setValue(defaultCampus.rawValue, forKey: "defaultCampus")
     }
     
     func saveBookmark() {
@@ -143,13 +104,14 @@ class MainViewModel: ObservableObject {
     }
     
     func loadDefaultCampus() {
-        guard let defaultCampus = UserDefaults.standard.string(forKey: "defaultCampus") else {
-            self.defaultCampus = "부산"
-            selectedCampus = "부산"
+        guard let storedCampus = UserDefaults.standard.string(forKey: "defaultCampus"), let campus =  Campus(storedCampus) else {
+            defaultCampus = .부산
+            selectedCampus = .부산
             return
         }
-        self.defaultCampus = defaultCampus
-        selectedCampus = defaultCampus
+        
+        defaultCampus = campus
+        selectedCampus = campus
     }
     
     func loadBookmark() {

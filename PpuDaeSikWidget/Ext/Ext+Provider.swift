@@ -9,135 +9,60 @@ import SwiftUI
 import Moya
 
 extension Provider {
-    func checkDatabase(completion: @escaping (Bool) -> ()) {
+    func checkStatus(completion: @escaping (DeploymentStatus) -> ()) {
         let provider = MoyaProvider<WidgetAPI>()
         
         provider.request(.checkStatus) { result in
             switch result {
             case .success(let response):
-                if response.statusCode == 200 {
-                    if let decodedData = try? JSONDecoder().decode(CheckDatabase.self, from: response.data) {
-                        let status = decodedData.results.compactMap { queryProperties in
-                            let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
-                                let key = $1.key
-                                
-                                if let subject = $1.value.title, !subject.isEmpty {
-                                    let text = subject.map { plainText in
-                                        plainText.plain_text
-                                    }
-                                    
-                                    $0[key] = text.first!
-                                }
-                                if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
-                                    let text = rich_text.map { plainText in
-                                        plainText.plain_text
-                                    }
-                                    
-                                    $0[key] = text.first!
-                                }
-                                if let title = $1.value.rich_text, !title.isEmpty {
-                                    let text = title.map { plainText in
-                                        plainText.plain_text
-                                    }
-                                    
-                                    $0[key] = text.first!
-                                }
-                            }
-                            
-                            return unwrappedValue
+                if (200..<300).contains(response.statusCode) {
+                    if let decodedData = try? JSONDecoder().decode(NotionResponse<DeploymentProperties> .self, from: response.data) {
+                        let status = decodedData.results.compactMap {
+                            $0.properties.toDict()
                         }
                         
-                        if status.contains(where: { $0["Status"] == "Done" }) {
-                            completion(true)
-                        }
-                        else {
-                            completion(false)
+                        status.forEach {
+                            guard let DB = $0["DB"],
+                                  let status = $0["Status"],
+                                  let deploymentStatus = DeploymentStatus(status: status)
+                            else { return }
+                            
+                            completion(deploymentStatus)
                         }
                     }
                 }
             case .failure(let error):
-                print(error.localizedDescription)
+                fatalError(error.localizedDescription)
             }
         }
     }
     
-    func queryDatabase(_ isUpdate: Bool, _ code: String, _ type: QueryType, category: [String], completion: @escaping ([String]) -> ()) {
+    func queryDatabase(_ cafeteria: Cafeteria, category: String, _ deploymentStatus: DeploymentStatus, completion: @escaping ([String]) -> ()) {
         let provider = MoyaProvider<WidgetAPI>()
         
-        provider.request(.queryByRestaurant(isUpdate: isUpdate, code: code, type: type, category: category)) { result in
+        provider.request(.query(cafeteria: cafeteria, category, deploymentStatus)) { result in
             switch result {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {
-                    if let decodedData = try? JSONDecoder().decode(QueryDatabase.self, from: response.data) {
-                        switch type {
-                        case .restaurant:
-                            let restrant = decodedData.results.compactMap { queryProperties in
-                                let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
-                                    let key = $1.key
-                                    
-                                    if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
-                                        let text = rich_text.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                    if let title = $1.value.rich_text, !title.isEmpty {
-                                        let text = title.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                }
-                                
-                                return RestaurantResponse(unwrappedValue)
-                            }
-                            
-                            if let restrant = restrant.first {
-                                completion([restrant.RESTAURANT.shortName, restrant.CATEGORY.rawValue, restrant.MENU_CONTENT])
-                            }
-                            else {
-                                completion(["", "", "식단이 존재하지 않아요"])
-                            }
-                        case .domitory:
-                            let domitory = decodedData.results.compactMap { queryProperties in
-                                let unwrappedValue = queryProperties.properties.reduce(into: [String: String]()) {
-                                    let key = $1.key
-                                    
-                                    if let subject = $1.value.title, !subject.isEmpty {
-                                        let text = subject.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                    if let rich_text = $1.value.rich_text, !rich_text.isEmpty {
-                                        let text = rich_text.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                    if let title = $1.value.rich_text, !title.isEmpty {
-                                        let text = title.map { plainText in
-                                            plainText.plain_text
-                                        }
-                                        
-                                        $0[key] = text.first!
-                                    }
-                                }
-
-                                return DomitoryResponse(unwrappedValue)
-                            }
-                            
-                            if let domitory = domitory.first {
-                                completion([domitory.domitory.name, domitory.category.rawValue, domitory.mealNm])
-                            }
-                            else {
-                                completion(["", "", "식단이 존재하지 않아요"])
-                            }
+                    switch cafeteria {
+                    case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당, .학생회관밀양학생식당, .학생회관밀양교직원식당, .편의동2층양산식당:
+                        guard let decodedData = try? JSONDecoder().decode(NotionResponse<RestaurantProperties>.self, from: response.data),
+                              let first = decodedData.results.compactMap({ CafeteriaResponse($0.properties) }).first
+                        else {
+                            completion(["", "", "식단이 존재하지 않아요"])
+                            return
                         }
+                        
+                        completion([first.cafeteria.shortName, first.category.rawValue, first.content])
+                    case .진리관, .웅비관, .자유관, .비마관, .행림관:
+                        guard let decodedData = try? JSONDecoder().decode(NotionResponse<DomitoryProperties>.self, from: response.data),
+                              let first = decodedData.results.compactMap({ CafeteriaResponse($0.properties) }).first
+                        else {
+                            completion(["", "", "식단이 존재하지 않아요"])
+                            return
+                        }
+                        
+                        completion([first.cafeteria.shortName, first.category.rawValue, first.content])
                     }
                 }
             case .failure(let error):
