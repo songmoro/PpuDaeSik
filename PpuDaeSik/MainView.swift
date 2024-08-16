@@ -57,15 +57,11 @@ struct MainView: View {
                     TextComponent.campusTitle(campus.rawValue, campus == vm.selectedCampus)
                     
                     if campus == vm.selectedCampus {
-                        Circle()
-                            .foregroundColor(.blue100)
-                            .frame(height: UIScreen.getHeight(5))
+                        CircleComponent.selectedComponentDot
                             .matchedGeometryEffect(id: "campus", in: namespcae)
                     }
                     else {
-                        Circle()
-                            .foregroundColor(.clear)
-                            .frame(height: UIScreen.getHeight(5))
+                        CircleComponent.unselectedComponentDot
                     }
                 }
                 .onTapGesture {
@@ -93,15 +89,11 @@ struct MainView: View {
                         }
                         
                         if weekday.rawValue == vm.selectedDay  {
-                            Circle()
-                                .foregroundColor(.blue100)
-                                .frame(height: UIScreen.getHeight(5))
+                            CircleComponent.selectedComponentDot
                                 .matchedGeometryEffect(id: "weekday", in: namespcae)
                         }
                         else {
-                            Circle()
-                                .foregroundColor(.clear)
-                                .frame(height: UIScreen.getHeight(5))
+                            CircleComponent.unselectedComponentDot
                         }
                     }
                     .onTapGesture {
@@ -126,7 +118,7 @@ struct MainView: View {
                               let selectedWeekday = Week(rawValue: vm.selectedDay),
                               let selectedDay = vm.week[selectedWeekday]?.day
                         else { return false }
-
+                        
                         return response.cafeteria.name == sorted && day == selectedDay
                     }
                     
