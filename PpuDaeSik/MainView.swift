@@ -32,9 +32,7 @@ struct MainView: View {
     
     private var title: some View {
         HStack {
-            Image(vm.isSheetShow ? "LogoEye" : "Logo")
-                .resizable()
-                .frame(width: UIScreen.getWidth(50), height: UIScreen.getWidth(50))
+            ImageComponent.logo(vm.isSheetShow)
             
             TextComponent.mainTitle
             
@@ -43,9 +41,7 @@ struct MainView: View {
             Button {
                 vm.isSheetShow = true
             } label: {
-                Image(systemName: "gearshape.fill")
-                    .font(.largeTitle())
-                    .foregroundColor(.blue100)
+                ImageComponent.setting
             }
         }
     }

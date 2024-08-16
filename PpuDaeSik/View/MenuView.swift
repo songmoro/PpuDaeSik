@@ -50,9 +50,7 @@ struct MenuView: View {
                     bookmark.append(name)
                 }
             } label: {
-                Image(systemName: "star.fill")
-                    .font(.headline())
-                    .foregroundColor(bookmark.contains(name) ? .yellow100 : .black20)
+                ImageComponent.star(bookmark.contains(name))
             }
         }
         .padding(.bottom, UIScreen.getHeight(2))
