@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MainView: View {
-    @Namespace private var namespcae
+    @Namespace private var namespace
     @StateObject private var vm = MainViewModel()
     
     var body: some View {
@@ -17,7 +17,7 @@ struct MainView: View {
             
             VStack {
                 HeaderView(isSheetShow: $vm.isSheetShow)
-                campus
+                CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
                 week
                 Divider()
                 menu
@@ -28,33 +28,6 @@ struct MainView: View {
                 Sheet(defaultCampus: $vm.defaultCampus)
             }
         }
-    }
-    
-    private var campus: some View {
-        HStack(spacing: 0) {
-            ForEach(Campus.allCases, id: \.self) { campus in
-                VStack(spacing: 0) {
-                    TextComponent.campusTitle(campus.rawValue, campus == vm.selectedCampus)
-                    
-                    if campus == vm.selectedCampus {
-                        CircleComponent.selectedComponentDot
-                            .matchedGeometryEffect(id: "campus", in: namespcae)
-                    }
-                    else {
-                        CircleComponent.unselectedComponentDot
-                    }
-                }
-                .onTapGesture {
-                    vm.selectedCampus = campus
-                }
-                .animation(.default, value: vm.selectedCampus)
-                .padding(.trailing)
-            }
-            .font(.title())
-            
-            Spacer()
-        }
-        .padding(.bottom, UIScreen.getHeight(8))
     }
     
     private var week: some View {
@@ -70,7 +43,7 @@ struct MainView: View {
                         
                         if weekday.rawValue == vm.selectedDay  {
                             CircleComponent.selectedComponentDot
-                                .matchedGeometryEffect(id: "weekday", in: namespcae)
+                                .matchedGeometryEffect(id: "weekday", in: namespace)
                         }
                         else {
                             CircleComponent.unselectedComponentDot
