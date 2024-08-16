@@ -17,12 +17,10 @@ struct WeekView: View {
         HStack(spacing: 0) {
             ForEach(Day.allCases, id: \.self) { weekday in
                 VStack(spacing: 0) {
-                    TextComponent.weekdayText(weekday.rawValue)
+                    TextComponent.weekdayText(week.day.rawValue)
                     
                     Group {
-                        if let day = week[weekday]?.day {
-                            TextComponent.dayText(day.description, weekday.rawValue == Day.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue)
-                        }
+                        TextComponent.dayText(week.dayComponent.description, week.day == Day.today)
                         
                         switch selectedDay {
                         case weekday.rawValue:

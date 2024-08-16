@@ -32,7 +32,7 @@ class MainViewModel: ObservableObject {
     
     init() {
         currentWeek()
-        selectedDay = Day.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
+        selectedDay = Day.today
         loadDefaultCampus()
         loadBookmark()
     }

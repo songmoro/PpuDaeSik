@@ -21,4 +21,8 @@ enum Day: String, CaseIterable {
         case .토: 7
         }
     }
+    
+    static var today: Day {
+        Day.allCases[Calendar.current.component(.weekday, from: Date()) - 1]
+    }
 }
