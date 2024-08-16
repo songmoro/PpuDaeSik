@@ -36,9 +36,7 @@ struct MainView: View {
                 .resizable()
                 .frame(width: UIScreen.getWidth(50), height: UIScreen.getWidth(50))
             
-            Text("뿌대식")
-                .font(.largeTitle())
-                .foregroundColor(.black100)
+            TextComponent.mainTitle
             
             Spacer()
             
@@ -56,9 +54,7 @@ struct MainView: View {
         HStack(spacing: 0) {
             ForEach(Campus.allCases, id: \.self) { campus in
                 VStack(spacing: 0) {
-                    Text("\(campus.rawValue)")
-                        .foregroundColor(campus == vm.selectedCampus ? .black100 : .black40)
-                        .padding(.bottom, UIScreen.getHeight(6))
+                    TextComponent.campusTitle(campus.rawValue, campus == vm.selectedCampus)
                     
                     if campus == vm.selectedCampus {
                         Circle()
@@ -89,16 +85,11 @@ struct MainView: View {
         HStack(spacing: 0) {
             ForEach(Week.allCases, id: \.self) { weekday in
                 VStack(spacing: 0) {
-                    Text("\(weekday.rawValue)")
-                        .foregroundColor(.black100)
-                        .font(.body())
+                    TextComponent.weekdayText(weekday.rawValue)
                     
                     Group {
                         if let day = vm.week[weekday]?.day {
-                            Text("\(day)")
-                                .foregroundColor(weekday.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue ? .black100 : .black40)
-                                .font(.headline())
-                                .padding(.bottom, UIScreen.getHeight(6))
+                            TextComponent.dayText(day.description, weekday.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue)
                         }
                         
                         if weekday.rawValue == vm.selectedDay  {

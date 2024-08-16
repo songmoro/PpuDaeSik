@@ -21,10 +21,7 @@ struct MenuView: View {
                 
                 if !filteredArray.isEmpty {
                     VStack {
-                        Text(category.rawValue)
-                            .font(.body())
-                            .foregroundColor(.black40)
-                            .frame(width: UIScreen.getWidth(300), alignment: .leading)
+                        TextComponent.categoryText(category.rawValue)
                         
                         ForEach(filteredArray, id: \.uuid) { response in
                             card(response)
@@ -39,9 +36,7 @@ struct MenuView: View {
     
     private var title: some View {
         HStack {
-            Text(name)
-                .font(.headline())
-                .foregroundColor(.black100)
+            TextComponent.cafeteriaTitle(name)
             
             Spacer()
             
@@ -66,16 +61,10 @@ struct MenuView: View {
     private func card(_ response: CafeteriaResponse) -> some View {
         VStack(alignment: .leading) {
             if let title = response.title {
-                Text(title)
-                    .font(.subhead())
-                    .foregroundColor(.black100)
-                    .padding(.bottom, UIScreen.getHeight(2))
+                TextComponent.menuTitle(title)
             }
             
-            Text(response.content)
-                .font(.body())
-                .foregroundColor(.black100)
-                .padding(.bottom, UIScreen.getHeight(2))
+            TextComponent.menuContent(response.content)
         }
         .padding()
         .frame(width: UIScreen.getWidth(300), alignment: .leading)

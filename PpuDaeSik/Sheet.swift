@@ -20,15 +20,13 @@ struct Sheet: View {
                     .frame(width: UIScreen.getWidth(36), height: UIScreen.getHeight(5))
                 
                 HStack {
-                    Text("기본 캠퍼스")
-                        .foregroundColor(.black100)
+                    TextComponent.sheetPickerTitle
                     
                     Spacer()
                     
                     Picker(selection: $defaultCampus) {
-                        ForEach(Campus.allCases, id: \.self) {
-                            Text($0.rawValue)
-                                .tag($0.rawValue)
+                        ForEach(Campus.allCases, id: \.self) { campus in
+                            TextComponent.sheetPickerComponent(campus.rawValue)
                         }
                         .foregroundColor(.blue100)
                     } label: { }
