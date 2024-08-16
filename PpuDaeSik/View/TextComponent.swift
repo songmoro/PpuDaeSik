@@ -92,3 +92,54 @@ struct TextComponent {
             .padding(.bottom, UIScreen.getHeight(2))
     }
 }
+
+struct TextComponent_Preview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            TextComponent.mainTitle
+            HStack {
+                TextComponent.campusTitle("부산", true)
+                TextComponent.campusTitle("부산", false)
+            }
+            HStack {
+                TextComponent.weekdayText("일")
+                TextComponent.weekdayText("월")
+                TextComponent.weekdayText("화")
+                TextComponent.weekdayText("수")
+                TextComponent.weekdayText("목")
+                TextComponent.weekdayText("금")
+                TextComponent.weekdayText("토")
+            }
+            HStack {
+                TextComponent.dayText("1", true)
+                TextComponent.dayText("2", false)
+                TextComponent.dayText("3", false)
+                TextComponent.dayText("4", false)
+                TextComponent.dayText("5", false)
+                TextComponent.dayText("6", false)
+                TextComponent.dayText("7", false)
+            }
+            HStack {
+                TextComponent.dayText("10", true)
+                TextComponent.dayText("11", false)
+                TextComponent.dayText("12", false)
+                TextComponent.dayText("13", false)
+                TextComponent.dayText("14", false)
+                TextComponent.dayText("15", false)
+                TextComponent.dayText("16", false)
+            }
+            TextComponent.sheetPickerTitle
+            TextComponent.sheetPickerComponent("부산")
+            TextComponent.cafeteriaTitle("금정회관 학생 식당")
+            
+            TextComponent.categoryText("조기")
+            TextComponent.categoryText("조식")
+            TextComponent.categoryText("중식")
+            TextComponent.categoryText("석식")
+            
+            TextComponent.menuTitle("일품")
+            
+            TextComponent.menuContent("참치새싹야채비빔밥\n된장국\n고구마고로케\n배")
+        }
+    }
+}

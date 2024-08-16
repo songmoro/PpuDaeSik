@@ -24,3 +24,12 @@ struct CircleComponent {
             .frame(height: UIScreen.getHeight(5))
     }
 }
+
+struct CircleComponent_Preview: PreviewProvider {
+    static var previews: some View {
+        HStack {
+            CircleComponent.selectedComponentDot
+            CircleComponent.unselectedComponentDot
+        }
+    }
+}

@@ -32,3 +32,19 @@ struct ImageComponent {
             .foregroundColor(condition ? .yellow100 : .black20)
     }
 }
+
+struct ImageComponent_Preview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            HStack {
+                ImageComponent.logo(true)
+                ImageComponent.logo(false)
+            }
+            ImageComponent.setting
+            HStack {
+                ImageComponent.star(true)
+                ImageComponent.star(false)
+            }
+        }
+    }
+}

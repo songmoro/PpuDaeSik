@@ -23,3 +23,14 @@ struct RectangleComponent {
             .frame(width: UIScreen.getWidth(36), height: UIScreen.getHeight(5))
     }
 }
+
+struct RectangleComponent_Preview: PreviewProvider {
+    static var previews: some View {
+        VStack {
+            RectangleComponent.cardBackground
+                .frame(width: UIScreen.getWidth(300), height: UIScreen.getHeight(200), alignment: .leading)
+            RectangleComponent.holdBar
+        }
+    }
+}
+
