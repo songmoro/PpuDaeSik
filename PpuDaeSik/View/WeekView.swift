@@ -9,32 +9,31 @@ import SwiftUI
 
 struct WeekView: View {
     let namespace: Namespace.ID
-    let weekday: [Day: Int]
-    let week: [Day: DateComponents]
-    @Binding var selectedDay: String
+    let weekArray: [Week]
+    @Binding var selectedDay: Day
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(Day.allCases, id: \.self) { weekday in
+            ForEach(weekArray, id: \.day) { weekday in
                 VStack(spacing: 0) {
-                    TextComponent.weekdayText(week.day.rawValue)
+                    TextComponent.weekdayText(weekday.day.rawValue)
                     
                     Group {
-                        TextComponent.dayText(week.dayComponent.description, week.day == Day.today)
+                        TextComponent.dayText(weekday.dayComponent.description, weekday.day == Day.today)
                         
-                        switch selectedDay {
-                        case weekday.rawValue:
+                        switch weekday.day {
+                        case selectedDay:
                             CircleComponent.selectedComponentDot
                                 .matchedGeometryEffect(id: "weekday", in: namespace)
                         default:
                             CircleComponent.unselectedComponentDot
                         }
                     }
-                    .onTapGesture {
-                        selectedDay = weekday.rawValue
-                    }
-                    .animation(.default, value: selectedDay)
                 }
+                .onTapGesture {
+                    selectedDay = weekday.day
+                }
+                .animation(.default, value: selectedDay)
                 .padding(.trailing)
             }
             .frame(width: UIScreen.getWidth(350 / 7))

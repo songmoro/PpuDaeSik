@@ -17,8 +17,8 @@ struct CampusView: View {
                 VStack(spacing: 0) {
                     TextComponent.campusTitle(campus.rawValue, campus == selectedCampus)
                     
-                    switch selectedCampus {
-                    case campus:
+                    switch campus {
+                    case selectedCampus:
                         CircleComponent.selectedComponentDot
                             .matchedGeometryEffect(id: "campus", in: namespace)
                     default:

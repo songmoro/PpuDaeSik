@@ -21,7 +21,6 @@
 		F811295C2C429FA800F71C03 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295B2C429FA800F71C03 /* Week.swift */; };
 		F811295E2C429FBE00F71C03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295D2C429FBE00F71C03 /* Category.swift */; };
 		F811295F2C429FC900F71C03 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129592C429F9B00F71C03 /* Campus.swift */; };
-		F81129602C429FCB00F71C03 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295B2C429FA800F71C03 /* Week.swift */; };
 		F81129612C429FCD00F71C03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295D2C429FBE00F71C03 /* Category.swift */; };
 		F81129662C429FEE00F71C03 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129652C429FEE00F71C03 /* QueryType.swift */; };
 		F81129672C429FF000F71C03 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129652C429FEE00F71C03 /* QueryType.swift */; };
@@ -493,7 +492,6 @@
 				F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */,
 				F811294F2C41A68C00F71C03 /* Serializable.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
-				F81129602C429FCB00F71C03 /* Week.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
 				F811295F2C429FC900F71C03 /* Campus.swift in Sources */,
 				F811297C2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,

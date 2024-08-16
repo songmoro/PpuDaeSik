@@ -18,7 +18,7 @@ struct MainView: View {
             VStack {
                 HeaderView(isSheetShow: $vm.isSheetShow)
                 CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
-                WeekView(namespace: namespace, weekday: vm.weekday, week: vm.week, selectedDay: $vm.selectedDay)
+                WeekView(namespace: namespace, weekArray: vm.weekArray, selectedDay: $vm.selectedDay)
                 Divider()
                 menu
                 Spacer()
@@ -37,11 +37,12 @@ struct MainView: View {
                     let filtered = vm.cafeteriaResponseArray.filter { response in
                         guard let last = response.date.split(separator: "-").last,
                               let day = Int(last),
-                              let selectedWeekday = Day(rawValue: vm.selectedDay),
-                              let selectedDay = vm.week[selectedWeekday]?.day
+                              let week = vm.weekArray.filter({ $0.dayComponent == day }).first,
+                              week.day == vm.selectedDay,
+                              response.cafeteria.name == sorted
                         else { return false }
                         
-                        return response.cafeteria.name == sorted && day == selectedDay
+                        return true
                     }
                     
                     MenuView(bookmark: $vm.bookmark, name: sorted, responseArray: filtered)

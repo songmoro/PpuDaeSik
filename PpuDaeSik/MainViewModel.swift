@@ -8,10 +8,8 @@
 import SwiftUI
 
 class MainViewModel: ObservableObject {
-    @Published var selectedDay = ""
     @Published var isSheetShow = false
-    @Published var weekday: [Day: Int] = [:]
-    @Published var week: [Day: DateComponents] = [:]
+    @Published var weekArray: [Week] = []
     @Published var cafeteriaResponseArray = [CafeteriaResponse]()
     @Published var selectedCampus: Campus = .부산 {
         didSet {
@@ -29,6 +27,7 @@ class MainViewModel: ObservableObject {
             saveBookmark()
         }
     }
+    @Published var selectedDay: Day = .일
     
     init() {
         currentWeek()
@@ -48,14 +47,18 @@ class MainViewModel: ObservableObject {
         
         let interval = calendar.interval()
         
-        let week = interval.map {
-            let date = calendar.date(byAdding: .day, value: $0, to: Date())
+        let weekArray = zip(Day.allCases, interval).reduce(into: [Week]()) { partialResult, weekday in
+            guard let date = calendar.date(byAdding: .day, value: weekday.1, to: Date()) else { return }
 
-            return calendar.dateComponents([.year, .month, .day, .weekday], from: date!)
-        }.compactMap({ $0 })
+            let day = weekday.0
+            let dayComponent = calendar.component(.day, from: date)
+            
+            partialResult += [Week(day: day, dayComponent: dayComponent)]
+        }
         
+        guard weekArray.count == 7, weekArray.map({ $0.day }) == Day.allCases else { return }
         
-        self.week = Dictionary(uniqueKeysWithValues: zip(Day.allCases, week.sorted(by: { $0.weekday! < $1.weekday! })))
+        self.weekArray = weekArray
     }
     
     func sortedByBookmark() -> [String] {
