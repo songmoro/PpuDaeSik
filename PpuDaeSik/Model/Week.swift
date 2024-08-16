@@ -7,18 +7,11 @@
 
 import SwiftUI
 
-//enum Week: String, CaseIterable {
-//    case 일, 월, 화, 수, 목, 금, 토
-//    
-//    var weekday: Int {
-//        switch self {
-//        case .일: 1
-//        case .월: 2
-//        case .화: 3
-//        case .수: 4
-//        case .목: 5
-//        case .금: 6
-//        case .토: 7
-//        }
-//    }
-//}
+struct Week: Comparable {
+    static func < (lhs: Week, rhs: Week) -> Bool {
+        lhs.day.weekday < rhs.day.weekday
+    }
+    
+    let day: Day
+    let dayComponent: Int
+}
