@@ -18,7 +18,7 @@ struct MainView: View {
             VStack {
                 HeaderView(isSheetShow: $vm.isSheetShow)
                 CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
-                week
+                WeekView(namespace: namespace, weekday: vm.weekday, week: vm.week, selectedDay: $vm.selectedDay)
                 Divider()
                 menu
                 Spacer()
@@ -28,37 +28,6 @@ struct MainView: View {
                 Sheet(defaultCampus: $vm.defaultCampus)
             }
         }
-    }
-    
-    private var week: some View {
-        HStack(spacing: 0) {
-            ForEach(Week.allCases, id: \.self) { weekday in
-                VStack(spacing: 0) {
-                    TextComponent.weekdayText(weekday.rawValue)
-                    
-                    Group {
-                        if let day = vm.week[weekday]?.day {
-                            TextComponent.dayText(day.description, weekday.rawValue == Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue)
-                        }
-                        
-                        if weekday.rawValue == vm.selectedDay  {
-                            CircleComponent.selectedComponentDot
-                                .matchedGeometryEffect(id: "weekday", in: namespace)
-                        }
-                        else {
-                            CircleComponent.unselectedComponentDot
-                        }
-                    }
-                    .onTapGesture {
-                        vm.selectedDay = weekday.rawValue
-                    }
-                    .animation(.default, value: vm.selectedDay)
-                }
-                .padding(.trailing)
-            }
-            .frame(width: UIScreen.getWidth(350 / 7))
-        }
-        .padding(.bottom, UIScreen.getHeight(2))
     }
     
     private var menu: some View {
