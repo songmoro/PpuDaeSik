@@ -10,8 +10,8 @@ import SwiftUI
 class MainViewModel: ObservableObject {
     @Published var selectedDay = ""
     @Published var isSheetShow = false
-    @Published var weekday: [Week: Int] = [:]
-    @Published var week: [Week: DateComponents] = [:]
+    @Published var weekday: [Day: Int] = [:]
+    @Published var week: [Day: DateComponents] = [:]
     @Published var cafeteriaResponseArray = [CafeteriaResponse]()
     @Published var selectedCampus: Campus = .부산 {
         didSet {
@@ -32,7 +32,7 @@ class MainViewModel: ObservableObject {
     
     init() {
         currentWeek()
-        selectedDay = Week.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
+        selectedDay = Day.allCases[Calendar.current.component(.weekday, from: Date()) - 1].rawValue
         loadDefaultCampus()
         loadBookmark()
     }
@@ -55,7 +55,7 @@ class MainViewModel: ObservableObject {
         }.compactMap({ $0 })
         
         
-        self.week = Dictionary(uniqueKeysWithValues: zip(Week.allCases, week.sorted(by: { $0.weekday! < $1.weekday! })))
+        self.week = Dictionary(uniqueKeysWithValues: zip(Day.allCases, week.sorted(by: { $0.weekday! < $1.weekday! })))
     }
     
     func sortedByBookmark() -> [String] {

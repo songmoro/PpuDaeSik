@@ -37,7 +37,7 @@ struct MainView: View {
                     let filtered = vm.cafeteriaResponseArray.filter { response in
                         guard let last = response.date.split(separator: "-").last,
                               let day = Int(last),
-                              let selectedWeekday = Week(rawValue: vm.selectedDay),
+                              let selectedWeekday = Day(rawValue: vm.selectedDay),
                               let selectedDay = vm.week[selectedWeekday]?.day
                         else { return false }
                         

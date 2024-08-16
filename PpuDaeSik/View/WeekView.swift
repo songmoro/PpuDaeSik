@@ -9,13 +9,13 @@ import SwiftUI
 
 struct WeekView: View {
     let namespace: Namespace.ID
-    let weekday: [Week: Int]
-    let week: [Week: DateComponents]
+    let weekday: [Day: Int]
+    let week: [Day: DateComponents]
     @Binding var selectedDay: String
     
     var body: some View {
         HStack(spacing: 0) {
-            ForEach(Week.allCases, id: \.self) { weekday in
+            ForEach(Day.allCases, id: \.self) { weekday in
                 VStack(spacing: 0) {
                     TextComponent.weekdayText(weekday.rawValue)
                     

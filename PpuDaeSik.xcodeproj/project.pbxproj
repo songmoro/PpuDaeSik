@@ -44,6 +44,7 @@
 		F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA02C6FA2E7008694EC /* HeaderView.swift */; };
 		F820CBA32C6FA393008694EC /* CampusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA22C6FA393008694EC /* CampusView.swift */; };
 		F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA42C6FAB32008694EC /* WeekView.swift */; };
+		F820CBA72C6FAD1E008694EC /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* Day.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -137,6 +138,7 @@
 		F820CBA02C6FA2E7008694EC /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F820CBA22C6FA393008694EC /* CampusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusView.swift; sourceTree = "<group>"; };
 		F820CBA42C6FAB32008694EC /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		F820CBA62C6FAD1E008694EC /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -232,6 +234,7 @@
 			children = (
 				F81129592C429F9B00F71C03 /* Campus.swift */,
 				F811295B2C429FA800F71C03 /* Week.swift */,
+				F820CBA62C6FAD1E008694EC /* Day.swift */,
 				F811295D2C429FBE00F71C03 /* Category.swift */,
 				F811297F2C42E29B00F71C03 /* NotionResponse.swift */,
 				F81129652C429FEE00F71C03 /* QueryType.swift */,
@@ -535,6 +538,7 @@
 				F81129452C4183DD00F71C03 /* DeploymentStatus.swift in Sources */,
 				F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
+				F820CBA72C6FAD1E008694EC /* Day.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
 				F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
