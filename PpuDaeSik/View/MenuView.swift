@@ -67,9 +67,7 @@ struct MenuView: View {
         .padding()
         .frame(width: UIScreen.getWidth(300), alignment: .leading)
         .background {
-            RoundedRectangle(cornerRadius: 12)
-                .foregroundColor(.white100)
-                .shadow(radius: 2)
+            RectangleComponent.cardBackground
         }
     }
 }
