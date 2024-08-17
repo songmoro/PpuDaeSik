@@ -15,20 +15,16 @@ struct Sheet: View {
             Color.gray100.ignoresSafeArea()
             
             VStack {
-                RoundedRectangle(cornerRadius: 2.5)
-                    .foregroundColor(.darkGray100)
-                    .frame(width: UIScreen.getWidth(36), height: UIScreen.getHeight(5))
+                RectangleComponent.holdBar
                 
                 HStack {
-                    Text("기본 캠퍼스")
-                        .foregroundColor(.black100)
+                    TextComponent.sheetPickerTitle
                     
                     Spacer()
                     
                     Picker(selection: $defaultCampus) {
-                        ForEach(Campus.allCases, id: \.self) {
-                            Text($0.rawValue)
-                                .tag($0.rawValue)
+                        ForEach(Campus.allCases, id: \.self) { campus in
+                            TextComponent.sheetPickerComponent(campus.rawValue)
                         }
                         .foregroundColor(.blue100)
                     } label: { }

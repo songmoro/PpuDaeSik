@@ -8,7 +8,7 @@
 import Foundation
 
 /// 기숙사, 학생 식당 응답
-struct CafeteriaResponse: Serializable {
+struct CafeteriaResponse: Serializable, Hashable {
     internal init(cafeteria: Cafeteria, date: String, category: Category, title: String? = nil, content: String) {
         self.cafeteria = cafeteria
         self.date = date
