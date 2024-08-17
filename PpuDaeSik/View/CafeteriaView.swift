@@ -8,19 +8,29 @@
 import SwiftUI
 
 struct CafeteriaView: View {
-    @Binding var bookmark: [String]
-    let selectedCampus: Campus
+    @Binding var bookmark: [Cafeteria]
+    let campusCafeteria: [Cafeteria]
     let responseArray: [CafeteriaResponse]
     
     var body: some View {
-        ScrollView {
-            ForEach(Cafeteria.allCases.filter({ $0.campus == selectedCampus }), id: \.self) { cafeteria in
-                VStack {
-                    CafeteriaHeaderView(bookmark: $bookmark, name: cafeteria.name)
-                    MealView(responseArray: responseArray.filter({ $0.cafeteria == cafeteria }))
+        ScrollViewReader { proxy in
+            ScrollView {
+                ForEach(campusCafeteria, id: \.self) { cafeteria in
+                    VStack {
+                        CafeteriaHeaderView(bookmark: $bookmark, cafeteria: cafeteria)
+                        MealView(responseArray: responseArray.filter({ $0.cafeteria == cafeteria }))
+                    }
+                    .id(cafeteria)
+                    .padding(.bottom)
+                    .padding(.horizontal)
                 }
-                .padding(.bottom)
-                .padding(.horizontal)
+            }
+            .onChange(of: bookmark) { _, _ in
+                guard let first = campusCafeteria.first else { return }
+                
+                withAnimation {                
+                    proxy.scrollTo(first)
+                }
             }
         }
     }

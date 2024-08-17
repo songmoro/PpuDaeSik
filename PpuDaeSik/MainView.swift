@@ -20,7 +20,7 @@ struct MainView: View {
                 CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
                 WeekView(namespace: namespace, weekArray: vm.weekArray, selectedDay: $vm.selectedDay)
                 Divider()
-                CafeteriaView(bookmark: $vm.bookmark, selectedCampus: vm.selectedCampus, responseArray: vm.selectedCafeteriaArray)
+                CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), responseArray: vm.selectedCafeteriaArray)
                 Spacer()
             }
             .frame(width: UIScreen.getWidth(350))

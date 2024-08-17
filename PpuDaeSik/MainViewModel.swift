@@ -37,7 +37,7 @@ class MainViewModel: ObservableObject {
         }
     }
     /// 사용자가 설정한 앱 시작 시 먼저 보여줄 식당 목록
-    @Published var bookmark: [String] = [] {
+    @Published var bookmark: [Cafeteria] = [] {
         didSet {
             saveBookmark()
         }
@@ -81,17 +81,6 @@ class MainViewModel: ObservableObject {
         
         self.weekArray = weekArray
     }
-    
-    func sortedByBookmark() -> [String] {
-        let exceptBookmark: [String] = Cafeteria.allCases.compactMap {
-            if !bookmark.contains($0.name) && $0.campus == self.selectedCampus {
-                return $0.name
-            }
-            return nil
-        }
-              
-        return bookmark + exceptBookmark
-    }
 }
 
 /// 데이터베이스
@@ -128,6 +117,13 @@ extension MainViewModel {
             return true
         }
     }
+    
+    func filterCafeteria() -> [Cafeteria] {
+        let bookmarkedCafeteria = Cafeteria.allCases.filter({ bookmark.contains($0) })
+        let unbookmarkedCafeteria = Cafeteria.allCases.filter({ !bookmark.contains($0) && $0.campus == selectedCampus })
+        
+        return bookmarkedCafeteria + unbookmarkedCafeteria
+    }
 }
 
 /// 유저 디폴트
@@ -137,7 +133,7 @@ extension MainViewModel {
     }
     
     func saveBookmark() {
-        UserDefaults.standard.setValue(bookmark, forKey: "bookmark")
+        UserDefaults.standard.setValue(bookmark.map({ $0.name }), forKey: "bookmark")
     }
     
     func loadDefaultCampus() {
@@ -156,6 +152,6 @@ extension MainViewModel {
             self.bookmark = []
             return
         }
-        self.bookmark = bookmark
+        self.bookmark = Cafeteria.allCases.filter({ bookmark.contains($0.name) })
     }
 }

@@ -8,27 +8,26 @@
 import SwiftUI
 
 struct CafeteriaHeaderView: View {
-    @Binding var bookmark: [String]
-    let name: String
+    @Binding var bookmark: [Cafeteria]
+    let cafeteria: Cafeteria
     
     var body: some View {
         HStack {
-            TextComponent.cafeteriaTitle(name)
+            TextComponent.cafeteriaTitle(cafeteria.name)
             
             Spacer()
             
-            Button {
-                if bookmark.contains(name) {
-                    bookmark.removeAll {
-                        $0 == name
+            ImageComponent.star(bookmark.contains(cafeteria))
+                .onTapGesture {
+                    if bookmark.contains(cafeteria) {
+                        bookmark.removeAll {
+                            $0 == cafeteria
+                        }
+                    }
+                    else {
+                        bookmark.append(cafeteria)
                     }
                 }
-                else {
-                    bookmark.append(name)
-                }
-            } label: {
-                ImageComponent.star(bookmark.contains(name))
-            }
         }
         .padding(.bottom, UIScreen.getHeight(2))
     }
