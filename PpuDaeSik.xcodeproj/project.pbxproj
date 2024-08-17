@@ -35,7 +35,7 @@
 		F820CB902C6D2A99008694EC /* DeploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129442C4183DD00F71C03 /* DeploymentStatus.swift */; };
 		F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
-		F820CB972C6F685C008694EC /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB962C6F685C008694EC /* MenuView.swift */; };
+		F820CB972C6F685C008694EC /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB962C6F685C008694EC /* MealView.swift */; };
 		F820CB992C6F6D0D008694EC /* TextComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB982C6F6D0D008694EC /* TextComponent.swift */; };
 		F820CB9B2C6F9491008694EC /* CircleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9A2C6F9491008694EC /* CircleComponent.swift */; };
 		F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9C2C6F991F008694EC /* ImageComponent.swift */; };
@@ -44,6 +44,8 @@
 		F820CBA32C6FA393008694EC /* CampusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA22C6FA393008694EC /* CampusView.swift */; };
 		F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA42C6FAB32008694EC /* WeekView.swift */; };
 		F820CBA72C6FAD1E008694EC /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* Day.swift */; };
+		F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA82C70E5F7008694EC /* CafeteriaView.swift */; };
+		F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -129,7 +131,7 @@
 		F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByCampusRequest.swift; sourceTree = "<group>"; };
 		F811297F2C42E29B00F71C03 /* NotionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionResponse.swift; sourceTree = "<group>"; };
 		F81129822C43C86200F71C03 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
-		F820CB962C6F685C008694EC /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		F820CB962C6F685C008694EC /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
 		F820CB982C6F6D0D008694EC /* TextComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextComponent.swift; sourceTree = "<group>"; };
 		F820CB9A2C6F9491008694EC /* CircleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleComponent.swift; sourceTree = "<group>"; };
 		F820CB9C2C6F991F008694EC /* ImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComponent.swift; sourceTree = "<group>"; };
@@ -138,6 +140,8 @@
 		F820CBA22C6FA393008694EC /* CampusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusView.swift; sourceTree = "<group>"; };
 		F820CBA42C6FAB32008694EC /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		F820CBA62C6FAD1E008694EC /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
+		F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeaderView.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -250,7 +254,9 @@
 				F820CBA02C6FA2E7008694EC /* HeaderView.swift */,
 				F820CBA22C6FA393008694EC /* CampusView.swift */,
 				F820CBA42C6FAB32008694EC /* WeekView.swift */,
-				F820CB962C6F685C008694EC /* MenuView.swift */,
+				F820CBA82C70E5F7008694EC /* CafeteriaView.swift */,
+				F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */,
+				F820CB962C6F685C008694EC /* MealView.swift */,
 				F820CB982C6F6D0D008694EC /* TextComponent.swift */,
 				F820CB9A2C6F9491008694EC /* CircleComponent.swift */,
 				F820CB9C2C6F991F008694EC /* ImageComponent.swift */,
@@ -521,8 +527,9 @@
 				F81129662C429FEE00F71C03 /* QueryType.swift in Sources */,
 				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
 				F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */,
-				F820CB972C6F685C008694EC /* MenuView.swift in Sources */,
+				F820CB972C6F685C008694EC /* MealView.swift in Sources */,
 				F81129832C43C86200F71C03 /* Properties.swift in Sources */,
+				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
 				F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */,
 				F820CBA32C6FA393008694EC /* CampusView.swift in Sources */,
 				F811295C2C429FA800F71C03 /* Week.swift in Sources */,
@@ -535,6 +542,7 @@
 				F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */,
 				F81129452C4183DD00F71C03 /* DeploymentStatus.swift in Sources */,
 				F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */,
+				F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
 				F820CBA72C6FAD1E008694EC /* Day.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
