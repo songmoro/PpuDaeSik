@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 원과 관련된 뷰 요소
 struct CircleComponent {
     /// 선택된 탭 점
     /// - 선택한 캠퍼스, 요일 파란 점

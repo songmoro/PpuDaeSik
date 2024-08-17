@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 텍스트와 관련된 뷰 요소
 struct TextComponent {
     /// 앱 메인 타이틀
     /// - 뿌대식

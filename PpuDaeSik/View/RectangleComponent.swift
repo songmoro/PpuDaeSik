@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 사각형과 관련된 뷰 요소
 struct RectangleComponent {
     /// 카드 배경요소
     /// - 흰 배경

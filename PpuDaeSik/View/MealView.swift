@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 조기, 조식, 중식, 석식 분류 및 식단을 나타내는 뷰
 struct MealView: View {
     let responseArray: [CafeteriaResponse]
     

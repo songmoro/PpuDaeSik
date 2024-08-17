@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 부산, 밀양, 양산 캠퍼스 탭 뷰
 struct CampusView: View {
     let namespace: Namespace.ID
     @Binding var selectedCampus: Campus

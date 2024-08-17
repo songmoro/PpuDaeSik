@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// SF 심볼, 이미지와 관련된 뷰 요소
 struct ImageComponent {
     /// 로고
     /// - 눈 뜬 로고, 눈 감은 로고

@@ -57,6 +57,7 @@ class MainViewModel: ObservableObject {
         loadBookmark()
     }
     
+    /// 오늘 날짜를 기준으로 이번 주를 계산하는 함수
     func currentWeek() {
         let calendar: Calendar = {
             var calendar = Calendar.current
@@ -85,6 +86,7 @@ class MainViewModel: ObservableObject {
 
 /// 데이터베이스
 extension MainViewModel {
+    /// 데이터베이스가 백업 상태인지 검사하는 함수
     func checkDatabaseStatus() {
         cafeteriaResponseArray = []
         RequestManager.request(.checkStatus) { status in
@@ -100,12 +102,16 @@ extension MainViewModel {
         }
     }
     
+    /// 지정한 캠퍼스와 데이터베이스에 대한 데이터를 요청하는 함수
+    /// - 캠퍼스: 부산, 밀양, 양산
+    /// - 데이터베이스: 학생 식당, 기숙사
     func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType, _ deploymentStatus: DeploymentStatus) {
         RequestManager.request(.queryByCampus(queryType, campus, deploymentStatus), CafeteriaResponse.self) {
             self.cafeteriaResponseArray += $0
         }
     }
     
+    /// 현재 선택된 캠퍼스에 맞는 응답 목록을 담는 함수
     func filterResponse() {
         selectedCafeteriaArray = []
         selectedCafeteriaArray = cafeteriaResponseArray.filter { response in
@@ -118,6 +124,7 @@ extension MainViewModel {
         }
     }
     
+    /// 현재 선택된 캠퍼스에 있는 식당을 반환하는 함수
     func filterCafeteria() -> [Cafeteria] {
         let bookmarkedCafeteria = Cafeteria.allCases.filter({ bookmark.contains($0) })
         let unbookmarkedCafeteria = Cafeteria.allCases.filter({ !bookmark.contains($0) && $0.campus == selectedCampus })
@@ -128,14 +135,17 @@ extension MainViewModel {
 
 /// 유저 디폴트
 extension MainViewModel {
+    /// 설정에서 지정한 기본 캠퍼스의 유저 디폴트를 저장하는 함수
     func saveDefaultCampus() {
         UserDefaults.standard.setValue(defaultCampus.rawValue, forKey: "defaultCampus")
     }
     
+    /// 북마크가 변경되었을 때 변경된 북마크를 저장하는 함수
     func saveBookmark() {
         UserDefaults.standard.setValue(bookmark.map({ $0.name }), forKey: "bookmark")
     }
     
+    /// 앱 시작 시 기본 캠퍼스를 불러오는 함수
     func loadDefaultCampus() {
         guard let storedCampus = UserDefaults.standard.string(forKey: "defaultCampus"), let campus =  Campus(storedCampus) else {
             defaultCampus = .부산
@@ -147,6 +157,7 @@ extension MainViewModel {
         selectedCampus = campus
     }
     
+    /// 앱 시작 시 북마크된 식당을 불러오는 함수
     func loadBookmark() {
         guard let bookmark = UserDefaults.standard.stringArray(forKey: "bookmark") else {
             self.bookmark = []

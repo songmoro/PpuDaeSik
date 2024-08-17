@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 앱 최상단 로고 및 설정 버튼 뷰
 struct HeaderView: View {
     @Binding var isSheetShow: Bool
     

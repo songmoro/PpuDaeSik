@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 각 식당에 대한 뷰
 struct CafeteriaView: View {
     @Binding var bookmark: [Cafeteria]
     let campusCafeteria: [Cafeteria]

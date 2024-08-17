@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+/// 식당 이름과 북마크를 설정할 수 있는 뷰
 struct CafeteriaHeaderView: View {
     @Binding var bookmark: [Cafeteria]
     let cafeteria: Cafeteria
