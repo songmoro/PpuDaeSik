@@ -8,6 +8,5 @@
 import SwiftUI
 
 protocol Serializable {
-    init(_ unwrappedValue: [String: String])
     init?(_ properties: Properties)
 }

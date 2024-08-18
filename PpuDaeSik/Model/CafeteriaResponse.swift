@@ -17,10 +17,6 @@ struct CafeteriaResponse: Serializable, Hashable {
         self.content = content
     }
     
-    init(_ unwrappedValue: [String : String]) {
-        self.init(cafeteria: Cafeteria.금정회관교직원식당, date: "", category: .조기, content: "")
-    }
-    
     /// 옵셔널 초기화
     init?(_ properties: Properties) {
         let properties = properties.toDict()
