@@ -126,7 +126,7 @@ extension MainViewModel {
     
     /// 현재 선택된 캠퍼스에 있는 식당을 반환하는 함수
     func filterCafeteria() -> [Cafeteria] {
-        let bookmarkedCafeteria = Cafeteria.allCases.filter({ bookmark.contains($0) })
+        let bookmarkedCafeteria = Cafeteria.allCases.filter({ bookmark.contains($0) && $0.campus == selectedCampus })
         let unbookmarkedCafeteria = Cafeteria.allCases.filter({ !bookmark.contains($0) && $0.campus == selectedCampus })
         
         return bookmarkedCafeteria + unbookmarkedCafeteria
