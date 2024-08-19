@@ -34,6 +34,7 @@ struct WeekView: View {
                 .onTapGesture {
                     selectedDay = weekday.day
                 }
+                .disabled(selectedDay == weekday.day)
                 .animation(.default, value: selectedDay)
                 .padding(.trailing)
             }
