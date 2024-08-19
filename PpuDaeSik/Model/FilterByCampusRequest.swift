@@ -20,12 +20,9 @@ struct FilterByCampusRequest: Codable {
         let calendar = Calendar()
         
         let condition: [Filter.Or.ConditionalExpression] = calendar.interval().compactMap {
-            let dateFormatter = DateFormatter(format: "yyyy-MM-dd")
+            guard let date = calendar.date(byAdding: .day, value: $0, to: Date()) else { return nil }
             
-            let date = calendar.date(byAdding: .day, value: $0, to: Date())
-            guard let date = date else { return nil }
-            
-            let formattedDate = dateFormatter.string(from: date)
+            let formattedDate = DateFormatter(format: "yyyy-MM-dd").string(from: date)
             
             return Filter.Or.ConditionalExpression(property: property.date, rich_text: Filter.Or.ConditionalExpression.RichText(equals: formattedDate))
         }
@@ -41,16 +38,13 @@ struct FilterByCampusRequest: Codable {
         let calendar = Calendar()
         
         let date: String = {
-            let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YYYY-MM-dd"
-            dateFormatter.timeZone = TimeZone(identifier: "Asia/Seoul")
-            var date: Date
+            let dateFormatter = DateFormatter(format: "YYYY-MM-dd")
             
-            if calendar.component(.hour, from: Date()) >= 20 {
-                date = calendar.date(byAdding: .day, value: 1, to: Date())!
-            }
-            else {
-                date = Date()
+            let date: Date = switch calendar.component(.hour, from: Date()) {
+            case 20...:
+                calendar.date(byAdding: .day, value: 1, to: Date())!
+            default:
+                Date()
             }
             
             return dateFormatter.string(from: date)
