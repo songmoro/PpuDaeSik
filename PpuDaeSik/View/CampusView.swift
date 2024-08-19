@@ -29,6 +29,7 @@ struct CampusView: View {
                 .onTapGesture {
                     selectedCampus = campus
                 }
+                .disabled(selectedCampus == campus)
                 .animation(.default, value: selectedCampus)
                 .padding(.trailing)
             }
