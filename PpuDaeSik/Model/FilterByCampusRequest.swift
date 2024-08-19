@@ -8,26 +8,22 @@
 import SwiftUI
 
 struct FilterByCampusRequest: Codable {
-    init(property: String, campus: Campus, date: [String]) {
+    init(queryType: QueryType, campus: Campus, date: [String]) {
         let cafeteriaArray = Cafeteria.allCases.filter({ $0.campus == campus })
-        var code: [Filter.Or.ConditionalExpression]
-        
-        
-        if property == "MENU_DATE" {
-            code = cafeteriaArray.map { cafeteria in
-                Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: cafeteria.code))
-            }
-        }
-        else {
-            code = cafeteriaArray.map { cafeteria in
-                Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: cafeteria.code))
-            }
+        let property = switch queryType {
+        case .restaurant:
+            (code: "RESTAURANT_CODE", date: "MENU_DATE")
+        case .domitory:
+            (code: "no", date: "menuDate")
         }
         
+        let code: [Filter.Or.ConditionalExpression] = cafeteriaArray.map { cafeteria in
+            Filter.Or.ConditionalExpression(property: property.code, rich_text: Filter.Or.ConditionalExpression.RichText(equals: cafeteria.code))
+        }
+
         let condition = date.map { d in
-            Filter.Or.ConditionalExpression(property: property, rich_text: Filter.Or.ConditionalExpression.RichText(equals: d))
+            Filter.Or.ConditionalExpression(property: property.date, rich_text: Filter.Or.ConditionalExpression.RichText(equals: d))
         }
-        
         
         self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: condition)])
     }

@@ -59,14 +59,7 @@ extension API: TargetType {
                 return dateFormatter.string(from: date!)
             }.compactMap({ $0 })
             
-            var data: FilterByCampusRequest {
-                switch type {
-                case .restaurant:
-                    FilterByCampusRequest(property: "MENU_DATE", campus: campus, date: date)
-                case .domitory:
-                    FilterByCampusRequest(property: "mealDate", campus: campus, date: date)
-                }
-            }
+            let data = FilterByCampusRequest(queryType: type, campus: campus, date: date)
             
             return .requestJSONEncodable(data)
         }
