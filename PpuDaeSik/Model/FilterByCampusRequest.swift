@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FilterByCampusRequest: Codable {
-    init(queryType: QueryType, campus: Campus, date: [String]) {
+    init(queryType: QueryType, campus: Campus) {
         let cafeteriaArray = Cafeteria.allCases.filter({ $0.campus == campus })
         let property = switch queryType {
         case .restaurant:
@@ -17,12 +17,29 @@ struct FilterByCampusRequest: Codable {
             (code: "no", date: "menuDate")
         }
         
+        let dateFormatter = DateFormatter(format: "yyyy-MM-dd")
+        
+        let calendar: Calendar = {
+            var calendar = Calendar.current
+            calendar.locale = Locale(identifier: "ko_KR")
+            calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
+            
+            return calendar
+        }()
+        
+        let interval = calendar.interval()
+        
+        let condition: [Filter.Or.ConditionalExpression] = interval.compactMap {
+            let date = calendar.date(byAdding: .day, value: $0, to: Date())
+            guard let date = date else { return nil }
+            
+            let formattedDate = dateFormatter.string(from: date)
+            
+            return Filter.Or.ConditionalExpression(property: property.date, rich_text: Filter.Or.ConditionalExpression.RichText(equals: formattedDate))
+        }
+        
         let code: [Filter.Or.ConditionalExpression] = cafeteriaArray.map { cafeteria in
             Filter.Or.ConditionalExpression(property: property.code, rich_text: Filter.Or.ConditionalExpression.RichText(equals: cafeteria.code))
-        }
-
-        let condition = date.map { d in
-            Filter.Or.ConditionalExpression(property: property.date, rich_text: Filter.Or.ConditionalExpression.RichText(equals: d))
         }
         
         self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: condition)])

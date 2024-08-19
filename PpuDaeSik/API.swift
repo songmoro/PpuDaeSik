@@ -41,25 +41,7 @@ extension API: TargetType {
         case .checkStatus:
             return .requestPlain
         case .queryByCampus(let type, let campus, _):
-            let dateFormatter = DateFormatter(format: "yyyy-MM-dd")
-            
-            let calendar: Calendar = {
-                var calendar = Calendar.current
-                calendar.locale = Locale(identifier: "ko_KR")
-                calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
-                
-                return calendar
-            }()
-            
-            let interval = calendar.interval()
-            
-            let date = interval.map {
-                let date = calendar.date(byAdding: .day, value: $0, to: Date())
-                
-                return dateFormatter.string(from: date!)
-            }.compactMap({ $0 })
-            
-            let data = FilterByCampusRequest(queryType: type, campus: campus, date: date)
+            let data = FilterByCampusRequest(queryType: type, campus: campus)
             
             return .requestJSONEncodable(data)
         }
