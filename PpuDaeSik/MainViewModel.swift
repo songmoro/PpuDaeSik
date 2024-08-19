@@ -92,7 +92,7 @@ extension MainViewModel {
         RequestManager.request(.checkStatus) { status in
             status.forEach {
                 guard let DB = $0["DB"],
-                      let queryType = QueryType(rawValue: DB),
+                      let queryType = QueryType(DB),
                       let status = $0["Status"],
                       let deploymentStatus = DeploymentStatus(status: status)
                 else { return }
