@@ -13,7 +13,8 @@ enum DeploymentStatus {
     init?(status: String) {
         let status: DeploymentStatus? = switch status {
         case "Done": .done
-        case "Backup": .backup
+            // TODO: 데이터베이스에선 Update인데 이 타입에선 backup으로 나타냄
+        case "Update": .backup
         default: nil
         }
         

@@ -88,7 +88,6 @@ extension MainViewModel {
                       let status = $0["Status"],
                       let deploymentStatus = DeploymentStatus(status: status)
                 else { return }
-                
                 self.requestByCampusDatabase(self.selectedCampus, queryType, deploymentStatus)
             }
         }
