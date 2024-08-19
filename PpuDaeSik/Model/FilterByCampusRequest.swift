@@ -17,8 +17,6 @@ struct FilterByCampusRequest: Codable {
             (code: "no", date: "menuDate")
         }
         
-        let dateFormatter = DateFormatter(format: "yyyy-MM-dd")
-        
         let calendar: Calendar = {
             var calendar = Calendar.current
             calendar.locale = Locale(identifier: "ko_KR")
@@ -27,9 +25,9 @@ struct FilterByCampusRequest: Codable {
             return calendar
         }()
         
-        let interval = calendar.interval()
-        
-        let condition: [Filter.Or.ConditionalExpression] = interval.compactMap {
+        let condition: [Filter.Or.ConditionalExpression] = calendar.interval().compactMap {
+            let dateFormatter = DateFormatter(format: "yyyy-MM-dd")
+            
             let date = calendar.date(byAdding: .day, value: $0, to: Date())
             guard let date = date else { return nil }
             
