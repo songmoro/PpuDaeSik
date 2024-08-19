@@ -59,17 +59,9 @@ class MainViewModel: ObservableObject {
     
     /// 오늘 날짜를 기준으로 이번 주를 계산하는 함수
     func currentWeek() {
-        let calendar: Calendar = {
-            var calendar = Calendar.current
-            calendar.locale = Locale(identifier: "ko_KR")
-            calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
-            
-            return calendar
-        }()
+        let calendar = Calendar()
         
-        let interval = calendar.interval()
-        
-        let weekArray = zip(Day.allCases, interval).reduce(into: [Week]()) { partialResult, weekday in
+        let weekArray = zip(Day.allCases, calendar.interval()).reduce(into: [Week]()) { partialResult, weekday in
             guard let date = calendar.date(byAdding: .day, value: weekday.1, to: Date()) else { return }
 
             let day = weekday.0

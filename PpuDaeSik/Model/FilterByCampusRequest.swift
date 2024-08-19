@@ -17,13 +17,7 @@ struct FilterByCampusRequest: Codable {
             (code: "no", date: "menuDate")
         }
         
-        let calendar: Calendar = {
-            var calendar = Calendar.current
-            calendar.locale = Locale(identifier: "ko_KR")
-            calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
-            
-            return calendar
-        }()
+        let calendar = Calendar()
         
         let condition: [Filter.Or.ConditionalExpression] = calendar.interval().compactMap {
             let dateFormatter = DateFormatter(format: "yyyy-MM-dd")
@@ -44,13 +38,7 @@ struct FilterByCampusRequest: Codable {
     }
     
     init(queryType: QueryType, name: String, category: String) {
-        let calendar: Calendar = {
-            var calendar = Calendar.current
-            calendar.locale = Locale(identifier: "ko_KR")
-            calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
-            
-            return calendar
-        }()
+        let calendar = Calendar()
         
         let date: String = {
             let dateFormatter = DateFormatter()
