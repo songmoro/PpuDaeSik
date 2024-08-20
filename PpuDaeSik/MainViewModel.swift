@@ -82,6 +82,7 @@ extension MainViewModel {
     func checkDatabaseStatus() {
         cafeteriaResponseArray = []
         
+        RequestManager.cancleAllRequest()
         RequestManager.request(.checkStatus, NotionResponse<DeploymentProperties>.self) { status in
             status.results.forEach {
                 guard let queryType = QueryType($0.properties) else { return }
