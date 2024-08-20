@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum QueryType: CaseIterable {
+enum QueryType {
     case restaurant, domitory
     
     func code() -> String {
