@@ -95,7 +95,7 @@ extension MainViewModel {
     /// - 데이터베이스: 학생 식당, 기숙사
     func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType) {
         switch queryType {
-        case .restaurant(let isUpdating):
+        case .restaurant:
             RequestManager.request(.queryByCampus(queryType, campus), NotionResponse<RestaurantProperties>.self) {
                 let responseArray: [CafeteriaResponse] = $0.results.compactMap { result in
                     CafeteriaResponse(result.properties)
@@ -103,7 +103,7 @@ extension MainViewModel {
                 
                 self.cafeteriaResponseArray += responseArray
             }
-        case .domitory(let isUpdating):
+        case .domitory:
             RequestManager.request(.queryByCampus(queryType, campus), NotionResponse<DomitoryProperties>.self) {
                 let responseArray: [CafeteriaResponse] = $0.results.compactMap { result in
                     CafeteriaResponse(result.properties)
