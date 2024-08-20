@@ -63,7 +63,7 @@ class MainViewModel: ObservableObject {
         
         let weekArray = zip(Day.allCases, calendar.interval()).reduce(into: [Week]()) { partialResult, weekday in
             guard let date = calendar.date(byAdding: .day, value: weekday.1, to: Date()) else { return }
-
+            
             let day = weekday.0
             let dayComponent = calendar.component(.day, from: date)
             
@@ -97,19 +97,15 @@ extension MainViewModel {
         switch queryType {
         case .restaurant:
             RequestManager.request(.queryByCampus(queryType, campus), NotionResponse<RestaurantProperties>.self) {
-                let responseArray: [CafeteriaResponse] = $0.results.compactMap { result in
+                self.cafeteriaResponseArray += $0.results.compactMap { result in
                     CafeteriaResponse(result.properties)
                 }
-                
-                self.cafeteriaResponseArray += responseArray
             }
         case .domitory:
             RequestManager.request(.queryByCampus(queryType, campus), NotionResponse<DomitoryProperties>.self) {
-                let responseArray: [CafeteriaResponse] = $0.results.compactMap { result in
+                self.cafeteriaResponseArray += $0.results.compactMap { result in
                     CafeteriaResponse(result.properties)
                 }
-                
-                self.cafeteriaResponseArray += responseArray
             }
         }
     }
