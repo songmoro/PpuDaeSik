@@ -11,17 +11,17 @@ import Moya
 class RequestManager {
     static private let provider = MoyaProvider<API>()
     
-    static func request(_ target: API, completion: @escaping ([[String: String]]) -> ()) {
+    static func request(_ target: API, completion: @escaping ([DeploymentProperties]) -> ()) {
         provider.request(target) { result in
             switch result {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {
                     if let decodedData = try? JSONDecoder().decode(NotionResponse<DeploymentProperties>.self, from: response.data) {
-                        let status = decodedData.results.compactMap {
-                            $0.properties.toDict()
+                        let propertyArray = decodedData.results.compactMap {
+                            $0.properties
                         }
                         
-                        completion(status)
+                        completion(propertyArray)
                     }
                 }
             case .failure(let error):

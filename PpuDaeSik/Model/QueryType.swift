@@ -8,7 +8,44 @@
 import SwiftUI
 
 enum QueryType {
-    case restaurant, domitory
+    case restaurant(isUpdating: Bool), domitory(isUpdating: Bool)
+    
+    init?(_ properties: Properties) {
+        let properties = properties.toDict()
+        
+        let isUpdating: Bool? = switch properties["Status"] {
+        case "Done":
+            false
+        case "Update":
+            true
+        default:
+            nil
+        }
+        
+        guard let isUpdating = isUpdating else { return nil }
+        
+        let queryType: QueryType? = switch properties["DB"] {
+        case "restaurant":
+                .restaurant(isUpdating: isUpdating)
+        case "domitory":
+                .domitory(isUpdating: isUpdating)
+        default:
+            nil
+        }
+        
+        guard let queryType = queryType else { return nil }
+        
+        self = queryType
+    }
+    
+    func isUpdating() -> Bool {
+        switch self {
+        case .restaurant(let isUpdating):
+            isUpdating
+        case .domitory(let isUpdating):
+            isUpdating
+        }
+    }
     
     func code() -> String {
         switch self {
@@ -35,19 +72,5 @@ enum QueryType {
         case .domitory:
             "mealDate"
         }
-    }
-    
-    init?(_ rawValue: String) {
-        let queryType: QueryType? = switch rawValue {
-        case "restaurant":
-                .restaurant
-        case "domitory":
-                .domitory
-        default:
-            nil
-        }
-        
-        guard let queryType = queryType else { return nil }
-        self = queryType
     }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 import Moya
 
 extension Provider {
-    func checkStatus(completion: @escaping (DeploymentStatus) -> ()) {
+    func checkStatus(completion: @escaping (QueryType) -> ()) {
         let provider = MoyaProvider<WidgetAPI>()
         
         provider.request(.checkStatus) { result in
@@ -17,17 +17,14 @@ extension Provider {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {
                     if let decodedData = try? JSONDecoder().decode(NotionResponse<DeploymentProperties> .self, from: response.data) {
-                        let status = decodedData.results.compactMap {
-                            $0.properties.toDict()
+                        let propertyArray = decodedData.results.compactMap {
+                            $0.properties
                         }
                         
-                        status.forEach {
-                            guard let DB = $0["DB"],
-                                  let status = $0["Status"],
-                                  let deploymentStatus = DeploymentStatus(status: status)
-                            else { return }
+                        propertyArray.forEach {
+                            guard let queryType = QueryType($0) else { return }
                             
-                            completion(deploymentStatus)
+                            completion(queryType)
                         }
                     }
                 }
@@ -37,10 +34,10 @@ extension Provider {
         }
     }
     
-    func queryDatabase(_ cafeteria: Cafeteria, category: String, _ deploymentStatus: DeploymentStatus, completion: @escaping ([String]) -> ()) {
+    func queryDatabase(_ queryType: QueryType, _ cafeteria: Cafeteria, category: String, completion: @escaping ([String]) -> ()) {
         let provider = MoyaProvider<WidgetAPI>()
         
-        provider.request(.query(cafeteria: cafeteria, category, deploymentStatus)) { result in
+        provider.request(.query(queryType: queryType, cafeteria: cafeteria, category)) { result in
             switch result {
             case .success(let response):
                 if (200..<300).contains(response.statusCode) {

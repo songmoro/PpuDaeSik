@@ -83,12 +83,8 @@ extension MainViewModel {
         cafeteriaResponseArray = []
         RequestManager.request(.checkStatus) { status in
             status.forEach {
-                guard let DB = $0["DB"],
-                      let queryType = QueryType(DB),
-                      let status = $0["Status"],
-                      let deploymentStatus = DeploymentStatus(status: status)
-                else { return }
-                self.requestByCampusDatabase(self.selectedCampus, queryType, deploymentStatus)
+                guard let queryType = QueryType($0) else { return }
+                self.requestByCampusDatabase(self.selectedCampus, queryType)
             }
         }
     }
@@ -96,8 +92,8 @@ extension MainViewModel {
     /// 지정한 캠퍼스와 데이터베이스에 대한 데이터를 요청하는 함수
     /// - 캠퍼스: 부산, 밀양, 양산
     /// - 데이터베이스: 학생 식당, 기숙사
-    func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType, _ deploymentStatus: DeploymentStatus) {
-        RequestManager.request(.queryByCampus(queryType, campus, deploymentStatus), CafeteriaResponse.self) {
+    func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType) {
+        RequestManager.request(.queryByCampus(queryType, campus), CafeteriaResponse.self) {
             self.cafeteriaResponseArray += $0
         }
     }
