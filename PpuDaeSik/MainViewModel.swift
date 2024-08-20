@@ -82,8 +82,8 @@ extension MainViewModel {
     func checkDatabaseStatus() {
         cafeteriaResponseArray = []
         
-        RequestManager.cancleAllRequest()
-        RequestManager.request(.checkStatus, NotionResponse<DeploymentProperties>.self) { status in
+        RequestManager.shared.cancleAllRequest()
+        RequestManager.shared.request(.checkStatus, NotionResponse<DeploymentProperties>.self) { status in
             status.results.forEach {
                 guard let queryType = QueryType($0.properties) else { return }
                 self.requestByCampusDatabase(self.selectedCampus, queryType)
@@ -97,13 +97,13 @@ extension MainViewModel {
     func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType) {
         switch queryType {
         case .restaurant:
-            RequestManager.request(.queryByCampus(queryType, campus), NotionResponse<RestaurantProperties>.self) {
+            RequestManager.shared.request(.queryByCampus(queryType, campus), NotionResponse<RestaurantProperties>.self) {
                 self.cafeteriaResponseArray += $0.results.compactMap { result in
                     CafeteriaResponse(result.properties)
                 }
             }
         case .domitory:
-            RequestManager.request(.queryByCampus(queryType, campus), NotionResponse<DomitoryProperties>.self) {
+            RequestManager.shared.request(.queryByCampus(queryType, campus), NotionResponse<DomitoryProperties>.self) {
                 self.cafeteriaResponseArray += $0.results.compactMap { result in
                     CafeteriaResponse(result.properties)
                 }
