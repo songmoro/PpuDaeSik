@@ -14,14 +14,13 @@ class RequestManager {
     static func request<T: Codable>(_ target: API, _ responseType: T.Type, completion: @escaping (T) -> (Void)) {
         provider.request(target) { result in
             switch result {
-            case .success(let response):
-                guard (200..<300).contains(response.statusCode),
-                      let decodedData = try? JSONDecoder().decode(T.self, from: response.data)
+            case .success(let response) where (200..<300).contains(response.statusCode):
+                guard let decodedData = try? JSONDecoder().decode(T.self, from: response.data)
                 else { return }
                 
                 completion(decodedData)
-            case .failure(let error):
-                fatalError(error.localizedDescription)
+            default:
+                break
             }
         }
     }
