@@ -63,7 +63,7 @@ class MainViewModel: ObservableObject {
         
         let weekArray = zip(Day.allCases, calendar.interval()).reduce(into: [Week]()) { partialResult, weekday in
             guard let date = calendar.date(byAdding: .day, value: weekday.1, to: Date()) else { return }
-
+            
             let day = weekday.0
             let dayComponent = calendar.component(.day, from: date)
             
@@ -81,9 +81,11 @@ extension MainViewModel {
     /// 데이터베이스가 백업 상태인지 검사하는 함수
     func checkDatabaseStatus() {
         cafeteriaResponseArray = []
-        RequestManager.request(.checkStatus) { status in
-            status.forEach {
-                guard let queryType = QueryType($0) else { return }
+        
+        RequestManager.shared.cancleAllRequest()
+        RequestManager.shared.request(.checkStatus, NotionResponse<DeploymentProperties>.self) { status in
+            status.results.forEach {
+                guard let queryType = QueryType($0.properties) else { return }
                 self.requestByCampusDatabase(self.selectedCampus, queryType)
             }
         }
@@ -93,8 +95,19 @@ extension MainViewModel {
     /// - 캠퍼스: 부산, 밀양, 양산
     /// - 데이터베이스: 학생 식당, 기숙사
     func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType) {
-        RequestManager.request(.queryByCampus(queryType, campus), CafeteriaResponse.self) {
-            self.cafeteriaResponseArray += $0
+        switch queryType {
+        case .restaurant:
+            RequestManager.shared.request(.queryByCampus(queryType, campus), NotionResponse<RestaurantProperties>.self) {
+                self.cafeteriaResponseArray += $0.results.compactMap { result in
+                    CafeteriaResponse(result.properties)
+                }
+            }
+        case .domitory:
+            RequestManager.shared.request(.queryByCampus(queryType, campus), NotionResponse<DomitoryProperties>.self) {
+                self.cafeteriaResponseArray += $0.results.compactMap { result in
+                    CafeteriaResponse(result.properties)
+                }
+            }
         }
     }
     
