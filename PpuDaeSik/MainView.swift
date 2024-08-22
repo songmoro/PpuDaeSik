@@ -18,7 +18,7 @@ struct MainView: View {
             VStack {
                 HeaderView(isSheetShow: $vm.isSheetShow)
                 CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
-                WeekView(namespace: namespace, weekArray: vm.weekArray, selectedDay: $vm.selectedDay)
+                WeekView(namespace: namespace, selectedDayComponent: $vm.selectedDayComponent)
                 Divider()
                 
                 if vm.onFetchCount != 0 {

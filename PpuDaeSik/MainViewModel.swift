@@ -10,10 +10,6 @@ import SwiftUI
 class MainViewModel: ObservableObject {
     /// 모달 시트 여부
     @Published var isSheetShow = false
-    /// 1주
-    /// - 일, 월, 화, 수, 목, 금, 토
-    /// - n, n+1, ..., n+5, n+6일
-    @Published var weekArray: [Week] = []
     /// 네트워크 요청을 통해 받은 응답 목록
     @Published var cafeteriaResponseArray = [CafeteriaResponse]() {
         didSet {
@@ -22,8 +18,6 @@ class MainViewModel: ObservableObject {
     }
     /// 응답 목록 중 캠퍼스, 요일이 일치하는 응답 목록
     @Published var selectedCafeteriaArray = [CafeteriaResponse]()
-    /// 선택한 일에 대한 인트 값
-    @Published var selectedDayComponent: Int = 1
     /// 선택한 캠퍼스
     @Published var selectedCampus: Campus = .부산 {
         didSet {
@@ -43,9 +37,8 @@ class MainViewModel: ObservableObject {
         }
     }
     /// 현재 선택된 요일
-    @Published var selectedDay: Day = .일 {
+    @Published var selectedDayComponent: DayComponent = .일 {
         didSet {
-            selectedDayComponent = weekArray[selectedDay.weekday - 1].dayComponent
             filterResponse()
         }
     }
@@ -53,28 +46,9 @@ class MainViewModel: ObservableObject {
     @Published var onFetchCount: Int = 0
     
     init() {
-        currentWeek()
-        selectedDay = Day.today
+        selectedDayComponent = DayComponent.today
         loadDefaultCampus()
         loadBookmark()
-    }
-    
-    /// 오늘 날짜를 기준으로 이번 주를 계산하는 함수
-    func currentWeek() {
-        let calendar = Calendar()
-        
-        let weekArray = zip(Day.allCases, calendar.interval()).reduce(into: [Week]()) { partialResult, weekday in
-            guard let date = calendar.date(byAdding: .day, value: weekday.1, to: Date()) else { return }
-            
-            let day = weekday.0
-            let dayComponent = calendar.component(.day, from: date)
-            
-            partialResult += [Week(day: day, dayComponent: dayComponent)]
-        }
-        
-        guard weekArray.count == 7, weekArray.map({ $0.day }) == Day.allCases else { return }
-        
-        self.weekArray = weekArray
     }
 }
 
@@ -147,7 +121,6 @@ extension MainViewModel {
         selectedCafeteriaArray = cafeteriaResponseArray.filter { response in
             guard let last = response.date.split(separator: "-").last,
                   let dayComponent = Int(last),
-                  dayComponent == selectedDayComponent,
                   response.cafeteria.campus == selectedCampus
             else { return false }
             return true
