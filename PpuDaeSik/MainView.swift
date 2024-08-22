@@ -22,7 +22,7 @@ struct MainView: View {
                 Divider()
                 
                 if vm.onFetchCount != 0 {
-                    Text("식당 정보를 불러오는 중...")
+                    LoadingView()
                 }
                 else {
                     CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), responseArray: vm.selectedCafeteriaArray)
