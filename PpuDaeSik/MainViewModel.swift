@@ -8,16 +8,12 @@
 import SwiftUI
 
 class MainViewModel: ObservableObject {
+    /// 필터링한 식당 응답 목록
+    @Published var filteredCafeteriaResponseArray: [CafeteriaResponse] = []
+    /// 진행 중인 네트워크 요청 수
+    @Published var onFetchCount: Int = 0
     /// 모달 시트 여부
     @Published var isSheetShow = false
-    /// 네트워크 요청을 통해 받은 응답 목록
-    @Published var cafeteriaResponseArray = [CafeteriaResponse]() {
-        didSet {
-            filterResponse()
-        }
-    }
-    /// 응답 목록 중 캠퍼스, 요일이 일치하는 응답 목록
-    @Published var selectedCafeteriaArray = [CafeteriaResponse]()
     /// 선택한 캠퍼스
     @Published var selectedCampus: Campus = .부산 {
         didSet {
@@ -37,16 +33,15 @@ class MainViewModel: ObservableObject {
         }
     }
     /// 현재 선택된 요일
-    @Published var selectedDayComponent: DayComponent = .일 {
+    @Published var selectedWeekComponent: WeekComponent? = .today {
         didSet {
             filterResponse()
         }
     }
-    
-    @Published var onFetchCount: Int = 0
+    /// 네트워크 요청을 통해 받은 응답 목록
+    @Published var cafeteriaResponseArray = [CafeteriaResponse]()
     
     init() {
-        selectedDayComponent = DayComponent.today
         loadDefaultCampus()
         loadBookmark()
     }
@@ -117,10 +112,10 @@ extension MainViewModel {
     
     /// 현재 선택된 캠퍼스에 맞는 응답 목록을 담는 함수
     func filterResponse() {
-        selectedCafeteriaArray = []
-        selectedCafeteriaArray = cafeteriaResponseArray.filter { response in
+        self.filteredCafeteriaResponseArray = cafeteriaResponseArray.filter { response in
             guard let last = response.date.split(separator: "-").last,
-                  let dayComponent = Int(last),
+                  let dayValue = Int(last),
+                  selectedWeekComponent?.dayValue == dayValue,
                   response.cafeteria.campus == selectedCampus
             else { return false }
             return true

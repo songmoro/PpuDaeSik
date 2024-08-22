@@ -10,7 +10,7 @@ import SwiftUI
 /// 월-금 일과 요일 탭을 나타내는 뷰
 struct WeekView: View {
     let namespace: Namespace.ID
-    @Binding var selectedDayComponent: DayComponent
+    @Binding var selectedWeekComponent: WeekComponent?
     private let vm = WeekViewModel()
     
     var body: some View {
@@ -20,10 +20,10 @@ struct WeekView: View {
                     TextComponent.weekdayText(weekComponent.dayComponent.rawValue)
                     
                     Group {
-                        TextComponent.dayText(weekComponent.dayValue.description, weekComponent.dayComponent == DayComponent.today)
+                        TextComponent.dayText(weekComponent.dayValue.description, weekComponent == WeekComponent.today)
                         
-                        switch weekComponent.dayComponent {
-                        case selectedDayComponent:
+                        switch weekComponent {
+                        case selectedWeekComponent:
                             CircleComponent.selectedComponentDot
                                 .matchedGeometryEffect(id: "weekday", in: namespace)
                         default:
@@ -32,10 +32,10 @@ struct WeekView: View {
                     }
                 }
                 .onTapGesture {
-                    selectedDayComponent = weekComponent.dayComponent
+                    selectedWeekComponent = weekComponent
                 }
-                .disabled(selectedDayComponent == weekComponent.dayComponent)
-                .animation(.default, value: selectedDayComponent)
+                .disabled(selectedWeekComponent == weekComponent)
+                .animation(.default, value: selectedWeekComponent)
                 .padding(.trailing)
             }
             .frame(width: UIScreen.getWidth(350 / 7))

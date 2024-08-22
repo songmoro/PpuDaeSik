@@ -18,15 +18,16 @@ struct MainView: View {
             VStack {
                 HeaderView(isSheetShow: $vm.isSheetShow)
                 CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
-                WeekView(namespace: namespace, selectedDayComponent: $vm.selectedDayComponent)
+                WeekView(namespace: namespace, selectedWeekComponent: $vm.selectedWeekComponent)
                 Divider()
                 
-                if vm.onFetchCount != 0 {
+                switch vm.onFetchCount {
+                case 0:
+                    CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), responseArray: vm.filteredCafeteriaResponseArray)
+                default:
                     LoadingView()
                 }
-                else {
-                    CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), responseArray: vm.selectedCafeteriaArray)
-                }
+                
                 Spacer()
             }
             .frame(width: UIScreen.getWidth(350))
