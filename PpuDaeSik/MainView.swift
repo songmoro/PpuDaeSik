@@ -20,7 +20,13 @@ struct MainView: View {
                 CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
                 WeekView(namespace: namespace, weekArray: vm.weekArray, selectedDay: $vm.selectedDay)
                 Divider()
-                CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), responseArray: vm.selectedCafeteriaArray)
+                
+                if vm.onFetchCount != 0 {
+                    Text("식당 정보를 불러오는 중...")
+                }
+                else {
+                    CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), responseArray: vm.selectedCafeteriaArray)
+                }
                 Spacer()
             }
             .frame(width: UIScreen.getWidth(350))
