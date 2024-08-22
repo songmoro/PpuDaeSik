@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// 월-금 일과 요일 탭을 나타내는 뷰
+/// 월-금 일과 요일 탭을 나타내는 뷰
 struct WeekView: View {
     let namespace: Namespace.ID
     let weekArray: [Week]
@@ -34,6 +34,7 @@ struct WeekView: View {
                 .onTapGesture {
                     selectedDay = weekday.day
                 }
+                .disabled(selectedDay == weekday.day)
                 .animation(.default, value: selectedDay)
                 .padding(.trailing)
             }

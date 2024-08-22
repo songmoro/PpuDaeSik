@@ -30,7 +30,7 @@ struct CafeteriaView: View {
                 guard let first = campusCafeteria.first else { return }
                 
                 withAnimation {                
-                    proxy.scrollTo(first)
+                    proxy.scrollTo(first, anchor: .top)
                 }
             }
         }

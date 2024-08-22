@@ -9,10 +9,7 @@
 /* Begin PBXBuildFile section */
 		F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
 		F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
-		F81129452C4183DD00F71C03 /* DeploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129442C4183DD00F71C03 /* DeploymentStatus.swift */; };
 		F81129482C41960B00F71C03 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
-		F811294F2C41A68C00F71C03 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129492C41A16700F71C03 /* Serializable.swift */; };
-		F81129502C41A68D00F71C03 /* Serializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129492C41A16700F71C03 /* Serializable.swift */; };
 		F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
 		F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
 		F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
@@ -30,9 +27,9 @@
 		F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297F2C42E29B00F71C03 /* NotionResponse.swift */; };
 		F81129832C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
 		F81129842C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
+		F815E4162C77453C00D25149 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815E4152C77453C00D25149 /* LoadingView.swift */; };
 		F820CB8E2C6D2A62008694EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
 		F820CB8F2C6D2A86008694EC /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
-		F820CB902C6D2A99008694EC /* DeploymentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129442C4183DD00F71C03 /* DeploymentStatus.swift */; };
 		F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
 		F820CB972C6F685C008694EC /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB962C6F685C008694EC /* MealView.swift */; };
@@ -119,9 +116,7 @@
 /* Begin PBXFileReference section */
 		F811293E2C417B8800F71C03 /* MoyaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaHeader.swift; sourceTree = "<group>"; };
 		F81129422C417EF800F71C03 /* NotionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDatabase.swift; sourceTree = "<group>"; };
-		F81129442C4183DD00F71C03 /* DeploymentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeploymentStatus.swift; sourceTree = "<group>"; };
 		F81129472C41960B00F71C03 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
-		F81129492C41A16700F71C03 /* Serializable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serializable.swift; sourceTree = "<group>"; };
 		F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
 		F81129542C41A80B00F71C03 /* Ext+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Calendar.swift"; sourceTree = "<group>"; };
 		F81129592C429F9B00F71C03 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
@@ -131,6 +126,7 @@
 		F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByCampusRequest.swift; sourceTree = "<group>"; };
 		F811297F2C42E29B00F71C03 /* NotionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionResponse.swift; sourceTree = "<group>"; };
 		F81129822C43C86200F71C03 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
+		F815E4152C77453C00D25149 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F820CB962C6F685C008694EC /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
 		F820CB982C6F6D0D008694EC /* TextComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextComponent.swift; sourceTree = "<group>"; };
 		F820CB9A2C6F9491008694EC /* CircleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleComponent.swift; sourceTree = "<group>"; };
@@ -210,7 +206,6 @@
 			isa = PBXGroup;
 			children = (
 				F81129422C417EF800F71C03 /* NotionDatabase.swift */,
-				F81129442C4183DD00F71C03 /* DeploymentStatus.swift */,
 			);
 			path = Database;
 			sourceTree = "<group>";
@@ -226,7 +221,6 @@
 		F811294B2C41A17F00F71C03 /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
-				F81129492C41A16700F71C03 /* Serializable.swift */,
 				F81129822C43C86200F71C03 /* Properties.swift */,
 			);
 			path = Protocol;
@@ -252,6 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				F820CBA02C6FA2E7008694EC /* HeaderView.swift */,
+				F815E4152C77453C00D25149 /* LoadingView.swift */,
 				F820CBA22C6FA393008694EC /* CampusView.swift */,
 				F820CBA42C6FAB32008694EC /* WeekView.swift */,
 				F820CBA82C70E5F7008694EC /* CafeteriaView.swift */,
@@ -496,14 +491,12 @@
 				F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */,
 				F820CB8F2C6D2A86008694EC /* RequestManager.swift in Sources */,
 				F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */,
-				F811294F2C41A68C00F71C03 /* Serializable.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
 				F811295F2C429FC900F71C03 /* Campus.swift in Sources */,
 				F811297C2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
 				F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */,
 				F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */,
-				F820CB902C6D2A99008694EC /* DeploymentStatus.swift in Sources */,
 				F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */,
 				F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */,
 				F874F2882C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
@@ -519,7 +512,6 @@
 				F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
 				F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */,
 				F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
-				F81129502C41A68D00F71C03 /* Serializable.swift in Sources */,
 				F811295E2C429FBE00F71C03 /* Category.swift in Sources */,
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
 				F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
@@ -538,9 +530,9 @@
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */,
 				F811295A2C429F9B00F71C03 /* Campus.swift in Sources */,
+				F815E4162C77453C00D25149 /* LoadingView.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
 				F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */,
-				F81129452C4183DD00F71C03 /* DeploymentStatus.swift in Sources */,
 				F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */,
 				F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,

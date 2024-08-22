@@ -8,6 +8,12 @@
 import SwiftUI
 
 extension Calendar {
+    init() {
+        self = Calendar.current
+        self.locale = Locale(identifier: "ko_KR")
+        self.timeZone = TimeZone(identifier: "Asia/Seoul")!
+    }
+    
     func interval() -> [Int] {
         switch self.component(.weekday, from: Date()) {
         case 1: [ 0,  1,  2,  3,  4,  5,  6]

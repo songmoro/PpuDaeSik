@@ -25,8 +25,8 @@ struct Provider: IntentTimelineProvider {
         let currentDate = Date()
         let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
         
-        checkStatus { status in
-            queryDatabase(cafeteria, category: category, status) {
+        checkStatus { queryType in
+            queryDatabase(queryType, cafeteria, category: category) {
                 let entry = SimpleEntry(configuration: configuration, date: currentDate, name: $0[0], category: $0[1], meal: $0[2])
                 
                 let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
@@ -111,7 +111,7 @@ struct SimpleEntry: TimelineEntry {
 
 struct PpuDaeSikWidgetEntryView : View {
     var entry: Provider.Entry
-
+    
     var body: some View {
         ZStack(alignment: .topLeading) {
             Color.gray100.ignoresSafeArea()
@@ -192,7 +192,7 @@ struct ShortCutEntry: TimelineEntry {
 
 struct PpuDaeSikShortCutWidgetEntryView : View {
     var entry: ShortCutEntry
-
+    
     var body: some View {
         ZStack {
             Color.blue100.ignoresSafeArea()

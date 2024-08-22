@@ -27,7 +27,7 @@ class MainViewModel: ObservableObject {
     /// 선택한 캠퍼스
     @Published var selectedCampus: Campus = .부산 {
         didSet {
-            checkDatabaseStatus()
+            fetchCafeteriaArray()
         }
     }
     /// 사용자가 설정한 앱 시작 시 기본으로 보여줄 캠퍼스
@@ -50,6 +50,8 @@ class MainViewModel: ObservableObject {
         }
     }
     
+    @Published var onFetchCount: Int = 0
+    
     init() {
         currentWeek()
         selectedDay = Day.today
@@ -59,19 +61,11 @@ class MainViewModel: ObservableObject {
     
     /// 오늘 날짜를 기준으로 이번 주를 계산하는 함수
     func currentWeek() {
-        let calendar: Calendar = {
-            var calendar = Calendar.current
-            calendar.locale = Locale(identifier: "ko_KR")
-            calendar.timeZone = TimeZone(identifier: "Asia/Seoul")!
-            
-            return calendar
-        }()
+        let calendar = Calendar()
         
-        let interval = calendar.interval()
-        
-        let weekArray = zip(Day.allCases, interval).reduce(into: [Week]()) { partialResult, weekday in
+        let weekArray = zip(Day.allCases, calendar.interval()).reduce(into: [Week]()) { partialResult, weekday in
             guard let date = calendar.date(byAdding: .day, value: weekday.1, to: Date()) else { return }
-
+            
             let day = weekday.0
             let dayComponent = calendar.component(.day, from: date)
             
@@ -86,28 +80,64 @@ class MainViewModel: ObservableObject {
 
 /// 데이터베이스
 extension MainViewModel {
-    /// 데이터베이스가 백업 상태인지 검사하는 함수
-    func checkDatabaseStatus() {
+    /// 데이터베이스로부터 식당 목록을 불러오는 로직을 관리하는 함수
+    func fetchCafeteriaArray() {
         cafeteriaResponseArray = []
-        RequestManager.request(.checkStatus) { status in
-            status.forEach {
-                guard let DB = $0["DB"],
-                      let queryType = QueryType(rawValue: DB),
-                      let status = $0["Status"],
-                      let deploymentStatus = DeploymentStatus(status: status)
-                else { return }
+        RequestManager.shared.cancleAllRequest()
+        
+        // TODO: async await으로 컴플리션 핸들러 중첩 줄이기
+        self.onFetchCount = 1
+        
+        checkDatabaseStatus { queryTypeArray in
+            self.onFetchCount -= 1
+            
+            queryTypeArray.forEach { queryType in
+                self.onFetchCount += 1
                 
-                self.requestByCampusDatabase(self.selectedCampus, queryType, deploymentStatus)
+                self.requestByCampusDatabase(self.selectedCampus, queryType) {
+                    self.cafeteriaResponseArray += $0
+                    self.onFetchCount -= 1
+                }
             }
+        }
+    }
+    
+    /// 데이터베이스가 백업 상태인지 검사하는 함수
+    /// - QueryType:
+    ///     - DB: 데이터베이스 종류(학생 식당, 기숙사)
+    ///     - Status: 데이터베이스 백업 중 여부(백업, 완료)
+    func checkDatabaseStatus(completion: @escaping ([QueryType]) -> (Void)) {
+        RequestManager.shared.request(.checkStatus, NotionResponse<DeploymentProperties>.self) { response in
+            let queryTypeArray: [QueryType] = response.results.compactMap {
+                guard let queryType = QueryType($0.properties) else { return nil }
+                return queryType
+            }
+            
+            completion(queryTypeArray)
         }
     }
     
     /// 지정한 캠퍼스와 데이터베이스에 대한 데이터를 요청하는 함수
     /// - 캠퍼스: 부산, 밀양, 양산
     /// - 데이터베이스: 학생 식당, 기숙사
-    func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType, _ deploymentStatus: DeploymentStatus) {
-        RequestManager.request(.queryByCampus(queryType, campus, deploymentStatus), CafeteriaResponse.self) {
-            self.cafeteriaResponseArray += $0
+    func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType, completion: @escaping ([CafeteriaResponse]) -> (Void)) {
+        switch queryType {
+        case .restaurant:
+            RequestManager.shared.request(.queryByCampus(queryType, campus), NotionResponse<RestaurantProperties>.self) {
+                let cafeteriaResponseArray = $0.results.compactMap { result in
+                    CafeteriaResponse(result.properties)
+                }
+                
+                completion(cafeteriaResponseArray)
+            }
+        case .domitory:
+            RequestManager.shared.request(.queryByCampus(queryType, campus), NotionResponse<DomitoryProperties>.self) {
+                let cafeteriaResponseArray = $0.results.compactMap { result in
+                    CafeteriaResponse(result.properties)
+                }
+                
+                completion(cafeteriaResponseArray)
+            }
         }
     }
     
@@ -126,7 +156,7 @@ extension MainViewModel {
     
     /// 현재 선택된 캠퍼스에 있는 식당을 반환하는 함수
     func filterCafeteria() -> [Cafeteria] {
-        let bookmarkedCafeteria = Cafeteria.allCases.filter({ bookmark.contains($0) })
+        let bookmarkedCafeteria = Cafeteria.allCases.filter({ bookmark.contains($0) && $0.campus == selectedCampus })
         let unbookmarkedCafeteria = Cafeteria.allCases.filter({ !bookmark.contains($0) && $0.campus == selectedCampus })
         
         return bookmarkedCafeteria + unbookmarkedCafeteria

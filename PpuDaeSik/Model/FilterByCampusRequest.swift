@@ -8,45 +8,44 @@
 import SwiftUI
 
 struct FilterByCampusRequest: Codable {
-    init(property: String, campus: Campus, date: [String]) {
+    init(queryType: QueryType, campus: Campus) {
         let cafeteriaArray = Cafeteria.allCases.filter({ $0.campus == campus })
-        var code: [Filter.Or.ConditionalExpression]
+        let calendar = Calendar()
         
-        
-        if property == "MENU_DATE" {
-            code = cafeteriaArray.map { cafeteria in
-                Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: cafeteria.code))
-            }
-        }
-        else {
-            code = cafeteriaArray.map { cafeteria in
-                Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: cafeteria.code))
-            }
+        let condition: [Filter.Or.ConditionalExpression] = calendar.interval().compactMap {
+            guard let date = calendar.date(byAdding: .day, value: $0, to: Date()) else { return nil }
+            
+            let formattedDate = DateFormatter(format: "yyyy-MM-dd").string(from: date)
+            
+            return Filter.Or.ConditionalExpression(property: queryType.date(), rich_text: Filter.Or.ConditionalExpression.RichText(equals: formattedDate))
         }
         
-        let condition = date.map { d in
-            Filter.Or.ConditionalExpression(property: property, rich_text: Filter.Or.ConditionalExpression.RichText(equals: d))
+        let code: [Filter.Or.ConditionalExpression] = cafeteriaArray.map { cafeteria in
+            Filter.Or.ConditionalExpression(property: queryType.code(), rich_text: Filter.Or.ConditionalExpression.RichText(equals: cafeteria.code))
         }
-        
         
         self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: condition)])
     }
     
-    init(property: String, name: String, date: String, category: String) {
-        var code: [Filter.Or.ConditionalExpression]
-        var categoryType: Filter.Or.ConditionalExpression
+    init(queryType: QueryType, name: String, category: String) {
+        let calendar = Calendar()
         
-        if property == "MENU_DATE" {
-            code = [Filter.Or.ConditionalExpression(property: "RESTAURANT_CODE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: name))]
-            categoryType = Filter.Or.ConditionalExpression(property: "MENU_TYPE", rich_text: Filter.Or.ConditionalExpression.RichText(equals: category))
-        }
-        else {
-            code = [Filter.Or.ConditionalExpression(property: "no", rich_text: Filter.Or.ConditionalExpression.RichText(equals: name))]
-            categoryType = Filter.Or.ConditionalExpression(property: "mealKindGcd", rich_text: Filter.Or.ConditionalExpression.RichText(equals: category))
-        }
+        let date: String = {
+            let dateFormatter = DateFormatter(format: "YYYY-MM-dd")
+            
+            let date: Date = switch calendar.component(.hour, from: Date()) {
+            case 20...:
+                calendar.date(byAdding: .day, value: 1, to: Date())!
+            default:
+                Date()
+            }
+            
+            return dateFormatter.string(from: date)
+        }()
         
-        let condition = Filter.Or.ConditionalExpression(property: property, rich_text: Filter.Or.ConditionalExpression.RichText(equals: date))
-        
+        let code = [Filter.Or.ConditionalExpression(property: queryType.code(), rich_text: Filter.Or.ConditionalExpression.RichText(equals: name))]
+        let categoryType = Filter.Or.ConditionalExpression(property: queryType.type(), rich_text: Filter.Or.ConditionalExpression.RichText(equals: category))
+        let condition = Filter.Or.ConditionalExpression(property: queryType.date(), rich_text: Filter.Or.ConditionalExpression.RichText(equals: date))
         
         self.filter = Filter(and: [Filter.Or(or: code), Filter.Or(or: [condition]), Filter.Or(or: [categoryType])])
     }
