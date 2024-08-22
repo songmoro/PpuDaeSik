@@ -31,5 +31,6 @@ class RequestManager {
     
     func cancleAllRequest() {
         requestArray.forEach { $0.cancel() }
+        requestArray.removeAll()
     }
 }
