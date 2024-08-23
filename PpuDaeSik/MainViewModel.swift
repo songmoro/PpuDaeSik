@@ -88,7 +88,7 @@ extension MainViewModel {
             guard let responseArray = responseArray else { return [] }
             
             return responseArray.results.compactMap {
-                CafeteriaResponse($0.properties)
+                CafeteriaResponse(from: $0.properties.toDict())
             }
         case .domitory:
             let responseArray = await RequestManager.shared.request(
@@ -99,7 +99,7 @@ extension MainViewModel {
             guard let responseArray = responseArray else { return [] }
             
             return responseArray.results.compactMap {
-                CafeteriaResponse($0.properties)
+                CafeteriaResponse(from: $0.properties.toDict())
             }
         }
     }

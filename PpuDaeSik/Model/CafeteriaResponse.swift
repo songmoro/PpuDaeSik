@@ -18,8 +18,7 @@ struct CafeteriaResponse: Hashable {
     }
     
     /// 옵셔널 초기화
-    init?(_ properties: Properties) {
-        let properties = properties.toDict()
+    init?(from properties: [String: String]) {
         let title = properties["title"]
         
         guard let code = properties["code"],
