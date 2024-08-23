@@ -12,8 +12,6 @@ class MainViewModel: ObservableObject {
     @Published var selectedWeekComponent: WeekComponent? = .today
     /// 네트워크 요청을 통해 받은 응답 목록
     @Published var cafeteriaResponseArray = [CafeteriaResponse]()
-    /// 진행 중인 네트워크 요청 수
-    @Published var onFetchCount: Int = 0
     /// 모달 시트 여부
     @Published var isSheetShow = false
     /// 선택한 캠퍼스
