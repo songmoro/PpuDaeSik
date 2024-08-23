@@ -29,7 +29,6 @@
 		F81129842C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
 		F815E4162C77453C00D25149 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815E4152C77453C00D25149 /* LoadingView.swift */; };
 		F820CB8E2C6D2A62008694EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
-		F820CB8F2C6D2A86008694EC /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
 		F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
 		F820CB972C6F685C008694EC /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB962C6F685C008694EC /* MealView.swift */; };
@@ -489,7 +488,6 @@
 				F820CB8E2C6D2A62008694EC /* API.swift in Sources */,
 				F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */,
 				F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */,
-				F820CB8F2C6D2A86008694EC /* RequestManager.swift in Sources */,
 				F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,

@@ -99,23 +99,24 @@ extension MainViewModel {
                 CafeteriaResponse($0.properties)
             }
         case .domitory:
-            RequestManager.shared.request(.queryByCampus(queryType, campus), NotionResponse<DomitoryProperties>.self) {
-                let cafeteriaResponseArray = $0.results.compactMap { result in
-                    CafeteriaResponse(result.properties)
-                }
-                
-                completion(cafeteriaResponseArray)
+            let responseArray = await RequestManager.shared.request(
+                .queryByCampus(queryType, campus),
+                NotionResponse<DomitoryProperties>.self
+            )
+            
+            return responseArray.results.compactMap {
+                CafeteriaResponse($0.properties)
             }
         }
     }
     
     /// 현재 선택된 캠퍼스에 맞는 응답 목록을 담는 함수
-    func filterResponse() {
-        self.filteredCafeteriaResponseArray = cafeteriaResponseArray.filter { response in
+    func filterResponse() -> [CafeteriaResponse] {
+        self.cafeteriaResponseArray.filter { response in
             guard let last = response.date.split(separator: "-").last,
                   let dayValue = Int(last),
-                  selectedWeekComponent?.dayValue == dayValue,
-                  response.cafeteria.campus == selectedCampus
+                  self.selectedWeekComponent?.dayValue == dayValue,
+                  response.cafeteria.campus == self.selectedCampus
             else { return false }
             return true
         }

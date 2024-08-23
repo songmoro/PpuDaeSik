@@ -23,7 +23,7 @@ struct MainView: View {
                 
                 switch vm.onFetchCount {
                 case 0:
-                    CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), responseArray: vm.filteredCafeteriaResponseArray)
+                    CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), filteredCafeteriaResponseArray: vm.filterResponse())
                 default:
                     LoadingView()
                 }
