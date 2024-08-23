@@ -21,11 +21,12 @@ struct MainView: View {
                 WeekView(namespace: namespace, selectedWeekComponent: $vm.selectedWeekComponent)
                 Divider()
                 
-                switch vm.onFetchCount {
-                case 0:
-                    CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), filteredCafeteriaResponseArray: vm.filterResponse())
-                default:
+                switch vm.cafeteriaResponseArray.isEmpty {
+                case true:
                     LoadingView()
+                default:
+                    CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), filteredCafeteriaResponseArray: vm.filterResponse())
+                    
                 }
                 
                 Spacer()

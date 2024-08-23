@@ -45,26 +45,16 @@ class MainViewModel: ObservableObject {
 extension MainViewModel {
     /// 데이터베이스로부터 식당 목록을 불러오는 로직을 관리하는 함수
     func fetchCafeteriaArray() {
-        onFetchCount = 1
         cafeteriaResponseArray = []
         RequestManager.shared.cancleAllRequest()
         
         Task {
             let queryTypeArray = await checkDatabaseStatus()
-            DispatchQueue.main.async {
-                self.onFetchCount -= 1
-            }
-            
             for queryType in queryTypeArray {
-                DispatchQueue.main.async {
-                    self.onFetchCount += 1
-                }
-                
                 let responseArray = await requestByCampusDatabase(selectedCampus, queryType)
                 
                 DispatchQueue.main.async {
                     self.cafeteriaResponseArray += responseArray
-                    self.onFetchCount -= 1
                 }
             }
         }
@@ -76,6 +66,8 @@ extension MainViewModel {
     ///     - Status: 데이터베이스 백업 중 여부(백업, 완료)
     func checkDatabaseStatus() async -> [QueryType] {
         let response = await RequestManager.shared.request(.checkStatus, NotionResponse<DeploymentProperties>.self)
+        guard let response = response else { return [] }
+        
         let queryTypeArray: [QueryType] = response.results.compactMap {
             guard let queryType = QueryType($0.properties) else { return nil }
             return queryType
@@ -95,6 +87,8 @@ extension MainViewModel {
                 NotionResponse<RestaurantProperties>.self
             )
             
+            guard let responseArray = responseArray else { return [] }
+            
             return responseArray.results.compactMap {
                 CafeteriaResponse($0.properties)
             }
@@ -103,6 +97,8 @@ extension MainViewModel {
                 .queryByCampus(queryType, campus),
                 NotionResponse<DomitoryProperties>.self
             )
+            
+            guard let responseArray = responseArray else { return [] }
             
             return responseArray.results.compactMap {
                 CafeteriaResponse($0.properties)
