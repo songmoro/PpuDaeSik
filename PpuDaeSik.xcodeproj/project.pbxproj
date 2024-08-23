@@ -15,7 +15,7 @@
 		F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
 		F81129562C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
 		F811295A2C429F9B00F71C03 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129592C429F9B00F71C03 /* Campus.swift */; };
-		F811295C2C429FA800F71C03 /* Week.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295B2C429FA800F71C03 /* Week.swift */; };
+		F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295B2C429FA800F71C03 /* WeekComponent.swift */; };
 		F811295E2C429FBE00F71C03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295D2C429FBE00F71C03 /* Category.swift */; };
 		F811295F2C429FC900F71C03 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129592C429F9B00F71C03 /* Campus.swift */; };
 		F81129612C429FCD00F71C03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295D2C429FBE00F71C03 /* Category.swift */; };
@@ -29,7 +29,6 @@
 		F81129842C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
 		F815E4162C77453C00D25149 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815E4152C77453C00D25149 /* LoadingView.swift */; };
 		F820CB8E2C6D2A62008694EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
-		F820CB8F2C6D2A86008694EC /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
 		F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
 		F820CB972C6F685C008694EC /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB962C6F685C008694EC /* MealView.swift */; };
@@ -40,7 +39,7 @@
 		F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA02C6FA2E7008694EC /* HeaderView.swift */; };
 		F820CBA32C6FA393008694EC /* CampusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA22C6FA393008694EC /* CampusView.swift */; };
 		F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA42C6FAB32008694EC /* WeekView.swift */; };
-		F820CBA72C6FAD1E008694EC /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* Day.swift */; };
+		F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* DayComponent.swift */; };
 		F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA82C70E5F7008694EC /* CafeteriaView.swift */; };
 		F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
@@ -120,7 +119,7 @@
 		F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
 		F81129542C41A80B00F71C03 /* Ext+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Calendar.swift"; sourceTree = "<group>"; };
 		F81129592C429F9B00F71C03 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
-		F811295B2C429FA800F71C03 /* Week.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Week.swift; sourceTree = "<group>"; };
+		F811295B2C429FA800F71C03 /* WeekComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekComponent.swift; sourceTree = "<group>"; };
 		F811295D2C429FBE00F71C03 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F81129652C429FEE00F71C03 /* QueryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
 		F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByCampusRequest.swift; sourceTree = "<group>"; };
@@ -135,7 +134,7 @@
 		F820CBA02C6FA2E7008694EC /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		F820CBA22C6FA393008694EC /* CampusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusView.swift; sourceTree = "<group>"; };
 		F820CBA42C6FAB32008694EC /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
-		F820CBA62C6FAD1E008694EC /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		F820CBA62C6FAD1E008694EC /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeaderView.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -230,8 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				F81129592C429F9B00F71C03 /* Campus.swift */,
-				F811295B2C429FA800F71C03 /* Week.swift */,
-				F820CBA62C6FAD1E008694EC /* Day.swift */,
+				F811295B2C429FA800F71C03 /* WeekComponent.swift */,
+				F820CBA62C6FAD1E008694EC /* DayComponent.swift */,
 				F811295D2C429FBE00F71C03 /* Category.swift */,
 				F811297F2C42E29B00F71C03 /* NotionResponse.swift */,
 				F81129652C429FEE00F71C03 /* QueryType.swift */,
@@ -489,7 +488,6 @@
 				F820CB8E2C6D2A62008694EC /* API.swift in Sources */,
 				F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */,
 				F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */,
-				F820CB8F2C6D2A86008694EC /* RequestManager.swift in Sources */,
 				F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
@@ -524,7 +522,7 @@
 				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
 				F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */,
 				F820CBA32C6FA393008694EC /* CampusView.swift in Sources */,
-				F811295C2C429FA800F71C03 /* Week.swift in Sources */,
+				F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */,
 				F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */,
 				F820CB992C6F6D0D008694EC /* TextComponent.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
@@ -536,7 +534,7 @@
 				F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */,
 				F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
-				F820CBA72C6FAD1E008694EC /* Day.swift in Sources */,
+				F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
 				F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,

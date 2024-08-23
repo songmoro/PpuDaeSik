@@ -1,5 +1,5 @@
 //
-//  Day.swift
+//  DayComponent.swift
 //  PpuDaeSik
 //
 //  Created by 송재훈 on 8/17/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Day: String, CaseIterable {
+enum DayComponent: String, CaseIterable {
     case 일, 월, 화, 수, 목, 금, 토
     
     var weekday: Int {
@@ -20,9 +20,5 @@ enum Day: String, CaseIterable {
         case .금: 6
         case .토: 7
         }
-    }
-    
-    static var today: Day {
-        Day.allCases[Calendar.current.component(.weekday, from: Date()) - 1]
     }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 struct CafeteriaView: View {
     @Binding var bookmark: [Cafeteria]
     let campusCafeteria: [Cafeteria]
-    let responseArray: [CafeteriaResponse]
+    let filteredCafeteriaResponseArray: [CafeteriaResponse]
     
     var body: some View {
         ScrollViewReader { proxy in
@@ -19,7 +19,7 @@ struct CafeteriaView: View {
                 ForEach(campusCafeteria, id: \.self) { cafeteria in
                     VStack {
                         CafeteriaHeaderView(bookmark: $bookmark, cafeteria: cafeteria)
-                        MealView(responseArray: responseArray.filter({ $0.cafeteria == cafeteria }))
+                        MealView(responseArray: filteredCafeteriaResponseArray.filter({ $0.cafeteria == cafeteria }))
                     }
                     .id(cafeteria)
                     .padding(.bottom)
