@@ -8,8 +8,10 @@
 import SwiftUI
 
 class MainViewModel: ObservableObject {
-    /// 필터링한 식당 응답 목록
-    @Published var filteredCafeteriaResponseArray: [CafeteriaResponse] = []
+    /// 현재 선택된 요일
+    @Published var selectedWeekComponent: WeekComponent? = .today
+    /// 네트워크 요청을 통해 받은 응답 목록
+    @Published var cafeteriaResponseArray = [CafeteriaResponse]()
     /// 진행 중인 네트워크 요청 수
     @Published var onFetchCount: Int = 0
     /// 모달 시트 여부
@@ -32,14 +34,6 @@ class MainViewModel: ObservableObject {
             saveBookmark()
         }
     }
-    /// 현재 선택된 요일
-    @Published var selectedWeekComponent: WeekComponent? = .today {
-        didSet {
-            filterResponse()
-        }
-    }
-    /// 네트워크 요청을 통해 받은 응답 목록
-    @Published var cafeteriaResponseArray = [CafeteriaResponse]()
     
     init() {
         loadDefaultCampus()
@@ -51,20 +45,25 @@ class MainViewModel: ObservableObject {
 extension MainViewModel {
     /// 데이터베이스로부터 식당 목록을 불러오는 로직을 관리하는 함수
     func fetchCafeteriaArray() {
+        onFetchCount = 1
         cafeteriaResponseArray = []
         RequestManager.shared.cancleAllRequest()
         
-        // TODO: async await으로 컴플리션 핸들러 중첩 줄이기
-        self.onFetchCount = 1
-        
-        checkDatabaseStatus { queryTypeArray in
-            self.onFetchCount -= 1
+        Task {
+            let queryTypeArray = await checkDatabaseStatus()
+            DispatchQueue.main.async {
+                self.onFetchCount -= 1
+            }
             
-            queryTypeArray.forEach { queryType in
-                self.onFetchCount += 1
+            for queryType in queryTypeArray {
+                DispatchQueue.main.async {
+                    self.onFetchCount += 1
+                }
                 
-                self.requestByCampusDatabase(self.selectedCampus, queryType) {
-                    self.cafeteriaResponseArray += $0
+                let responseArray = await requestByCampusDatabase(selectedCampus, queryType)
+                
+                DispatchQueue.main.async {
+                    self.cafeteriaResponseArray += responseArray
                     self.onFetchCount -= 1
                 }
             }
@@ -75,29 +74,29 @@ extension MainViewModel {
     /// - QueryType:
     ///     - DB: 데이터베이스 종류(학생 식당, 기숙사)
     ///     - Status: 데이터베이스 백업 중 여부(백업, 완료)
-    func checkDatabaseStatus(completion: @escaping ([QueryType]) -> (Void)) {
-        RequestManager.shared.request(.checkStatus, NotionResponse<DeploymentProperties>.self) { response in
-            let queryTypeArray: [QueryType] = response.results.compactMap {
-                guard let queryType = QueryType($0.properties) else { return nil }
-                return queryType
-            }
-            
-            completion(queryTypeArray)
+    func checkDatabaseStatus() async -> [QueryType] {
+        let response = await RequestManager.shared.request(.checkStatus, NotionResponse<DeploymentProperties>.self)
+        let queryTypeArray: [QueryType] = response.results.compactMap {
+            guard let queryType = QueryType($0.properties) else { return nil }
+            return queryType
         }
+        
+        return queryTypeArray
     }
     
     /// 지정한 캠퍼스와 데이터베이스에 대한 데이터를 요청하는 함수
     /// - 캠퍼스: 부산, 밀양, 양산
     /// - 데이터베이스: 학생 식당, 기숙사
-    func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType, completion: @escaping ([CafeteriaResponse]) -> (Void)) {
+    func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType) async -> [CafeteriaResponse] {
         switch queryType {
         case .restaurant:
-            RequestManager.shared.request(.queryByCampus(queryType, campus), NotionResponse<RestaurantProperties>.self) {
-                let cafeteriaResponseArray = $0.results.compactMap { result in
-                    CafeteriaResponse(result.properties)
-                }
-                
-                completion(cafeteriaResponseArray)
+            let responseArray = await RequestManager.shared.request(
+                .queryByCampus(queryType, campus),
+                NotionResponse<RestaurantProperties>.self
+            )
+            
+            return responseArray.results.compactMap {
+                CafeteriaResponse($0.properties)
             }
         case .domitory:
             RequestManager.shared.request(.queryByCampus(queryType, campus), NotionResponse<DomitoryProperties>.self) {
