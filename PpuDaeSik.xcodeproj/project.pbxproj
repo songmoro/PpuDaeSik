@@ -42,6 +42,7 @@
 		F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* DayComponent.swift */; };
 		F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA82C70E5F7008694EC /* CafeteriaView.swift */; };
 		F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */; };
+		F82980B12C7B83C60087EA86 /* PpuDaeSikTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82980B02C7B83C60087EA86 /* PpuDaeSikTests.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -79,6 +80,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		F82980B22C7B83C60087EA86 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F88F35CA2B43FC6500BEA743 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F88F35D12B43FC6500BEA743;
+			remoteInfo = PpuDaeSik;
+		};
 		F8334D422BE4C74A000B85E9 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F88F35CA2B43FC6500BEA743 /* Project object */;
@@ -137,6 +145,8 @@
 		F820CBA62C6FAD1E008694EC /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeaderView.swift; sourceTree = "<group>"; };
+		F82980AE2C7B83C60087EA86 /* PpuDaeSikTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PpuDaeSikTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F82980B02C7B83C60087EA86 /* PpuDaeSikTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikTests.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -166,6 +176,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		F82980AB2C7B83C60087EA86 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8334D312BE4C749000B85E9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -259,6 +276,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		F82980AF2C7B83C60087EA86 /* PpuDaeSikTests */ = {
+			isa = PBXGroup;
+			children = (
+				F82980B02C7B83C60087EA86 /* PpuDaeSikTests.swift */,
+			);
+			path = PpuDaeSikTests;
+			sourceTree = "<group>";
+		};
 		F8334D352BE4C749000B85E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -296,6 +321,7 @@
 			children = (
 				F88F35D42B43FC6500BEA743 /* PpuDaeSik */,
 				F8334D5E2BE4C7E9000B85E9 /* PpuDaeSikWidget */,
+				F82980AF2C7B83C60087EA86 /* PpuDaeSikTests */,
 				F8334D352BE4C749000B85E9 /* Frameworks */,
 				F88F35D32B43FC6500BEA743 /* Products */,
 			);
@@ -306,6 +332,7 @@
 			children = (
 				F88F35D22B43FC6500BEA743 /* PpuDaeSik.app */,
 				F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */,
+				F82980AE2C7B83C60087EA86 /* PpuDaeSikTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -364,6 +391,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		F82980AD2C7B83C60087EA86 /* PpuDaeSikTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F82980B42C7B83C60087EA86 /* Build configuration list for PBXNativeTarget "PpuDaeSikTests" */;
+			buildPhases = (
+				F82980AA2C7B83C60087EA86 /* Sources */,
+				F82980AB2C7B83C60087EA86 /* Frameworks */,
+				F82980AC2C7B83C60087EA86 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F82980B32C7B83C60087EA86 /* PBXTargetDependency */,
+			);
+			name = PpuDaeSikTests;
+			productName = PpuDaeSikTests;
+			productReference = F82980AE2C7B83C60087EA86 /* PpuDaeSikTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F8334D332BE4C749000B85E9 /* PpuDaeSikWidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F8334D482BE4C74A000B85E9 /* Build configuration list for PBXNativeTarget "PpuDaeSikWidgetExtension" */;
@@ -420,9 +465,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1540;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
+					F82980AD2C7B83C60087EA86 = {
+						CreatedOnToolsVersion = 15.4;
+						TestTargetID = F88F35D12B43FC6500BEA743;
+					};
 					F8334D332BE4C749000B85E9 = {
 						CreatedOnToolsVersion = 15.3;
 					};
@@ -450,11 +499,19 @@
 			targets = (
 				F88F35D12B43FC6500BEA743 /* PpuDaeSik */,
 				F8334D332BE4C749000B85E9 /* PpuDaeSikWidgetExtension */,
+				F82980AD2C7B83C60087EA86 /* PpuDaeSikTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		F82980AC2C7B83C60087EA86 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8334D322BE4C749000B85E9 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -477,6 +534,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		F82980AA2C7B83C60087EA86 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F82980B12C7B83C60087EA86 /* PpuDaeSikTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F8334D302BE4C749000B85E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -547,6 +612,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		F82980B32C7B83C60087EA86 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F88F35D12B43FC6500BEA743 /* PpuDaeSik */;
+			targetProxy = F82980B22C7B83C60087EA86 /* PBXContainerItemProxy */;
+		};
 		F8334D432BE4C74A000B85E9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F8334D332BE4C749000B85E9 /* PpuDaeSikWidgetExtension */;
@@ -555,6 +625,52 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		F82980B52C7B83C60087EA86 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA3J8597P8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moro.PpuDaeSikTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PpuDaeSik.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PpuDaeSik";
+			};
+			name = Debug;
+		};
+		F82980B62C7B83C60087EA86 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA3J8597P8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.2;
+				MACOSX_DEPLOYMENT_TARGET = 14.2;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moro.PpuDaeSikTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = auto;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PpuDaeSik.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PpuDaeSik";
+			};
+			name = Release;
+		};
 		F8334D462BE4C74A000B85E9 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -805,6 +921,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		F82980B42C7B83C60087EA86 /* Build configuration list for PBXNativeTarget "PpuDaeSikTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F82980B52C7B83C60087EA86 /* Debug */,
+				F82980B62C7B83C60087EA86 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		F8334D482BE4C74A000B85E9 /* Build configuration list for PBXNativeTarget "PpuDaeSikWidgetExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
