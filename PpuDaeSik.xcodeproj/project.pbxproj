@@ -42,7 +42,7 @@
 		F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* DayComponent.swift */; };
 		F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA82C70E5F7008694EC /* CafeteriaView.swift */; };
 		F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */; };
-		F82980B12C7B83C60087EA86 /* PpuDaeSikTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82980B02C7B83C60087EA86 /* PpuDaeSikTests.swift */; };
+		F82980B82C7B8CB80087EA86 /* PpuDaeSikWeekComponentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F82980B72C7B8CB80087EA86 /* PpuDaeSikWeekComponentTests.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -146,7 +146,7 @@
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeaderView.swift; sourceTree = "<group>"; };
 		F82980AE2C7B83C60087EA86 /* PpuDaeSikTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PpuDaeSikTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F82980B02C7B83C60087EA86 /* PpuDaeSikTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikTests.swift; sourceTree = "<group>"; };
+		F82980B72C7B8CB80087EA86 /* PpuDaeSikWeekComponentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikWeekComponentTests.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -279,7 +279,7 @@
 		F82980AF2C7B83C60087EA86 /* PpuDaeSikTests */ = {
 			isa = PBXGroup;
 			children = (
-				F82980B02C7B83C60087EA86 /* PpuDaeSikTests.swift */,
+				F82980B72C7B8CB80087EA86 /* PpuDaeSikWeekComponentTests.swift */,
 			);
 			path = PpuDaeSikTests;
 			sourceTree = "<group>";
@@ -538,7 +538,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F82980B12C7B83C60087EA86 /* PpuDaeSikTests.swift in Sources */,
+				F82980B82C7B8CB80087EA86 /* PpuDaeSikWeekComponentTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
