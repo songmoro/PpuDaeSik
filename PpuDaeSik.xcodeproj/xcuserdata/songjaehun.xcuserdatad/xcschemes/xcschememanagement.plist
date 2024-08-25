@@ -9,6 +9,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>PpuDaeSikTests.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
 		<key>PpuDaeSikWidgetExtension.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -80,6 +85,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>F82980AD2C7B83C60087EA86</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F8334D332BE4C749000B85E9</key>
 		<dict>
 			<key>primary</key>
