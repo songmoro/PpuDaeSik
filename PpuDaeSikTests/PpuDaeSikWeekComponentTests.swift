@@ -24,7 +24,7 @@ final class PpuDaeSikWeekComponentTests: XCTestCase {
     }
     
     /// 오늘 날짜를 대입한 WeekComponent가 today와 일치하는지 검사
-    func test_유효성검사() {
+    func test_유효성_검사() {
         dateFormatter.dateFormat = "dd"
         
         let dayComponent = DayComponent.allCases[calendar.component(.weekday, from: date) - 1]
