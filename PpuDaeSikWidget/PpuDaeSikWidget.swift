@@ -154,6 +154,8 @@ struct PpuDaeSikWidget: Widget {
 }
 
 struct ShortCutProvider: TimelineProvider {
+    typealias Entry = ShortCutEntry
+    
     func placeholder(in context: Context) -> ShortCutEntry {
         ShortCutEntry(date: Date())
     }
