@@ -53,11 +53,11 @@ extension CampusTab {
         init(container: DIContainer) {
             self.container = container
             let appState = container.appState
-            self._selectedCampus = .init(initialValue: appState.value.selectedTab.campus)
+            self._selectedCampus = .init(initialValue: appState.value.tab.campus)
             
             cancelBag.collect {
                 $selectedCampus.sink {
-                    appState[\.selectedTab.campus] = $0
+                    appState[\.tab.campus] = $0
                 }
             }
         }

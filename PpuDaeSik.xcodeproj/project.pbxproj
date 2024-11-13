@@ -19,6 +19,7 @@
 		F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE72CE368DE00277BC7 /* NotionRepository.swift */; };
 		F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEC2CE488AD00277BC7 /* CampusTab.swift */; };
 		F8045AF02CE4929B00277BC7 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEF2CE4929200277BC7 /* States.swift */; };
+		F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF32CE4A57B00277BC7 /* WeekTab.swift */; };
 		F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
 		F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F81129482C41960B00F71C03 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
@@ -48,7 +49,6 @@
 		F820CB9B2C6F9491008694EC /* CircleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9A2C6F9491008694EC /* CircleComponent.swift */; };
 		F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9C2C6F991F008694EC /* ImageComponent.swift */; };
 		F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9E2C6F9B43008694EC /* RectangleComponent.swift */; };
-		F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA42C6FAB32008694EC /* WeekView.swift */; };
 		F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* DayComponent.swift */; };
 		F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA82C70E5F7008694EC /* CafeteriaView.swift */; };
 		F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */; };
@@ -135,6 +135,7 @@
 		F8045AE72CE368DE00277BC7 /* NotionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRepository.swift; sourceTree = "<group>"; };
 		F8045AEC2CE488AD00277BC7 /* CampusTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTab.swift; sourceTree = "<group>"; };
 		F8045AEF2CE4929200277BC7 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		F8045AF32CE4A57B00277BC7 /* WeekTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTab.swift; sourceTree = "<group>"; };
 		F811293E2C417B8800F71C03 /* MoyaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaHeader.swift; sourceTree = "<group>"; };
 		F81129422C417EF800F71C03 /* NotionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDatabase.swift; sourceTree = "<group>"; };
 		F81129472C41960B00F71C03 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
@@ -153,7 +154,6 @@
 		F820CB9A2C6F9491008694EC /* CircleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleComponent.swift; sourceTree = "<group>"; };
 		F820CB9C2C6F991F008694EC /* ImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComponent.swift; sourceTree = "<group>"; };
 		F820CB9E2C6F9B43008694EC /* RectangleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleComponent.swift; sourceTree = "<group>"; };
-		F820CBA42C6FAB32008694EC /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		F820CBA62C6FAD1E008694EC /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeaderView.swift; sourceTree = "<group>"; };
@@ -263,6 +263,7 @@
 			children = (
 				F88F35F32B4434BE00BEA743 /* MainView.swift */,
 				F8045AEC2CE488AD00277BC7 /* CampusTab.swift */,
+				F8045AF32CE4A57B00277BC7 /* WeekTab.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -327,7 +328,6 @@
 			isa = PBXGroup;
 			children = (
 				F815E4152C77453C00D25149 /* LoadingView.swift */,
-				F820CBA42C6FAB32008694EC /* WeekView.swift */,
 				F820CBA82C70E5F7008694EC /* CafeteriaView.swift */,
 				F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */,
 				F820CB962C6F685C008694EC /* MealView.swift */,
@@ -612,7 +612,7 @@
 				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
 				F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */,
 				F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */,
-				F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */,
+				F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */,
 				F820CB992C6F6D0D008694EC /* TextComponent.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */,

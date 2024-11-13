@@ -9,7 +9,6 @@ import SwiftUI
 
 struct MainView: View {
     @Namespace private var namespace
-    
     @ObservedObject private(set) var viewModel: ViewModel
     @StateObject private var vm = MainViewModel()
     
@@ -20,8 +19,8 @@ struct MainView: View {
             VStack {
                 header
                 CampusTab(viewModel: .init(container: viewModel.container))
-//                CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
-                WeekView(namespace: namespace, selectedWeekComponent: $vm.selectedWeekComponent)
+                WeekTab(viewModel: .init(container: viewModel.container))
+
                 Divider()
                 
                 switch vm.cafeteriaResponseArray.isEmpty {
