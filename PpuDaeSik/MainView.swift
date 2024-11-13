@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @ObservedObject private(set) var viewModel: ViewModel
+    
     @Namespace private var namespace
     @StateObject private var vm = MainViewModel()
     
@@ -39,6 +41,16 @@ struct MainView: View {
     }
 }
 
+extension MainView {
+    class ViewModel: ObservableObject {
+        let container: DIContainer
+        
+        init(container: DIContainer) {
+            self.container = container
+        }
+    }
+}
+
 #Preview {
-    MainView()
+    MainView(viewModel: .init(container: .preview))
 }
