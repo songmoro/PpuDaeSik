@@ -18,7 +18,7 @@ struct MainView: View {
             Color.gray100.ignoresSafeArea()
             
             VStack {
-                HeaderView(isSheetShow: $vm.isSheetShow)
+                header
                 CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
                 WeekView(namespace: namespace, selectedWeekComponent: $vm.selectedWeekComponent)
                 Divider()
@@ -28,25 +28,55 @@ struct MainView: View {
                     LoadingView()
                 default:
                     CafeteriaView(bookmark: $vm.bookmark, campusCafeteria: vm.filterCafeteria(), filteredCafeteriaResponseArray: vm.filterResponse())
-                    
                 }
                 
                 Spacer()
             }
             .frame(width: UIScreen.getWidth(350))
-            .sheet(isPresented: $vm.isSheetShow) {
+            .sheet(isPresented: $viewModel.routingState.settingSheet) {
                 Sheet(defaultCampus: $vm.defaultCampus)
+            }
+        }
+    }
+    
+    /// 앱 최상단 로고 및 설정 버튼
+    var header: some View {
+        HStack {
+            ImageComponent.logo(viewModel.routingState.settingSheet)
+            TextComponent.mainTitle
+            
+            Spacer()
+            
+            Button {
+                viewModel.showSettingSheet()
+            } label: {
+                ImageComponent.setting
             }
         }
     }
 }
 
 extension MainView {
+    struct Routing {
+        var settingSheet = false
+    }
+}
+
+extension MainView {
     class ViewModel: ObservableObject {
+        @Published var routingState: Routing
+        
         let container: DIContainer
         
         init(container: DIContainer) {
             self.container = container
+            let appState = container.appState
+            
+            _routingState = .init(initialValue: appState.value.routing.mainViewRouting)
+        }
+        
+        func showSettingSheet() {
+            routingState.settingSheet = true
         }
     }
 }

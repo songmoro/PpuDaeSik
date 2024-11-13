@@ -6,7 +6,13 @@
 //
 
 struct AppState {
-    
+    var routing = ViewRouting()
+}
+
+extension AppState {
+    struct ViewRouting {
+        var mainViewRouting = MainView.Routing()
+    }
 }
 
 extension AppState {
