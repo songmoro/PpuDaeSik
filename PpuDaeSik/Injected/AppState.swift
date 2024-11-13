@@ -7,11 +7,18 @@
 
 struct AppState {
     var routing = ViewRouting()
+    var selectedTab = SelectedTab()
 }
 
 extension AppState {
-    struct ViewRouting {
+    struct ViewRouting: Equatable {
         var mainViewRouting = MainView.Routing()
+    }
+}
+
+extension AppState {
+    struct SelectedTab: Equatable {
+        var campus: Campus = .부산
     }
 }
 

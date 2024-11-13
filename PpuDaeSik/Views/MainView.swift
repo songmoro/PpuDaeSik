@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject private(set) var viewModel: ViewModel
-    
     @Namespace private var namespace
+    
+    @ObservedObject private(set) var viewModel: ViewModel
     @StateObject private var vm = MainViewModel()
     
     var body: some View {
@@ -19,7 +19,8 @@ struct MainView: View {
             
             VStack {
                 header
-                CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
+                CampusTab(viewModel: .init(container: viewModel.container))
+//                CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
                 WeekView(namespace: namespace, selectedWeekComponent: $vm.selectedWeekComponent)
                 Divider()
                 
@@ -57,7 +58,7 @@ struct MainView: View {
 }
 
 extension MainView {
-    struct Routing {
+    struct Routing: Equatable {
         var settingSheet = false
     }
 }
