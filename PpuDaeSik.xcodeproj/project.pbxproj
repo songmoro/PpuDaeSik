@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F8045AD32CE3636800277BC7 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD22CE3636700277BC7 /* AppEnvironment.swift */; };
+		F8045AD52CE3637600277BC7 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD42CE3637500277BC7 /* DependencyInjector.swift */; };
+		F8045AD82CE3638F00277BC7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD72CE3638700277BC7 /* AppState.swift */; };
+		F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD92CE3639900277BC7 /* Store.swift */; };
+		F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045ADB2CE363A100277BC7 /* CancelBag.swift */; };
+		F8045ADE2CE363AB00277BC7 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045ADD2CE363AA00277BC7 /* Loadable.swift */; };
+		F8045AE12CE3675700277BC7 /* CampusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE02CE3675500277BC7 /* CampusService.swift */; };
+		F8045AE32CE3675F00277BC7 /* WeekdayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE22CE3675D00277BC7 /* WeekdayService.swift */; };
+		F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE42CE3676400277BC7 /* CafeteriaService.swift */; };
+		F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE72CE368DE00277BC7 /* NotionRepository.swift */; };
+		F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEC2CE488AD00277BC7 /* CampusTab.swift */; };
+		F8045AF02CE4929B00277BC7 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEF2CE4929200277BC7 /* States.swift */; };
+		F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF32CE4A57B00277BC7 /* WeekTab.swift */; };
+		F8045AF62CE5D4F500277BC7 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */; };
 		F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
 		F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F81129482C41960B00F71C03 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
@@ -36,9 +50,6 @@
 		F820CB9B2C6F9491008694EC /* CircleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9A2C6F9491008694EC /* CircleComponent.swift */; };
 		F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9C2C6F991F008694EC /* ImageComponent.swift */; };
 		F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9E2C6F9B43008694EC /* RectangleComponent.swift */; };
-		F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA02C6FA2E7008694EC /* HeaderView.swift */; };
-		F820CBA32C6FA393008694EC /* CampusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA22C6FA393008694EC /* CampusView.swift */; };
-		F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA42C6FAB32008694EC /* WeekView.swift */; };
 		F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* DayComponent.swift */; };
 		F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA82C70E5F7008694EC /* CafeteriaView.swift */; };
 		F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */; };
@@ -75,7 +86,6 @@
 		F88F35FD2B459D3A00BEA743 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35FC2B459D3A00BEA743 /* RxMoya */; };
 		F88F35FF2B45E64700BEA743 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
 		F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F36002B45E96300BEA743 /* MainViewModel.swift */; };
-		F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ABD22E2B4DA9E90038195F /* Sheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +123,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		F8045AD22CE3636700277BC7 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		F8045AD42CE3637500277BC7 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
+		F8045AD72CE3638700277BC7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F8045AD92CE3639900277BC7 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		F8045ADB2CE363A100277BC7 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
+		F8045ADD2CE363AA00277BC7 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		F8045AE02CE3675500277BC7 /* CampusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusService.swift; sourceTree = "<group>"; };
+		F8045AE22CE3675D00277BC7 /* WeekdayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekdayService.swift; sourceTree = "<group>"; };
+		F8045AE42CE3676400277BC7 /* CafeteriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaService.swift; sourceTree = "<group>"; };
+		F8045AE72CE368DE00277BC7 /* NotionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRepository.swift; sourceTree = "<group>"; };
+		F8045AEC2CE488AD00277BC7 /* CampusTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTab.swift; sourceTree = "<group>"; };
+		F8045AEF2CE4929200277BC7 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
+		F8045AF32CE4A57B00277BC7 /* WeekTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTab.swift; sourceTree = "<group>"; };
+		F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		F811293E2C417B8800F71C03 /* MoyaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaHeader.swift; sourceTree = "<group>"; };
 		F81129422C417EF800F71C03 /* NotionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDatabase.swift; sourceTree = "<group>"; };
 		F81129472C41960B00F71C03 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
@@ -131,9 +155,6 @@
 		F820CB9A2C6F9491008694EC /* CircleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleComponent.swift; sourceTree = "<group>"; };
 		F820CB9C2C6F991F008694EC /* ImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComponent.swift; sourceTree = "<group>"; };
 		F820CB9E2C6F9B43008694EC /* RectangleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleComponent.swift; sourceTree = "<group>"; };
-		F820CBA02C6FA2E7008694EC /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		F820CBA22C6FA393008694EC /* CampusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusView.swift; sourceTree = "<group>"; };
-		F820CBA42C6FAB32008694EC /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 		F820CBA62C6FAD1E008694EC /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeaderView.swift; sourceTree = "<group>"; };
@@ -162,7 +183,6 @@
 		F88F35F32B4434BE00BEA743 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		F88F35FE2B45E64700BEA743 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		F88F36002B45E96300BEA743 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		F8ABD22E2B4DA9E90038195F /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,6 +213,70 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F8045AD02CE3631400277BC7 /* Injected */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AD72CE3638700277BC7 /* AppState.swift */,
+				F8045AD42CE3637500277BC7 /* DependencyInjector.swift */,
+			);
+			path = Injected;
+			sourceTree = "<group>";
+		};
+		F8045AD12CE3633700277BC7 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AD22CE3636700277BC7 /* AppEnvironment.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		F8045AD62CE3638000277BC7 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AD92CE3639900277BC7 /* Store.swift */,
+				F8045ADB2CE363A100277BC7 /* CancelBag.swift */,
+				F8045ADD2CE363AA00277BC7 /* Loadable.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F8045ADF2CE3673C00277BC7 /* Serivces */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AE02CE3675500277BC7 /* CampusService.swift */,
+				F8045AE22CE3675D00277BC7 /* WeekdayService.swift */,
+				F8045AE42CE3676400277BC7 /* CafeteriaService.swift */,
+			);
+			path = Serivces;
+			sourceTree = "<group>";
+		};
+		F8045AE62CE3689B00277BC7 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AE72CE368DE00277BC7 /* NotionRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		F8045AEB2CE4889A00277BC7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F88F35F32B4434BE00BEA743 /* MainView.swift */,
+				F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */,
+				F8045AEC2CE488AD00277BC7 /* CampusTab.swift */,
+				F8045AF32CE4A57B00277BC7 /* WeekTab.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F8045AEE2CE4928200277BC7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AEF2CE4929200277BC7 /* States.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		F811293D2C417B5100F71C03 /* Header */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,10 +328,7 @@
 		F820CB952C6F6848008694EC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				F820CBA02C6FA2E7008694EC /* HeaderView.swift */,
 				F815E4152C77453C00D25149 /* LoadingView.swift */,
-				F820CBA22C6FA393008694EC /* CampusView.swift */,
-				F820CBA42C6FAB32008694EC /* WeekView.swift */,
 				F820CBA82C70E5F7008694EC /* CafeteriaView.swift */,
 				F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */,
 				F820CB962C6F685C008694EC /* MealView.swift */,
@@ -313,11 +394,16 @@
 		F88F35D42B43FC6500BEA743 /* PpuDaeSik */ = {
 			isa = PBXGroup;
 			children = (
+				F8045ADF2CE3673C00277BC7 /* Serivces */,
+				F8045AD62CE3638000277BC7 /* Utilities */,
+				F8045AD12CE3633700277BC7 /* System */,
+				F8045AD02CE3631400277BC7 /* Injected */,
+				F8045AE62CE3689B00277BC7 /* Repositories */,
+				F8045AEE2CE4928200277BC7 /* Models */,
+				F8045AEB2CE4889A00277BC7 /* Views */,
 				F88F35F02B44056400BEA743 /* Info.plist */,
 				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
 				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
-				F88F35F32B4434BE00BEA743 /* MainView.swift */,
-				F8ABD22E2B4DA9E90038195F /* Sheet.swift */,
 				F88F36002B45E96300BEA743 /* MainViewModel.swift */,
 				F88F35FE2B45E64700BEA743 /* API.swift */,
 				F820CB952C6F6848008694EC /* View */,
@@ -507,8 +593,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8045AD32CE3636800277BC7 /* AppEnvironment.swift in Sources */,
+				F8045AF62CE5D4F500277BC7 /* BottomSheet.swift in Sources */,
 				F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
 				F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */,
+				F8045AE12CE3675700277BC7 /* CampusService.swift in Sources */,
 				F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
 				F811295E2C429FBE00F71C03 /* Category.swift in Sources */,
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
@@ -516,16 +605,18 @@
 				F820CB9B2C6F9491008694EC /* CircleComponent.swift in Sources */,
 				F81129662C429FEE00F71C03 /* QueryType.swift in Sources */,
 				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
-				F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */,
 				F820CB972C6F685C008694EC /* MealView.swift in Sources */,
+				F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */,
 				F81129832C43C86200F71C03 /* Properties.swift in Sources */,
+				F8045AF02CE4929B00277BC7 /* States.swift in Sources */,
 				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
 				F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */,
-				F820CBA32C6FA393008694EC /* CampusView.swift in Sources */,
 				F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */,
-				F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */,
+				F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */,
 				F820CB992C6F6D0D008694EC /* TextComponent.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
+				F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */,
+				F8045AE32CE3675F00277BC7 /* WeekdayService.swift in Sources */,
 				F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */,
 				F811295A2C429F9B00F71C03 /* Campus.swift in Sources */,
 				F815E4162C77453C00D25149 /* LoadingView.swift in Sources */,
@@ -534,9 +625,14 @@
 				F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */,
 				F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */,
 				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
+				F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */,
+				F8045ADE2CE363AB00277BC7 /* Loadable.swift in Sources */,
+				F8045AD52CE3637600277BC7 /* DependencyInjector.swift in Sources */,
 				F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */,
+				F8045AD82CE3638F00277BC7 /* AppState.swift in Sources */,
 				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
-				F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */,
+				F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */,
+				F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 				F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */,
 				F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */,

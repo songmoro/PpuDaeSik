@@ -9,9 +9,15 @@ import SwiftUI
 
 @main
 struct PpuDaeSikApp: App {
+    let environment: AppEnvironment
+    
+    init() {
+        environment = AppEnvironment.bootstrap()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            MainView()
+            MainView(viewModel: .init(container: environment.container))
         }
     }
 }
