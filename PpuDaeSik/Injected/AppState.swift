@@ -8,6 +8,7 @@
 struct AppState {
     var routing = ViewRouting()
     var tab = SelectedTab()
+    var userData = UserData()
 }
 
 extension AppState {
@@ -20,6 +21,12 @@ extension AppState {
     struct SelectedTab: Equatable {
         var campus: Campus = .부산
         var weekComponent: WeekComponent? = .today
+    }
+}
+
+extension AppState {
+    struct UserData: Equatable {
+        var defaultCampus: Campus = .부산
     }
 }
 

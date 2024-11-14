@@ -20,7 +20,7 @@ struct MainView: View {
                 header
                 CampusTab(viewModel: .init(container: viewModel.container))
                 WeekTab(viewModel: .init(container: viewModel.container))
-
+                
                 Divider()
                 
                 switch vm.cafeteriaResponseArray.isEmpty {
@@ -34,7 +34,7 @@ struct MainView: View {
             }
             .frame(width: UIScreen.getWidth(350))
             .sheet(isPresented: $viewModel.routingState.settingSheet) {
-                Sheet(defaultCampus: $vm.defaultCampus)
+                BottomSheet(viewModel: .init(container: viewModel.container))
             }
         }
     }
