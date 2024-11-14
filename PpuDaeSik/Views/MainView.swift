@@ -8,9 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
-    @ObservedObject private(set) var viewModel: ViewModel
-    
     @Namespace private var namespace
+    @ObservedObject private(set) var viewModel: ViewModel
     @StateObject private var vm = MainViewModel()
     
     var body: some View {
@@ -19,8 +18,9 @@ struct MainView: View {
             
             VStack {
                 header
-                CampusView(namespace: namespace, selectedCampus: $vm.selectedCampus)
-                WeekView(namespace: namespace, selectedWeekComponent: $vm.selectedWeekComponent)
+                CampusTab(viewModel: .init(container: viewModel.container))
+                WeekTab(viewModel: .init(container: viewModel.container))
+
                 Divider()
                 
                 switch vm.cafeteriaResponseArray.isEmpty {
@@ -57,7 +57,7 @@ struct MainView: View {
 }
 
 extension MainView {
-    struct Routing {
+    struct Routing: Equatable {
         var settingSheet = false
     }
 }
