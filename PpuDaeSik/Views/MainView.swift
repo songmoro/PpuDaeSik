@@ -95,7 +95,17 @@ extension MainView {
         }
         
         func bind() {
+            let appState = container.appState
+            
             cancelBag.collect {
+                appState.map(\.tab.campus)
+                    .removeDuplicates()
+                    .assign(to: \.selectedCampus, on: self)
+                
+                appState.map(\.tab.weekComponent)
+                    .removeDuplicates()
+                    .assign(to: \.selectedWeekComponent, on: self)
+                
                 $selectedCampus
                     .removeDuplicates()
                     .sink { _ in self.fetchCafeteriaArray() }
