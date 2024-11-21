@@ -18,7 +18,6 @@
 		F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE42CE3676400277BC7 /* CafeteriaService.swift */; };
 		F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE72CE368DE00277BC7 /* NotionRepository.swift */; };
 		F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEC2CE488AD00277BC7 /* CampusTab.swift */; };
-		F8045AF02CE4929B00277BC7 /* States.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEF2CE4929200277BC7 /* States.swift */; };
 		F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF32CE4A57B00277BC7 /* WeekTab.swift */; };
 		F8045AF62CE5D4F500277BC7 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */; };
 		F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
@@ -134,7 +133,6 @@
 		F8045AE42CE3676400277BC7 /* CafeteriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaService.swift; sourceTree = "<group>"; };
 		F8045AE72CE368DE00277BC7 /* NotionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRepository.swift; sourceTree = "<group>"; };
 		F8045AEC2CE488AD00277BC7 /* CampusTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTab.swift; sourceTree = "<group>"; };
-		F8045AEF2CE4929200277BC7 /* States.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = States.swift; sourceTree = "<group>"; };
 		F8045AF32CE4A57B00277BC7 /* WeekTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTab.swift; sourceTree = "<group>"; };
 		F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		F811293E2C417B8800F71C03 /* MoyaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaHeader.swift; sourceTree = "<group>"; };
@@ -280,7 +278,6 @@
 		F8045AEE2CE4928200277BC7 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F8045AEF2CE4929200277BC7 /* States.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -331,6 +328,14 @@
 				F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		F8183F9C2CEF10C2007B9428 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AEB2CE4889A00277BC7 /* Views */,
+			);
+			path = Presentation;
 			sourceTree = "<group>";
 		};
 		F8334D352BE4C749000B85E9 /* Frameworks */ = {
@@ -387,16 +392,16 @@
 		F88F35D42B43FC6500BEA743 /* PpuDaeSik */ = {
 			isa = PBXGroup;
 			children = (
+				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
+				F8183F9C2CEF10C2007B9428 /* Presentation */,
 				F8045ADF2CE3673C00277BC7 /* Serivces */,
 				F8045AD62CE3638000277BC7 /* Utilities */,
 				F8045AD12CE3633700277BC7 /* System */,
 				F8045AD02CE3631400277BC7 /* Injected */,
 				F8045AE62CE3689B00277BC7 /* Repositories */,
 				F8045AEE2CE4928200277BC7 /* Models */,
-				F8045AEB2CE4889A00277BC7 /* Views */,
 				F88F35F02B44056400BEA743 /* Info.plist */,
 				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
-				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
 				F88F36002B45E96300BEA743 /* MainViewModel.swift */,
 				F88F35FE2B45E64700BEA743 /* API.swift */,
 				F81129582C429F8C00F71C03 /* Model */,
@@ -600,7 +605,6 @@
 				F820CB972C6F685C008694EC /* MealView.swift in Sources */,
 				F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */,
 				F81129832C43C86200F71C03 /* Properties.swift in Sources */,
-				F8045AF02CE4929B00277BC7 /* States.swift in Sources */,
 				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
 				F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */,
 				F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */,
