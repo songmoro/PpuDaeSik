@@ -47,9 +47,6 @@
 		F820CB8E2C6D2A62008694EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
 		F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
-		F820CB992C6F6D0D008694EC /* TextComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB982C6F6D0D008694EC /* TextComponent.swift */; };
-		F820CB9B2C6F9491008694EC /* CircleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9A2C6F9491008694EC /* CircleComponent.swift */; };
-		F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9C2C6F991F008694EC /* ImageComponent.swift */; };
 		F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* DayComponent.swift */; };
 		F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA82C70E5F7008694EC /* CafeteriaView.swift */; };
 		F820CBAB2C70EE2A008694EC /* CafeteriaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeader.swift */; };
@@ -152,9 +149,6 @@
 		F8183FA32CEF1480007B9428 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		F8183FA52CEF14A2007B9428 /* MenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContent.swift; sourceTree = "<group>"; };
 		F8183FAC2CEF291A007B9428 /* MainViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewHeader.swift; sourceTree = "<group>"; };
-		F820CB982C6F6D0D008694EC /* TextComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextComponent.swift; sourceTree = "<group>"; };
-		F820CB9A2C6F9491008694EC /* CircleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleComponent.swift; sourceTree = "<group>"; };
-		F820CB9C2C6F991F008694EC /* ImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComponent.swift; sourceTree = "<group>"; };
 		F820CBA62C6FAD1E008694EC /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		F820CBAA2C70EE2A008694EC /* CafeteriaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeader.swift; sourceTree = "<group>"; };
@@ -266,9 +260,6 @@
 				F8183FAA2CEF2831007B9428 /* Tabs */,
 				F8183FA92CEF281A007B9428 /* Cafeteria */,
 				F815E4152C77453C00D25149 /* LoadingView.swift */,
-				F820CB982C6F6D0D008694EC /* TextComponent.swift */,
-				F820CB9A2C6F9491008694EC /* CircleComponent.swift */,
-				F820CB9C2C6F991F008694EC /* ImageComponent.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -635,7 +626,6 @@
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
 				F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
 				F8183FAD2CEF291A007B9428 /* MainViewHeader.swift in Sources */,
-				F820CB9B2C6F9491008694EC /* CircleComponent.swift in Sources */,
 				F81129662C429FEE00F71C03 /* QueryType.swift in Sources */,
 				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
 				F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */,
@@ -645,7 +635,6 @@
 				F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */,
 				F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */,
 				F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */,
-				F820CB992C6F6D0D008694EC /* TextComponent.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */,
 				F8045AE32CE3675F00277BC7 /* WeekdayService.swift in Sources */,
@@ -666,7 +655,6 @@
 				F8183FA42CEF14A0007B9428 /* MenuCell.swift in Sources */,
 				F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
-				F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */,
 				F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */,
 				F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
 			);

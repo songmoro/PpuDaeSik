@@ -22,15 +22,24 @@ struct WeekTab: View {
                     viewModel.changeSelectedWeekComponent(to: weekComponent)
                 } label: {
                     VStack(spacing: 0) {
-                        TextComponent.weekdayText(weekComponent.dayComponent.rawValue)
-                        TextComponent.dayText(weekComponent.dayValue.description, isToday)
+                        Text(weekComponent.dayComponent.rawValue)
+                            .foregroundColor(.black100)
+                            .font(.body())
+                        Text(weekComponent.dayValue.description)
+                            .foregroundColor(isToday ? .black100 : .black40)
+                            .font(.headline())
+                            .padding(.bottom, UIScreen.getHeight(6))
                         
                         if isSelected {
-                            CircleComponent.selectedComponentDot
+                            Circle()
+                                .foregroundColor(.blue100)
+                                .frame(height: UIScreen.getHeight(5))
                                 .matchedGeometryEffect(id: "weekday", in: namespace)
                         }
                         else {
-                            CircleComponent.unselectedComponentDot
+                            Circle()
+                                .foregroundColor(.clear)
+                                .frame(height: UIScreen.getHeight(5))
                         }
                     }
                 }

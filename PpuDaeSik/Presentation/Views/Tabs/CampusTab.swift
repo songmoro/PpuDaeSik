@@ -20,14 +20,20 @@ struct CampusTab: View {
                     viewModel.changeSelectedCampus(to: campus)
                 } label: {
                     VStack(spacing: 0) {
-                        TextComponent.campusTitle(campus.rawValue, isSelected)
+                        Text(campus.rawValue)
+                            .foregroundColor(isSelected ? .black100 : .black40)
+                            .padding(.bottom, UIScreen.getHeight(6))
                         
                         if isSelected {
-                            CircleComponent.selectedComponentDot
+                            Circle()
+                                .foregroundColor(.blue100)
+                                .frame(height: UIScreen.getHeight(5))
                                 .matchedGeometryEffect(id: "campus", in: namespace)
                         }
                         else {
-                            CircleComponent.unselectedComponentDot
+                            Circle()
+                                .foregroundColor(.clear)
+                                .frame(height: UIScreen.getHeight(5))
                         }
                     }
                 }

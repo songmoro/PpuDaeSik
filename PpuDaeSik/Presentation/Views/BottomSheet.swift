@@ -20,12 +20,15 @@ struct BottomSheet: View {
                     .frame(width: UIScreen.getWidth(36), height: UIScreen.getHeight(5))
                 
                 HStack {
-                    TextComponent.sheetPickerTitle
+                    Text("기본 캠퍼스")
+                        .foregroundColor(.black100)
+                    
                     Spacer()
                     
                     Picker(selection: $viewModel.defaultCampus) {
                         ForEach(Campus.allCases, id: \.self) { campus in
-                            TextComponent.sheetPickerComponent(campus.rawValue)
+                            Text(campus.rawValue)
+                                .tag(campus.rawValue)
                         }
                     } label: { }
                         .foregroundColor(.blue100)
