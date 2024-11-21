@@ -27,7 +27,11 @@ struct MainView: View {
                 case true:
                     LoadingView()
                 default:
-                    CafeteriaView(bookmark: $viewModel.bookmark, campusCafeteria: viewModel.filterCafeteria(), filteredCafeteriaResponseArray: viewModel.filterResponse())
+                    CafeteriaView(viewModel: .init(container: viewModel.container,
+                                                   bookmark: $viewModel.bookmark,
+                                                   campusCafeteria: viewModel.filterCafeteria(),
+                                                   filteredCafeteriaResponseArray: viewModel.filterResponse())
+                                  )
                 }
                 
                 Spacer()
@@ -87,11 +91,12 @@ extension MainView {
             let appState = container.appState
             
             _routingState = .init(initialValue: appState.value.routing.mainViewRouting)
-            
-            bind()
+            _defaultCampus = .init(initialValue: appState.value.userData.defaultCampus)
 
             loadDefaultCampus()
             loadBookmark()
+            
+            bind()
         }
         
         func bind() {
@@ -106,17 +111,22 @@ extension MainView {
                     .removeDuplicates()
                     .assign(to: \.selectedWeekComponent, on: self)
                 
+                appState.map(\.userData.defaultCampus)
+                    .removeDuplicates()
+                    .assign(to: \.defaultCampus, on: self)
+                
                 $selectedCampus
                     .removeDuplicates()
                     .sink { _ in self.fetchCafeteriaArray() }
                 
                 $defaultCampus
                     .removeDuplicates()
-                    .sink { _ in self.saveDefaultCampus() }
+                    .sink { self.saveDefaultCampus(by: $0) }
                 
                 $bookmark
                     .removeDuplicates()
-                    .sink { _ in self.saveBookmark() }
+                    .dropFirst()
+                    .sink { self.saveBookmark(by: $0) }
             }
         }
         
@@ -167,12 +177,12 @@ extension MainView {
         }
         
         /// 설정에서 지정한 기본 캠퍼스의 유저 디폴트를 저장하는 함수
-        func saveDefaultCampus() {
+        func saveDefaultCampus(by defaultCampus: Campus) {
             UserDefaults.standard.setValue(defaultCampus.rawValue, forKey: "defaultCampus")
         }
         
         /// 북마크가 변경되었을 때 변경된 북마크를 저장하는 함수
-        func saveBookmark() {
+        func saveBookmark(by bookmark: [Cafeteria]) {
             UserDefaults.standard.setValue(bookmark.map({ $0.name }), forKey: "bookmark")
         }
         

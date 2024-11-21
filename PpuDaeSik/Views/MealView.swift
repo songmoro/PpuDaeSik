@@ -9,11 +9,11 @@ import SwiftUI
 
 /// 조기, 조식, 중식, 석식 분류 및 식단을 나타내는 뷰
 struct MealView: View {
-    let responseArray: [CafeteriaResponse]
+    @ObservedObject var viewModel: ViewModel
     
     var body: some View {
         ForEach(Category.allCases, id: \.self) { category in
-            let filteredResponse = responseArray.filter({ $0.category == category })
+            let filteredResponse = viewModel.responseArray.filter({ $0.category == category })
             
             if !filteredResponse.isEmpty {
                 VStack {
@@ -40,6 +40,20 @@ struct MealView: View {
         .frame(width: UIScreen.getWidth(300), alignment: .leading)
         .background {
             RectangleComponent.cardBackground
+        }
+    }
+}
+
+extension MealView {
+    class ViewModel: ObservableObject {
+        let responseArray: [CafeteriaResponse]
+        
+        let container: DIContainer
+        let cancelBag = CancelBag()
+        
+        init(container: DIContainer, responseArray: [CafeteriaResponse]) {
+            self.container = container
+            self.responseArray = responseArray
         }
     }
 }
