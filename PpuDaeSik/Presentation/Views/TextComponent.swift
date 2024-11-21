@@ -9,14 +9,6 @@ import SwiftUI
 
 /// 텍스트와 관련된 뷰 요소
 struct TextComponent {
-    /// 앱 메인 타이틀
-    /// - 뿌대식
-    static var mainTitle: some View {
-        Text("뿌대식")
-            .font(.largeTitle())
-            .foregroundColor(.black100)
-    }
-    
     /// 캠퍼스 구분 타이틀
     /// - 부산, 밀양, 양산
     static func campusTitle(_ text: String, _ condition: Bool) -> some View {
@@ -55,49 +47,11 @@ struct TextComponent {
         Text(text)
             .tag(text)
     }
-    
-    /// 식당 이름
-    /// - 금정회관 학생 식당, 금정회관 교직원 식당, ...
-    static func cafeteriaTitle(_ text: String) -> some View {
-        Text(text)
-            .font(.headline())
-            .foregroundColor(.black100)
-    }
-    
-    /// 카테고리 설명
-    /// - 조기, 조식, 중식, 석식
-    static func categoryText(_ text: String) -> some View {
-        Text(text)
-            .font(.body())
-            .foregroundColor(.black40)
-            .frame(width: UIScreen.getWidth(300), alignment: .leading)
-    }
-    
-    /// 식단 이름
-    /// - 천원 아침, 정식, 일품, ...
-    /// - 학생 식당만 존재
-    static func menuTitle(_ text: String) -> some View {
-        Text(text)
-            .font(.subhead())
-            .foregroundColor(.black100)
-            .padding(.bottom, UIScreen.getHeight(2))
-    }
-    
-    /// 식단
-    /// - 제공되는 학식
-    /// - 백미밥\n순두부찌개...
-    static func menuContent(_ text: String) -> some View {
-        Text(text)
-            .font(.body())
-            .foregroundColor(.black100)
-            .padding(.bottom, UIScreen.getHeight(2))
-    }
 }
 
 struct TextComponent_Preview: PreviewProvider {
     static var previews: some View {
         VStack {
-            TextComponent.mainTitle
             HStack {
                 TextComponent.campusTitle("부산", true)
                 TextComponent.campusTitle("부산", false)
@@ -131,16 +85,6 @@ struct TextComponent_Preview: PreviewProvider {
             }
             TextComponent.sheetPickerTitle
             TextComponent.sheetPickerComponent("부산")
-            TextComponent.cafeteriaTitle("금정회관 학생 식당")
-            
-            TextComponent.categoryText("조기")
-            TextComponent.categoryText("조식")
-            TextComponent.categoryText("중식")
-            TextComponent.categoryText("석식")
-            
-            TextComponent.menuTitle("일품")
-            
-            TextComponent.menuContent("참치새싹야채비빔밥\n된장국\n고구마고로케\n배")
         }
     }
 }

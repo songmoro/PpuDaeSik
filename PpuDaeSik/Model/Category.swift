@@ -23,3 +23,18 @@ enum Category: String, CaseIterable, Hashable, Codable {
         self = category
     }
 }
+
+extension Category: Comparable {
+    static func < (lhs: Category, rhs: Category) -> Bool {
+        lhs.toInt() < rhs.toInt()
+    }
+    
+    func toInt() -> Int {
+        switch self {
+        case .조기: 0
+        case .조식: 1
+        case .중식: 2
+        case .석식: 3
+        }
+    }
+}

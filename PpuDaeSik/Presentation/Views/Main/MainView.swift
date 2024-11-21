@@ -10,14 +10,13 @@ import SwiftUI
 struct MainView: View {
     @Namespace private var namespace
     @ObservedObject private(set) var viewModel: ViewModel
-//    @StateObject private var vm = MainViewModel()
     
     var body: some View {
         ZStack {
             Color.gray100.ignoresSafeArea()
             
             VStack {
-                header
+                MainViewHeader(viewModel: .init(container: viewModel.container))
                 CampusTab(viewModel: .init(container: viewModel.container))
                 WeekTab(viewModel: .init(container: viewModel.container))
                 
@@ -39,22 +38,6 @@ struct MainView: View {
             .frame(width: UIScreen.getWidth(350))
             .sheet(isPresented: $viewModel.routingState.settingSheet) {
                 BottomSheet(viewModel: .init(container: viewModel.container))
-            }
-        }
-    }
-    
-    /// 앱 최상단 로고 및 설정 버튼
-    var header: some View {
-        HStack {
-            ImageComponent.logo(viewModel.routingState.settingSheet)
-            TextComponent.mainTitle
-            
-            Spacer()
-            
-            Button {
-                viewModel.showSettingSheet()
-            } label: {
-                ImageComponent.setting
             }
         }
     }
@@ -92,7 +75,7 @@ extension MainView {
             
             _routingState = .init(initialValue: appState.value.routing.mainViewRouting)
             _defaultCampus = .init(initialValue: appState.value.userData.defaultCampus)
-
+            
             loadDefaultCampus()
             loadBookmark()
             
@@ -115,12 +98,23 @@ extension MainView {
                     .removeDuplicates()
                     .assign(to: \.defaultCampus, on: self)
                 
+                appState.map(\.routing.mainViewRouting.settingSheet)
+                    .removeDuplicates()
+                    .assign(to: \.routingState.settingSheet, on: self)
+                
+                $routingState
+                    .removeDuplicates()
+                    .sink {
+                        appState[keyPath: \.value.routing.mainViewRouting] = $0
+                    }
+                
                 $selectedCampus
                     .removeDuplicates()
                     .sink { _ in self.fetchCafeteriaArray() }
                 
                 $defaultCampus
                     .removeDuplicates()
+                    .dropFirst()
                     .sink { self.saveDefaultCampus(by: $0) }
                 
                 $bookmark
@@ -130,11 +124,7 @@ extension MainView {
             }
         }
         
-        // MARK: functions
-        func showSettingSheet() {
-            routingState.settingSheet = true
-        }
-        
+        // MARK: functions        
         /// 현재 선택된 캠퍼스에 맞는 응답 목록을 담는 함수
         func filterResponse() -> [CafeteriaResponse] {
             self.cafeteriaResponseArray.filter { response in

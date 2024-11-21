@@ -16,8 +16,8 @@ struct CafeteriaView: View {
             ScrollView {
                 ForEach(viewModel.campusCafeteria, id: \.self) { cafeteria in
                     VStack {
-                        CafeteriaHeaderView(viewModel: .init(container: viewModel.container, bookmark: $viewModel.bookmark, cafeteria: cafeteria))
-                        MealView(viewModel: .init(container: viewModel.container, responseArray: viewModel.filteredCafeteriaResponseArray.filter({ $0.cafeteria == cafeteria })))
+                        CafeteriaHeader(viewModel: .init(container: viewModel.container, bookmark: $viewModel.bookmark, cafeteria: cafeteria))
+                        MenuCell(responseArray: viewModel.transform(by: cafeteria))
                     }
                     .id(cafeteria)
                     .padding(.bottom)
@@ -50,6 +50,20 @@ extension CafeteriaView {
             self._bookmark = bookmark
             self.campusCafeteria = campusCafeteria
             self.filteredCafeteriaResponseArray = filteredCafeteriaResponseArray
+        }
+        
+        func transform(by cafeteria: Cafeteria) -> [Category: [CafeteriaResponse]] {
+            var dict: [Category: [CafeteriaResponse]] = [:]
+            
+            let sorted = filteredCafeteriaResponseArray.sorted(by: { $0.category < $1.category })
+            
+            sorted.forEach {
+                if $0.cafeteria == cafeteria {
+                    dict[$0.category, default: []].append($0)
+                }
+            }
+            
+            return dict
         }
     }
 }

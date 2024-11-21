@@ -15,7 +15,9 @@ struct BottomSheet: View {
             Color.gray100.ignoresSafeArea()
             
             VStack {
-                RectangleComponent.holdBar
+                RoundedRectangle(cornerRadius: 2.5)
+                    .foregroundColor(.darkGray100)
+                    .frame(width: UIScreen.getWidth(36), height: UIScreen.getHeight(5))
                 
                 HStack {
                     TextComponent.sheetPickerTitle
