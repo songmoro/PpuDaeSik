@@ -46,6 +46,12 @@ extension MainViewHeader {
             
             self._settingSheet = .init(initialValue: appState.value.routing.mainViewRouting.settingSheet)
             
+            bind()
+        }
+        
+        func bind() {
+            let appState = container.appState
+            
             cancelBag.collect {
                 appState.map(\.routing.mainViewRouting.settingSheet)
                     .removeDuplicates()
@@ -54,7 +60,7 @@ extension MainViewHeader {
                 $settingSheet
                     .removeDuplicates()
                     .sink {
-                        appState[keyPath: \.value.routing.mainViewRouting.settingSheet] = $0
+                        appState[\.routing.mainViewRouting.settingSheet] = $0
                     }
             }
         }

@@ -26,7 +26,7 @@ struct MainView: View {
                 
                 Divider()
                 
-                switch viewModel.cafeteriaResponseArray.isEmpty {
+                switch viewModel.cafeteriaResponse.isEmpty {
                 case true:
                     LoadingView()
                 default:
@@ -59,7 +59,7 @@ extension MainView {
         /// 현재 선택된 요일
         @Published var selectedWeekComponent: WeekComponent? = .today
         /// 네트워크 요청을 통해 받은 응답 목록
-        @Published var cafeteriaResponseArray = [CafeteriaResponse]()
+        @Published var cafeteriaResponse: [CafeteriaResponse]
         /// 선택한 캠퍼스
         @Published var selectedCampus: Campus
         /// 사용자가 설정한 앱 시작 시 먼저 보여줄 식당 목록
@@ -75,19 +75,26 @@ extension MainView {
             self._routingState = .init(initialValue: appState.value.routing.mainViewRouting)
             self._bookmark = .init(initialValue: appState.value.userData.bookmark)
             self._selectedCampus = .init(initialValue: appState.value.tab.campus)
+            self._cafeteriaResponse = .init(initialValue: appState.value.cafeteria.response)
             
             loadDefaultCampus()
             loadBookmark()
+            fetch()
             
             bind()
         }
         
         func bind() {
             let appState = container.appState
+            let services = container.services
             
             cancelBag.collect {
                 appState.map(\.tab.campus)
                     .removeDuplicates()
+                    .handleEvents(receiveOutput: { _ in
+                        services
+                            .cafeteriaService.fetch()
+                    })
                     .assign(to: \.selectedCampus, on: self)
                 
                 appState.map(\.tab.weekComponent)
@@ -102,15 +109,15 @@ extension MainView {
                     .removeDuplicates()
                     .assign(to: \.routingState.settingSheet, on: self)
                 
+                appState.map(\.cafeteria.response)
+                    .removeDuplicates()
+                    .assign(to: \.cafeteriaResponse, on: self)
+                
                 $routingState
                     .removeDuplicates()
                     .sink {
                         appState[keyPath: \.value.routing.mainViewRouting] = $0
                     }
-                
-                $selectedCampus
-                    .removeDuplicates()
-                    .sink { _ in self.fetchCafeteriaArray() }
             }
         }
         
@@ -127,7 +134,7 @@ extension MainView {
         
         /// 현재 선택된 캠퍼스에 맞는 응답 목록을 담는 함수
         func filterResponse() -> [CafeteriaResponse] {
-            self.cafeteriaResponseArray.filter { response in
+            self.cafeteriaResponse.filter { response in
                 guard let last = response.date.split(separator: "-").last,
                       let dayValue = Int(last),
                       self.selectedWeekComponent?.dayValue == dayValue,
@@ -145,69 +152,10 @@ extension MainView {
             return bookmarkedCafeteria + unbookmarkedCafeteria
         }
         
-        /// 데이터베이스로부터 식당 목록을 불러오는 로직을 관리하는 함수
-        func fetchCafeteriaArray() {
-            cafeteriaResponseArray = []
-            RequestManager.shared.cancleAllRequest()
-            
-            Task {
-                let queryTypeArray = await checkDatabaseStatus()
-                for queryType in queryTypeArray {
-                    let responseArray = await requestByCampusDatabase(selectedCampus, queryType)
-                    
-                    DispatchQueue.main.async {
-                        self.cafeteriaResponseArray += responseArray
-                    }
-                }
-            }
+        func fetch() {
+            container.services
+                .cafeteriaService.fetch()
         }
-        
-        /// 데이터베이스가 백업 상태인지 검사하는 함수
-        /// - QueryType:
-        ///     - DB: 데이터베이스 종류(학생 식당, 기숙사)
-        ///     - Status: 데이터베이스 백업 중 여부(백업, 완료)
-        func checkDatabaseStatus() async -> [QueryType] {
-            let response = await RequestManager.shared.request(.checkStatus, NotionResponse<DeploymentProperties>.self)
-            guard let response = response else { return [] }
-            
-            let queryTypeArray: [QueryType] = response.results.compactMap {
-                guard let queryType = QueryType($0.properties) else { return nil }
-                return queryType
-            }
-            
-            return queryTypeArray
-        }
-        
-        /// 지정한 캠퍼스와 데이터베이스에 대한 데이터를 요청하는 함수
-        /// - 캠퍼스: 부산, 밀양, 양산
-        /// - 데이터베이스: 학생 식당, 기숙사
-        func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType) async -> [CafeteriaResponse] {
-            switch queryType {
-            case .restaurant:
-                let responseArray = await RequestManager.shared.request(
-                    .queryByCampus(queryType, campus),
-                    NotionResponse<RestaurantProperties>.self
-                )
-                
-                guard let responseArray = responseArray else { return [] }
-                
-                return responseArray.results.compactMap {
-                    CafeteriaResponse(from: $0.properties.toDict())
-                }
-            case .domitory:
-                let responseArray = await RequestManager.shared.request(
-                    .queryByCampus(queryType, campus),
-                    NotionResponse<DomitoryProperties>.self
-                )
-                
-                guard let responseArray = responseArray else { return [] }
-                
-                return responseArray.results.compactMap {
-                    CafeteriaResponse(from: $0.properties.toDict())
-                }
-            }
-        }
-        
     }
 }
 

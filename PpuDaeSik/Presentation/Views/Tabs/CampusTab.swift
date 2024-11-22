@@ -59,12 +59,22 @@ extension CampusTab {
         init(container: DIContainer) {
             self.container = container
             let appState = container.appState
+            
             self._selectedCampus = .init(initialValue: appState.value.tab.campus)
             
+            bind()
+        }
+        
+        func bind() {
+            let appState = container.appState
+            let services = container.services
+            
             cancelBag.collect {
-                $selectedCampus.sink {
-                    appState[\.tab.campus] = $0
-                }
+                $selectedCampus
+                    .removeDuplicates()
+                    .sink {
+                        appState[\.tab.campus] = $0
+                    }
             }
         }
         
