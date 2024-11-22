@@ -60,10 +60,8 @@ extension MainView {
         @Published var selectedWeekComponent: WeekComponent? = .today
         /// 네트워크 요청을 통해 받은 응답 목록
         @Published var cafeteriaResponseArray = [CafeteriaResponse]()
-        /// 모달 시트 여부
-        @Published var isSheetShow = false
         /// 선택한 캠퍼스
-        @Published var selectedCampus: Campus = .부산
+        @Published var selectedCampus: Campus
         /// 사용자가 설정한 앱 시작 시 먼저 보여줄 식당 목록
         @Published var bookmark: [Cafeteria]
         
@@ -76,6 +74,7 @@ extension MainView {
             
             self._routingState = .init(initialValue: appState.value.routing.mainViewRouting)
             self._bookmark = .init(initialValue: appState.value.userData.bookmark)
+            self._selectedCampus = .init(initialValue: appState.value.tab.campus)
             
             loadDefaultCampus()
             loadBookmark()
