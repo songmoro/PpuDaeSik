@@ -12,6 +12,10 @@ struct MainView: View {
     @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
+        content
+    }
+    
+    @ViewBuilder var content: some View {
         ZStack {
             Color.gray100.ignoresSafeArea()
             
@@ -27,7 +31,6 @@ struct MainView: View {
                     LoadingView()
                 default:
                     CafeteriaView(viewModel: .init(container: viewModel.container,
-                                                   bookmark: $viewModel.bookmark,
                                                    campusCafeteria: viewModel.filterCafeteria(),
                                                    filteredCafeteriaResponseArray: viewModel.filterResponse())
                                   )
@@ -62,9 +65,9 @@ extension MainView {
         /// 선택한 캠퍼스
         @Published var selectedCampus: Campus = .부산
         /// 사용자가 설정한 앱 시작 시 기본으로 보여줄 캠퍼스
-        @Published var defaultCampus: Campus = .부산
+        @Published var defaultCampus: Campus
         /// 사용자가 설정한 앱 시작 시 먼저 보여줄 식당 목록
-        @Published var bookmark: [Cafeteria] = []
+        @Published var bookmark: [Cafeteria]
         
         let container: DIContainer
         let cancelBag = CancelBag()
@@ -73,8 +76,9 @@ extension MainView {
             self.container = container
             let appState = container.appState
             
-            _routingState = .init(initialValue: appState.value.routing.mainViewRouting)
-            _defaultCampus = .init(initialValue: appState.value.userData.defaultCampus)
+            self._routingState = .init(initialValue: appState.value.routing.mainViewRouting)
+            self._defaultCampus = .init(initialValue: appState.value.userData.defaultCampus)
+            self._bookmark = .init(initialValue: appState.value.userData.bookmark)
             
             loadDefaultCampus()
             loadBookmark()
@@ -98,6 +102,10 @@ extension MainView {
                     .removeDuplicates()
                     .assign(to: \.defaultCampus, on: self)
                 
+                appState.map(\.userData.bookmark)
+                    .removeDuplicates()
+                    .assign(to: \.bookmark, on: self)
+                
                 appState.map(\.routing.mainViewRouting.settingSheet)
                     .removeDuplicates()
                     .assign(to: \.routingState.settingSheet, on: self)
@@ -116,15 +124,15 @@ extension MainView {
                     .removeDuplicates()
                     .dropFirst()
                     .sink { self.saveDefaultCampus(by: $0) }
-                
-                $bookmark
-                    .removeDuplicates()
-                    .dropFirst()
-                    .sink { self.saveBookmark(by: $0) }
             }
         }
         
-        // MARK: functions        
+        // MARK: functions
+        func loadBookmark() {
+            container.services
+                .bookmarkService.loadBookmark()
+        }
+        
         /// 현재 선택된 캠퍼스에 맞는 응답 목록을 담는 함수
         func filterResponse() -> [CafeteriaResponse] {
             self.cafeteriaResponseArray.filter { response in
@@ -157,23 +165,9 @@ extension MainView {
             selectedCampus = campus
         }
         
-        /// 앱 시작 시 북마크된 식당을 불러오는 함수
-        func loadBookmark() {
-            guard let bookmark = UserDefaults.standard.stringArray(forKey: "bookmark") else {
-                self.bookmark = []
-                return
-            }
-            self.bookmark = Cafeteria.allCases.filter({ bookmark.contains($0.name) })
-        }
-        
         /// 설정에서 지정한 기본 캠퍼스의 유저 디폴트를 저장하는 함수
         func saveDefaultCampus(by defaultCampus: Campus) {
             UserDefaults.standard.setValue(defaultCampus.rawValue, forKey: "defaultCampus")
-        }
-        
-        /// 북마크가 변경되었을 때 변경된 북마크를 저장하는 함수
-        func saveBookmark(by bookmark: [Cafeteria]) {
-            UserDefaults.standard.setValue(bookmark.map({ $0.name }), forKey: "bookmark")
         }
         
         /// 데이터베이스로부터 식당 목록을 불러오는 로직을 관리하는 함수

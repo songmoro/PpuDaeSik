@@ -33,31 +33,22 @@ struct CafeteriaHeader: View {
 
 extension CafeteriaHeader {
     class ViewModel: ObservableObject {
-        @Binding var bookmark: [Cafeteria]
         let cafeteria: Cafeteria
-        
         let container: DIContainer
         
-        init(container: DIContainer, bookmark: Binding<[Cafeteria]>, cafeteria: Cafeteria) {
+        init(container: DIContainer, cafeteria: Cafeteria) {
             self.container = container
-            
-            self._bookmark = bookmark
             self.cafeteria = cafeteria
         }
         
         func isBookmarked() -> Bool {
-            bookmark.contains(cafeteria)
+            container.services
+                .bookmarkService.isBookmarked(cafeteria)
         }
         
         func bookmarkAction() {
-            if bookmark.contains(cafeteria) {
-                bookmark.removeAll {
-                    $0 == cafeteria
-                }
-            }
-            else {
-                bookmark.append(cafeteria)
-            }
+            container.services
+                .bookmarkService.action(cafeteria: cafeteria)
         }
     }
 }

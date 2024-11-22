@@ -16,7 +16,7 @@ struct CafeteriaView: View {
             ScrollView {
                 ForEach(viewModel.campusCafeteria, id: \.self) { cafeteria in
                     VStack {
-                        CafeteriaHeader(viewModel: .init(container: viewModel.container, bookmark: $viewModel.bookmark, cafeteria: cafeteria))
+                        CafeteriaHeader(viewModel: .init(container: viewModel.container, cafeteria: cafeteria))
                         MenuCell(responseArray: viewModel.transform(by: cafeteria))
                     }
                     .id(cafeteria)
@@ -37,19 +37,31 @@ struct CafeteriaView: View {
 
 extension CafeteriaView {
     class ViewModel: ObservableObject {
-        @Binding var bookmark: [Cafeteria]
+        @Published var bookmark: [Cafeteria]
         let campusCafeteria: [Cafeteria]
         let filteredCafeteriaResponseArray: [CafeteriaResponse]
         
         let container: DIContainer
         let cancelBag = CancelBag()
         
-        init(container: DIContainer, bookmark: Binding<[Cafeteria]>, campusCafeteria: [Cafeteria], filteredCafeteriaResponseArray: [CafeteriaResponse]) {
+        init(container: DIContainer, campusCafeteria: [Cafeteria], filteredCafeteriaResponseArray: [CafeteriaResponse]) {
             self.container = container
+            let appState = container.appState
             
-            self._bookmark = bookmark
+            self._bookmark = .init(initialValue: appState.value.userData.bookmark)
+            
             self.campusCafeteria = campusCafeteria
             self.filteredCafeteriaResponseArray = filteredCafeteriaResponseArray
+        }
+        
+        func bind() {
+            let appState = container.appState
+            
+            cancelBag.collect {
+                appState.map(\.userData.bookmark)
+                    .removeDuplicates()
+                    .assign(to: \.bookmark, on: self)
+            }
         }
         
         func transform(by cafeteria: Cafeteria) -> [Category: [CafeteriaResponse]] {

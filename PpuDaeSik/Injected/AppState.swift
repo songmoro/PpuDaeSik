@@ -26,6 +26,7 @@ extension AppState {
 
 extension AppState {
     struct UserData: Equatable {
+        var bookmark: [Cafeteria] = []
         var defaultCampus: Campus = .부산
     }
 }

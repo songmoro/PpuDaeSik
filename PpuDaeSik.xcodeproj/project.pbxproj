@@ -44,6 +44,10 @@
 		F8183FA42CEF14A0007B9428 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FA32CEF1480007B9428 /* MenuCell.swift */; };
 		F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FA52CEF14A2007B9428 /* MenuContent.swift */; };
 		F8183FAD2CEF291A007B9428 /* MainViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FAC2CEF291A007B9428 /* MainViewHeader.swift */; };
+		F8183FAF2CEF4649007B9428 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FAE2CEF4640007B9428 /* UserDataRepository.swift */; };
+		F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB02CEF4A64007B9428 /* BookmarkService.swift */; };
+		F8183FB52CEF507B007B9428 /* BookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */; };
+		F8183FB72CF059EE007B9428 /* DefaultCampusRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */; };
 		F820CB8E2C6D2A62008694EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
 		F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
@@ -149,6 +153,10 @@
 		F8183FA32CEF1480007B9428 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		F8183FA52CEF14A2007B9428 /* MenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContent.swift; sourceTree = "<group>"; };
 		F8183FAC2CEF291A007B9428 /* MainViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewHeader.swift; sourceTree = "<group>"; };
+		F8183FAE2CEF4640007B9428 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
+		F8183FB02CEF4A64007B9428 /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
+		F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepository.swift; sourceTree = "<group>"; };
+		F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusRepository.swift; sourceTree = "<group>"; };
 		F820CBA62C6FAD1E008694EC /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		F820CBAA2C70EE2A008694EC /* CafeteriaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeader.swift; sourceTree = "<group>"; };
@@ -230,6 +238,7 @@
 				F8045AD92CE3639900277BC7 /* Store.swift */,
 				F8045ADB2CE363A100277BC7 /* CancelBag.swift */,
 				F8045ADD2CE363AA00277BC7 /* Loadable.swift */,
+				F8183FAE2CEF4640007B9428 /* UserDataRepository.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -240,6 +249,7 @@
 				F8045AE02CE3675500277BC7 /* CampusService.swift */,
 				F8045AE22CE3675D00277BC7 /* WeekdayService.swift */,
 				F8045AE42CE3676400277BC7 /* CafeteriaService.swift */,
+				F8183FB02CEF4A64007B9428 /* BookmarkService.swift */,
 			);
 			path = Serivces;
 			sourceTree = "<group>";
@@ -248,6 +258,8 @@
 			isa = PBXGroup;
 			children = (
 				F8045AE72CE368DE00277BC7 /* NotionRepository.swift */,
+				F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */,
+				F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -630,8 +642,11 @@
 				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
 				F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */,
 				F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */,
+				F8183FAF2CEF4649007B9428 /* UserDataRepository.swift in Sources */,
 				F81129832C43C86200F71C03 /* Properties.swift in Sources */,
 				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
+				F8183FB72CF059EE007B9428 /* DefaultCampusRepository.swift in Sources */,
+				F8183FB52CEF507B007B9428 /* BookmarkRepository.swift in Sources */,
 				F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */,
 				F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */,
 				F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */,
@@ -656,6 +671,7 @@
 				F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 				F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */,
+				F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */,
 				F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
