@@ -48,6 +48,7 @@
 		F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB02CEF4A64007B9428 /* BookmarkService.swift */; };
 		F8183FB52CEF507B007B9428 /* BookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */; };
 		F8183FB72CF059EE007B9428 /* DefaultCampusRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */; };
+		F8183FB92CF0718E007B9428 /* DefaultCampusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */; };
 		F820CB8E2C6D2A62008694EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
 		F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
 		F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
@@ -157,6 +158,7 @@
 		F8183FB02CEF4A64007B9428 /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
 		F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepository.swift; sourceTree = "<group>"; };
 		F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusRepository.swift; sourceTree = "<group>"; };
+		F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusService.swift; sourceTree = "<group>"; };
 		F820CBA62C6FAD1E008694EC /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		F820CBAA2C70EE2A008694EC /* CafeteriaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeader.swift; sourceTree = "<group>"; };
@@ -250,6 +252,7 @@
 				F8045AE22CE3675D00277BC7 /* WeekdayService.swift */,
 				F8045AE42CE3676400277BC7 /* CafeteriaService.swift */,
 				F8183FB02CEF4A64007B9428 /* BookmarkService.swift */,
+				F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */,
 			);
 			path = Serivces;
 			sourceTree = "<group>";
@@ -655,6 +658,7 @@
 				F8045AE32CE3675F00277BC7 /* WeekdayService.swift in Sources */,
 				F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */,
 				F811295A2C429F9B00F71C03 /* Campus.swift in Sources */,
+				F8183FB92CF0718E007B9428 /* DefaultCampusService.swift in Sources */,
 				F815E4162C77453C00D25149 /* LoadingView.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
 				F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */,

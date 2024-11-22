@@ -30,12 +30,14 @@ extension DIContainer {
         let weekdayService: WeekdayService
         let cafeteriaService: CafeteriaService
         let bookmarkService: BookmarkService
+        let defaultCampusService: DefaultCampusService
         
-        init(campusService: CampusService, weekdayService: WeekdayService, cafeteriaService: CafeteriaService, bookmarkService: BookmarkService) {
+        init(campusService: CampusService, weekdayService: WeekdayService, cafeteriaService: CafeteriaService, bookmarkService: BookmarkService, defaultCampusService: DefaultCampusService) {
             self.campusService = campusService
             self.weekdayService = weekdayService
             self.cafeteriaService = cafeteriaService
             self.bookmarkService = bookmarkService
+            self.defaultCampusService = defaultCampusService
         }
         
         static var stub: Self {
@@ -43,7 +45,8 @@ extension DIContainer {
                 campusService: StubCampusService(),
                 weekdayService: StubWeekdayService(),
                 cafeteriaService: StubCafeteriaService(),
-                bookmarkService: StubBookmarkService()
+                bookmarkService: StubBookmarkService(),
+                defaultCampusService: StubDefaultCampusService()
             )
         }
     }
@@ -53,6 +56,7 @@ extension DIContainer {
     struct Repositories {
         let notionRepository: NotionRepository
         let bookmarkRepository: BookmarkRepository
+        let defaultCampusRepository: DefaultCampusRepository
     }
 }
 

@@ -8,9 +8,16 @@
 import Foundation
 
 protocol BookmarkService {
+    // 식당의 북마크 여부
     func isBookmarked(_ cafeteria: Cafeteria) -> Bool
+    
+    // 북마크 버튼을 눌렀을 때 수행할 동작
     func action(cafeteria: Cafeteria)
+    
+    /// 북마크를 저장하는 함수
     func save(bookmark: [Cafeteria])
+    
+    /// 북마크된 식당을 불러오는 함수
     func loadBookmark()
 }
 
@@ -36,12 +43,10 @@ struct BookmarkServiceImpl: BookmarkService {
         loadBookmark()
     }
     
-    /// 북마크를 저장하는 함수
     func save(bookmark: [Cafeteria]) {
         bookmarkRepository.save(value: bookmark.map { $0.name })
     }
     
-    /// 북마크된 식당을 불러오는 함수
     func loadBookmark() {
         let bookmark: [String]? = bookmarkRepository.load()
         
