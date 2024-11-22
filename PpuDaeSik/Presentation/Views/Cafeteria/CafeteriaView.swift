@@ -14,7 +14,7 @@ struct CafeteriaView: View {
     var body: some View {
         ScrollViewReader { proxy in
             ScrollView {
-                ForEach(viewModel.campusCafeteria, id: \.self) { cafeteria in
+                ForEach(viewModel.cafeteria, id: \.self) { cafeteria in
                     VStack {
                         CafeteriaHeader(viewModel: .init(container: viewModel.container, cafeteria: cafeteria))
                         MenuCell(responseArray: viewModel.transform(by: cafeteria))
@@ -25,7 +25,7 @@ struct CafeteriaView: View {
                 }
             }
             .onChange(of: viewModel.bookmark) { _, _ in
-                guard let first = viewModel.campusCafeteria.first else { return }
+                guard let first = viewModel.cafeteria.first else { return }
                 
                 withAnimation {                
                     proxy.scrollTo(first, anchor: .top)
@@ -38,26 +38,30 @@ struct CafeteriaView: View {
 extension CafeteriaView {
     class ViewModel: ObservableObject {
         @Published var bookmark: [Cafeteria]
-        let campusCafeteria: [Cafeteria]
-        let filteredCafeteriaResponseArray: [CafeteriaResponse]
+        @Published var filterdCafeteriaResponseArray: [CafeteriaResponse]
+        let cafeteria: [Cafeteria]
         
         let container: DIContainer
         let cancelBag = CancelBag()
         
-        init(container: DIContainer, campusCafeteria: [Cafeteria], filteredCafeteriaResponseArray: [CafeteriaResponse]) {
+        init(container: DIContainer) {
             self.container = container
             let appState = container.appState
             
             self._bookmark = .init(initialValue: appState.value.userData.bookmark)
+            self._filterdCafeteriaResponseArray = .init(initialValue: appState.value.cafeteria.filterByDay)
             
-            self.campusCafeteria = campusCafeteria
-            self.filteredCafeteriaResponseArray = filteredCafeteriaResponseArray
+            self.cafeteria = appState[\.cafeteria.list]
         }
         
         func bind() {
             let appState = container.appState
             
             cancelBag.collect {
+                appState.map(\.cafeteria.filterByDay)
+                    .removeDuplicates()
+                    .assign(to: \.filterdCafeteriaResponseArray, on: self)
+                
                 appState.map(\.userData.bookmark)
                     .removeDuplicates()
                     .assign(to: \.bookmark, on: self)
@@ -67,7 +71,7 @@ extension CafeteriaView {
         func transform(by cafeteria: Cafeteria) -> [Category: [CafeteriaResponse]] {
             var dict: [Category: [CafeteriaResponse]] = [:]
             
-            let sorted = filteredCafeteriaResponseArray.sorted(by: { $0.category < $1.category })
+            let sorted = filterdCafeteriaResponseArray.sorted(by: { $0.category < $1.category })
             
             sorted.forEach {
                 if $0.cafeteria == cafeteria {

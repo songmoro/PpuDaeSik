@@ -8,12 +8,51 @@
 import SwiftUI
 
 protocol CafeteriaService {
+    /// 현재 선택된 캠퍼스에 맞는 응답 목록을 담는 함수
+    func refreshResponse()
+    /// 현재 선택된 캠퍼스에 있는 식당을 갱신하는 함수
+    func refreshCampusCafeteria()
     /// 데이터베이스로부터 식당 목록을 불러오는 로직을 관리하는 함수
     func fetch()
 }
 
 struct CafeteriaServiceImpl: CafeteriaService {
     let appState: Store<AppState>
+    
+    func refreshCampusCafeteria() {
+        appState[\.cafeteria.list] = []
+        
+        let bookmark = appState[\.userData.bookmark]
+        let selectedCampus = appState[\.tab.campus]
+        
+        var newCafeteria: (bookmarked: [Cafeteria], unbookmarked: [Cafeteria]) = ([], [])
+        
+        Cafeteria.allCases.forEach {
+            if selectedCampus != $0.campus { return }
+            
+            if bookmark.contains($0) { newCafeteria.bookmarked.append($0) }
+            else { newCafeteria.unbookmarked.append($0) }
+        }
+        
+        appState[\.cafeteria.list] = newCafeteria.bookmarked + newCafeteria.unbookmarked
+    }
+    
+    func refreshResponse() {
+        let newResponse: [CafeteriaResponse]
+        let weekComponent = appState[\.tab.weekComponent]
+        let campus = appState[\.tab.campus]
+        
+        newResponse = appState[\.cafeteria.response].filter { response in
+            guard let last = response.date.split(separator: "-").last,
+                  let dayValue = Int(last),
+                  weekComponent?.dayValue == dayValue,
+                  response.cafeteria.campus == campus
+            else { return false }
+            return true
+        }
+        
+        appState[\.cafeteria.filterByDay] = newResponse
+    }
     
     func fetch() {
         RequestManager.shared.cancleAllRequest()
@@ -96,5 +135,7 @@ struct CafeteriaServiceImpl: CafeteriaService {
 }
 
 struct StubCafeteriaService: CafeteriaService {
+    func refreshResponse() { }
+    func refreshCampusCafeteria() { }
     func fetch() { }
 }

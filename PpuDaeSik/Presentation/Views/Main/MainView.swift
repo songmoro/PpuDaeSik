@@ -30,10 +30,7 @@ struct MainView: View {
                 case true:
                     LoadingView()
                 default:
-                    CafeteriaView(viewModel: .init(container: viewModel.container,
-                                                   campusCafeteria: viewModel.filterCafeteria(),
-                                                   filteredCafeteriaResponseArray: viewModel.filterResponse())
-                                  )
+                    CafeteriaView(viewModel: .init(container: viewModel.container))
                 }
                 
                 Spacer()
@@ -79,26 +76,31 @@ extension MainView {
             
             loadDefaultCampus()
             loadBookmark()
+            filterCafeteria()
             fetch()
+            filterResponse()
             
             bind()
         }
         
         func bind() {
             let appState = container.appState
-            let services = container.services
             
             cancelBag.collect {
                 appState.map(\.tab.campus)
                     .removeDuplicates()
                     .handleEvents(receiveOutput: { _ in
-                        services
-                            .cafeteriaService.fetch()
+                        self.filterCafeteria()
+                        self.fetch()
+                        self.filterResponse()
                     })
                     .assign(to: \.selectedCampus, on: self)
                 
                 appState.map(\.tab.weekComponent)
                     .removeDuplicates()
+                    .handleEvents(receiveOutput: { _ in
+                        self.filterResponse()
+                    })
                     .assign(to: \.selectedWeekComponent, on: self)
                 
                 appState.map(\.userData.bookmark)
@@ -111,6 +113,9 @@ extension MainView {
                 
                 appState.map(\.cafeteria.response)
                     .removeDuplicates()
+                    .handleEvents(receiveOutput: { _ in
+                        self.filterResponse()
+                    })
                     .assign(to: \.cafeteriaResponse, on: self)
                 
                 $routingState
@@ -132,29 +137,19 @@ extension MainView {
                 .bookmarkService.loadBookmark()
         }
         
-        /// 현재 선택된 캠퍼스에 맞는 응답 목록을 담는 함수
-        func filterResponse() -> [CafeteriaResponse] {
-            self.cafeteriaResponse.filter { response in
-                guard let last = response.date.split(separator: "-").last,
-                      let dayValue = Int(last),
-                      self.selectedWeekComponent?.dayValue == dayValue,
-                      response.cafeteria.campus == self.selectedCampus
-                else { return false }
-                return true
-            }
-        }
-        
-        /// 현재 선택된 캠퍼스에 있는 식당을 반환하는 함수
-        func filterCafeteria() -> [Cafeteria] {
-            let bookmarkedCafeteria = Cafeteria.allCases.filter({ bookmark.contains($0) && $0.campus == selectedCampus })
-            let unbookmarkedCafeteria = Cafeteria.allCases.filter({ !bookmark.contains($0) && $0.campus == selectedCampus })
-            
-            return bookmarkedCafeteria + unbookmarkedCafeteria
-        }
-        
         func fetch() {
             container.services
                 .cafeteriaService.fetch()
+        }
+        
+        func filterCafeteria() {
+            container.services
+                .cafeteriaService.refreshCampusCafeteria()
+        }
+        
+        func filterResponse() {
+            container.services
+                .cafeteriaService.refreshResponse()
         }
     }
 }
