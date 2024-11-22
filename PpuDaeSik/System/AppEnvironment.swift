@@ -19,21 +19,16 @@ extension AppEnvironment {
         let repositories = configuredRepositories(session: session)
         let services = configuredServices(appState: appState, repositories: repositories)
         let diContainer = DIContainer(appState: appState, services: services)
-        let cancelBag = CancelBag()
 
         return AppEnvironment(container: diContainer)
     }
 
     private static func configuredServices(appState: Store<AppState>, repositories: DIContainer.Repositories) -> DIContainer.Services {
-        let campusService = CampusServiceImpl()
-        let weekdayService = WeekdayServiceImpl()
         let cafeteriaService = CafeteriaServiceImpl(appState: appState)
         let bookmarkService = BookmarkServiceImpl(appState: appState, bookmarkRepository: repositories.bookmarkRepository)
         let defaultCampusService = DefaultCampusServiceImpl(appState: appState, defaultCampusRepository: repositories.defaultCampusRepository)
         
         return .init(
-            campusService: campusService,
-            weekdayService: weekdayService,
             cafeteriaService: cafeteriaService,
             bookmarkService: bookmarkService,
             defaultCampusService: defaultCampusService
