@@ -58,10 +58,20 @@ extension BottomSheet {
             
             _defaultCampus = .init(initialValue: appState.value.userData.defaultCampus)
             
+            bind()
+        }
+        
+        func bind() {
+            let appState = container.appState
+            
             cancelBag.collect {
-                $defaultCampus.sink {
-                    appState[\.userData.defaultCampus] = $0
-                }
+                $defaultCampus
+                    .removeDuplicates()
+                    .sink {
+                        appState[\.userData.defaultCampus] = $0
+                        self.container.services
+                            .defaultCampusService.save(defaultCampus: $0)
+                    }
             }
         }
     }

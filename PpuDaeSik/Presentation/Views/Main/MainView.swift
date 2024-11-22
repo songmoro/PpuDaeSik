@@ -64,8 +64,6 @@ extension MainView {
         @Published var isSheetShow = false
         /// 선택한 캠퍼스
         @Published var selectedCampus: Campus = .부산
-        /// 사용자가 설정한 앱 시작 시 기본으로 보여줄 캠퍼스
-        @Published var defaultCampus: Campus
         /// 사용자가 설정한 앱 시작 시 먼저 보여줄 식당 목록
         @Published var bookmark: [Cafeteria]
         
@@ -77,7 +75,6 @@ extension MainView {
             let appState = container.appState
             
             self._routingState = .init(initialValue: appState.value.routing.mainViewRouting)
-            self._defaultCampus = .init(initialValue: appState.value.userData.defaultCampus)
             self._bookmark = .init(initialValue: appState.value.userData.bookmark)
             
             loadDefaultCampus()
@@ -98,10 +95,6 @@ extension MainView {
                     .removeDuplicates()
                     .assign(to: \.selectedWeekComponent, on: self)
                 
-                appState.map(\.userData.defaultCampus)
-                    .removeDuplicates()
-                    .assign(to: \.defaultCampus, on: self)
-                
                 appState.map(\.userData.bookmark)
                     .removeDuplicates()
                     .assign(to: \.bookmark, on: self)
@@ -119,15 +112,15 @@ extension MainView {
                 $selectedCampus
                     .removeDuplicates()
                     .sink { _ in self.fetchCafeteriaArray() }
-                
-                $defaultCampus
-                    .removeDuplicates()
-                    .dropFirst()
-                    .sink { self.saveDefaultCampus(by: $0) }
             }
         }
         
         // MARK: functions
+        func loadDefaultCampus() {
+            container.services
+                .defaultCampusService.loadDefaultCampus()
+        }
+        
         func loadBookmark() {
             container.services
                 .bookmarkService.loadBookmark()
@@ -151,23 +144,6 @@ extension MainView {
             let unbookmarkedCafeteria = Cafeteria.allCases.filter({ !bookmark.contains($0) && $0.campus == selectedCampus })
             
             return bookmarkedCafeteria + unbookmarkedCafeteria
-        }
-        
-        /// 앱 시작 시 기본 캠퍼스를 불러오는 함수
-        func loadDefaultCampus() {
-            guard let storedCampus = UserDefaults.standard.string(forKey: "defaultCampus"), let campus =  Campus(storedCampus) else {
-                defaultCampus = .부산
-                selectedCampus = .부산
-                return
-            }
-            
-            defaultCampus = campus
-            selectedCampus = campus
-        }
-        
-        /// 설정에서 지정한 기본 캠퍼스의 유저 디폴트를 저장하는 함수
-        func saveDefaultCampus(by defaultCampus: Campus) {
-            UserDefaults.standard.setValue(defaultCampus.rawValue, forKey: "defaultCampus")
         }
         
         /// 데이터베이스로부터 식당 목록을 불러오는 로직을 관리하는 함수
