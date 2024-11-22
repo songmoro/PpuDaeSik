@@ -67,7 +67,6 @@ extension CampusTab {
         
         func bind() {
             let appState = container.appState
-            let services = container.services
             
             cancelBag.collect {
                 $selectedCampus
