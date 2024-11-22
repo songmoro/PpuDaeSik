@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BottomSheet: View {
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
         ZStack {

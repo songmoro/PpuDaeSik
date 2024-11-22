@@ -9,7 +9,7 @@ import SwiftUI
 
 /// 각 식당에 대한 뷰
 struct CafeteriaView: View {
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
         ScrollViewReader { proxy in

@@ -9,7 +9,7 @@ import SwiftUI
 
 /// 식당 이름과 북마크를 설정할 수 있는 뷰
 struct CafeteriaHeader: View {
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
         HStack {
