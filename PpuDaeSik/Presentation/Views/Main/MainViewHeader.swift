@@ -65,6 +65,7 @@ extension MainViewHeader {
             }
         }
         
+        // MARK: functions
         func showSettingSheet() {
             settingSheet = true
         }

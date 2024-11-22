@@ -68,6 +68,7 @@ extension CafeteriaView {
             }
         }
         
+        // MARK: functions
         func transform(by cafeteria: Cafeteria) -> [Category: [CafeteriaResponse]] {
             var dict: [Category: [CafeteriaResponse]] = [:]
             

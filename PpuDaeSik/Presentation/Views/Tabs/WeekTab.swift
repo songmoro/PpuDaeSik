@@ -68,8 +68,13 @@ extension WeekTab {
         init(container: DIContainer) {
             self.container = container
             let appState = container.appState
+            
             self._selectedWeekComponent = .init(initialValue: appState.value.tab.weekComponent)
             self.weekComponentArray = WeekComponent.calculateCurrentWeek()
+        }
+        
+        func bind() {
+            let appState = container.appState
             
             cancelBag.collect {
                 $selectedWeekComponent.sink {
@@ -78,6 +83,7 @@ extension WeekTab {
             }
         }
         
+        // MARK: functions
         func changeSelectedWeekComponent(to weekComponent: WeekComponent) {
             selectedWeekComponent = weekComponent
         }

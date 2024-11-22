@@ -77,6 +77,7 @@ extension CampusTab {
             }
         }
         
+        // MARK: functions
         func changeSelectedCampus(to campus: Campus) {
             selectedCampus = campus
         }

@@ -41,6 +41,7 @@ extension CafeteriaHeader {
             self.cafeteria = cafeteria
         }
         
+        // MARK: functions
         func isBookmarked() -> Bool {
             container.services
                 .bookmarkService.isBookmarked(cafeteria)
