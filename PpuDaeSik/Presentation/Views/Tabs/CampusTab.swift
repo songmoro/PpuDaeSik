@@ -20,14 +20,20 @@ struct CampusTab: View {
                     viewModel.changeSelectedCampus(to: campus)
                 } label: {
                     VStack(spacing: 0) {
-                        TextComponent.campusTitle(campus.rawValue, isSelected)
+                        Text(campus.rawValue)
+                            .foregroundColor(isSelected ? .black100 : .black40)
+                            .padding(.bottom, UIScreen.getHeight(6))
                         
                         if isSelected {
-                            CircleComponent.selectedComponentDot
+                            Circle()
+                                .foregroundColor(.blue100)
+                                .frame(height: UIScreen.getHeight(5))
                                 .matchedGeometryEffect(id: "campus", in: namespace)
                         }
                         else {
-                            CircleComponent.unselectedComponentDot
+                            Circle()
+                                .foregroundColor(.clear)
+                                .frame(height: UIScreen.getHeight(5))
                         }
                     }
                 }
@@ -53,15 +59,25 @@ extension CampusTab {
         init(container: DIContainer) {
             self.container = container
             let appState = container.appState
+            
             self._selectedCampus = .init(initialValue: appState.value.tab.campus)
             
+            bind()
+        }
+        
+        func bind() {
+            let appState = container.appState
+            
             cancelBag.collect {
-                $selectedCampus.sink {
-                    appState[\.tab.campus] = $0
-                }
+                $selectedCampus
+                    .removeDuplicates()
+                    .sink {
+                        appState[\.tab.campus] = $0
+                    }
             }
         }
         
+        // MARK: functions
         func changeSelectedCampus(to campus: Campus) {
             selectedCampus = campus
         }

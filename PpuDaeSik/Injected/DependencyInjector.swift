@@ -26,21 +26,21 @@ struct DIContainer: EnvironmentKey {
 
 extension DIContainer {
     struct Services {
-        let campusService: CampusService
-        let weekdayService: WeekdayService
         let cafeteriaService: CafeteriaService
+        let bookmarkService: BookmarkService
+        let defaultCampusService: DefaultCampusService
         
-        init(campusService: CampusService, weekdayService: WeekdayService, cafeteriaService: CafeteriaService) {
-            self.campusService = campusService
-            self.weekdayService = weekdayService
+        init(cafeteriaService: CafeteriaService, bookmarkService: BookmarkService, defaultCampusService: DefaultCampusService) {
             self.cafeteriaService = cafeteriaService
+            self.bookmarkService = bookmarkService
+            self.defaultCampusService = defaultCampusService
         }
         
         static var stub: Self {
             .init(
-                campusService: StubCampusService(),
-                weekdayService: StubWeekdayService(),
-                cafeteriaService: StubCafeteriaService()
+                cafeteriaService: StubCafeteriaService(),
+                bookmarkService: StubBookmarkService(),
+                defaultCampusService: StubDefaultCampusService()
             )
         }
     }
@@ -48,7 +48,9 @@ extension DIContainer {
 
 extension DIContainer {
     struct Repositories {
-        let notionRepository: NotionRepository
+        let cafeteriaRepository: CafeteriaRepository
+        let bookmarkRepository: BookmarkRepository
+        let defaultCampusRepository: DefaultCampusRepository
     }
 }
 

@@ -22,15 +22,24 @@ struct WeekTab: View {
                     viewModel.changeSelectedWeekComponent(to: weekComponent)
                 } label: {
                     VStack(spacing: 0) {
-                        TextComponent.weekdayText(weekComponent.dayComponent.rawValue)
-                        TextComponent.dayText(weekComponent.dayValue.description, isToday)
+                        Text(weekComponent.dayComponent.rawValue)
+                            .foregroundColor(.black100)
+                            .font(.body())
+                        Text(weekComponent.dayValue.description)
+                            .foregroundColor(isToday ? .black100 : .black40)
+                            .font(.headline())
+                            .padding(.bottom, UIScreen.getHeight(6))
                         
                         if isSelected {
-                            CircleComponent.selectedComponentDot
+                            Circle()
+                                .foregroundColor(.blue100)
+                                .frame(height: UIScreen.getHeight(5))
                                 .matchedGeometryEffect(id: "weekday", in: namespace)
                         }
                         else {
-                            CircleComponent.unselectedComponentDot
+                            Circle()
+                                .foregroundColor(.clear)
+                                .frame(height: UIScreen.getHeight(5))
                         }
                     }
                 }
@@ -59,16 +68,26 @@ extension WeekTab {
         init(container: DIContainer) {
             self.container = container
             let appState = container.appState
+            
             self._selectedWeekComponent = .init(initialValue: appState.value.tab.weekComponent)
             self.weekComponentArray = WeekComponent.calculateCurrentWeek()
             
+            bind()
+        }
+        
+        func bind() {
+            let appState = container.appState
+            
             cancelBag.collect {
-                $selectedWeekComponent.sink {
-                    appState[\.tab.weekComponent] = $0
-                }
+                $selectedWeekComponent
+                    .removeDuplicates()
+                    .sink {
+                        appState[\.tab.weekComponent] = $0
+                    }
             }
         }
         
+        // MARK: functions
         func changeSelectedWeekComponent(to weekComponent: WeekComponent) {
             selectedWeekComponent = weekComponent
         }

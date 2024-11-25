@@ -8,7 +8,7 @@
 import Foundation
 
 /// 기숙사, 학생 식당 응답
-struct CafeteriaResponse: Hashable {
+struct CafeteriaResponse: Hashable, CustomStringConvertible {
     internal init(cafeteria: Cafeteria, date: String, category: Category, title: String? = nil, content: String) {
         self.cafeteria = cafeteria
         self.date = date
@@ -45,4 +45,8 @@ struct CafeteriaResponse: Hashable {
     let title: String?
     /// 식단
     let content: String
+    
+    var description: String {
+        "cafeteria: \(cafeteria), date: \(date), category: \(category), \(title != nil ? "title: \(title!), " : "") content: \(content)"
+    }
 }

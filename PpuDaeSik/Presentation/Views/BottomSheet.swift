@@ -8,22 +8,27 @@
 import SwiftUI
 
 struct BottomSheet: View {
-    @ObservedObject var viewModel: ViewModel
+    @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
         ZStack {
             Color.gray100.ignoresSafeArea()
             
             VStack {
-                RectangleComponent.holdBar
+                RoundedRectangle(cornerRadius: 2.5)
+                    .foregroundColor(.darkGray100)
+                    .frame(width: UIScreen.getWidth(36), height: UIScreen.getHeight(5))
                 
                 HStack {
-                    TextComponent.sheetPickerTitle
+                    Text("기본 캠퍼스")
+                        .foregroundColor(.black100)
+                    
                     Spacer()
                     
                     Picker(selection: $viewModel.defaultCampus) {
                         ForEach(Campus.allCases, id: \.self) { campus in
-                            TextComponent.sheetPickerComponent(campus.rawValue)
+                            Text(campus.rawValue)
+                                .tag(campus.rawValue)
                         }
                     } label: { }
                         .foregroundColor(.blue100)
@@ -53,10 +58,20 @@ extension BottomSheet {
             
             _defaultCampus = .init(initialValue: appState.value.userData.defaultCampus)
             
+            bind()
+        }
+        
+        func bind() {
+            let appState = container.appState
+            
             cancelBag.collect {
-                $defaultCampus.sink {
-                    appState[\.userData.defaultCampus] = $0
-                }
+                $defaultCampus
+                    .removeDuplicates()
+                    .sink {
+                        appState[\.userData.defaultCampus] = $0
+                        self.container.services
+                            .defaultCampusService.save(defaultCampus: $0)
+                    }
             }
         }
     }

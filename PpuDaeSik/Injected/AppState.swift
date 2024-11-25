@@ -8,6 +8,7 @@
 struct AppState {
     var routing = ViewRouting()
     var tab = SelectedTab()
+    var cafeteria = CafeteriaData()
     var userData = UserData()
 }
 
@@ -25,7 +26,16 @@ extension AppState {
 }
 
 extension AppState {
+    struct CafeteriaData: Equatable {
+        var list: [Cafeteria] = []
+        var response: [CafeteriaResponse] = []
+        var filterByDay: [CafeteriaResponse] = []
+    }
+}
+
+extension AppState {
     struct UserData: Equatable {
+        var bookmark: [Cafeteria] = []
         var defaultCampus: Campus = .부산
     }
 }
