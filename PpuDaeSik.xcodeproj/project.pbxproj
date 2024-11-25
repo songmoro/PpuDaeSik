@@ -18,18 +18,12 @@
 		F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEC2CE488AD00277BC7 /* CampusTab.swift */; };
 		F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF32CE4A57B00277BC7 /* WeekTab.swift */; };
 		F8045AF62CE5D4F500277BC7 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */; };
-		F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
-		F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
-		F81129482C41960B00F71C03 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
 		F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
 		F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
 		F811295A2C429F9B00F71C03 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129592C429F9B00F71C03 /* Campus.swift */; };
 		F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295B2C429FA800F71C03 /* WeekComponent.swift */; };
 		F811295E2C429FBE00F71C03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295D2C429FBE00F71C03 /* Category.swift */; };
-		F81129662C429FEE00F71C03 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129652C429FEE00F71C03 /* QueryType.swift */; };
-		F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */; };
 		F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297F2C42E29B00F71C03 /* NotionResponse.swift */; };
-		F81129832C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
 		F815E4162C77453C00D25149 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815E4152C77453C00D25149 /* LoadingView.swift */; };
 		F8183FA42CEF14A0007B9428 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FA32CEF1480007B9428 /* MenuCell.swift */; };
 		F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FA52CEF14A2007B9428 /* MenuContent.swift */; };
@@ -91,7 +85,6 @@
 		F88F35F92B459D3A00BEA743 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35F82B459D3A00BEA743 /* Moya */; };
 		F88F35FB2B459D3A00BEA743 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35FA2B459D3A00BEA743 /* ReactiveMoya */; };
 		F88F35FD2B459D3A00BEA743 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35FC2B459D3A00BEA743 /* RxMoya */; };
-		F88F35FF2B45E64700BEA743 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -140,18 +133,12 @@
 		F8045AEC2CE488AD00277BC7 /* CampusTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTab.swift; sourceTree = "<group>"; };
 		F8045AF32CE4A57B00277BC7 /* WeekTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTab.swift; sourceTree = "<group>"; };
 		F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
-		F811293E2C417B8800F71C03 /* MoyaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaHeader.swift; sourceTree = "<group>"; };
-		F81129422C417EF800F71C03 /* NotionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDatabase.swift; sourceTree = "<group>"; };
-		F81129472C41960B00F71C03 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
 		F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
 		F81129542C41A80B00F71C03 /* Ext+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Calendar.swift"; sourceTree = "<group>"; };
 		F81129592C429F9B00F71C03 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
 		F811295B2C429FA800F71C03 /* WeekComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekComponent.swift; sourceTree = "<group>"; };
 		F811295D2C429FBE00F71C03 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		F81129652C429FEE00F71C03 /* QueryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
-		F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByCampusRequest.swift; sourceTree = "<group>"; };
 		F811297F2C42E29B00F71C03 /* NotionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionResponse.swift; sourceTree = "<group>"; };
-		F81129822C43C86200F71C03 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		F815E4152C77453C00D25149 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		F8183FA32CEF1480007B9428 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		F8183FA52CEF14A2007B9428 /* MenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContent.swift; sourceTree = "<group>"; };
@@ -209,7 +196,6 @@
 		F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F88F35F02B44056400BEA743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F88F35F32B4434BE00BEA743 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		F88F35FE2B45E64700BEA743 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -260,6 +246,7 @@
 		F8045AD62CE3638000277BC7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				F88F35F12B44337700BEA743 /* Ext */,
 				F8045AD92CE3639900277BC7 /* Store.swift */,
 				F8045ADB2CE363A100277BC7 /* CancelBag.swift */,
 				F8045ADD2CE363AA00277BC7 /* Loadable.swift */,
@@ -307,54 +294,6 @@
 				F8183FFF2CF30549007B9428 /* Notion */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		F811293D2C417B5100F71C03 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				F811293E2C417B8800F71C03 /* MoyaHeader.swift */,
-			);
-			path = Header;
-			sourceTree = "<group>";
-		};
-		F81129412C417EE300F71C03 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				F81129422C417EF800F71C03 /* NotionDatabase.swift */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
-		F81129462C4195BC00F71C03 /* Request */ = {
-			isa = PBXGroup;
-			children = (
-				F81129472C41960B00F71C03 /* RequestManager.swift */,
-			);
-			path = Request;
-			sourceTree = "<group>";
-		};
-		F811294B2C41A17F00F71C03 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-				F81129822C43C86200F71C03 /* Properties.swift */,
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
-		F81129582C429F8C00F71C03 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				F81129592C429F9B00F71C03 /* Campus.swift */,
-				F811295B2C429FA800F71C03 /* WeekComponent.swift */,
-				F820CBA62C6FAD1E008694EC /* DayComponent.swift */,
-				F811295D2C429FBE00F71C03 /* Category.swift */,
-				F811297F2C42E29B00F71C03 /* NotionResponse.swift */,
-				F81129652C429FEE00F71C03 /* QueryType.swift */,
-				F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */,
-				F874F2832C6B7AC20025F1FE /* Cafeteria.swift */,
-				F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		F8183F9C2CEF10C2007B9428 /* Presentation */ = {
@@ -409,6 +348,13 @@
 				F81840052CF30DF6007B9428 /* NotionAPIError.swift */,
 				F81840072CF31524007B9428 /* Deployment.swift */,
 				F81840002CF30696007B9428 /* NotionRequest.swift */,
+				F81129592C429F9B00F71C03 /* Campus.swift */,
+				F811295B2C429FA800F71C03 /* WeekComponent.swift */,
+				F820CBA62C6FAD1E008694EC /* DayComponent.swift */,
+				F811295D2C429FBE00F71C03 /* Category.swift */,
+				F811297F2C42E29B00F71C03 /* NotionResponse.swift */,
+				F874F2832C6B7AC20025F1FE /* Cafeteria.swift */,
+				F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */,
 			);
 			path = Notion;
 			sourceTree = "<group>";
@@ -484,6 +430,15 @@
 			path = "Ext+";
 			sourceTree = "<group>";
 		};
+		F81840462CF494A0007B9428 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F8334D582BE4C7E9000B85E9 /* Assets.xcassets */,
+				F8334D592BE4C7E9000B85E9 /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		F8334D352BE4C749000B85E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -504,8 +459,7 @@
 				F818400F2CF46BE5007B9428 /* Repositories */,
 				F818400C2CF46B7C007B9428 /* Services */,
 				F818400B2CF46B76007B9428 /* Models */,
-				F8334D582BE4C7E9000B85E9 /* Assets.xcassets */,
-				F8334D592BE4C7E9000B85E9 /* Info.plist */,
+				F81840462CF494A0007B9428 /* Resources */,
 			);
 			path = PpuDaeSikWidget;
 			sourceTree = "<group>";
@@ -540,27 +494,9 @@
 				F8045AD02CE3631400277BC7 /* Injected */,
 				F8045AE62CE3689B00277BC7 /* Repositories */,
 				F8045AEE2CE4928200277BC7 /* Models */,
-				F88F35F02B44056400BEA743 /* Info.plist */,
-				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
-				F88F35FE2B45E64700BEA743 /* API.swift */,
-				F81129582C429F8C00F71C03 /* Model */,
-				F811294B2C41A17F00F71C03 /* Protocol */,
-				F81129462C4195BC00F71C03 /* Request */,
-				F81129412C417EE300F71C03 /* Database */,
-				F811293D2C417B5100F71C03 /* Header */,
-				F88F35F22B4433D800BEA743 /* Resource */,
-				F88F35F12B44337700BEA743 /* Ext */,
-				F88F35DB2B43FC6600BEA743 /* Preview Content */,
+				F88F35F22B4433D800BEA743 /* Resources */,
 			);
 			path = PpuDaeSik;
-			sourceTree = "<group>";
-		};
-		F88F35DB2B43FC6600BEA743 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		F88F35F12B44337700BEA743 /* Ext */ = {
@@ -575,12 +511,15 @@
 			path = Ext;
 			sourceTree = "<group>";
 		};
-		F88F35F22B4433D800BEA743 /* Resource */ = {
+		F88F35F22B4433D800BEA743 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */,
+				F88F35F02B44056400BEA743 /* Info.plist */,
+				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
+				F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */,
 			);
-			path = Resource;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -736,17 +675,13 @@
 				F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
 				F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */,
 				F8183FFC2CF0A63D007B9428 /* NotionAPI.swift in Sources */,
-				F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
 				F811295E2C429FBE00F71C03 /* Category.swift in Sources */,
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
 				F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
 				F8183FAD2CEF291A007B9428 /* MainViewHeader.swift in Sources */,
-				F81129662C429FEE00F71C03 /* QueryType.swift in Sources */,
-				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
 				F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */,
 				F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */,
 				F8183FAF2CEF4649007B9428 /* UserDataRepository.swift in Sources */,
-				F81129832C43C86200F71C03 /* Properties.swift in Sources */,
 				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
 				F8183FB72CF059EE007B9428 /* DefaultCampusRepository.swift in Sources */,
 				F8183FB52CEF507B007B9428 /* BookmarkRepository.swift in Sources */,
@@ -755,7 +690,6 @@
 				F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
 				F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */,
-				F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */,
 				F81840062CF30DFC007B9428 /* NotionAPIError.swift in Sources */,
 				F811295A2C429F9B00F71C03 /* Campus.swift in Sources */,
 				F8183FB92CF0718E007B9428 /* DefaultCampusService.swift in Sources */,
@@ -768,14 +702,12 @@
 				F8045AD52CE3637600277BC7 /* DependencyInjector.swift in Sources */,
 				F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */,
 				F8045AD82CE3638F00277BC7 /* AppState.swift in Sources */,
-				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
 				F81840012CF3069E007B9428 /* NotionRequest.swift in Sources */,
 				F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */,
 				F8183FA42CEF14A0007B9428 /* MenuCell.swift in Sources */,
 				F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 				F8183FFA2CF0A539007B9428 /* CafeteriaRepository.swift in Sources */,
-				F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */,
 				F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */,
 				F81840082CF31529007B9428 /* Deployment.swift in Sources */,
 				F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
@@ -802,7 +734,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PpuDaeSikWidget/Info.plist;
+				INFOPLIST_FILE = PpuDaeSikWidget/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PpuDaeSikWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -830,7 +762,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PpuDaeSikWidget/Info.plist;
+				INFOPLIST_FILE = PpuDaeSikWidget/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PpuDaeSikWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -976,11 +908,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PpuDaeSik/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PpuDaeSik/Resources\"";
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PpuDaeSik/Info.plist;
+				INFOPLIST_FILE = PpuDaeSik/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "뿌대식";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -1012,11 +944,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PpuDaeSik/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PpuDaeSik/Resources\"";
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PpuDaeSik/Info.plist;
+				INFOPLIST_FILE = PpuDaeSik/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "뿌대식";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
