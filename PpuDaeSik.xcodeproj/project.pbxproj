@@ -61,6 +61,7 @@
 		F818403A2CF48FE8007B9428 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840392CF48FE8007B9428 /* Category.swift */; };
 		F818403D2CF49007007B9428 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818403C2CF49007007B9428 /* Ext+Color.swift */; };
 		F818403F2CF4902A007B9428 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818403E2CF4902A007B9428 /* Ext+Calendar.swift */; };
+		F81840452CF4925E007B9428 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840442CF4925E007B9428 /* Ext+DateFormatter.swift */; };
 		F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* DayComponent.swift */; };
 		F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA82C70E5F7008694EC /* CafeteriaView.swift */; };
 		F820CBAB2C70EE2A008694EC /* CafeteriaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeader.swift */; };
@@ -182,6 +183,7 @@
 		F81840392CF48FE8007B9428 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		F818403C2CF49007007B9428 /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
 		F818403E2CF4902A007B9428 /* Ext+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Calendar.swift"; sourceTree = "<group>"; };
+		F81840442CF4925E007B9428 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
 		F820CBA62C6FAD1E008694EC /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
 		F820CBAA2C70EE2A008694EC /* CafeteriaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeader.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 			children = (
 				F818403C2CF49007007B9428 /* Ext+Color.swift */,
 				F818403E2CF4902A007B9428 /* Ext+Calendar.swift */,
+				F81840442CF4925E007B9428 /* Ext+DateFormatter.swift */,
 			);
 			path = "Ext+";
 			sourceTree = "<group>";
@@ -708,6 +711,7 @@
 				F818401F2CF46F1F007B9428 /* ShortCutEntry.swift in Sources */,
 				F81840172CF46DDB007B9428 /* NotionAPI.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
+				F81840452CF4925E007B9428 /* Ext+DateFormatter.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
 				F81840192CF46E07007B9428 /* NotionRequest.swift in Sources */,
 				F81840262CF46FA6007B9428 /* PpuDaeSikWidgetEntryView.swift in Sources */,
