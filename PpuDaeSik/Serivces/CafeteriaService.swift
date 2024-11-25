@@ -18,6 +18,7 @@ protocol CafeteriaService {
 
 struct CafeteriaServiceImpl: CafeteriaService {
     let appState: Store<AppState>
+    let cafeteriaRepository: CafeteriaRepository
     
     func refreshCampusCafeteria() {
         appState[\.cafeteria.list] = []
@@ -61,25 +62,10 @@ struct CafeteriaServiceImpl: CafeteriaService {
         appState[\.cafeteria.response] = []
         
         Task {
-            let queryTypeArray = await checkDatabaseStatus()
+            async let restaurantResponse = await requestBy(selectedCampus, for: .restaurant)
+            async let dormitoryResponse = await requestBy(selectedCampus, for: .dormitory)
             
-            let responses: [[CafeteriaResponse]] = await withTaskGroup(of: [CafeteriaResponse].self) { group in
-                for queryType in queryTypeArray {
-                    group.addTask {
-                        await self.requestByCampusDatabase(selectedCampus, queryType)
-                    }
-                }
-                
-                var collectedResponses: [[CafeteriaResponse]] = []
-                
-                for await result in group {
-                    collectedResponses.append(result)
-                }
-                
-                return collectedResponses
-            }
-            
-            let newCafeteriaResponse = responses.flatMap { $0 }
+            let newCafeteriaResponse = await restaurantResponse + dormitoryResponse
             
             DispatchQueue.main.async {
                 appState[\.cafeteria.response] = newCafeteriaResponse
@@ -87,50 +73,28 @@ struct CafeteriaServiceImpl: CafeteriaService {
         }
     }
     
-    /// 데이터베이스가 백업 상태인지 검사하는 함수
-    /// - QueryType:
-    ///     - DB: 데이터베이스 종류(학생 식당, 기숙사)
-    ///     - Status: 데이터베이스 백업 중 여부(백업, 완료)
-    func checkDatabaseStatus() async -> [QueryType] {
-        let response = await RequestManager.shared.request(.checkStatus, NotionResponse<DeploymentProperties>.self)
-        guard let response = response else { return [] }
+    func checkDeployment(for type: DeploymentType) async -> Bool {
+        let response: NotionResponse<DeploymentProperties> = await cafeteriaRepository.fetch(NotionAPI.status(type: type))
+        let deploymentStatus = Deployment(response: response.results.first!.properties)
         
-        let queryTypeArray: [QueryType] = response.results.compactMap {
-            guard let queryType = QueryType($0.properties) else { return nil }
-            return queryType
-        }
-        
-        return queryTypeArray
+        return deploymentStatus.isUpdating
     }
     
-    /// 지정한 캠퍼스와 데이터베이스에 대한 데이터를 요청하는 함수
-    /// - 캠퍼스: 부산, 밀양, 양산
-    /// - 데이터베이스: 학생 식당, 기숙사
-    func requestByCampusDatabase(_ campus: Campus, _ queryType: QueryType) async -> [CafeteriaResponse] {
-        switch queryType {
+    func requestBy(_ campus: Campus, for type: DeploymentType) async -> [CafeteriaResponse] {
+        let isUpdating = await checkDeployment(for: type)
+        
+        let response: [CafeteriaResponse]
+        
+        switch type {
         case .restaurant:
-            let responseArray = await RequestManager.shared.request(
-                .queryByCampus(queryType, campus),
-                NotionResponse<RestaurantProperties>.self
-            )
-            
-            guard let responseArray = responseArray else { return [] }
-            
-            return responseArray.results.compactMap {
-                CafeteriaResponse(from: $0.properties.toDict())
-            }
-        case .domitory:
-            let responseArray = await RequestManager.shared.request(
-                .queryByCampus(queryType, campus),
-                NotionResponse<DomitoryProperties>.self
-            )
-            
-            guard let responseArray = responseArray else { return [] }
-            
-            return responseArray.results.compactMap {
-                CafeteriaResponse(from: $0.properties.toDict())
-            }
+            let restaurantResponse: RestaurantResponse = await cafeteriaRepository.fetch(NotionAPI.restaurant(campus: campus, isUpdating: isUpdating))
+            response = restaurantResponse.convertToCafeteria()
+        case .dormitory:
+            let dormitoryResponse: DormitoryResponse = await cafeteriaRepository.fetch(NotionAPI.dormitory(campus: campus, isUpdating: isUpdating))
+            response = dormitoryResponse.convertToCafeteria()
         }
+        
+        return response
     }
 }
 

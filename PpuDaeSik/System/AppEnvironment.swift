@@ -19,12 +19,12 @@ extension AppEnvironment {
         let repositories = configuredRepositories(session: session)
         let services = configuredServices(appState: appState, repositories: repositories)
         let diContainer = DIContainer(appState: appState, services: services)
-
+        
         return AppEnvironment(container: diContainer)
     }
-
+    
     private static func configuredServices(appState: Store<AppState>, repositories: DIContainer.Repositories) -> DIContainer.Services {
-        let cafeteriaService = CafeteriaServiceImpl(appState: appState)
+        let cafeteriaService = CafeteriaServiceImpl(appState: appState, cafeteriaRepository: repositories.cafeteriaRepository)
         let bookmarkService = BookmarkServiceImpl(appState: appState, bookmarkRepository: repositories.bookmarkRepository)
         let defaultCampusService = DefaultCampusServiceImpl(appState: appState, defaultCampusRepository: repositories.defaultCampusRepository)
         
@@ -34,15 +34,19 @@ extension AppEnvironment {
             defaultCampusService: defaultCampusService
         )
     }
-
+    
     private static func configuredRepositories(session: URLSession) -> DIContainer.Repositories {
-        let notionRepository = NotionRepositoryImpl()
+        let cafeteriaRepository = CafeteriaRepository(session: session)
         let bookmarkRepository = BookmarkRepository(key: "bookmark")
         let defaultCampusRepository = DefaultCampusRepository(key: "defaultCampus")
         
-        return .init(notionRepository: notionRepository, bookmarkRepository: bookmarkRepository, defaultCampusRepository: defaultCampusRepository)
+        return .init(
+            cafeteriaRepository: cafeteriaRepository,
+            bookmarkRepository: bookmarkRepository,
+            defaultCampusRepository: defaultCampusRepository
+        )
     }
-
+    
     private static func configuredURLSession() -> URLSession {
         return URLSession.shared
     }

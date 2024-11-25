@@ -48,7 +48,7 @@ extension DIContainer {
 
 extension DIContainer {
     struct Repositories {
-        let notionRepository: NotionRepository
+        let cafeteriaRepository: CafeteriaRepository
         let bookmarkRepository: BookmarkRepository
         let defaultCampusRepository: DefaultCampusRepository
     }

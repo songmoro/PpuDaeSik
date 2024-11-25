@@ -5,10 +5,10 @@
 //  Created by 송재훈 on 11/12/24.
 //
 
-protocol NotionRepository {
-    
-}
+import SwiftUI
 
-struct NotionRepositoryImpl: NotionRepository {
+protocol NotionRepository {
+    var session: URLSession { get }
     
+    func fetch<T: Codable>(_ api: NotionAPIAble) async -> T
 }
