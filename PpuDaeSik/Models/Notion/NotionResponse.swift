@@ -94,23 +94,16 @@ struct Result<T: Codable>: Codable, CustomStringConvertible {
     }
 }
 
-struct DeploymentProperties: Codable, Properties, CustomStringConvertible {
+struct DeploymentProperties: Codable, CustomStringConvertible {
     let DB: Title
     let Status: Property
-    
-    func toDict() -> [String : String] {
-        [
-            "DB": DB.title[0].plainText,
-            "Status": Status.richText[0].plainText
-        ]
-    }
     
     var description: String {
         "DB: \(DB), Status: \(Status)"
     }
 }
 
-struct RestaurantProperties: Codable, Properties, CustomStringConvertible {
+struct RestaurantProperties: Codable, CustomStringConvertible {
     let restaurantCode, menuTitle, menuDate, menuType, menuContent: Property
     
     enum CodingKeys: String, CodingKey {
@@ -121,33 +114,14 @@ struct RestaurantProperties: Codable, Properties, CustomStringConvertible {
         case menuContent = "MENU_CONTENT"
     }
     
-    func toDict() -> [String: String] {
-        [
-            "code": restaurantCode.richText[0].plainText,
-            "title": menuTitle.richText[0].plainText,
-            "date": menuDate.richText[0].plainText,
-            "category": menuType.richText[0].plainText,
-            "content": menuContent.richText[0].plainText,
-        ]
-    }
-    
     var description: String {
         "RESTAURANT_CODE: \(restaurantCode), MENU_TITLE: \(menuTitle), MENU_DATE: \(menuDate), MENU_TYPE: \(menuType), MENU_CONTENT: \(menuContent)"
     }
 }
 
-struct DomitoryProperties: Codable, Properties, CustomStringConvertible {
+struct DomitoryProperties: Codable, CustomStringConvertible {
     let no: Title
     let mealDate, mealKindGcd, mealNm: Property
-    
-    func toDict() -> [String: String] {
-        [
-            "code": no.title[0].plainText,
-            "date": mealDate.richText[0].plainText,
-            "category": mealKindGcd.richText[0].plainText,
-            "content": mealNm.richText[0].plainText
-        ]
-    }
     
     var description: String {
         "no: \(no), mealDate: \(mealDate), mealkindGcd: \(mealKindGcd), mealNm: \(mealNm)"

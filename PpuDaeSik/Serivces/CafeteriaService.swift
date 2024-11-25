@@ -56,8 +56,6 @@ struct CafeteriaServiceImpl: CafeteriaService {
     }
     
     func fetch() {
-        RequestManager.shared.cancleAllRequest()
-        
         let selectedCampus = appState[\.tab.campus]
         appState[\.cafeteria.response] = []
         

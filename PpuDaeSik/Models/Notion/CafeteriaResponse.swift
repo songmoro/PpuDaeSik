@@ -17,21 +17,6 @@ struct CafeteriaResponse: Hashable, CustomStringConvertible {
         self.content = content
     }
     
-    /// 옵셔널 초기화
-    init?(from properties: [String: String]) {
-        let title = properties["title"]
-        
-        guard let code = properties["code"],
-              let cafeteria = Cafeteria(code),
-              let date = properties["date"],
-              let rawCategory = properties["category"],
-              let category = Category(rawCategory),
-              let content = properties["content"]
-        else { return nil }
-        
-        self.init(cafeteria: cafeteria, date: date, category: category, title: title, content: content)
-    }
-    
     var uuid = UUID()
     /// 기숙사, 학생 식당 기본 정보
     let cafeteria: Cafeteria
