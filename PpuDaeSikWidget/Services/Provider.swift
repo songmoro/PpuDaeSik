@@ -26,15 +26,6 @@ struct Provider: IntentTimelineProvider {
         let currentDate = Date()
         let nextRefreshDate = Calendar.current.date(byAdding: .hour, value: 1, to: currentDate)!
         
-//        checkStatus { queryType in
-//            queryDatabase(queryType, cafeteria, category: category) {
-//                let entry = SimpleEntry(configuration: configuration, date: currentDate, name: $0[0], category: $0[1], meal: $0[2])
-//                let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
-//                
-//                completion(timeline)
-//            }
-//        }
-        
         Task {
             let response = await fetch(cafeteria: cafeteria, category: category)
 
