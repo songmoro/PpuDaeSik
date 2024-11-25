@@ -71,15 +71,19 @@ extension WeekTab {
             
             self._selectedWeekComponent = .init(initialValue: appState.value.tab.weekComponent)
             self.weekComponentArray = WeekComponent.calculateCurrentWeek()
+            
+            bind()
         }
         
         func bind() {
             let appState = container.appState
             
             cancelBag.collect {
-                $selectedWeekComponent.sink {
-                    appState[\.tab.weekComponent] = $0
-                }
+                $selectedWeekComponent
+                    .removeDuplicates()
+                    .sink {
+                        appState[\.tab.weekComponent] = $0
+                    }
             }
         }
         
