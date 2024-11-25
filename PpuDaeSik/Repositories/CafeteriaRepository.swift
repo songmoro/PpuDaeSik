@@ -17,17 +17,25 @@ struct CafeteriaRepository: NotionRepository {
         do {
             let (data, response) = try await session.data(for: request)
             
-            guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            guard let httpResponse = response as? HTTPURLResponse else {
                 throw URLError(.badServerResponse)
             }
             
+            guard httpResponse.statusCode == 200 else {
+                let errorMessage = String(data: data, encoding: .utf8) ?? "No error message"
+                let errorCode = extractErrorCode(from: data)
+                throw NotionAPIError.from(statusCode: httpResponse.statusCode, errorCode: errorCode, message: errorMessage)
+            }
             
             return try! decoder.decode(T.self, from: data)
         }
-        catch {
-            
+        catch(let error) {
+            if error is NotionAPIError {
+                fatalError((error as! NotionAPIError).localizedDescription)
+            }
+            else {
+                fatalError(error.localizedDescription)
+            }
         }
-        
-        return try! decoder.decode(T.self, from: Data())
     }
 }
