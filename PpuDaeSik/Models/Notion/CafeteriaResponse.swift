@@ -35,3 +35,7 @@ struct CafeteriaResponse: Hashable, CustomStringConvertible {
         "cafeteria: \(cafeteria), date: \(date), category: \(category), \(title != nil ? "title: \(title!), " : "") content: \(content)"
     }
 }
+
+extension CafeteriaResponse: Codable {
+    
+}

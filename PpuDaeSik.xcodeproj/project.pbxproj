@@ -18,6 +18,7 @@
 		F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEC2CE488AD00277BC7 /* CampusTab.swift */; };
 		F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF32CE4A57B00277BC7 /* WeekTab.swift */; };
 		F8045AF62CE5D4F500277BC7 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */; };
+		F80781712CF854C300E061E6 /* CacheRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80781702CF854BC00E061E6 /* CacheRepository.swift */; };
 		F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
 		F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
 		F811295A2C429F9B00F71C03 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129592C429F9B00F71C03 /* Campus.swift */; };
@@ -124,6 +125,7 @@
 		F8045AEC2CE488AD00277BC7 /* CampusTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTab.swift; sourceTree = "<group>"; };
 		F8045AF32CE4A57B00277BC7 /* WeekTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTab.swift; sourceTree = "<group>"; };
 		F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
+		F80781702CF854BC00E061E6 /* CacheRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheRepository.swift; sourceTree = "<group>"; };
 		F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
 		F81129542C41A80B00F71C03 /* Ext+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Calendar.swift"; sourceTree = "<group>"; };
 		F81129592C429F9B00F71C03 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 				F8183FF92CF0A534007B9428 /* CafeteriaRepository.swift */,
 				F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */,
 				F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */,
+				F80781702CF854BC00E061E6 /* CacheRepository.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -369,13 +372,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		F818400F2CF46BE5007B9428 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
 		F81840122CF46D2F007B9428 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,7 +433,6 @@
 				F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */,
 				F81840202CF46F48007B9428 /* Presentation */,
 				F81840122CF46D2F007B9428 /* Utilities */,
-				F818400F2CF46BE5007B9428 /* Repositories */,
 				F818400C2CF46B7C007B9428 /* Services */,
 				F818400B2CF46B76007B9428 /* Models */,
 				F81840462CF494A0007B9428 /* Resources */,
@@ -677,6 +672,7 @@
 				F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */,
 				F8183FA42CEF14A0007B9428 /* MenuCell.swift in Sources */,
 				F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */,
+				F80781712CF854C300E061E6 /* CacheRepository.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 				F8183FFA2CF0A539007B9428 /* CafeteriaRepository.swift in Sources */,
 				F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */,
