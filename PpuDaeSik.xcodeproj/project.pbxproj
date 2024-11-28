@@ -7,61 +7,68 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
-		F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
-		F81129482C41960B00F71C03 /* RequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129472C41960B00F71C03 /* RequestManager.swift */; };
+		F8045AD32CE3636800277BC7 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD22CE3636700277BC7 /* AppEnvironment.swift */; };
+		F8045AD52CE3637600277BC7 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD42CE3637500277BC7 /* DependencyInjector.swift */; };
+		F8045AD82CE3638F00277BC7 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD72CE3638700277BC7 /* AppState.swift */; };
+		F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD92CE3639900277BC7 /* Store.swift */; };
+		F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045ADB2CE363A100277BC7 /* CancelBag.swift */; };
+		F8045ADE2CE363AB00277BC7 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045ADD2CE363AA00277BC7 /* Loadable.swift */; };
+		F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE42CE3676400277BC7 /* CafeteriaService.swift */; };
+		F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE72CE368DE00277BC7 /* NotionRepository.swift */; };
+		F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEC2CE488AD00277BC7 /* CampusTab.swift */; };
+		F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF32CE4A57B00277BC7 /* WeekTab.swift */; };
+		F8045AF62CE5D4F500277BC7 /* BottomSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */; };
 		F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
-		F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */; };
 		F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
-		F81129562C41A80B00F71C03 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129542C41A80B00F71C03 /* Ext+Calendar.swift */; };
 		F811295A2C429F9B00F71C03 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129592C429F9B00F71C03 /* Campus.swift */; };
 		F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295B2C429FA800F71C03 /* WeekComponent.swift */; };
 		F811295E2C429FBE00F71C03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295D2C429FBE00F71C03 /* Category.swift */; };
-		F811295F2C429FC900F71C03 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129592C429F9B00F71C03 /* Campus.swift */; };
-		F81129612C429FCD00F71C03 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811295D2C429FBE00F71C03 /* Category.swift */; };
-		F81129662C429FEE00F71C03 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129652C429FEE00F71C03 /* QueryType.swift */; };
-		F81129672C429FF000F71C03 /* QueryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129652C429FEE00F71C03 /* QueryType.swift */; };
-		F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */; };
-		F811297C2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */; };
 		F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297F2C42E29B00F71C03 /* NotionResponse.swift */; };
-		F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811297F2C42E29B00F71C03 /* NotionResponse.swift */; };
-		F81129832C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
-		F81129842C43C86200F71C03 /* Properties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129822C43C86200F71C03 /* Properties.swift */; };
 		F815E4162C77453C00D25149 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F815E4152C77453C00D25149 /* LoadingView.swift */; };
-		F820CB8E2C6D2A62008694EC /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
-		F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81129422C417EF800F71C03 /* NotionDatabase.swift */; };
-		F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811293E2C417B8800F71C03 /* MoyaHeader.swift */; };
-		F820CB972C6F685C008694EC /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB962C6F685C008694EC /* MealView.swift */; };
-		F820CB992C6F6D0D008694EC /* TextComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB982C6F6D0D008694EC /* TextComponent.swift */; };
-		F820CB9B2C6F9491008694EC /* CircleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9A2C6F9491008694EC /* CircleComponent.swift */; };
-		F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9C2C6F991F008694EC /* ImageComponent.swift */; };
-		F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CB9E2C6F9B43008694EC /* RectangleComponent.swift */; };
-		F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA02C6FA2E7008694EC /* HeaderView.swift */; };
-		F820CBA32C6FA393008694EC /* CampusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA22C6FA393008694EC /* CampusView.swift */; };
-		F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA42C6FAB32008694EC /* WeekView.swift */; };
+		F8183FA42CEF14A0007B9428 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FA32CEF1480007B9428 /* MenuCell.swift */; };
+		F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FA52CEF14A2007B9428 /* MenuContent.swift */; };
+		F8183FAD2CEF291A007B9428 /* MainViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FAC2CEF291A007B9428 /* MainViewHeader.swift */; };
+		F8183FAF2CEF4649007B9428 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FAE2CEF4640007B9428 /* UserDataRepository.swift */; };
+		F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB02CEF4A64007B9428 /* BookmarkService.swift */; };
+		F8183FB52CEF507B007B9428 /* BookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */; };
+		F8183FB72CF059EE007B9428 /* DefaultCampusRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */; };
+		F8183FB92CF0718E007B9428 /* DefaultCampusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */; };
+		F8183FFA2CF0A539007B9428 /* CafeteriaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FF92CF0A534007B9428 /* CafeteriaRepository.swift */; };
+		F8183FFC2CF0A63D007B9428 /* NotionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FFB2CF0A637007B9428 /* NotionAPI.swift */; };
+		F81840012CF3069E007B9428 /* NotionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840002CF30696007B9428 /* NotionRequest.swift */; };
+		F81840062CF30DFC007B9428 /* NotionAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840052CF30DF6007B9428 /* NotionAPIError.swift */; };
+		F81840082CF31529007B9428 /* Deployment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840072CF31524007B9428 /* Deployment.swift */; };
+		F81840172CF46DDB007B9428 /* NotionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840162CF46DDB007B9428 /* NotionAPI.swift */; };
+		F81840192CF46E07007B9428 /* NotionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840182CF46E07007B9428 /* NotionRequest.swift */; };
+		F818401B2CF46E5C007B9428 /* NotionAPIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818401A2CF46E5C007B9428 /* NotionAPIError.swift */; };
+		F818401D2CF46EFD007B9428 /* SimpleEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818401C2CF46EFD007B9428 /* SimpleEntry.swift */; };
+		F818401F2CF46F1F007B9428 /* ShortCutEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818401E2CF46F1F007B9428 /* ShortCutEntry.swift */; };
+		F81840262CF46FA6007B9428 /* PpuDaeSikWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840252CF46FA6007B9428 /* PpuDaeSikWidgetEntryView.swift */; };
+		F81840282CF46FC4007B9428 /* PpuDaeSikShortCutWidgetEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840272CF46FC4007B9428 /* PpuDaeSikShortCutWidgetEntryView.swift */; };
+		F818402A2CF47068007B9428 /* ShortCutProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840292CF47068007B9428 /* ShortCutProvider.swift */; };
+		F818402C2CF47075007B9428 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818402B2CF47075007B9428 /* Provider.swift */; };
+		F818402E2CF47390007B9428 /* NotionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818402D2CF47390007B9428 /* NotionResponse.swift */; };
+		F81840322CF4754A007B9428 /* Deployment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840312CF4754A007B9428 /* Deployment.swift */; };
+		F81840342CF48F8E007B9428 /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840332CF48F8E007B9428 /* Cafeteria.swift */; };
+		F81840362CF48FAE007B9428 /* CafeteriaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840352CF48FAE007B9428 /* CafeteriaResponse.swift */; };
+		F81840382CF48FE0007B9428 /* Campus.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840372CF48FE0007B9428 /* Campus.swift */; };
+		F818403A2CF48FE8007B9428 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840392CF48FE8007B9428 /* Category.swift */; };
+		F818403D2CF49007007B9428 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818403C2CF49007007B9428 /* Ext+Color.swift */; };
+		F818403F2CF4902A007B9428 /* Ext+Calendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F818403E2CF4902A007B9428 /* Ext+Calendar.swift */; };
+		F81840452CF4925E007B9428 /* Ext+DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840442CF4925E007B9428 /* Ext+DateFormatter.swift */; };
 		F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA62C6FAD1E008694EC /* DayComponent.swift */; };
 		F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBA82C70E5F7008694EC /* CafeteriaView.swift */; };
-		F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */; };
+		F820CBAB2C70EE2A008694EC /* CafeteriaHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F820CBAA2C70EE2A008694EC /* CafeteriaHeader.swift */; };
 		F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D362BE4C749000B85E9 /* WidgetKit.framework */; };
 		F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F8334D382BE4C749000B85E9 /* SwiftUI.framework */; };
 		F8334D442BE4C74A000B85E9 /* PpuDaeSikWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F8334D602BE4C934000B85E9 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D5F2BE4C934000B85E9 /* CombineMoya */; };
-		F8334D622BE4C934000B85E9 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D612BE4C934000B85E9 /* Moya */; };
-		F8334D642BE4C934000B85E9 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D632BE4C934000B85E9 /* ReactiveMoya */; };
-		F8334D662BE4C934000B85E9 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F8334D652BE4C934000B85E9 /* RxMoya */; };
-		F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D552BE4C7E9000B85E9 /* Ext+Provider.swift */; };
 		F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */; };
 		F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5B2BE4C7E9000B85E9 /* PpuDaeSikWidgetBundle.swift */; };
-		F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8334D5C2BE4C7E9000B85E9 /* WidgetAPI.swift */; };
 		F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8334D582BE4C7E9000B85E9 /* Assets.xcassets */; };
 		F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */; };
-		F8334D9C2BE5EF88000B85E9 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */; };
-		F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
 		F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
 		F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* Cafeteria.swift */; };
-		F874F2852C6BC9620025F1FE /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* Cafeteria.swift */; };
 		F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */; };
-		F874F2882C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */; };
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
@@ -69,13 +76,6 @@
 		F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
 		F88F35EF2B44033400BEA743 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */; };
 		F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35F32B4434BE00BEA743 /* MainView.swift */; };
-		F88F35F72B459D3A00BEA743 /* CombineMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35F62B459D3A00BEA743 /* CombineMoya */; };
-		F88F35F92B459D3A00BEA743 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35F82B459D3A00BEA743 /* Moya */; };
-		F88F35FB2B459D3A00BEA743 /* ReactiveMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35FA2B459D3A00BEA743 /* ReactiveMoya */; };
-		F88F35FD2B459D3A00BEA743 /* RxMoya in Frameworks */ = {isa = PBXBuildFile; productRef = F88F35FC2B459D3A00BEA743 /* RxMoya */; };
-		F88F35FF2B45E64700BEA743 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35FE2B45E64700BEA743 /* API.swift */; };
-		F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F36002B45E96300BEA743 /* MainViewModel.swift */; };
-		F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8ABD22E2B4DA9E90038195F /* Sheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,39 +113,65 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F811293E2C417B8800F71C03 /* MoyaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoyaHeader.swift; sourceTree = "<group>"; };
-		F81129422C417EF800F71C03 /* NotionDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionDatabase.swift; sourceTree = "<group>"; };
-		F81129472C41960B00F71C03 /* RequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestManager.swift; sourceTree = "<group>"; };
+		F8045AD22CE3636700277BC7 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
+		F8045AD42CE3637500277BC7 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
+		F8045AD72CE3638700277BC7 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F8045AD92CE3639900277BC7 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		F8045ADB2CE363A100277BC7 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
+		F8045ADD2CE363AA00277BC7 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		F8045AE42CE3676400277BC7 /* CafeteriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaService.swift; sourceTree = "<group>"; };
+		F8045AE72CE368DE00277BC7 /* NotionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRepository.swift; sourceTree = "<group>"; };
+		F8045AEC2CE488AD00277BC7 /* CampusTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTab.swift; sourceTree = "<group>"; };
+		F8045AF32CE4A57B00277BC7 /* WeekTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTab.swift; sourceTree = "<group>"; };
+		F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheet.swift; sourceTree = "<group>"; };
 		F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
 		F81129542C41A80B00F71C03 /* Ext+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Calendar.swift"; sourceTree = "<group>"; };
 		F81129592C429F9B00F71C03 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
 		F811295B2C429FA800F71C03 /* WeekComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekComponent.swift; sourceTree = "<group>"; };
 		F811295D2C429FBE00F71C03 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		F81129652C429FEE00F71C03 /* QueryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueryType.swift; sourceTree = "<group>"; };
-		F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterByCampusRequest.swift; sourceTree = "<group>"; };
 		F811297F2C42E29B00F71C03 /* NotionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionResponse.swift; sourceTree = "<group>"; };
-		F81129822C43C86200F71C03 /* Properties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Properties.swift; sourceTree = "<group>"; };
 		F815E4152C77453C00D25149 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		F820CB962C6F685C008694EC /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
-		F820CB982C6F6D0D008694EC /* TextComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextComponent.swift; sourceTree = "<group>"; };
-		F820CB9A2C6F9491008694EC /* CircleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleComponent.swift; sourceTree = "<group>"; };
-		F820CB9C2C6F991F008694EC /* ImageComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageComponent.swift; sourceTree = "<group>"; };
-		F820CB9E2C6F9B43008694EC /* RectangleComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleComponent.swift; sourceTree = "<group>"; };
-		F820CBA02C6FA2E7008694EC /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
-		F820CBA22C6FA393008694EC /* CampusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusView.swift; sourceTree = "<group>"; };
-		F820CBA42C6FAB32008694EC /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		F8183FA32CEF1480007B9428 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		F8183FA52CEF14A2007B9428 /* MenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContent.swift; sourceTree = "<group>"; };
+		F8183FAC2CEF291A007B9428 /* MainViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewHeader.swift; sourceTree = "<group>"; };
+		F8183FAE2CEF4640007B9428 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
+		F8183FB02CEF4A64007B9428 /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
+		F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepository.swift; sourceTree = "<group>"; };
+		F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusRepository.swift; sourceTree = "<group>"; };
+		F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusService.swift; sourceTree = "<group>"; };
+		F8183FF92CF0A534007B9428 /* CafeteriaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaRepository.swift; sourceTree = "<group>"; };
+		F8183FFB2CF0A637007B9428 /* NotionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionAPI.swift; sourceTree = "<group>"; };
+		F81840002CF30696007B9428 /* NotionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRequest.swift; sourceTree = "<group>"; };
+		F81840052CF30DF6007B9428 /* NotionAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionAPIError.swift; sourceTree = "<group>"; };
+		F81840072CF31524007B9428 /* Deployment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deployment.swift; sourceTree = "<group>"; };
+		F81840162CF46DDB007B9428 /* NotionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionAPI.swift; sourceTree = "<group>"; };
+		F81840182CF46E07007B9428 /* NotionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRequest.swift; sourceTree = "<group>"; };
+		F818401A2CF46E5C007B9428 /* NotionAPIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionAPIError.swift; sourceTree = "<group>"; };
+		F818401C2CF46EFD007B9428 /* SimpleEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleEntry.swift; sourceTree = "<group>"; };
+		F818401E2CF46F1F007B9428 /* ShortCutEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortCutEntry.swift; sourceTree = "<group>"; };
+		F81840252CF46FA6007B9428 /* PpuDaeSikWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikWidgetEntryView.swift; sourceTree = "<group>"; };
+		F81840272CF46FC4007B9428 /* PpuDaeSikShortCutWidgetEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikShortCutWidgetEntryView.swift; sourceTree = "<group>"; };
+		F81840292CF47068007B9428 /* ShortCutProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortCutProvider.swift; sourceTree = "<group>"; };
+		F818402B2CF47075007B9428 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		F818402D2CF47390007B9428 /* NotionResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionResponse.swift; sourceTree = "<group>"; };
+		F81840312CF4754A007B9428 /* Deployment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Deployment.swift; sourceTree = "<group>"; };
+		F81840332CF48F8E007B9428 /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
+		F81840352CF48FAE007B9428 /* CafeteriaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaResponse.swift; sourceTree = "<group>"; };
+		F81840372CF48FE0007B9428 /* Campus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Campus.swift; sourceTree = "<group>"; };
+		F81840392CF48FE8007B9428 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		F818403C2CF49007007B9428 /* Ext+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Color.swift"; sourceTree = "<group>"; };
+		F818403E2CF4902A007B9428 /* Ext+Calendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Calendar.swift"; sourceTree = "<group>"; };
+		F81840442CF4925E007B9428 /* Ext+DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+DateFormatter.swift"; sourceTree = "<group>"; };
 		F820CBA62C6FAD1E008694EC /* DayComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayComponent.swift; sourceTree = "<group>"; };
 		F820CBA82C70E5F7008694EC /* CafeteriaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaView.swift; sourceTree = "<group>"; };
-		F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeaderView.swift; sourceTree = "<group>"; };
+		F820CBAA2C70EE2A008694EC /* CafeteriaHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaHeader.swift; sourceTree = "<group>"; };
 		F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PpuDaeSikWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		F8334D362BE4C749000B85E9 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		F8334D382BE4C749000B85E9 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		F8334D552BE4C7E9000B85E9 /* Ext+Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+Provider.swift"; sourceTree = "<group>"; };
 		F8334D582BE4C7E9000B85E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8334D592BE4C7E9000B85E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikWidget.swift; sourceTree = "<group>"; };
 		F8334D5B2BE4C7E9000B85E9 /* PpuDaeSikWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikWidgetBundle.swift; sourceTree = "<group>"; };
-		F8334D5C2BE4C7E9000B85E9 /* WidgetAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetAPI.swift; sourceTree = "<group>"; };
 		F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PpuDaeSikWidget.intentdefinition; sourceTree = "<group>"; };
 		F8334D8E2BE4F4BD000B85E9 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		F874F2832C6B7AC20025F1FE /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
@@ -160,9 +186,6 @@
 		F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F88F35F02B44056400BEA743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F88F35F32B4434BE00BEA743 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		F88F35FE2B45E64700BEA743 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		F88F36002B45E96300BEA743 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
-		F8ABD22E2B4DA9E90038195F /* Sheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,12 +193,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8334D662BE4C934000B85E9 /* RxMoya in Frameworks */,
 				F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */,
 				F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */,
-				F8334D622BE4C934000B85E9 /* Moya in Frameworks */,
-				F8334D642BE4C934000B85E9 /* ReactiveMoya in Frameworks */,
-				F8334D602BE4C934000B85E9 /* CombineMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,80 +202,222 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F88F35F92B459D3A00BEA743 /* Moya in Frameworks */,
-				F88F35F72B459D3A00BEA743 /* CombineMoya in Frameworks */,
-				F88F35FD2B459D3A00BEA743 /* RxMoya in Frameworks */,
-				F88F35FB2B459D3A00BEA743 /* ReactiveMoya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F811293D2C417B5100F71C03 /* Header */ = {
+		F8045AD02CE3631400277BC7 /* Injected */ = {
 			isa = PBXGroup;
 			children = (
-				F811293E2C417B8800F71C03 /* MoyaHeader.swift */,
+				F8045AD72CE3638700277BC7 /* AppState.swift */,
+				F8045AD42CE3637500277BC7 /* DependencyInjector.swift */,
 			);
-			path = Header;
+			path = Injected;
 			sourceTree = "<group>";
 		};
-		F81129412C417EE300F71C03 /* Database */ = {
+		F8045AD12CE3633700277BC7 /* System */ = {
 			isa = PBXGroup;
 			children = (
-				F81129422C417EF800F71C03 /* NotionDatabase.swift */,
+				F8045AD22CE3636700277BC7 /* AppEnvironment.swift */,
 			);
-			path = Database;
+			path = System;
 			sourceTree = "<group>";
 		};
-		F81129462C4195BC00F71C03 /* Request */ = {
+		F8045AD62CE3638000277BC7 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				F81129472C41960B00F71C03 /* RequestManager.swift */,
+				F88F35F12B44337700BEA743 /* Ext */,
+				F8045AD92CE3639900277BC7 /* Store.swift */,
+				F8045ADB2CE363A100277BC7 /* CancelBag.swift */,
+				F8045ADD2CE363AA00277BC7 /* Loadable.swift */,
+				F8183FAE2CEF4640007B9428 /* UserDataRepository.swift */,
 			);
-			path = Request;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
-		F811294B2C41A17F00F71C03 /* Protocol */ = {
+		F8045ADF2CE3673C00277BC7 /* Serivces */ = {
 			isa = PBXGroup;
 			children = (
-				F81129822C43C86200F71C03 /* Properties.swift */,
+				F8045AE42CE3676400277BC7 /* CafeteriaService.swift */,
+				F8183FB02CEF4A64007B9428 /* BookmarkService.swift */,
+				F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */,
 			);
-			path = Protocol;
+			path = Serivces;
 			sourceTree = "<group>";
 		};
-		F81129582C429F8C00F71C03 /* Model */ = {
+		F8045AE62CE3689B00277BC7 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				F8045AE72CE368DE00277BC7 /* NotionRepository.swift */,
+				F8183FF92CF0A534007B9428 /* CafeteriaRepository.swift */,
+				F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */,
+				F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		F8045AEB2CE4889A00277BC7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F8183FAB2CEF2907007B9428 /* Main */,
+				F8045AF52CE5D4F200277BC7 /* BottomSheet.swift */,
+				F8183FAA2CEF2831007B9428 /* Tabs */,
+				F8183FA92CEF281A007B9428 /* Cafeteria */,
+				F815E4152C77453C00D25149 /* LoadingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F8045AEE2CE4928200277BC7 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F8183FFF2CF30549007B9428 /* Notion */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F8183F9C2CEF10C2007B9428 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AEB2CE4889A00277BC7 /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F8183FA82CEF280A007B9428 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				F8183FA32CEF1480007B9428 /* MenuCell.swift */,
+				F8183FA52CEF14A2007B9428 /* MenuContent.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		F8183FA92CEF281A007B9428 /* Cafeteria */ = {
+			isa = PBXGroup;
+			children = (
+				F820CBA82C70E5F7008694EC /* CafeteriaView.swift */,
+				F820CBAA2C70EE2A008694EC /* CafeteriaHeader.swift */,
+				F8183FA82CEF280A007B9428 /* Menu */,
+			);
+			path = Cafeteria;
+			sourceTree = "<group>";
+		};
+		F8183FAA2CEF2831007B9428 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AEC2CE488AD00277BC7 /* CampusTab.swift */,
+				F8045AF32CE4A57B00277BC7 /* WeekTab.swift */,
+			);
+			path = Tabs;
+			sourceTree = "<group>";
+		};
+		F8183FAB2CEF2907007B9428 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				F88F35F32B4434BE00BEA743 /* MainView.swift */,
+				F8183FAC2CEF291A007B9428 /* MainViewHeader.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		F8183FFF2CF30549007B9428 /* Notion */ = {
+			isa = PBXGroup;
+			children = (
+				F8183FFB2CF0A637007B9428 /* NotionAPI.swift */,
+				F81840052CF30DF6007B9428 /* NotionAPIError.swift */,
+				F81840072CF31524007B9428 /* Deployment.swift */,
+				F81840002CF30696007B9428 /* NotionRequest.swift */,
 				F81129592C429F9B00F71C03 /* Campus.swift */,
 				F811295B2C429FA800F71C03 /* WeekComponent.swift */,
 				F820CBA62C6FAD1E008694EC /* DayComponent.swift */,
 				F811295D2C429FBE00F71C03 /* Category.swift */,
 				F811297F2C42E29B00F71C03 /* NotionResponse.swift */,
-				F81129652C429FEE00F71C03 /* QueryType.swift */,
-				F811297A2C42A07700F71C03 /* FilterByCampusRequest.swift */,
 				F874F2832C6B7AC20025F1FE /* Cafeteria.swift */,
 				F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */,
 			);
-			path = Model;
+			path = Notion;
 			sourceTree = "<group>";
 		};
-		F820CB952C6F6848008694EC /* View */ = {
+		F818400B2CF46B76007B9428 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				F820CBA02C6FA2E7008694EC /* HeaderView.swift */,
-				F815E4152C77453C00D25149 /* LoadingView.swift */,
-				F820CBA22C6FA393008694EC /* CampusView.swift */,
-				F820CBA42C6FAB32008694EC /* WeekView.swift */,
-				F820CBA82C70E5F7008694EC /* CafeteriaView.swift */,
-				F820CBAA2C70EE2A008694EC /* CafeteriaHeaderView.swift */,
-				F820CB962C6F685C008694EC /* MealView.swift */,
-				F820CB982C6F6D0D008694EC /* TextComponent.swift */,
-				F820CB9A2C6F9491008694EC /* CircleComponent.swift */,
-				F820CB9C2C6F991F008694EC /* ImageComponent.swift */,
-				F820CB9E2C6F9B43008694EC /* RectangleComponent.swift */,
+				F818401A2CF46E5C007B9428 /* NotionAPIError.swift */,
+				F81840312CF4754A007B9428 /* Deployment.swift */,
+				F81840182CF46E07007B9428 /* NotionRequest.swift */,
+				F818402D2CF47390007B9428 /* NotionResponse.swift */,
+				F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */,
+				F81840162CF46DDB007B9428 /* NotionAPI.swift */,
+				F818401C2CF46EFD007B9428 /* SimpleEntry.swift */,
+				F818401E2CF46F1F007B9428 /* ShortCutEntry.swift */,
+				F81840332CF48F8E007B9428 /* Cafeteria.swift */,
+				F81840352CF48FAE007B9428 /* CafeteriaResponse.swift */,
+				F81840372CF48FE0007B9428 /* Campus.swift */,
+				F81840392CF48FE8007B9428 /* Category.swift */,
 			);
-			path = View;
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F818400C2CF46B7C007B9428 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F818402B2CF47075007B9428 /* Provider.swift */,
+				F81840292CF47068007B9428 /* ShortCutProvider.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F818400F2CF46BE5007B9428 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		F81840122CF46D2F007B9428 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				F818403B2CF48FFF007B9428 /* Ext+ */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		F81840202CF46F48007B9428 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				F81840242CF46F9F007B9428 /* Views */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		F81840242CF46F9F007B9428 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F81840252CF46FA6007B9428 /* PpuDaeSikWidgetEntryView.swift */,
+				F81840272CF46FC4007B9428 /* PpuDaeSikShortCutWidgetEntryView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F818403B2CF48FFF007B9428 /* Ext+ */ = {
+			isa = PBXGroup;
+			children = (
+				F818403C2CF49007007B9428 /* Ext+Color.swift */,
+				F818403E2CF4902A007B9428 /* Ext+Calendar.swift */,
+				F81840442CF4925E007B9428 /* Ext+DateFormatter.swift */,
+			);
+			path = "Ext+";
+			sourceTree = "<group>";
+		};
+		F81840462CF494A0007B9428 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F8334D582BE4C7E9000B85E9 /* Assets.xcassets */,
+				F8334D592BE4C7E9000B85E9 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		F8334D352BE4C749000B85E9 /* Frameworks */ = {
@@ -269,24 +430,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		F8334D562BE4C7E9000B85E9 /* Ext */ = {
-			isa = PBXGroup;
-			children = (
-				F8334D552BE4C7E9000B85E9 /* Ext+Provider.swift */,
-			);
-			path = Ext;
-			sourceTree = "<group>";
-		};
 		F8334D5E2BE4C7E9000B85E9 /* PpuDaeSikWidget */ = {
 			isa = PBXGroup;
 			children = (
-				F8334D562BE4C7E9000B85E9 /* Ext */,
-				F8334D582BE4C7E9000B85E9 /* Assets.xcassets */,
-				F8334D592BE4C7E9000B85E9 /* Info.plist */,
-				F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */,
-				F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */,
 				F8334D5B2BE4C7E9000B85E9 /* PpuDaeSikWidgetBundle.swift */,
-				F8334D5C2BE4C7E9000B85E9 /* WidgetAPI.swift */,
+				F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */,
+				F81840202CF46F48007B9428 /* Presentation */,
+				F81840122CF46D2F007B9428 /* Utilities */,
+				F818400F2CF46BE5007B9428 /* Repositories */,
+				F818400C2CF46B7C007B9428 /* Services */,
+				F818400B2CF46B76007B9428 /* Models */,
+				F81840462CF494A0007B9428 /* Resources */,
 			);
 			path = PpuDaeSikWidget;
 			sourceTree = "<group>";
@@ -313,32 +467,17 @@
 		F88F35D42B43FC6500BEA743 /* PpuDaeSik */ = {
 			isa = PBXGroup;
 			children = (
-				F88F35F02B44056400BEA743 /* Info.plist */,
-				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
 				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
-				F88F35F32B4434BE00BEA743 /* MainView.swift */,
-				F8ABD22E2B4DA9E90038195F /* Sheet.swift */,
-				F88F36002B45E96300BEA743 /* MainViewModel.swift */,
-				F88F35FE2B45E64700BEA743 /* API.swift */,
-				F820CB952C6F6848008694EC /* View */,
-				F81129582C429F8C00F71C03 /* Model */,
-				F811294B2C41A17F00F71C03 /* Protocol */,
-				F81129462C4195BC00F71C03 /* Request */,
-				F81129412C417EE300F71C03 /* Database */,
-				F811293D2C417B5100F71C03 /* Header */,
-				F88F35F22B4433D800BEA743 /* Resource */,
-				F88F35F12B44337700BEA743 /* Ext */,
-				F88F35DB2B43FC6600BEA743 /* Preview Content */,
+				F8183F9C2CEF10C2007B9428 /* Presentation */,
+				F8045ADF2CE3673C00277BC7 /* Serivces */,
+				F8045AD62CE3638000277BC7 /* Utilities */,
+				F8045AD12CE3633700277BC7 /* System */,
+				F8045AD02CE3631400277BC7 /* Injected */,
+				F8045AE62CE3689B00277BC7 /* Repositories */,
+				F8045AEE2CE4928200277BC7 /* Models */,
+				F88F35F22B4433D800BEA743 /* Resources */,
 			);
 			path = PpuDaeSik;
-			sourceTree = "<group>";
-		};
-		F88F35DB2B43FC6600BEA743 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		F88F35F12B44337700BEA743 /* Ext */ = {
@@ -353,12 +492,15 @@
 			path = Ext;
 			sourceTree = "<group>";
 		};
-		F88F35F22B4433D800BEA743 /* Resource */ = {
+		F88F35F22B4433D800BEA743 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */,
+				F88F35F02B44056400BEA743 /* Info.plist */,
+				F88F35D92B43FC6600BEA743 /* Assets.xcassets */,
+				F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */,
 			);
-			path = Resource;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,10 +520,6 @@
 			);
 			name = PpuDaeSikWidgetExtension;
 			packageProductDependencies = (
-				F8334D5F2BE4C934000B85E9 /* CombineMoya */,
-				F8334D612BE4C934000B85E9 /* Moya */,
-				F8334D632BE4C934000B85E9 /* ReactiveMoya */,
-				F8334D652BE4C934000B85E9 /* RxMoya */,
 			);
 			productName = PpuDaeSikWidgetExtension;
 			productReference = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */;
@@ -404,10 +542,6 @@
 			);
 			name = PpuDaeSik;
 			packageProductDependencies = (
-				F88F35F62B459D3A00BEA743 /* CombineMoya */,
-				F88F35F82B459D3A00BEA743 /* Moya */,
-				F88F35FA2B459D3A00BEA743 /* ReactiveMoya */,
-				F88F35FC2B459D3A00BEA743 /* RxMoya */,
 			);
 			productName = PpuDaeSik;
 			productReference = F88F35D22B43FC6500BEA743 /* PpuDaeSik.app */;
@@ -442,7 +576,6 @@
 			);
 			mainGroup = F88F35C92B43FC6500BEA743;
 			packageReferences = (
-				F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */,
 			);
 			productRefGroup = F88F35D32B43FC6500BEA743 /* Products */;
 			projectDirPath = "";
@@ -460,7 +593,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */,
-				F8334D9C2BE5EF88000B85E9 /* Pretendard-Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,25 +613,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F81129842C43C86200F71C03 /* Properties.swift in Sources */,
-				F81129532C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
-				F81129672C429FF000F71C03 /* QueryType.swift in Sources */,
-				F81129562C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
-				F820CB8E2C6D2A62008694EC /* API.swift in Sources */,
-				F8334D672BE4C968000B85E9 /* Ext+Provider.swift in Sources */,
-				F820CB912C6D2B45008694EC /* NotionDatabase.swift in Sources */,
-				F81129812C42E29B00F71C03 /* NotionResponse.swift in Sources */,
+				F818401B2CF46E5C007B9428 /* NotionAPIError.swift in Sources */,
+				F818402C2CF47075007B9428 /* Provider.swift in Sources */,
+				F818403A2CF48FE8007B9428 /* Category.swift in Sources */,
+				F818401D2CF46EFD007B9428 /* SimpleEntry.swift in Sources */,
+				F81840322CF4754A007B9428 /* Deployment.swift in Sources */,
+				F818403D2CF49007007B9428 /* Ext+Color.swift in Sources */,
+				F818401F2CF46F1F007B9428 /* ShortCutEntry.swift in Sources */,
+				F81840172CF46DDB007B9428 /* NotionAPI.swift in Sources */,
 				F8334D6B2BE4C968000B85E9 /* PpuDaeSikWidget.swift in Sources */,
+				F81840452CF4925E007B9428 /* Ext+DateFormatter.swift in Sources */,
 				F8334D6C2BE4C968000B85E9 /* PpuDaeSikWidgetBundle.swift in Sources */,
-				F811295F2C429FC900F71C03 /* Campus.swift in Sources */,
-				F811297C2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
-				F8334D9D2BE5EF8D000B85E9 /* Ext+Color.swift in Sources */,
-				F820CB922C6D2B57008694EC /* MoyaHeader.swift in Sources */,
-				F8334D6D2BE4C968000B85E9 /* WidgetAPI.swift in Sources */,
+				F81840192CF46E07007B9428 /* NotionRequest.swift in Sources */,
+				F81840262CF46FA6007B9428 /* PpuDaeSikWidgetEntryView.swift in Sources */,
+				F81840342CF48F8E007B9428 /* Cafeteria.swift in Sources */,
+				F81840282CF46FC4007B9428 /* PpuDaeSikShortCutWidgetEntryView.swift in Sources */,
 				F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */,
-				F874F2882C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
-				F874F2852C6BC9620025F1FE /* Cafeteria.swift in Sources */,
-				F81129612C429FCD00F71C03 /* Category.swift in Sources */,
+				F818403F2CF4902A007B9428 /* Ext+Calendar.swift in Sources */,
+				F81840382CF48FE0007B9428 /* Campus.swift in Sources */,
+				F818402A2CF47068007B9428 /* ShortCutProvider.swift in Sources */,
+				F818402E2CF47390007B9428 /* NotionResponse.swift in Sources */,
+				F81840362CF48FAE007B9428 /* CafeteriaResponse.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -507,39 +641,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8045AD32CE3636800277BC7 /* AppEnvironment.swift in Sources */,
+				F8045AF62CE5D4F500277BC7 /* BottomSheet.swift in Sources */,
 				F81129522C41A74600F71C03 /* Ext+DateFormatter.swift in Sources */,
 				F81129802C42E29B00F71C03 /* NotionResponse.swift in Sources */,
-				F811297B2C42A07700F71C03 /* FilterByCampusRequest.swift in Sources */,
+				F8183FFC2CF0A63D007B9428 /* NotionAPI.swift in Sources */,
 				F811295E2C429FBE00F71C03 /* Category.swift in Sources */,
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
 				F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
-				F820CB9B2C6F9491008694EC /* CircleComponent.swift in Sources */,
-				F81129662C429FEE00F71C03 /* QueryType.swift in Sources */,
-				F81129482C41960B00F71C03 /* RequestManager.swift in Sources */,
-				F8ABD22F2B4DA9E90038195F /* Sheet.swift in Sources */,
-				F820CB972C6F685C008694EC /* MealView.swift in Sources */,
-				F81129832C43C86200F71C03 /* Properties.swift in Sources */,
+				F8183FAD2CEF291A007B9428 /* MainViewHeader.swift in Sources */,
+				F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */,
+				F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */,
+				F8183FAF2CEF4649007B9428 /* UserDataRepository.swift in Sources */,
 				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
+				F8183FB72CF059EE007B9428 /* DefaultCampusRepository.swift in Sources */,
+				F8183FB52CEF507B007B9428 /* BookmarkRepository.swift in Sources */,
 				F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */,
-				F820CBA32C6FA393008694EC /* CampusView.swift in Sources */,
 				F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */,
-				F820CBA52C6FAB32008694EC /* WeekView.swift in Sources */,
-				F820CB992C6F6D0D008694EC /* TextComponent.swift in Sources */,
+				F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */,
 				F88F35E92B43FDF300BEA743 /* Ext+UIScreen.swift in Sources */,
-				F811293F2C417B8800F71C03 /* MoyaHeader.swift in Sources */,
+				F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */,
+				F81840062CF30DFC007B9428 /* NotionAPIError.swift in Sources */,
 				F811295A2C429F9B00F71C03 /* Campus.swift in Sources */,
+				F8183FB92CF0718E007B9428 /* DefaultCampusService.swift in Sources */,
 				F815E4162C77453C00D25149 /* LoadingView.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
 				F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */,
-				F820CB9F2C6F9B43008694EC /* RectangleComponent.swift in Sources */,
-				F820CBAB2C70EE2A008694EC /* CafeteriaHeaderView.swift in Sources */,
-				F88F36012B45E96300BEA743 /* MainViewModel.swift in Sources */,
+				F820CBAB2C70EE2A008694EC /* CafeteriaHeader.swift in Sources */,
+				F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */,
+				F8045ADE2CE363AB00277BC7 /* Loadable.swift in Sources */,
+				F8045AD52CE3637600277BC7 /* DependencyInjector.swift in Sources */,
 				F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */,
-				F88F35FF2B45E64700BEA743 /* API.swift in Sources */,
-				F820CBA12C6FA2E7008694EC /* HeaderView.swift in Sources */,
+				F8045AD82CE3638F00277BC7 /* AppState.swift in Sources */,
+				F81840012CF3069E007B9428 /* NotionRequest.swift in Sources */,
+				F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */,
+				F8183FA42CEF14A0007B9428 /* MenuCell.swift in Sources */,
+				F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
-				F820CB9D2C6F991F008694EC /* ImageComponent.swift in Sources */,
-				F81129432C417EF800F71C03 /* NotionDatabase.swift in Sources */,
+				F8183FFA2CF0A539007B9428 /* CafeteriaRepository.swift in Sources */,
+				F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */,
+				F81840082CF31529007B9428 /* Deployment.swift in Sources */,
 				F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -564,7 +705,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PpuDaeSikWidget/Info.plist;
+				INFOPLIST_FILE = PpuDaeSikWidget/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PpuDaeSikWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -592,7 +733,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PpuDaeSikWidget/Info.plist;
+				INFOPLIST_FILE = PpuDaeSikWidget/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = PpuDaeSikWidget;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
@@ -738,11 +879,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PpuDaeSik/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PpuDaeSik/Resources\"";
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PpuDaeSik/Info.plist;
+				INFOPLIST_FILE = PpuDaeSik/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "뿌대식";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -774,11 +915,11 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PpuDaeSik/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"PpuDaeSik/Resources\"";
 				DEVELOPMENT_TEAM = VA3J8597P8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = PpuDaeSik/Info.plist;
+				INFOPLIST_FILE = PpuDaeSik/Resources/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "뿌대식";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.food-and-drink";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -833,60 +974,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "http://github.com/Moya/moya.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 15.0.3;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F8334D5F2BE4C934000B85E9 /* CombineMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
-			productName = CombineMoya;
-		};
-		F8334D612BE4C934000B85E9 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
-			productName = Moya;
-		};
-		F8334D632BE4C934000B85E9 /* ReactiveMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
-			productName = ReactiveMoya;
-		};
-		F8334D652BE4C934000B85E9 /* RxMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
-			productName = RxMoya;
-		};
-		F88F35F62B459D3A00BEA743 /* CombineMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
-			productName = CombineMoya;
-		};
-		F88F35F82B459D3A00BEA743 /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
-			productName = Moya;
-		};
-		F88F35FA2B459D3A00BEA743 /* ReactiveMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
-			productName = ReactiveMoya;
-		};
-		F88F35FC2B459D3A00BEA743 /* RxMoya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F88F35F52B459D3A00BEA743 /* XCRemoteSwiftPackageReference "moya" */;
-			productName = RxMoya;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F88F35CA2B43FC6500BEA743 /* Project object */;
 }
