@@ -41,7 +41,7 @@ struct Provider: IntentTimelineProvider {
             let shortName = response[0].cafeteria.shortName
             let content = response[0].content
             
-            let entry = SimpleEntry(configuration: configuration, date: currentDate, name: shortName, category: category, meal: content)
+            let entry = SimpleEntry(configuration: configuration, date: currentDate, name: shortName, category: Category(category)?.rawValue ?? category, meal: content)
             let timeline = Timeline(entries: [entry], policy: .after(nextRefreshDate))
             
             completion(timeline)
