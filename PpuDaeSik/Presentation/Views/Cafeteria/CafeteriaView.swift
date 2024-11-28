@@ -12,6 +12,15 @@ struct CafeteriaView: View {
     @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
+        switch viewModel.filterdCafeteriaResponseArray.isEmpty {
+        case true:
+            LoadingView()
+        default:
+            content
+        }
+    }
+    
+    @ViewBuilder var content: some View {
         ScrollViewReader { proxy in
             ScrollView {
                 ForEach(viewModel.cafeteria, id: \.self) { cafeteria in
@@ -27,7 +36,7 @@ struct CafeteriaView: View {
             .onChange(of: viewModel.bookmark) { _, _ in
                 guard let first = viewModel.cafeteria.first else { return }
                 
-                withAnimation {                
+                withAnimation {
                     proxy.scrollTo(first, anchor: .top)
                 }
             }
@@ -52,6 +61,8 @@ extension CafeteriaView {
             self._filterdCafeteriaResponseArray = .init(initialValue: appState.value.cafeteria.filterByDay)
             
             self.cafeteria = appState[\.cafeteria.list]
+            
+            bind()
         }
         
         func bind() {

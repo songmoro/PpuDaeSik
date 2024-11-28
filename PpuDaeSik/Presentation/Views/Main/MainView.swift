@@ -26,12 +26,7 @@ struct MainView: View {
                 
                 Divider()
                 
-                switch viewModel.cafeteriaResponse.isEmpty {
-                case true:
-                    LoadingView()
-                default:
-                    CafeteriaView(viewModel: .init(container: viewModel.container))
-                }
+                CafeteriaView(viewModel: .init(container: viewModel.container))
                 
                 Spacer()
             }
