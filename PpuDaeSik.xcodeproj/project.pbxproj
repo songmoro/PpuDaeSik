@@ -369,13 +369,6 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
-		F818400F2CF46BE5007B9428 /* Repositories */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Repositories;
-			sourceTree = "<group>";
-		};
 		F81840122CF46D2F007B9428 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,7 +430,6 @@
 				F8334D5A2BE4C7E9000B85E9 /* PpuDaeSikWidget.swift */,
 				F81840202CF46F48007B9428 /* Presentation */,
 				F81840122CF46D2F007B9428 /* Utilities */,
-				F818400F2CF46BE5007B9428 /* Repositories */,
 				F818400C2CF46B7C007B9428 /* Services */,
 				F818400B2CF46B76007B9428 /* Models */,
 				F81840462CF494A0007B9428 /* Resources */,
