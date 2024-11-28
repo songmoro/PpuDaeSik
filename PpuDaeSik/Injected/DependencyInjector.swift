@@ -51,6 +51,7 @@ extension DIContainer {
         let cafeteriaRepository: CafeteriaRepository
         let bookmarkRepository: BookmarkRepository
         let defaultCampusRepository: DefaultCampusRepository
+        let cacheRepository: CacheRepository
     }
 }
 

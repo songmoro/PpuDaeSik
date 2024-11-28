@@ -24,7 +24,7 @@ extension AppEnvironment {
     }
     
     private static func configuredServices(appState: Store<AppState>, repositories: DIContainer.Repositories) -> DIContainer.Services {
-        let cafeteriaService = CafeteriaServiceImpl(appState: appState, cafeteriaRepository: repositories.cafeteriaRepository)
+        let cafeteriaService = CafeteriaServiceImpl(appState: appState, cafeteriaRepository: repositories.cafeteriaRepository, cacheRepository: repositories.cacheRepository)
         let bookmarkService = BookmarkServiceImpl(appState: appState, bookmarkRepository: repositories.bookmarkRepository)
         let defaultCampusService = DefaultCampusServiceImpl(appState: appState, defaultCampusRepository: repositories.defaultCampusRepository)
         
@@ -39,11 +39,13 @@ extension AppEnvironment {
         let cafeteriaRepository = CafeteriaRepository(session: session)
         let bookmarkRepository = BookmarkRepository(key: "bookmark")
         let defaultCampusRepository = DefaultCampusRepository(key: "defaultCampus")
+        let cacheRepository = CacheRepository(key: "cachedResponse")
         
         return .init(
             cafeteriaRepository: cafeteriaRepository,
             bookmarkRepository: bookmarkRepository,
-            defaultCampusRepository: defaultCampusRepository
+            defaultCampusRepository: defaultCampusRepository,
+            cacheRepository: cacheRepository
         )
     }
     

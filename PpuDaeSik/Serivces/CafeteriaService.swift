@@ -19,6 +19,24 @@ protocol CafeteriaService {
 struct CafeteriaServiceImpl: CafeteriaService {
     let appState: Store<AppState>
     let cafeteriaRepository: CafeteriaRepository
+    let cacheRepository: CacheRepository
+    
+    func loadResponse() -> [CafeteriaResponse] {
+        let cachedResponse: Data? = cacheRepository.load()
+        guard let cachedResponse = cachedResponse else { return [] }
+        
+        let decodedResponse = try? PropertyListDecoder().decode([CafeteriaResponse].self, from: cachedResponse)
+        guard let decodedResponse = decodedResponse else { return [] }
+        
+        return decodedResponse
+    }
+    
+    func save(response: [CafeteriaResponse]) {
+        let encodedResponse = try? PropertyListEncoder().encode(response)
+        
+        guard let encodedResponse = encodedResponse else { return }
+        cacheRepository.save(value: encodedResponse)
+    }
     
     func refreshCampusCafeteria() {
         appState[\.cafeteria.list] = []
@@ -58,15 +76,27 @@ struct CafeteriaServiceImpl: CafeteriaService {
     func fetch() {
         let selectedCampus = appState[\.tab.campus]
         appState[\.cafeteria.response] = []
-        
+            
         Task {
+            let cachedResponse = loadResponse()
+            
+            if !cachedResponse.isEmpty {
+                DispatchQueue.main.async {
+                    appState[\.cafeteria.response] = cachedResponse
+                }
+            }
+            
             async let restaurantResponse = await requestBy(selectedCampus, for: .restaurant)
             async let dormitoryResponse = await requestBy(selectedCampus, for: .dormitory)
             
             let newCafeteriaResponse = await restaurantResponse + dormitoryResponse
             
-            DispatchQueue.main.async {
-                appState[\.cafeteria.response] = newCafeteriaResponse
+            if cachedResponse != newCafeteriaResponse {
+                DispatchQueue.main.async {
+                    appState[\.cafeteria.response] = newCafeteriaResponse
+                }
+                
+                save(response: newCafeteriaResponse)
             }
         }
     }
