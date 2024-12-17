@@ -7,17 +7,9 @@
 
 import SwiftUI
 
-struct WeekComponent: Equatable, Comparable {
+struct WeekComponent {
     let dayComponent: DayComponent
     let dayValue: Int
-    
-    static func == (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
-        lhs.dayComponent.weekday == rhs.dayComponent.weekday
-    }
-    
-    static func < (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
-        lhs.dayComponent.weekday < rhs.dayComponent.weekday
-    }
     
     static var today: WeekComponent? {
         let calendar = Calendar()
@@ -44,5 +36,15 @@ struct WeekComponent: Equatable, Comparable {
         }
         
         return weekArray
+    }
+}
+
+extension WeekComponent: Equatable, Comparable {
+    static func == (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
+        lhs.dayComponent.weekday == rhs.dayComponent.weekday
+    }
+    
+    static func < (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
+        lhs.dayComponent.weekday < rhs.dayComponent.weekday
     }
 }
