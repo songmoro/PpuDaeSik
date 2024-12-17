@@ -55,7 +55,7 @@ struct WeekTab: View {
 
 extension WeekTab {
     class ViewModel: ObservableObject {
-        @Published var selectedWeekComponent: WeekComponent?
+        @Published var selectedWeekComponent: WeekComponent
         
         /// 1주
         /// - 일, 월, 화, 수, 목, 금, 토
@@ -97,7 +97,7 @@ extension WeekTab {
         }
         
         func isToday(_ weekComponent: WeekComponent) -> Bool {
-            WeekComponent.today == weekComponent
+            WeekComponent.getToday() == weekComponent
         }
     }
 }

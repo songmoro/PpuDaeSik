@@ -64,7 +64,7 @@ struct CafeteriaServiceImpl: CafeteriaService {
         newResponse = appState[\.cafeteria.response].filter { response in
             guard let last = response.date.split(separator: "-").last,
                   let dayValue = Int(last),
-                  weekComponent?.dayValue == dayValue,
+                  weekComponent.dayValue == dayValue,
                   response.cafeteria.campus == campus
             else { return false }
             return true

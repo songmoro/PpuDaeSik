@@ -49,7 +49,7 @@ extension MainView {
         @Published var routingState: Routing
         
         /// 현재 선택된 요일
-        @Published var selectedWeekComponent: WeekComponent? = .today
+        @Published var selectedWeekComponent: WeekComponent = .getToday()
         /// 네트워크 요청을 통해 받은 응답 목록
         @Published var cafeteriaResponse: [CafeteriaResponse]
         /// 선택한 캠퍼스
