@@ -38,4 +38,8 @@ struct CafeteriaRepository: NotionRepository {
             }
         }
     }
+    
+    func cancleAllRequest() {
+        session.invalidateAndCancel()
+    }
 }

@@ -76,8 +76,10 @@ struct CafeteriaServiceImpl: CafeteriaService {
     func fetch() {
         let selectedCampus = appState[\.tab.campus]
         appState[\.cafeteria.response] = []
-            
+        
         Task {
+            cafeteriaRepository.cancleAllRequest()
+            
             let cachedResponse = loadResponse()
             
             if !cachedResponse.isEmpty {
@@ -97,6 +99,11 @@ struct CafeteriaServiceImpl: CafeteriaService {
                 }
                 
                 save(response: newCafeteriaResponse)
+            }
+            else {
+                DispatchQueue.main.async {
+                    appState[\.cafeteria.response] = cachedResponse
+                }
             }
         }
     }
