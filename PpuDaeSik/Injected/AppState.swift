@@ -21,7 +21,7 @@ extension AppState {
 extension AppState {
     struct SelectedTab: Equatable {
         var campus: Campus = .부산
-        var weekComponent: WeekComponent? = .today
+        var weekComponent: WeekComponent = .getToday()
     }
 }
 
