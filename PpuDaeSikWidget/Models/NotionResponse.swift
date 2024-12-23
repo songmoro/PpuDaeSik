@@ -29,20 +29,21 @@ struct RestaurantResponse: NotionResponseAble, CustomStringConvertible {
     var results: [Result<resultType>]
     
     func convertToCafeteria() -> [CafeteriaResponse] {
-        results.map {
+        results.compactMap {
             convert(properties: $0.properties)
         }
     }
     
-    private func convert(properties: RestaurantProperties) -> CafeteriaResponse {
+    private func convert(properties: RestaurantProperties) -> CafeteriaResponse? {
         let code = properties.restaurantCode.richText[0].plainText
-        let cafeteria = Cafeteria(code)!
+        let cafeteria = Cafeteria(code)
         let title = properties.menuTitle.richText[0].plainText
         let date = properties.menuDate.richText[0].plainText
         let rawCategory = properties.menuType.richText[0].plainText
-        let category = Category(rawCategory)!
+        let category = Category(rawCategory)
         let content = properties.menuContent.richText[0].plainText
         
+        guard let cafeteria, let category else { return nil }
         return CafeteriaResponse(cafeteria: cafeteria, date: date, category: category, title: title, content: content)
     }
     
@@ -57,19 +58,20 @@ struct DormitoryResponse: NotionResponseAble, CafeteriaAble, CustomStringConvert
     var results: [Result<resultType>]
     
     func convertToCafeteria() -> [CafeteriaResponse] {
-        results.map {
+        results.compactMap {
             convert(properties: $0.properties)
         }
     }
     
-    private func convert(properties: DomitoryProperties) -> CafeteriaResponse {
+    private func convert(properties: DomitoryProperties) -> CafeteriaResponse? {
         let code = properties.no.title[0].plainText
-        let cafeteria = Cafeteria(code)!
+        let cafeteria = Cafeteria(code)
         let date = properties.mealDate.richText[0].plainText
         let rawCategory = properties.mealKindGcd.richText[0].plainText
-        let category = Category(rawCategory)!
+        let category = Category(rawCategory)
         let content = properties.mealNm.richText[0].plainText
         
+        guard let cafeteria, let category else { return nil }
         return CafeteriaResponse(cafeteria: cafeteria, date: date, category: category, content: content)
     }
     

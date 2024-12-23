@@ -9,13 +9,12 @@ import Foundation
 
 enum Loadable<T> {
     case notRequested
-    case isLoading(previous: T?, cancelBag: CancelBag)
+    case isLoading
     case loaded(T)
     case failed(Error)
 
     var value: T? {
         switch self {
-        case let .isLoading(prev, _): return prev
         case let .loaded(value): return value
         default: return nil
         }
@@ -23,7 +22,20 @@ enum Loadable<T> {
 }
 
 extension Loadable {
-    mutating func setIsLoading(cancelBag: CancelBag) {
-        self = .isLoading(previous: self.value, cancelBag: cancelBag)
+    mutating func setIsLoading() {
+        self = .isLoading
+    }
+}
+
+extension Loadable: Equatable where T: Equatable {
+    static func == (lhs: Loadable<T>, rhs: Loadable<T>) -> Bool {
+        switch (lhs, rhs) {
+        case (.notRequested, .notRequested): return true
+        case (.isLoading, .isLoading): return true
+        case let (.loaded(lhsV), .loaded(rhsV)): return lhsV == rhsV
+        case let (.failed(lhsE), .failed(rhsE)):
+            return lhsE.localizedDescription == rhsE.localizedDescription
+        default: return false
+        }
     }
 }

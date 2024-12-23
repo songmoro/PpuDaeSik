@@ -70,6 +70,8 @@
 		F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
 		F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* Cafeteria.swift */; };
 		F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */; };
+		F87FCC632D1170E4007B480D /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FCC622D116E2A007B480D /* CategoryTests.swift */; };
+		F87FCC652D117939007B480D /* WeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FCC642D117933007B480D /* WeekTests.swift */; };
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
@@ -86,6 +88,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = F8334D332BE4C749000B85E9;
 			remoteInfo = PpuDaeSikWidgetExtension;
+		};
+		F87FCC5A2D116CBF007B480D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F88F35CA2B43FC6500BEA743 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F88F35D12B43FC6500BEA743;
+			remoteInfo = PpuDaeSik;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -178,6 +187,9 @@
 		F8334D8E2BE4F4BD000B85E9 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		F874F2832C6B7AC20025F1FE /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaResponse.swift; sourceTree = "<group>"; };
+		F87FCC562D116CBF007B480D /* PpuDaeSikTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PpuDaeSikTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F87FCC622D116E2A007B480D /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
+		F87FCC642D117933007B480D /* WeekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTests.swift; sourceTree = "<group>"; };
 		F88F35D22B43FC6500BEA743 /* PpuDaeSik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PpuDaeSik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikApp.swift; sourceTree = "<group>"; };
 		F88F35D92B43FC6600BEA743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -197,6 +209,13 @@
 			files = (
 				F8334D392BE4C749000B85E9 /* SwiftUI.framework in Frameworks */,
 				F8334D372BE4C749000B85E9 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F87FCC532D116CBF007B480D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,11 +459,21 @@
 			path = PpuDaeSikWidget;
 			sourceTree = "<group>";
 		};
+		F87FCC602D116CD7007B480D /* PpuDaeSikTests */ = {
+			isa = PBXGroup;
+			children = (
+				F87FCC622D116E2A007B480D /* CategoryTests.swift */,
+				F87FCC642D117933007B480D /* WeekTests.swift */,
+			);
+			path = PpuDaeSikTests;
+			sourceTree = "<group>";
+		};
 		F88F35C92B43FC6500BEA743 = {
 			isa = PBXGroup;
 			children = (
 				F88F35D42B43FC6500BEA743 /* PpuDaeSik */,
 				F8334D5E2BE4C7E9000B85E9 /* PpuDaeSikWidget */,
+				F87FCC602D116CD7007B480D /* PpuDaeSikTests */,
 				F8334D352BE4C749000B85E9 /* Frameworks */,
 				F88F35D32B43FC6500BEA743 /* Products */,
 			);
@@ -455,6 +484,7 @@
 			children = (
 				F88F35D22B43FC6500BEA743 /* PpuDaeSik.app */,
 				F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */,
+				F87FCC562D116CBF007B480D /* PpuDaeSikTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -520,6 +550,26 @@
 			productReference = F8334D342BE4C749000B85E9 /* PpuDaeSikWidgetExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		F87FCC552D116CBF007B480D /* PpuDaeSikTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F87FCC5E2D116CBF007B480D /* Build configuration list for PBXNativeTarget "PpuDaeSikTests" */;
+			buildPhases = (
+				F87FCC522D116CBF007B480D /* Sources */,
+				F87FCC532D116CBF007B480D /* Frameworks */,
+				F87FCC542D116CBF007B480D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F87FCC5B2D116CBF007B480D /* PBXTargetDependency */,
+			);
+			name = PpuDaeSikTests;
+			packageProductDependencies = (
+			);
+			productName = PpuDaeSikTests;
+			productReference = F87FCC562D116CBF007B480D /* PpuDaeSikTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		F88F35D12B43FC6500BEA743 /* PpuDaeSik */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F88F35E52B43FC6600BEA743 /* Build configuration list for PBXNativeTarget "PpuDaeSik" */;
@@ -549,11 +599,15 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1530;
+				LastSwiftUpdateCheck = 1620;
 				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					F8334D332BE4C749000B85E9 = {
 						CreatedOnToolsVersion = 15.3;
+					};
+					F87FCC552D116CBF007B480D = {
+						CreatedOnToolsVersion = 16.2;
+						TestTargetID = F88F35D12B43FC6500BEA743;
 					};
 					F88F35D12B43FC6500BEA743 = {
 						CreatedOnToolsVersion = 15.1;
@@ -578,6 +632,7 @@
 			targets = (
 				F88F35D12B43FC6500BEA743 /* PpuDaeSik */,
 				F8334D332BE4C749000B85E9 /* PpuDaeSikWidgetExtension */,
+				F87FCC552D116CBF007B480D /* PpuDaeSikTests */,
 			);
 		};
 /* End PBXProject section */
@@ -588,6 +643,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F87FCC542D116CBF007B480D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -629,6 +691,15 @@
 				F818402A2CF47068007B9428 /* ShortCutProvider.swift in Sources */,
 				F818402E2CF47390007B9428 /* NotionResponse.swift in Sources */,
 				F81840362CF48FAE007B9428 /* CafeteriaResponse.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F87FCC522D116CBF007B480D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F87FCC632D1170E4007B480D /* CategoryTests.swift in Sources */,
+				F87FCC652D117939007B480D /* WeekTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -689,6 +760,11 @@
 			target = F8334D332BE4C749000B85E9 /* PpuDaeSikWidgetExtension */;
 			targetProxy = F8334D422BE4C74A000B85E9 /* PBXContainerItemProxy */;
 		};
+		F87FCC5B2D116CBF007B480D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F88F35D12B43FC6500BEA743 /* PpuDaeSik */;
+			targetProxy = F87FCC5A2D116CBF007B480D /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -710,7 +786,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moro.PpuDaeSik.PpuDaeSikWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -738,13 +814,51 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moro.PpuDaeSik.PpuDaeSikWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F87FCC5C2D116CBF007B480D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA3J8597P8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moro.PpuDaeSikTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PpuDaeSik.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PpuDaeSik";
+			};
+			name = Debug;
+		};
+		F87FCC5D2D116CBF007B480D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = VA3J8597P8;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moro.PpuDaeSikTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PpuDaeSik.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/PpuDaeSik";
 			};
 			name = Release;
 		};
@@ -870,7 +984,6 @@
 		F88F35E62B43FC6600BEA743 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -892,7 +1005,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moro.PpuDaeSik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -907,7 +1020,6 @@
 		F88F35E72B43FC6600BEA743 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
@@ -929,7 +1041,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.7;
+				MARKETING_VERSION = 1.8;
 				PRODUCT_BUNDLE_IDENTIFIER = com.moro.PpuDaeSik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -949,6 +1061,15 @@
 			buildConfigurations = (
 				F8334D462BE4C74A000B85E9 /* Debug */,
 				F8334D472BE4C74A000B85E9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F87FCC5E2D116CBF007B480D /* Build configuration list for PBXNativeTarget "PpuDaeSikTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F87FCC5C2D116CBF007B480D /* Debug */,
+				F87FCC5D2D116CBF007B480D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

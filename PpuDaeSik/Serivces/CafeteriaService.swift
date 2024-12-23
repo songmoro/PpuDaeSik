@@ -19,22 +19,32 @@ protocol CafeteriaService {
 struct CafeteriaServiceImpl: CafeteriaService {
     let appState: Store<AppState>
     let cafeteriaRepository: CafeteriaRepository
-    let cacheRepository: CacheRepository
+    let cacheRepositories: [Campus: CacheRepository]
     
-    func loadResponse() -> [CafeteriaResponse] {
+    func loadResponse() -> [CafeteriaResponse]? {
+        let selectedCampus = appState[\.tab.campus]
+        
+        let cacheRepository = cacheRepositories[selectedCampus]
+        guard let cacheRepository = cacheRepository else { return nil }
+        
         let cachedResponse: Data? = cacheRepository.load()
-        guard let cachedResponse = cachedResponse else { return [] }
+        guard let cachedResponse = cachedResponse else { return nil }
         
         let decodedResponse = try? PropertyListDecoder().decode([CafeteriaResponse].self, from: cachedResponse)
-        guard let decodedResponse = decodedResponse else { return [] }
+        guard let decodedResponse = decodedResponse else { return nil }
         
         return decodedResponse
     }
     
     func save(response: [CafeteriaResponse]) {
-        let encodedResponse = try? PropertyListEncoder().encode(response)
+        let selectedCampus = appState[\.tab.campus]
         
+        let cacheRepository = cacheRepositories[selectedCampus]
+        guard let cacheRepository = cacheRepository else { return }
+        
+        let encodedResponse = try? PropertyListEncoder().encode(response)
         guard let encodedResponse = encodedResponse else { return }
+        
         cacheRepository.save(value: encodedResponse)
     }
     
@@ -57,43 +67,45 @@ struct CafeteriaServiceImpl: CafeteriaService {
     }
     
     func refreshResponse() {
-        let newResponse: [CafeteriaResponse]
-        let weekComponent = appState[\.tab.weekComponent]
-        let campus = appState[\.tab.campus]
-        
-        newResponse = appState[\.cafeteria.response].filter { response in
-            guard let last = response.date.split(separator: "-").last,
-                  let dayValue = Int(last),
-                  weekComponent?.dayValue == dayValue,
-                  response.cafeteria.campus == campus
-            else { return false }
-            return true
+        if case .loaded(let allResponse) = appState[\.cafeteria.response] {
+            let newResponse: [CafeteriaResponse]
+            let weekComponent = appState[\.tab.weekComponent]
+            let campus = appState[\.tab.campus]
+            
+            newResponse = allResponse.filter { response in
+                guard let last = response.date.split(separator: "-").last,
+                      let dayValue = Int(last),
+                      weekComponent.dayValue == dayValue,
+                      response.cafeteria.campus == campus
+                else { return false }
+                return true
+            }
+            
+            appState[\.cafeteria.filterByDay] = newResponse
         }
-        
-        appState[\.cafeteria.filterByDay] = newResponse
     }
     
     func fetch() {
-        let selectedCampus = appState[\.tab.campus]
-        appState[\.cafeteria.response] = []
-            
+        appState[\.cafeteria.response].setIsLoading()
+        appState[\.cafeteria.filterByDay] = []
+        
+        let cachedResponse = loadResponse()
+        if let cachedResponse = cachedResponse {
+            appState[\.cafeteria.response] = .loaded(cachedResponse)
+        }
+        
         Task {
-            let cachedResponse = loadResponse()
+            cafeteriaRepository.cancleAllRequest()
             
-            if !cachedResponse.isEmpty {
-                DispatchQueue.main.async {
-                    appState[\.cafeteria.response] = cachedResponse
-                }
-            }
-            
+            let selectedCampus = appState[\.tab.campus]
             async let restaurantResponse = await requestBy(selectedCampus, for: .restaurant)
             async let dormitoryResponse = await requestBy(selectedCampus, for: .dormitory)
-            
             let newCafeteriaResponse = await restaurantResponse + dormitoryResponse
             
-            if cachedResponse != newCafeteriaResponse {
+            let responseCampus = appState[\.tab.campus]
+            if cachedResponse != newCafeteriaResponse, selectedCampus == responseCampus {
                 DispatchQueue.main.async {
-                    appState[\.cafeteria.response] = newCafeteriaResponse
+                    appState[\.cafeteria.response] = .loaded(newCafeteriaResponse)
                 }
                 
                 save(response: newCafeteriaResponse)

@@ -29,21 +29,25 @@ struct RestaurantResponse: NotionResponseAble, CustomStringConvertible {
     var results: [Result<resultType>]
     
     func convertToCafeteria() -> [CafeteriaResponse] {
-        results.map {
+        results.compactMap {
             convert(properties: $0.properties)
         }
     }
     
-    private func convert(properties: RestaurantProperties) -> CafeteriaResponse {
+    private func convert(properties: RestaurantProperties) -> CafeteriaResponse? {
         let code = properties.restaurantCode.richText[0].plainText
-        let cafeteria = Cafeteria(code)!
+        let cafeteria = Cafeteria(code)
         let title = properties.menuTitle.richText[0].plainText
         let date = properties.menuDate.richText[0].plainText
         let rawCategory = properties.menuType.richText[0].plainText
-        let category = Category(rawCategory)!
+        let category = Category(rawCategory)
         let content = properties.menuContent.richText[0].plainText
+        let breakfastTime = properties.breakfastTime?.richText[0].plainText
+        let lunchTime = properties.lunchTime?.richText[0].plainText
+        let dinnerTime = properties.dinnerTime?.richText[0].plainText
         
-        return CafeteriaResponse(cafeteria: cafeteria, date: date, category: category, title: title, content: content)
+        guard let cafeteria, let category else { return nil }
+        return CafeteriaResponse(cafeteria: cafeteria, date: date, category: category, title: title, content: content, breakfastTime: breakfastTime, lunchTime: lunchTime, dinnerTime: dinnerTime)
     }
     
     var description: String {
@@ -57,19 +61,20 @@ struct DormitoryResponse: NotionResponseAble, CafeteriaAble, CustomStringConvert
     var results: [Result<resultType>]
     
     func convertToCafeteria() -> [CafeteriaResponse] {
-        results.map {
+        results.compactMap {
             convert(properties: $0.properties)
         }
     }
     
-    private func convert(properties: DomitoryProperties) -> CafeteriaResponse {
+    private func convert(properties: DomitoryProperties) -> CafeteriaResponse? {
         let code = properties.no.title[0].plainText
-        let cafeteria = Cafeteria(code)!
+        let cafeteria = Cafeteria(code)
         let date = properties.mealDate.richText[0].plainText
         let rawCategory = properties.mealKindGcd.richText[0].plainText
-        let category = Category(rawCategory)!
+        let category = Category(rawCategory)
         let content = properties.mealNm.richText[0].plainText
         
+        guard let cafeteria, let category else { return nil }
         return CafeteriaResponse(cafeteria: cafeteria, date: date, category: category, content: content)
     }
     
@@ -105,6 +110,7 @@ struct DeploymentProperties: Codable, CustomStringConvertible {
 
 struct RestaurantProperties: Codable, CustomStringConvertible {
     let restaurantCode, menuTitle, menuDate, menuType, menuContent: Property
+    let breakfastTime, lunchTime, dinnerTime: Property?
     
     enum CodingKeys: String, CodingKey {
         case restaurantCode = "RESTAURANT_CODE"
@@ -112,10 +118,13 @@ struct RestaurantProperties: Codable, CustomStringConvertible {
         case menuDate = "MENU_DATE"
         case menuType = "MENU_TYPE"
         case menuContent = "MENU_CONTENT"
+        case breakfastTime = "BREAKFAST_TIME"
+        case lunchTime = "LUNCH_TIME"
+        case dinnerTime = "DINNER_TIME"
     }
     
     var description: String {
-        "RESTAURANT_CODE: \(restaurantCode), MENU_TITLE: \(menuTitle), MENU_DATE: \(menuDate), MENU_TYPE: \(menuType), MENU_CONTENT: \(menuContent)"
+        "RESTAURANT_CODE: \(restaurantCode), MENU_TITLE: \(menuTitle), MENU_DATE: \(menuDate), MENU_TYPE: \(menuType), MENU_CONTENT: \(menuContent), breakfastTime: \(breakfastTime), lunchTime: \(lunchTime), dinnerTime: \(dinnerTime)"
     }
 }
 

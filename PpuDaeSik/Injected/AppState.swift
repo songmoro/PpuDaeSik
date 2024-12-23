@@ -21,14 +21,14 @@ extension AppState {
 extension AppState {
     struct SelectedTab: Equatable {
         var campus: Campus = .부산
-        var weekComponent: WeekComponent? = .today
+        var weekComponent: WeekComponent = .getToday()
     }
 }
 
 extension AppState {
     struct CafeteriaData: Equatable {
         var list: [Cafeteria] = []
-        var response: [CafeteriaResponse] = []
+        var response: Loadable<[CafeteriaResponse]> = .notRequested
         var filterByDay: [CafeteriaResponse] = []
     }
 }
