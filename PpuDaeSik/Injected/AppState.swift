@@ -28,7 +28,7 @@ extension AppState {
 extension AppState {
     struct CafeteriaData: Equatable {
         var list: [Cafeteria] = []
-        var response: [CafeteriaResponse] = []
+        var response: Loadable<[CafeteriaResponse]> = .notRequested
         var filterByDay: [CafeteriaResponse] = []
     }
 }
