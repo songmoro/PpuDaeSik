@@ -9,12 +9,24 @@ import Foundation
 
 /// 기숙사, 학생 식당 응답
 struct CafeteriaResponse: Hashable, CustomStringConvertible {
-    internal init(cafeteria: Cafeteria, date: String, category: Category, title: String? = nil, content: String) {
+    internal init(
+        cafeteria: Cafeteria,
+        date: String,
+        category: Category,
+        title: String? = nil,
+        content: String,
+        breakfastTime: String? = nil,
+        lunchTime: String? = nil,
+        dinnerTime: String? = nil
+    ) {
         self.cafeteria = cafeteria
         self.date = date
         self.category = category
         self.title = title
         self.content = content
+        self.breakfastTime = breakfastTime
+        self.lunchTime = lunchTime
+        self.dinnerTime = dinnerTime
     }
     
     var uuid = UUID()
@@ -30,9 +42,15 @@ struct CafeteriaResponse: Hashable, CustomStringConvertible {
     let title: String?
     /// 식단
     let content: String
+    /// 조식 운영시간
+    let breakfastTime: String?
+    /// 중식 운영시간
+    let lunchTime: String?
+    /// 석식 운영시간
+    let dinnerTime: String?
     
     var description: String {
-        "cafeteria: \(cafeteria), date: \(date), category: \(category), \(title != nil ? "title: \(title!), " : "") content: \(content)"
+        "cafeteria: \(cafeteria), date: \(date), category: \(category), title: \(title ?? "nil") content: \(content), breakfastTime: \(breakfastTime ?? "nil"), lunchTime: \(lunchTime ?? "nil"), dinnerTime: \(dinnerTime ?? "nil")"
     }
 }
 
