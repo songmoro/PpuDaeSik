@@ -19,22 +19,32 @@ protocol CafeteriaService {
 struct CafeteriaServiceImpl: CafeteriaService {
     let appState: Store<AppState>
     let cafeteriaRepository: CafeteriaRepository
-    let cacheRepository: CacheRepository
+    let cacheRepositories: [Campus: CacheRepository]
     
-    func loadResponse() -> [CafeteriaResponse] {
+    func loadResponse() -> [CafeteriaResponse]? {
+        let selectedCampus = appState[\.tab.campus]
+        
+        let cacheRepository = cacheRepositories[selectedCampus]
+        guard let cacheRepository = cacheRepository else { return nil }
+        
         let cachedResponse: Data? = cacheRepository.load()
-        guard let cachedResponse = cachedResponse else { return [] }
+        guard let cachedResponse = cachedResponse else { return nil }
         
         let decodedResponse = try? PropertyListDecoder().decode([CafeteriaResponse].self, from: cachedResponse)
-        guard let decodedResponse = decodedResponse else { return [] }
+        guard let decodedResponse = decodedResponse else { return nil }
         
         return decodedResponse
     }
     
     func save(response: [CafeteriaResponse]) {
-        let encodedResponse = try? PropertyListEncoder().encode(response)
+        let selectedCampus = appState[\.tab.campus]
         
+        let cacheRepository = cacheRepositories[selectedCampus]
+        guard let cacheRepository = cacheRepository else { return }
+        
+        let encodedResponse = try? PropertyListEncoder().encode(response)
         guard let encodedResponse = encodedResponse else { return }
+        
         cacheRepository.save(value: encodedResponse)
     }
     
@@ -75,35 +85,25 @@ struct CafeteriaServiceImpl: CafeteriaService {
     
     func fetch() {
         let selectedCampus = appState[\.tab.campus]
-        appState[\.cafeteria.response] = []
+        let cachedResponse = loadResponse()
+        
+        appState[\.cafeteria.response] = cachedResponse ?? []
         
         Task {
             cafeteriaRepository.cancleAllRequest()
-            
-            let cachedResponse = loadResponse()
-            
-            if !cachedResponse.isEmpty {
-                DispatchQueue.main.async {
-                    appState[\.cafeteria.response] = cachedResponse
-                }
-            }
             
             async let restaurantResponse = await requestBy(selectedCampus, for: .restaurant)
             async let dormitoryResponse = await requestBy(selectedCampus, for: .dormitory)
             
             let newCafeteriaResponse = await restaurantResponse + dormitoryResponse
+            let responseCampus = appState[\.tab.campus]
             
-            if cachedResponse != newCafeteriaResponse {
+            if cachedResponse != newCafeteriaResponse, selectedCampus == responseCampus {
                 DispatchQueue.main.async {
                     appState[\.cafeteria.response] = newCafeteriaResponse
                 }
                 
                 save(response: newCafeteriaResponse)
-            }
-            else {
-                DispatchQueue.main.async {
-                    appState[\.cafeteria.response] = cachedResponse
-                }
             }
         }
     }
