@@ -12,12 +12,7 @@ struct CafeteriaView: View {
     @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
-        switch viewModel.filterdCafeteriaResponseArray.isEmpty {
-        case true:
-            LoadingView()
-        default:
-            content
-        }
+        content
     }
     
     @ViewBuilder var content: some View {

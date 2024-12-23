@@ -12,21 +12,14 @@ struct MainView: View {
     @ObservedObject private(set) var viewModel: ViewModel
     
     var body: some View {
-        content
-    }
-    
-    @ViewBuilder var content: some View {
         ZStack {
             Color.gray100.ignoresSafeArea()
             
             VStack {
-                MainViewHeader(viewModel: .init(container: viewModel.container))
-                CampusTab(viewModel: .init(container: viewModel.container))
-                WeekTab(viewModel: .init(container: viewModel.container))
-                
+                header
                 Divider()
                 
-                CafeteriaView(viewModel: .init(container: viewModel.container))
+                content
                 
                 Spacer()
             }
@@ -34,6 +27,29 @@ struct MainView: View {
             .sheet(isPresented: $viewModel.routingState.settingSheet) {
                 BottomSheet(viewModel: .init(container: viewModel.container))
             }
+        }
+    }
+    
+    @ViewBuilder var header: some View {
+        MainViewHeader(viewModel: .init(container: viewModel.container))
+        CampusTab(viewModel: .init(container: viewModel.container))
+        WeekTab(viewModel: .init(container: viewModel.container))
+    }
+    
+    @ViewBuilder var content: some View {
+        switch viewModel.cafeteriaResponse {
+        case .notRequested:
+            Text("")
+                .onAppear {
+                    viewModel.filterCafeteria()
+                    viewModel.fetch()
+                }
+        case .isLoading:
+            LoadingView()
+        case .loaded:
+            CafeteriaView(viewModel: .init(container: viewModel.container))
+        case .failed(let error):
+            Text(error.localizedDescription)
         }
     }
 }
@@ -51,7 +67,7 @@ extension MainView {
         /// 현재 선택된 요일
         @Published var selectedWeekComponent: WeekComponent = .getToday()
         /// 네트워크 요청을 통해 받은 응답 목록
-        @Published var cafeteriaResponse: [CafeteriaResponse]
+        @Published var cafeteriaResponse: Loadable<[CafeteriaResponse]>
         /// 선택한 캠퍼스
         @Published var selectedCampus: Campus
         /// 사용자가 설정한 앱 시작 시 먼저 보여줄 식당 목록
@@ -71,9 +87,6 @@ extension MainView {
             
             loadDefaultCampus()
             loadBookmark()
-            filterCafeteria()
-            fetch()
-            filterResponse()
             
             bind()
         }
@@ -87,7 +100,6 @@ extension MainView {
                     .handleEvents(receiveOutput: { _ in
                         self.filterCafeteria()
                         self.fetch()
-                        self.filterResponse()
                     })
                     .assign(to: \.selectedCampus, on: self)
                 
@@ -100,6 +112,9 @@ extension MainView {
                 
                 appState.map(\.userData.bookmark)
                     .removeDuplicates()
+                    .handleEvents(receiveOutput: { _ in
+                        self.filterCafeteria()
+                    })
                     .assign(to: \.bookmark, on: self)
                 
                 appState.map(\.routing.mainViewRouting.settingSheet)
