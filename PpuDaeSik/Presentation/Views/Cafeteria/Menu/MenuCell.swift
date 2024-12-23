@@ -14,12 +14,19 @@ struct MenuCell: View {
     var body: some View {
         ForEach(responseArray.keys.sorted(), id: \.self) { category in
             VStack {
-                Text(category.rawValue)
-                    .font(.body())
-                    .foregroundColor(.black40)
-                    .frame(width: UIScreen.getWidth(300), alignment: .leading)
-                
                 ForEach(responseArray[category]!, id: \.uuid) { response in
+                    HStack {
+                        Text(category.rawValue)
+                            .foregroundColor(.black40)
+                        
+                        Spacer()
+                        
+                        Text(category.openingHours(by: response))
+                            .foregroundColor(.black40)
+                    }
+                    .font(.body())
+                    .frame(width: UIScreen.getWidth(300), alignment: .leading)
+                    
                     MenuContent(response: response)
                 }
             }
