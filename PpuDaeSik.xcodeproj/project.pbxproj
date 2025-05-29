@@ -13,7 +13,7 @@
 		F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD92CE3639900277BC7 /* Store.swift */; };
 		F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045ADB2CE363A100277BC7 /* CancelBag.swift */; };
 		F8045ADE2CE363AB00277BC7 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045ADD2CE363AA00277BC7 /* Loadable.swift */; };
-		F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE42CE3676400277BC7 /* CafeteriaService.swift */; };
+		F8045AE52CE3676600277BC7 /* CafeteriaUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE42CE3676400277BC7 /* CafeteriaUseCases.swift */; };
 		F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE72CE368DE00277BC7 /* NotionRepository.swift */; };
 		F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEC2CE488AD00277BC7 /* CampusTab.swift */; };
 		F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF32CE4A57B00277BC7 /* WeekTab.swift */; };
@@ -129,7 +129,7 @@
 		F8045AD92CE3639900277BC7 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		F8045ADB2CE363A100277BC7 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		F8045ADD2CE363AA00277BC7 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
-		F8045AE42CE3676400277BC7 /* CafeteriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaService.swift; sourceTree = "<group>"; };
+		F8045AE42CE3676400277BC7 /* CafeteriaUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaUseCases.swift; sourceTree = "<group>"; };
 		F8045AE72CE368DE00277BC7 /* NotionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRepository.swift; sourceTree = "<group>"; };
 		F8045AEC2CE488AD00277BC7 /* CampusTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTab.swift; sourceTree = "<group>"; };
 		F8045AF32CE4A57B00277BC7 /* WeekTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTab.swift; sourceTree = "<group>"; };
@@ -261,7 +261,7 @@
 		F8045ADF2CE3673C00277BC7 /* Serivces */ = {
 			isa = PBXGroup;
 			children = (
-				F8045AE42CE3676400277BC7 /* CafeteriaService.swift */,
+				F8045AE42CE3676400277BC7 /* CafeteriaUseCases.swift */,
 				F8183FB02CEF4A64007B9428 /* BookmarkService.swift */,
 				F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */,
 			);
@@ -717,7 +717,7 @@
 				F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
 				F8183FAD2CEF291A007B9428 /* MainViewHeader.swift in Sources */,
 				F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */,
-				F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */,
+				F8045AE52CE3676600277BC7 /* CafeteriaUseCases.swift in Sources */,
 				F8183FAF2CEF4649007B9428 /* UserDataRepository.swift in Sources */,
 				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
 				F8183FB72CF059EE007B9428 /* DefaultCampusRepository.swift in Sources */,

@@ -10,18 +10,20 @@ import SwiftUI
 struct DIContainer: EnvironmentKey {
     let appState: Store<AppState>
     let services: Services
+    let useCases: UseCases
     
-    init(appState: Store<AppState>, services: DIContainer.Services) {
+    init(appState: Store<AppState>, services: DIContainer.Services, useCases: DIContainer.UseCases) {
         self.appState = appState
         self.services = services
+        self.useCases = useCases
     }
     
-    init(appState: AppState, services: DIContainer.Services) {
-        self.init(appState: Store(appState), services: services)
+    init(appState: AppState, services: DIContainer.Services, useCases: DIContainer.UseCases) {
+        self.init(appState: Store(appState), services: services, useCases: useCases)
     }
 
     static var defaultValue: Self { Self.default }
-    private static let `default` = Self(appState: AppState(), services: .stub)
+    private static let `default` = Self(appState: AppState(), services: .stub, useCases: .stub)
 }
 
 extension DIContainer {
@@ -55,6 +57,18 @@ extension DIContainer {
     }
 }
 
+extension DIContainer {
+    struct UseCases {
+        let cafeteria: CafeteriaUseCases
+        
+        static var stub: Self {
+            .init(
+                cafeteria: StubCafeteriaUseCases()
+            )
+        }
+    }
+}
+
 //extension EnvironmentValues {
 //    var injected: DIContainer {
 //        get { self[DIContainer.self] }
@@ -64,6 +78,6 @@ extension DIContainer {
 
 extension DIContainer {
     static var preview: Self {
-        .init(appState: AppState.preview, services: .stub)
+        .init(appState: AppState.preview, services: .stub, useCases: .stub)
     }
 }
