@@ -17,19 +17,10 @@ extension AppEnvironment {
         let appState = Store(AppState())
         let session = configuredURLSession()
         let repositories = configuredRepositories(session: session)
-        let services = configuredServices(appState: appState, repositories: repositories)
         let useCases = configuredUseCases(appState: appState, repositories: repositories)
-        let diContainer = DIContainer(appState: appState, services: services, useCases: useCases)
+        let diContainer = DIContainer(appState: appState, useCases: useCases)
         
         return AppEnvironment(container: diContainer)
-    }
-    
-    private static func configuredServices(appState: Store<AppState>, repositories: DIContainer.Repositories) -> DIContainer.Services {
-        let defaultCampusService = DefaultCampusServiceImpl(appState: appState, defaultCampusRepository: repositories.defaultCampusRepository)
-        
-        return .init(
-            defaultCampusService: defaultCampusService
-        )
     }
     
     private static func configuredRepositories(session: URLSession) -> DIContainer.Repositories {
@@ -61,8 +52,12 @@ extension AppEnvironment {
             save: SaveBookmakrUseCaseImpl(bookmarkRepository: repositories.bookmarkRepository),
             load: LoadBookmarkUseCaseImpl(bookmarkRepository: repositories.bookmarkRepository)
         )
+        let defaultCampusUseCases = DefaultCampusUseCasesImpl(
+            save: SaveDefaultCampusUseCaseImpl(defaultCampusRepository: repositories.defaultCampusRepository),
+            load: LoadDefaultCampusUseCaseImpl(defaultCampusRepository: repositories.defaultCampusRepository)
+        )
         
-        return .init(cafeteria: cafeteriaUseCases, bookmark: bookmarkUseCases)
+        return .init(cafeteria: cafeteriaUseCases, bookmark: bookmarkUseCases, defaultCampus: defaultCampusUseCases)
     }
     
     private static func configuredURLSession() -> URLSession {

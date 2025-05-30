@@ -138,8 +138,12 @@ extension MainView {
         
         // MARK: functions
         func loadDefaultCampus() {
-            container.services
-                .defaultCampusService.loadDefaultCampus()
+            let appState = container.appState
+            let defaultCampus = container.useCases
+                .defaultCampus.load.execute()
+            
+            appState[\.tab.campus] = defaultCampus
+            appState[\.userData.defaultCampus] = defaultCampus
         }
         
         func loadBookmark() {

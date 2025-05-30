@@ -9,37 +9,19 @@ import SwiftUI
 
 struct DIContainer: EnvironmentKey {
     let appState: Store<AppState>
-    let services: Services
     let useCases: UseCases
     
-    init(appState: Store<AppState>, services: DIContainer.Services, useCases: DIContainer.UseCases) {
+    init(appState: Store<AppState>, useCases: DIContainer.UseCases) {
         self.appState = appState
-        self.services = services
         self.useCases = useCases
     }
     
-    init(appState: AppState, services: DIContainer.Services, useCases: DIContainer.UseCases) {
-        self.init(appState: Store(appState), services: services, useCases: useCases)
+    init(appState: AppState, useCases: DIContainer.UseCases) {
+        self.init(appState: Store(appState), useCases: useCases)
     }
 
     static var defaultValue: Self { Self.default }
-    private static let `default` = Self(appState: AppState(), services: .stub, useCases: .stub)
-}
-
-extension DIContainer {
-    struct Services {
-        let defaultCampusService: DefaultCampusService
-        
-        init(defaultCampusService: DefaultCampusService) {
-            self.defaultCampusService = defaultCampusService
-        }
-        
-        static var stub: Self {
-            .init(
-                defaultCampusService: StubDefaultCampusService()
-            )
-        }
-    }
+    private static let `default` = Self(appState: AppState(), useCases: .stub)
 }
 
 extension DIContainer {
@@ -55,11 +37,13 @@ extension DIContainer {
     struct UseCases {
         let cafeteria: CafeteriaUseCases
         let bookmark: BookmarkUseCases
+        let defaultCampus: DefaultCampusUseCases
         
         static var stub: Self {
             .init(
                 cafeteria: StubCafeteriaUseCases(),
-                bookmark: StubBookmarkUseCases()
+                bookmark: StubBookmarkUseCases(),
+                defaultCampus: StubDefaultCampusUseCases()
             )
         }
     }
@@ -74,6 +58,7 @@ extension DIContainer {
 
 extension DIContainer {
     static var preview: Self {
-        .init(appState: AppState.preview, services: .stub, useCases: .stub)
+//        .init(appState: AppState.preview, services: .stub, useCases: .stub)
+        .init(appState: AppState.preview, useCases: .stub)
     }
 }
