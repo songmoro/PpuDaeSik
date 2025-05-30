@@ -148,19 +148,18 @@ extension MainView {
         }
         
         func fetch() {
+            let appState = container.appState
             let cafeteriaUseCases = container.useCases.cafeteria
+            let campus = appState[\.tab.campus]
             
             cafeteriaUseCases.update.execute(input: .init(response: .isLoading, filterByDay: []))
             let cachedResponse = cafeteriaUseCases.load.execute(campus: selectedCampus)
-            if let cachedResponse = cachedResponse {
+            if let cachedResponse = cachedResponse, cachedResponse.first?.cafeteria.campus == campus {
                 cafeteriaUseCases.update.execute(input: .init(response: .loaded(cachedResponse)))
             }
             
             Task {
                 cafeteriaUseCases.cancleAll.execute()
-                
-                let appState = container.appState
-                let campus = appState[\.tab.campus]
                 
                 async let restaurantDeployment = await cafeteriaUseCases.checkDeployment.execute(for: .restaurant)
                 async let dormitoryDeployment = await cafeteriaUseCases.checkDeployment.execute(for: .dormitory)
