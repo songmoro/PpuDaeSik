@@ -97,25 +97,25 @@ extension MainView {
             cancelBag.collect {
                 appState.map(\.tab.campus)
                     .removeDuplicates()
-                    .handleEvents(receiveOutput: { _ in
+                    .sink {
+                        self.selectedCampus = $0
                         self.filterCafeteria()
                         self.fetch()
-                    })
-                    .assign(to: \.selectedCampus, on: self)
+                    }
                 
                 appState.map(\.tab.weekComponent)
                     .removeDuplicates()
-                    .handleEvents(receiveOutput: { _ in
+                    .sink {
+                        self.selectedWeekComponent = $0
                         self.filterResponse()
-                    })
-                    .assign(to: \.selectedWeekComponent, on: self)
+                    }
                 
                 appState.map(\.userData.bookmark)
                     .removeDuplicates()
-                    .handleEvents(receiveOutput: { _ in
+                    .sink {
+                        self.bookmark = $0
                         self.filterCafeteria()
-                    })
-                    .assign(to: \.bookmark, on: self)
+                    }
                 
                 appState.map(\.routing.mainViewRouting.settingSheet)
                     .removeDuplicates()
@@ -123,10 +123,10 @@ extension MainView {
                 
                 appState.map(\.cafeteria.response)
                     .removeDuplicates()
-                    .handleEvents(receiveOutput: { _ in
+                    .sink {
+                        self.cafeteriaResponse = $0
                         self.filterResponse()
-                    })
-                    .assign(to: \.cafeteriaResponse, on: self)
+                    }
                 
                 $routingState
                     .removeDuplicates()
@@ -148,18 +148,59 @@ extension MainView {
         }
         
         func fetch() {
-            container.services
-                .cafeteriaService.fetch()
+            let cafeteriaUseCases = container.useCases.cafeteria
+            
+            cafeteriaUseCases.update.execute(input: .init(response: .isLoading, filterByDay: []))
+            let cachedResponse = cafeteriaUseCases.load.execute(campus: selectedCampus)
+            if let cachedResponse = cachedResponse {
+                cafeteriaUseCases.update.execute(input: .init(response: .loaded(cachedResponse)))
+            }
+            
+            Task {
+                cafeteriaUseCases.cancleAll.execute()
+                
+                let appState = container.appState
+                let campus = appState[\.tab.campus]
+                
+                async let restaurantDeployment = await cafeteriaUseCases.checkDeployment.execute(for: .restaurant)
+                async let dormitoryDeployment = await cafeteriaUseCases.checkDeployment.execute(for: .dormitory)
+                
+                let (restaurantIsUpdating, dormitoryIsUpdating) = (await restaurantDeployment, await dormitoryDeployment)
+                
+                async let restaurantResponse = await cafeteriaUseCases.fetch.execute(isUpdating: restaurantIsUpdating, campus: campus, for: .restaurant)
+                async let dormitoryResponse = await cafeteriaUseCases.fetch.execute(isUpdating: dormitoryIsUpdating, campus: campus, for: .dormitory)
+
+                let newCafeteriaResponse = await restaurantResponse + dormitoryResponse
+                
+                let responseCampus = appState[\.tab.campus]
+                if cachedResponse != newCafeteriaResponse, campus == responseCampus {
+                    DispatchQueue.main.async {
+                        cafeteriaUseCases.update.execute(input: .init(response: .loaded(newCafeteriaResponse)))
+                    }
+                    
+                    cafeteriaUseCases.save.execute(campus: responseCampus, response: newCafeteriaResponse)
+                }
+            }
         }
         
         func filterCafeteria() {
-            container.services
-                .cafeteriaService.refreshCampusCafeteria()
+            let cafeteriaUseCases = container.useCases.cafeteria
+            
+            cafeteriaUseCases.update.execute(input: .init(list: []))
+            
+            let newCafeteriaList = cafeteriaUseCases.order.execute(campus: selectedCampus, bookmark: bookmark)
+            cafeteriaUseCases.update.execute(input: .init(list: newCafeteriaList))
         }
         
         func filterResponse() {
-            container.services
-                .cafeteriaService.refreshResponse()
+            let cafeteriaUseCases = container.useCases.cafeteria
+            let appState = container.appState
+            let response = appState[\.cafeteria.response]
+            let campus = appState[\.tab.campus]
+            let weekComponent = appState[\.tab.weekComponent]
+            
+            let newFilterByDay = cafeteriaUseCases.filter.execute(response: response, campus: campus, weekComponent: weekComponent)
+            cafeteriaUseCases.update.execute(input: .init(filterByDay: newFilterByDay))
         }
     }
 }

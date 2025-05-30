@@ -25,12 +25,10 @@ extension AppEnvironment {
     }
     
     private static func configuredServices(appState: Store<AppState>, repositories: DIContainer.Repositories) -> DIContainer.Services {
-        let cafeteriaService = CafeteriaServiceImpl(appState: appState, cafeteriaRepository: repositories.cafeteriaRepository, cacheRepositories: repositories.cacheRepositories)
         let bookmarkService = BookmarkServiceImpl(appState: appState, bookmarkRepository: repositories.bookmarkRepository)
         let defaultCampusService = DefaultCampusServiceImpl(appState: appState, defaultCampusRepository: repositories.defaultCampusRepository)
         
         return .init(
-            cafeteriaService: cafeteriaService,
             bookmarkService: bookmarkService,
             defaultCampusService: defaultCampusService
         )
@@ -53,11 +51,13 @@ extension AppEnvironment {
     private static func configuredUseCases(appState: Store<AppState>, repositories: DIContainer.Repositories) -> DIContainer.UseCases {
         let cafeteriaUseCases = CafeteriaUseCasesImpl(
             update: UpdateCafeteriaUseCaseImpl(appState: appState),
+            cancleAll: CancleAllCafeteriaUseCaseImpl(cafeteriaRepository: repositories.cafeteriaRepository),
             fetch: FetchCafeteriaUseCaseImpl(cafeteriaRepository: repositories.cafeteriaRepository),
             checkDeployment: CheckDeploymentUseCaseImpl(cafeteriaRepository: repositories.cafeteriaRepository),
             load: LoadCafeteriaUseCaseImpl(cacheRepositories: repositories.cacheRepositories),
             save: SaveCafeteriaUseCaseImpl(cacheRepositories: repositories.cacheRepositories),
-            order: OrderCafeteriaUseCaseImpl()
+            order: OrderCafeteriaUseCaseImpl(),
+            filter: FilterCafeteriaUseCaseImpl()
         )
         
         return .init(cafeteria: cafeteriaUseCases)

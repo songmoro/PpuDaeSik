@@ -28,19 +28,16 @@ struct DIContainer: EnvironmentKey {
 
 extension DIContainer {
     struct Services {
-        let cafeteriaService: CafeteriaService
         let bookmarkService: BookmarkService
         let defaultCampusService: DefaultCampusService
         
-        init(cafeteriaService: CafeteriaService, bookmarkService: BookmarkService, defaultCampusService: DefaultCampusService) {
-            self.cafeteriaService = cafeteriaService
+        init(bookmarkService: BookmarkService, defaultCampusService: DefaultCampusService) {
             self.bookmarkService = bookmarkService
             self.defaultCampusService = defaultCampusService
         }
         
         static var stub: Self {
             .init(
-                cafeteriaService: StubCafeteriaService(),
                 bookmarkService: StubBookmarkService(),
                 defaultCampusService: StubDefaultCampusService()
             )
