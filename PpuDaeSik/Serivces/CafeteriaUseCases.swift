@@ -9,7 +9,6 @@ import SwiftUI
 
 // MARK: Provider
 protocol CafeteriaUseCases {
-    var update: UpdateCafeteriaUseCase { get }
     var cancleAll: CancleAllCafeteriaUseCase { get }
     var fetch: FetchCafeteriaUseCase { get }
     var checkDeployment: CheckDeploymentUseCase { get }
@@ -20,7 +19,6 @@ protocol CafeteriaUseCases {
 }
 
 struct CafeteriaUseCasesImpl: CafeteriaUseCases {
-    let update: UpdateCafeteriaUseCase
     let cancleAll: CancleAllCafeteriaUseCase
     let fetch: FetchCafeteriaUseCase
     let checkDeployment: CheckDeploymentUseCase
@@ -31,20 +29,7 @@ struct CafeteriaUseCasesImpl: CafeteriaUseCases {
 }
 //:-
 
-// MARK: Input
-struct UpdateCafeteriaDataInput {
-    var list: [Cafeteria]?
-    var response: Loadable<[CafeteriaResponse]>?
-    var filterByDay: [CafeteriaResponse]?
-}
-//:-
-
-
 // MARK: UseCase
-protocol UpdateCafeteriaUseCase {
-    func execute(input: UpdateCafeteriaDataInput)
-}
-
 protocol CancleAllCafeteriaUseCase {
     func execute()
 }
@@ -75,26 +60,6 @@ protocol FilterCafeteriaUseCase {
 //:-
 
 // MARK: Impl
-struct UpdateCafeteriaUseCaseImpl: UpdateCafeteriaUseCase {
-    private let appState: Store<AppState>
-    
-    init(appState: Store<AppState>) {
-        self.appState = appState
-    }
-    
-    func execute(input: UpdateCafeteriaDataInput) {
-        if let list = input.list {
-            appState[\.cafeteria.list] = list
-        }
-        if let response = input.response {
-            appState[\.cafeteria.response] = response
-        }
-        if let filterByDay = input.filterByDay {
-            appState[\.cafeteria.filterByDay] = filterByDay
-        }
-    }
-}
-
 struct CancleAllCafeteriaUseCaseImpl: CancleAllCafeteriaUseCase {
     private let cafeteriaRepository: CafeteriaRepository
     
@@ -224,7 +189,6 @@ struct FilterCafeteriaUseCaseImpl: FilterCafeteriaUseCase {
 
 // MARK: Stub
 struct StubCafeteriaUseCases: CafeteriaUseCases {
-    let update: UpdateCafeteriaUseCase = StubUpdateCafeteriaUseCaseImpl()
     let cancleAll: CancleAllCafeteriaUseCase = StubCancleAllCafeteriaUseCaseImpl()
     let fetch: FetchCafeteriaUseCase = StubFetchCafeteriaUseCaseImpl()
     let checkDeployment: CheckDeploymentUseCase = StubCheckDeploymentUseCaseImpl()
@@ -232,12 +196,6 @@ struct StubCafeteriaUseCases: CafeteriaUseCases {
     let save: SaveCafeteriaUseCase = StubSaveCafeteriaUseCaseImpl()
     let order: OrderCafeteriaUseCase = StubOrderCafeteriaUseCaseImpl()
     let filter: FilterCafeteriaUseCase = StubFilterCafeteriaUseCaseImpl()
-}
-
-struct StubUpdateCafeteriaUseCaseImpl: UpdateCafeteriaUseCase {
-    func execute(input: UpdateCafeteriaDataInput) {
-        
-    }
 }
 
 struct StubCancleAllCafeteriaUseCaseImpl: CancleAllCafeteriaUseCase {

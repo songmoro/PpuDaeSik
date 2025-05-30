@@ -152,10 +152,12 @@ extension MainView {
             let cafeteriaUseCases = container.useCases.cafeteria
             let campus = appState[\.tab.campus]
             
-            cafeteriaUseCases.update.execute(input: .init(response: .isLoading, filterByDay: []))
+            appState[\.cafeteria.response] = .isLoading
+            appState[\.cafeteria.filterByDay] = []
+            
             let cachedResponse = cafeteriaUseCases.load.execute(campus: selectedCampus)
             if let cachedResponse = cachedResponse, cachedResponse.first?.cafeteria.campus == campus {
-                cafeteriaUseCases.update.execute(input: .init(response: .loaded(cachedResponse)))
+                appState[\.cafeteria.response] = .loaded(cachedResponse)
             }
             
             Task {
@@ -174,7 +176,7 @@ extension MainView {
                 let responseCampus = appState[\.tab.campus]
                 if cachedResponse != newCafeteriaResponse, campus == responseCampus {
                     DispatchQueue.main.async {
-                        cafeteriaUseCases.update.execute(input: .init(response: .loaded(newCafeteriaResponse)))
+                        appState[\.cafeteria.response] = .loaded(newCafeteriaResponse)
                     }
                     
                     cafeteriaUseCases.save.execute(campus: responseCampus, response: newCafeteriaResponse)
@@ -183,12 +185,12 @@ extension MainView {
         }
         
         func filterCafeteria() {
+            let appState = container.appState
             let cafeteriaUseCases = container.useCases.cafeteria
             
-            cafeteriaUseCases.update.execute(input: .init(list: []))
-            
+            appState[\.cafeteria.list] = []
             let newCafeteriaList = cafeteriaUseCases.order.execute(campus: selectedCampus, bookmark: bookmark)
-            cafeteriaUseCases.update.execute(input: .init(list: newCafeteriaList))
+            appState[\.cafeteria.list] = newCafeteriaList
         }
         
         func filterResponse() {
@@ -199,7 +201,7 @@ extension MainView {
             let weekComponent = appState[\.tab.weekComponent]
             
             let newFilterByDay = cafeteriaUseCases.filter.execute(response: response, campus: campus, weekComponent: weekComponent)
-            cafeteriaUseCases.update.execute(input: .init(filterByDay: newFilterByDay))
+            appState[\.cafeteria.filterByDay] = newFilterByDay
         }
     }
 }
