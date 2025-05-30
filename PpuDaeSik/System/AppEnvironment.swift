@@ -25,11 +25,9 @@ extension AppEnvironment {
     }
     
     private static func configuredServices(appState: Store<AppState>, repositories: DIContainer.Repositories) -> DIContainer.Services {
-        let bookmarkService = BookmarkServiceImpl(appState: appState, bookmarkRepository: repositories.bookmarkRepository)
         let defaultCampusService = DefaultCampusServiceImpl(appState: appState, defaultCampusRepository: repositories.defaultCampusRepository)
         
         return .init(
-            bookmarkService: bookmarkService,
             defaultCampusService: defaultCampusService
         )
     }
@@ -58,8 +56,13 @@ extension AppEnvironment {
             order: OrderCafeteriaUseCaseImpl(),
             filter: FilterCafeteriaUseCaseImpl()
         )
+        let bookmarkUseCases = BookmarkUseCasesImpl(
+            action: ActionBookmarkUseCaseImpl(),
+            save: SaveBookmakrUseCaseImpl(bookmarkRepository: repositories.bookmarkRepository),
+            load: LoadBookmarkUseCaseImpl(bookmarkRepository: repositories.bookmarkRepository)
+        )
         
-        return .init(cafeteria: cafeteriaUseCases)
+        return .init(cafeteria: cafeteriaUseCases, bookmark: bookmarkUseCases)
     }
     
     private static func configuredURLSession() -> URLSession {

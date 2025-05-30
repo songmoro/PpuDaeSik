@@ -143,8 +143,9 @@ extension MainView {
         }
         
         func loadBookmark() {
-            container.services
-                .bookmarkService.loadBookmark()
+            let appState = container.appState
+            let bookmark = container.useCases.bookmark.load.execute()
+            appState[\.userData.bookmark] = bookmark
         }
         
         func fetch() {
