@@ -146,6 +146,7 @@ struct StubCafeteriaService: CafeteriaService {
 
 // MARK: Provider
 protocol CafeteriaUseCases {
+    var update: UpdateCafeteriaUseCase { get }
     var fetch: FetchCafeteriaUseCase { get }
     var checkDeployment: CheckDeploymentUseCase { get }
     var load: LoadCafeteriaUseCase { get }
@@ -154,6 +155,7 @@ protocol CafeteriaUseCases {
 }
 
 struct CafeteriaUseCasesImpl: CafeteriaUseCases {
+    var update: UpdateCafeteriaUseCase
     let fetch: FetchCafeteriaUseCase
     let checkDeployment: CheckDeploymentUseCase
     let load: LoadCafeteriaUseCase
@@ -162,7 +164,20 @@ struct CafeteriaUseCasesImpl: CafeteriaUseCases {
 }
 //:-
 
+// MARK: Input
+struct UpdateCafeteriaDataInput {
+    var list: [Cafeteria]?
+    var response: Loadable<[CafeteriaResponse]>?
+    var filterByDay: [CafeteriaResponse]?
+}
+//:-
+
+
 // MARK: UseCase
+protocol UpdateCafeteriaUseCase {
+    func execute(input: UpdateCafeteriaDataInput)
+}
+
 protocol FetchCafeteriaUseCase {
     func execute(isUpdating: Bool, campus: Campus, for type: DeploymentType) async -> [CafeteriaResponse]
 }
@@ -185,6 +200,26 @@ protocol OrderCafeteriaUseCase {
 //:-
 
 // MARK: Impl
+struct UpdateCafeteriaUseCaseImpl: UpdateCafeteriaUseCase {
+    private let appState: Store<AppState>
+    
+    init(appState: Store<AppState>) {
+        self.appState = appState
+    }
+    
+    func execute(input: UpdateCafeteriaDataInput) {
+        if let list = input.list {
+            appState[\.cafeteria.list] = list
+        }
+        if let response = input.response {
+            appState[\.cafeteria.response] = response
+        }
+        if let filterByDay = input.filterByDay {
+            appState[\.cafeteria.filterByDay] = filterByDay
+        }
+    }
+}
+
 struct FetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
     private let cafeteriaRepository: CafeteriaRepository
     
@@ -280,11 +315,18 @@ struct OrderCafeteriaUseCaseImpl: OrderCafeteriaUseCase {
 
 // MARK: Stub
 struct StubCafeteriaUseCases: CafeteriaUseCases {
+    let update: UpdateCafeteriaUseCase = StubUpdateCafeteriaUseCaseImpl()
     let fetch: FetchCafeteriaUseCase = StubFetchCafeteriaUseCaseImpl()
     let checkDeployment: CheckDeploymentUseCase = StubCheckDeploymentUseCaseImpl()
     let load: LoadCafeteriaUseCase = StubLoadCafeteriaUseCaseImpl()
     let save: SaveCafeteriaUseCase = StubSaveCafeteriaUseCaseImpl()
     let order: OrderCafeteriaUseCase = StubOrderCafeteriaUseCaseImpl()
+}
+
+struct StubUpdateCafeteriaUseCaseImpl: UpdateCafeteriaUseCase {
+    func execute(input: UpdateCafeteriaDataInput) {
+        
+    }
 }
 
 struct StubFetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {

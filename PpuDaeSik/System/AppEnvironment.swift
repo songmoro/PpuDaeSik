@@ -52,6 +52,7 @@ extension AppEnvironment {
     
     private static func configuredUseCases(appState: Store<AppState>, repositories: DIContainer.Repositories) -> DIContainer.UseCases {
         let cafeteriaUseCases = CafeteriaUseCasesImpl(
+            update: UpdateCafeteriaUseCaseImpl(appState: appState),
             fetch: FetchCafeteriaUseCaseImpl(cafeteriaRepository: repositories.cafeteriaRepository),
             checkDeployment: CheckDeploymentUseCaseImpl(cafeteriaRepository: repositories.cafeteriaRepository),
             load: LoadCafeteriaUseCaseImpl(cacheRepositories: repositories.cacheRepositories),
