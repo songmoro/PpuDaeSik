@@ -79,6 +79,8 @@
 		F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
 		F88F35EF2B44033400BEA743 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */; };
 		F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35F32B4434BE00BEA743 /* MainView.swift */; };
+		F8BB64302DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB642F2DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift */; };
+		F8BB64322DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB64312DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +202,8 @@
 		F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F88F35F02B44056400BEA743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F88F35F32B4434BE00BEA743 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F8BB642F2DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaUseCasesImpl.swift; sourceTree = "<group>"; };
+		F8BB64312DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubCafeteriaUseCases.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -261,7 +265,6 @@
 		F8045ADF2CE3673C00277BC7 /* Serivces */ = {
 			isa = PBXGroup;
 			children = (
-				F8045AE42CE3676400277BC7 /* CafeteriaUseCases.swift */,
 				F8183FB02CEF4A64007B9428 /* BookmarkService.swift */,
 				F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */,
 			);
@@ -494,6 +497,7 @@
 			children = (
 				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
 				F8183F9C2CEF10C2007B9428 /* Presentation */,
+				F8BB642D2DE9B247008AE6E5 /* UseCases */,
 				F8045ADF2CE3673C00277BC7 /* Serivces */,
 				F8045AD62CE3638000277BC7 /* Utilities */,
 				F8045AD12CE3633700277BC7 /* System */,
@@ -526,6 +530,24 @@
 				F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F8BB642D2DE9B247008AE6E5 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				F8BB642E2DE9B25D008AE6E5 /* Cafeteria */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		F8BB642E2DE9B25D008AE6E5 /* Cafeteria */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AE42CE3676400277BC7 /* CafeteriaUseCases.swift */,
+				F8BB642F2DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift */,
+				F8BB64312DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift */,
+			);
+			path = Cafeteria;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -732,6 +754,7 @@
 				F8183FB92CF0718E007B9428 /* DefaultCampusService.swift in Sources */,
 				F815E4162C77453C00D25149 /* LoadingView.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
+				F8BB64302DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift in Sources */,
 				F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */,
 				F820CBAB2C70EE2A008694EC /* CafeteriaHeader.swift in Sources */,
 				F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */,
@@ -746,6 +769,7 @@
 				F80781712CF854C300E061E6 /* CacheRepository.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 				F8183FFA2CF0A539007B9428 /* CafeteriaRepository.swift in Sources */,
+				F8BB64322DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift in Sources */,
 				F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */,
 				F81840082CF31529007B9428 /* Deployment.swift in Sources */,
 				F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
