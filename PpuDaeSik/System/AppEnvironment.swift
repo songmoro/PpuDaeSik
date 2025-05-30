@@ -49,7 +49,7 @@ extension AppEnvironment {
         )
         let bookmarkUseCases = BookmarkUseCasesImpl(
             action: ActionBookmarkUseCaseImpl(),
-            save: SaveBookmakrUseCaseImpl(bookmarkRepository: repositories.bookmarkRepository),
+            save: SaveBookmarkUseCaseImpl(bookmarkRepository: repositories.bookmarkRepository),
             load: LoadBookmarkUseCaseImpl(bookmarkRepository: repositories.bookmarkRepository)
         )
         let defaultCampusUseCases = DefaultCampusUseCasesImpl(

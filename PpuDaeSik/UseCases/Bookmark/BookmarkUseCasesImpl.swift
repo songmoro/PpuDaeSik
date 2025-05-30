@@ -32,7 +32,7 @@ struct ActionBookmarkUseCaseImpl: ActionBookmarkUseCase {
     }
 }
 
-struct SaveBookmakrUseCaseImpl: SaveBookmarkUseCase {
+struct SaveBookmarkUseCaseImpl: SaveBookmarkUseCase {
     private let bookmarkRepository: BookmarkRepository
     
     init(bookmarkRepository: BookmarkRepository) {
