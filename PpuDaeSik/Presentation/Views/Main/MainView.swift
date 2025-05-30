@@ -180,7 +180,7 @@ extension MainView {
                 
                 let responseCampus = appState[\.tab.campus]
                 if cachedResponse != newCafeteriaResponse, campus == responseCampus {
-                    DispatchQueue.main.async {
+                    await MainActor.run {
                         appState[\.cafeteria.response] = .loaded(newCafeteriaResponse)
                     }
                     
