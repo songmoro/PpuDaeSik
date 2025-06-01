@@ -27,4 +27,33 @@ jobs:
           if [ $scheme = default ]; then scheme=$(cat default); fi
           if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
           file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild clean build analyze -scheme "$scheme" -destination "platform=iOS Simulator,OS=18.0,name=iPhone 16" -"$filetype_parameter" "$file_to_build" | xcpretty && exit ${PIPESTATUS[0]}
+          echo "Building $filetype_parameter: $file_to_build with scheme: $scheme" | tee build.log
+          
+          set -o pipefail
+			    xcodebuild clean build analyze \
+			      -scheme "$scheme" \
+			      -destination "platform=iOS Simulator,OS=18.0,name=iPhone 16" \
+			      -"$filetype_parameter" "$file_to_build" \
+			      -resultBundlePath ./ResultBundle \
+			    | tee -a build.log \
+			    | xcpretty
+			
+			    BUILD_EXIT_CODE=${PIPESTATUS[0]}
+			    
+	        zip -r ResultBundle.zip ResultBundle
+	        
+			    exit $BUILD_EXIT_CODE
+
+			- name: Upload Build Log
+			  if: always()
+			  uses: actions/upload-artifact@v4
+			  with:
+			    name: build-log
+			    path: build.log
+			
+			- name: Upload Result Bundle
+			  if: always()
+			  uses: actions/upload-artifact@v4
+			  with:
+			    name: result-bundle
+			    path: ResultBundle.zip
