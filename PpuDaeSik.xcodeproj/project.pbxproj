@@ -67,6 +67,7 @@
 		F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */; };
 		F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
 		F86EF99F2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF99E2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift */; };
+		F86EF9A12DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF9A02DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift */; };
 		F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* Cafeteria.swift */; };
 		F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */; };
 		F87FCC632D1170E4007B480D /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FCC622D116E2A007B480D /* CategoryTests.swift */; };
@@ -193,6 +194,7 @@
 		F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PpuDaeSikWidget.intentdefinition; sourceTree = "<group>"; };
 		F8334D8E2BE4F4BD000B85E9 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		F86EF99E2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		F86EF9A02DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChechDeploymentCafeteriaUseCaseTests.swift; sourceTree = "<group>"; };
 		F874F2832C6B7AC20025F1FE /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaResponse.swift; sourceTree = "<group>"; };
 		F87FCC562D116CBF007B480D /* PpuDaeSikTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PpuDaeSikTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -582,6 +584,7 @@
 			isa = PBXGroup;
 			children = (
 				F8BB64422DEC4340008AE6E5 /* FetchCafeteriaUseCaseTests.swift */,
+				F86EF9A02DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift */,
 				F8BB64442DEC4409008AE6E5 /* MockCafeteriaRepository.swift */,
 			);
 			path = Cafeteria;
@@ -757,6 +760,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F86EF9A12DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift in Sources */,
 				F87FCC632D1170E4007B480D /* CategoryTests.swift in Sources */,
 				F87FCC652D117939007B480D /* WeekTests.swift in Sources */,
 				F8BB64452DEC4409008AE6E5 /* MockCafeteriaRepository.swift in Sources */,

@@ -11,7 +11,7 @@ import XCTest
 final class FetchCafeteriaUseCaseTests: XCTestCase {
     func test_학생식당과_기숙사식당에_대한_식단_유즈케이스_검증() async {
         // given
-        let MockRestaurantResponse = RestaurantResponse(
+        let mockRestaurantResponse = RestaurantResponse(
             results: [
                 Result<RestaurantProperties>(properties: RestaurantProperties(restaurantCode: Property(richText: [RichText(plainText: "PH002")]), menuTitle: Property(richText: [RichText(plainText: "일품 - 4,000원")]), menuDate: Property(richText: [RichText(plainText: "2025-06-05")]), menuType: Property(richText: [RichText(plainText: "L")]), menuContent: Property(richText: [RichText(plainText: "꼬지어묵우동\r\n군만두\r\n배추김치\r\n")]), breakfastTime: Optional(Property(richText: [RichText(plainText: "")])), lunchTime: Optional(Property(richText: [RichText(plainText: "")])), dinnerTime: Optional(Property(richText: [RichText(plainText: "")])))),
                 Result<RestaurantProperties>(properties: RestaurantProperties(restaurantCode: Property(richText: [RichText(plainText: "PH002")]), menuTitle: Property(richText: [RichText(plainText: "특정식 - 5,500원")]), menuDate: Property(richText: [RichText(plainText: "2025-06-05")]), menuType: Property(richText: [RichText(plainText: "L")]), menuContent: Property(richText: [RichText(plainText: "잡곡밥\r\n김치콩나물국\r\n숯불낙불볶음\r\n화이트크림함박\r\n건파래볶음\r\n상추부추겉절이\r\n배추김치\r\n")]), breakfastTime: Optional(Property(richText: [RichText(plainText: "")])), lunchTime: Optional(Property(richText: [RichText(plainText: "")])), dinnerTime: Optional(Property(richText: [RichText(plainText: "")])))),
@@ -44,7 +44,7 @@ final class FetchCafeteriaUseCaseTests: XCTestCase {
                 Result<RestaurantProperties>(properties: RestaurantProperties(restaurantCode: Property(richText: [RichText(plainText: "PG001")]), menuTitle: Property(richText: [RichText(plainText: "정식-5,500원")]), menuDate: Property(richText: [RichText(plainText: "2025-06-02")]), menuType: Property(richText: [RichText(plainText: "L")]), menuContent: Property(richText: [RichText(plainText: "백미밥\r\n반계탕\r\n새우가스/칠리소스\r\n멸치꽈리고추볶음\r\n사각어묵매콤조림\r\n부추겉절이\r\n포기김치\r\n")]), breakfastTime: Optional(Property(richText: [RichText(plainText: "미운영")])), lunchTime: Optional(Property(richText: [RichText(plainText: "11:00~15:00")])), dinnerTime: Optional(Property(richText: [RichText(plainText: "미운영")]))))
             ]
         )
-        let MockDormitoryResponse = DormitoryResponse(
+        let mockDormitoryResponse = DormitoryResponse(
             results: [
                 Result<DomitoryProperties>(properties: DomitoryProperties(no: Title(title: [RichText(plainText: "13")]), mealDate: Property(richText: [RichText(plainText: "2025-06-07")]), mealKindGcd: Property(richText: [RichText(plainText: "04")]), mealNm: Property(richText: [RichText(plainText: "백미밥\n미니순대국*다대기\n오징어볶음\n한입메밀전병(P)*초간장\n고추실채장아찌\n석박지")]))),
                 Result<DomitoryProperties>(properties: DomitoryProperties(no: Title(title: [RichText(plainText: "13")]), mealDate: Property(richText: [RichText(plainText: "2025-06-07")]), mealKindGcd: Property(richText: [RichText(plainText: "03")]), mealNm: Property(richText: [RichText(plainText: "백미밥\n바지락된장찌개\n고추장불고기(P)\n&상추쌈*쌈장\n감자채볶음\n배추김치")]))),
@@ -132,7 +132,7 @@ final class FetchCafeteriaUseCaseTests: XCTestCase {
             ]
         )
         
-        let MockRestaurantResult = [
+        let mockRestaurantResult = [
             CafeteriaResponse(cafeteria: Cafeteria.학생회관학생식당, date: "2025-06-05", category: Category.중식, title: Optional("일품 - 4,000원"), content: "꼬지어묵우동\r\n군만두\r\n배추김치\r\n", breakfastTime: Optional(""), lunchTime: Optional(""), dinnerTime: Optional("")),
             CafeteriaResponse(cafeteria: Cafeteria.학생회관학생식당, date: "2025-06-05", category: Category.중식, title: Optional("특정식 - 5,500원"), content: "잡곡밥\r\n김치콩나물국\r\n숯불낙불볶음\r\n화이트크림함박\r\n건파래볶음\r\n상추부추겉절이\r\n배추김치\r\n", breakfastTime: Optional(""), lunchTime: Optional(""), dinnerTime: Optional("")),
             CafeteriaResponse(cafeteria: Cafeteria.학생회관학생식당, date: "2025-06-04", category: Category.중식, title: Optional("일품 - 4,000원"), content: "치킨갈릭볶음밥\r\n맑은국\r\n계란장조림\r\n배추김치\r\n", breakfastTime: Optional(""), lunchTime: Optional(""), dinnerTime: Optional("")),
@@ -163,7 +163,7 @@ final class FetchCafeteriaUseCaseTests: XCTestCase {
             CafeteriaResponse(cafeteria: Cafeteria.금정회관학생식당, date: "2025-06-02", category: Category.조식, title: Optional("천원아침"), content: "백미밥\r\n삼겹살김치찌개\r\n언양식바삭불고기/소스\r\n버섯잡채\r\n상추겉절이\r\n깍두기\r\n", breakfastTime: Optional("08:00-11:00"), lunchTime: Optional("11:00-17:00"), dinnerTime: Optional("17:00-18:30")),
             CafeteriaResponse(cafeteria: Cafeteria.금정회관교직원식당, date: "2025-06-02", category: Category.중식, title: Optional("정식-5,500원"), content: "백미밥\r\n반계탕\r\n새우가스/칠리소스\r\n멸치꽈리고추볶음\r\n사각어묵매콤조림\r\n부추겉절이\r\n포기김치\r\n", breakfastTime: Optional("미운영"), lunchTime: Optional("11:00~15:00"), dinnerTime: Optional("미운영"))
         ]
-        let MockDormitoryResult = [
+        let mockDormitoryResult = [
             CafeteriaResponse(cafeteria: Cafeteria.자유관, date: "2025-06-07", category: Category.석식, title: nil, content: "백미밥\n미니순대국*다대기\n오징어볶음\n한입메밀전병(P)*초간장\n고추실채장아찌\n석박지", breakfastTime: nil, lunchTime: nil, dinnerTime: nil),
             CafeteriaResponse(cafeteria: Cafeteria.자유관, date: "2025-06-07", category: Category.중식, title: nil, content: "백미밥\n바지락된장찌개\n고추장불고기(P)\n&상추쌈*쌈장\n감자채볶음\n배추김치", breakfastTime: nil, lunchTime: nil, dinnerTime: nil),
             CafeteriaResponse(cafeteria: Cafeteria.자유관, date: "2025-06-07", category: Category.조식, title: nil, content: "백미밥\n고추장찌개\n훈제오리야채볶음(D)&쌈무\n된장두부조림\n배추김치\n초코두유", breakfastTime: nil, lunchTime: nil, dinnerTime: nil),
@@ -249,18 +249,18 @@ final class FetchCafeteriaUseCaseTests: XCTestCase {
             CafeteriaResponse(cafeteria: Cafeteria.진리관, date: "2025-06-01", category: Category.조식, title: nil, content: "잡곡밥/모듬햄찌개(P)/계란찜(E)/둥근어묵조림(F)/양상추간장무침/배추김치/두유/1182kcal/53g", breakfastTime: nil, lunchTime: nil, dinnerTime: nil)
         ]
         
-        let MockRestaurantRepository = MockCafeteriaRepository(session: URLSession.shared, mockResponse: MockRestaurantResponse)
-        let MockDormitoryRepository = MockCafeteriaRepository(session: URLSession.shared, mockResponse: MockDormitoryResponse)
+        let mockRestaurantRepository = MockCafeteriaRepository(session: URLSession.shared, mockResponse: mockRestaurantResponse)
+        let mockDormitoryRepository = MockCafeteriaRepository(session: URLSession.shared, mockResponse: mockDormitoryResponse)
         
-        let restaurantUseCase = FetchCafeteriaUseCaseImpl(cafeteriaRepository: MockRestaurantRepository)
-        let dormitoryUseCase = FetchCafeteriaUseCaseImpl(cafeteriaRepository: MockDormitoryRepository)
+        let restaurantUseCase = FetchCafeteriaUseCaseImpl(cafeteriaRepository: mockRestaurantRepository)
+        let dormitoryUseCase = FetchCafeteriaUseCaseImpl(cafeteriaRepository: mockDormitoryRepository)
         
         // when
         let restaurantResult: [CafeteriaResponse] = await restaurantUseCase.execute(isUpdating: false, campus: .부산, for: .restaurant)
         let dormitoryResult: [CafeteriaResponse] = await dormitoryUseCase.execute(isUpdating: false, campus: .부산, for: .dormitory)
         
         // then
-        XCTAssertEqual(restaurantResult, MockRestaurantResult)
-        XCTAssertEqual(dormitoryResult, MockDormitoryResult)
+        XCTAssertEqual(restaurantResult, mockRestaurantResult)
+        XCTAssertEqual(dormitoryResult, mockDormitoryResult)
     }
 }
