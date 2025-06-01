@@ -8,44 +8,44 @@ on:
 
 jobs:
   build:
-    name: Build and analyze default scheme using xcodebuild
+    name: Build and analyze
     runs-on: macos-14
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set default scheme from xcodebuild list
-        id: get-scheme
+      - name: Set default scheme
+        id: scheme
         run: |
           scheme_list=$(xcodebuild -list -json)
           default=$(echo "$scheme_list" | ruby -e "require 'json'; puts JSON.parse(STDIN.read)['project']['targets'][0]")
           echo "SCHEME=$default" >> $GITHUB_ENV
-          echo "Default scheme: $default"
+          echo "Using scheme: $default"
 
       - name: Detect project or workspace
         id: detect
         run: |
-          if ls *.xcworkspace 1> /dev/null 2>&1; then
+          if ls *.xcworkspace > /dev/null 2>&1; then
             echo "TYPE=workspace" >> $GITHUB_ENV
-            echo "FILE=$(ls *.xcworkspace | head -n1)" >> $GITHUB_ENV
-          elif ls *.xcodeproj 1> /dev/null 2>&1; then
+            echo "FILE=$(ls *.xcworkspace | head -n 1)" >> $GITHUB_ENV
+          elif ls *.xcodeproj > /dev/null 2>&1; then
             echo "TYPE=project" >> $GITHUB_ENV
-            echo "FILE=$(ls *.xcodeproj | head -n1)" >> $GITHUB_ENV
+            echo "FILE=$(ls *.xcodeproj | head -n 1)" >> $GITHUB_ENV
           else
-            echo "No .xcworkspace or .xcodeproj found"
+            echo "No .xcodeproj or .xcworkspace found"
             exit 1
           fi
 
-      - name: Build and analyze with xcodebuild
+      - name: Build and analyse default scheme using xcodebuild command
         run: |
+          echo "Building $TYPE: $FILE with scheme: $SCHEME"
           xcodebuild clean build analyze \
             -scheme "$SCHEME" \
             -destination "platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0" \
             -$TYPE "$FILE" \
             | tee build.log \
             | xcpretty
-        continue-on-error: true
 
       - name: Upload build log
         if: always()
