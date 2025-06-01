@@ -8,48 +8,23 @@ on:
 
 jobs:
   build:
-    name: Build and analyze
-    runs-on: macos-14
+    name: Build and analyse default scheme using xcodebuild command
+    runs-on: macos-15
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Set default scheme
-        id: scheme
+      - name: Set Default Scheme
         run: |
-          scheme_list=$(xcodebuild -list -json)
-          default=$(echo "$scheme_list" | ruby -e "require 'json'; puts JSON.parse(STDIN.read)['project']['targets'][0]")
-          echo "SCHEME=$default" >> $GITHUB_ENV
-          echo "Using scheme: $default"
-
-      - name: Detect project or workspace
-        id: detect
+          scheme_list=$(xcodebuild -list -json | tr -d "\n")
+          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
+          echo $default | cat >default
+          echo Using default scheme: $default
+      - name: Build
+        env:
+          scheme: ${{ 'default' }}
         run: |
-          if ls *.xcworkspace > /dev/null 2>&1; then
-            echo "TYPE=workspace" >> $GITHUB_ENV
-            echo "FILE=$(ls *.xcworkspace | head -n 1)" >> $GITHUB_ENV
-          elif ls *.xcodeproj > /dev/null 2>&1; then
-            echo "TYPE=project" >> $GITHUB_ENV
-            echo "FILE=$(ls *.xcodeproj | head -n 1)" >> $GITHUB_ENV
-          else
-            echo "No .xcodeproj or .xcworkspace found"
-            exit 1
-          fi
-
-      - name: Build and analyse default scheme using xcodebuild command
-        run: |
-          echo "Building $TYPE: $FILE with scheme: $SCHEME"
-          xcodebuild clean build analyze \
-            -scheme "$SCHEME" \
-            -destination "platform=iOS Simulator,name=iPhone 15 Pro,OS=17.0" \
-            -$TYPE "$FILE" \
-            | tee build.log \
-            | xcpretty
-
-      - name: Upload build log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-log
-          path: build.log
+          if [ $scheme = default ]; then scheme=$(cat default); fi
+          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
+          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
+          xcodebuild clean build analyze -scheme "$scheme" -destination "platform=iphonesimulator,OS=18.0,name=iPhone 15 Pro" -"$filetype_parameter" "$file_to_build" | xcpretty && exit ${PIPESTATUS[0]}
