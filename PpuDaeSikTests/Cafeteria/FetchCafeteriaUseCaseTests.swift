@@ -260,7 +260,7 @@ final class FetchCafeteriaUseCaseTests: XCTestCase {
         let dormitoryResult: [CafeteriaResponse] = await dormitoryUseCase.execute(isUpdating: false, campus: .부산, for: .dormitory)
         
         // then
-        XCTAssertEqual(restaurantResult, mockRestaurantResult)
-        XCTAssertEqual(dormitoryResult, mockDormitoryResult)
+        XCTAssertEqual(restaurantResult, mockRestaurantResult, "학생 식당의 식단이 예상 값과 다름.")
+        XCTAssertEqual(dormitoryResult, mockDormitoryResult, "기숙사 식당의 식단이 예상 값과 다름")
     }
 }

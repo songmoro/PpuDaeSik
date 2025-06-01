@@ -28,8 +28,8 @@ final class ChechDeploymentCafeteriaUseCaseTests: XCTestCase {
         let dormitoryResult: Bool = await dormitoryUseCase.execute(for: .dormitory)
         
         // then
-        XCTAssertEqual(restaurantResult, mockRestaurantDeploymentStatus.isUpdating)
-        XCTAssertEqual(dormitoryResult, mockDormitoryDeploymentStatus.isUpdating)
+        XCTAssertEqual(restaurantResult, mockRestaurantDeploymentStatus.isUpdating, "학생 식당 메인 테이블 배포 상태가 예상 값과 다름")
+        XCTAssertEqual(dormitoryResult, mockDormitoryDeploymentStatus.isUpdating, "기숙사 식당 메인 테이블 배포 상태가 예상 값과 다름")
     }
     
     func test_배포_상태_백업_테이블_검사() async {
@@ -51,7 +51,7 @@ final class ChechDeploymentCafeteriaUseCaseTests: XCTestCase {
         let dormitoryResult: Bool = await dormitoryUseCase.execute(for: .dormitory)
         
         // then
-        XCTAssertEqual(restaurantResult, mockRestaurantDeploymentStatus.isUpdating)
-        XCTAssertEqual(dormitoryResult, mockDormitoryDeploymentStatus.isUpdating)
+        XCTAssertEqual(restaurantResult, mockRestaurantDeploymentStatus.isUpdating, "학생 식당 백업 테이블 배포 상태가 예상 값과 다름")
+        XCTAssertEqual(dormitoryResult, mockDormitoryDeploymentStatus.isUpdating, "기숙사 식당 백업 테이블 배포 상태가 예상 값과 다름")
     }
 }
