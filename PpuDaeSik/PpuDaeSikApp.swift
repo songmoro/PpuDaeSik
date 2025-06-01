@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct PpuDaeSikApp: App {
-    let environment: AppEnvironment
+//    let environment: AppEnvironment
     
     init() {
         environment = AppEnvironment.bootstrap()
