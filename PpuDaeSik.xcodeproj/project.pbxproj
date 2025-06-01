@@ -68,10 +68,10 @@
 		F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
 		F86EF99F2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF99E2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift */; };
 		F86EF9A12DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF9A02DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift */; };
+		F86EF9A62DEC74DD00A126AB /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF9A32DEC74DD00A126AB /* CategoryTests.swift */; };
+		F86EF9A72DEC74DD00A126AB /* WeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF9A42DEC74DD00A126AB /* WeekTests.swift */; };
 		F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* Cafeteria.swift */; };
 		F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */; };
-		F87FCC632D1170E4007B480D /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FCC622D116E2A007B480D /* CategoryTests.swift */; };
-		F87FCC652D117939007B480D /* WeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FCC642D117933007B480D /* WeekTests.swift */; };
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
@@ -195,11 +195,11 @@
 		F8334D8E2BE4F4BD000B85E9 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
 		F86EF99E2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		F86EF9A02DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChechDeploymentCafeteriaUseCaseTests.swift; sourceTree = "<group>"; };
+		F86EF9A32DEC74DD00A126AB /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
+		F86EF9A42DEC74DD00A126AB /* WeekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTests.swift; sourceTree = "<group>"; };
 		F874F2832C6B7AC20025F1FE /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaResponse.swift; sourceTree = "<group>"; };
 		F87FCC562D116CBF007B480D /* PpuDaeSikTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PpuDaeSikTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F87FCC622D116E2A007B480D /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
-		F87FCC642D117933007B480D /* WeekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTests.swift; sourceTree = "<group>"; };
 		F88F35D22B43FC6500BEA743 /* PpuDaeSik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PpuDaeSik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikApp.swift; sourceTree = "<group>"; };
 		F88F35D92B43FC6600BEA743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -469,12 +469,20 @@
 			path = PpuDaeSikWidget;
 			sourceTree = "<group>";
 		};
+		F86EF9A52DEC74DD00A126AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F86EF9A32DEC74DD00A126AB /* CategoryTests.swift */,
+				F86EF9A42DEC74DD00A126AB /* WeekTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F87FCC602D116CD7007B480D /* PpuDaeSikTests */ = {
 			isa = PBXGroup;
 			children = (
 				F8BB64412DEC42A3008AE6E5 /* Cafeteria */,
-				F87FCC622D116E2A007B480D /* CategoryTests.swift */,
-				F87FCC642D117933007B480D /* WeekTests.swift */,
+				F86EF9A52DEC74DD00A126AB /* Model */,
 			);
 			path = PpuDaeSikTests;
 			sourceTree = "<group>";
@@ -760,9 +768,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F86EF9A62DEC74DD00A126AB /* CategoryTests.swift in Sources */,
+				F86EF9A72DEC74DD00A126AB /* WeekTests.swift in Sources */,
 				F86EF9A12DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift in Sources */,
-				F87FCC632D1170E4007B480D /* CategoryTests.swift in Sources */,
-				F87FCC652D117939007B480D /* WeekTests.swift in Sources */,
 				F8BB64452DEC4409008AE6E5 /* MockCafeteriaRepository.swift in Sources */,
 				F8BB64432DEC4340008AE6E5 /* FetchCafeteriaUseCaseTests.swift in Sources */,
 			);
