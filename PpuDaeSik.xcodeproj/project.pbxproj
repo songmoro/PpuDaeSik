@@ -13,7 +13,7 @@
 		F8045ADA2CE3639A00277BC7 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AD92CE3639900277BC7 /* Store.swift */; };
 		F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045ADB2CE363A100277BC7 /* CancelBag.swift */; };
 		F8045ADE2CE363AB00277BC7 /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045ADD2CE363AA00277BC7 /* Loadable.swift */; };
-		F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE42CE3676400277BC7 /* CafeteriaService.swift */; };
+		F8045AE52CE3676600277BC7 /* CafeteriaUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE42CE3676400277BC7 /* CafeteriaUseCases.swift */; };
 		F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AE72CE368DE00277BC7 /* NotionRepository.swift */; };
 		F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AEC2CE488AD00277BC7 /* CampusTab.swift */; };
 		F8045AF42CE4A58800277BC7 /* WeekTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8045AF32CE4A57B00277BC7 /* WeekTab.swift */; };
@@ -30,10 +30,8 @@
 		F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FA52CEF14A2007B9428 /* MenuContent.swift */; };
 		F8183FAD2CEF291A007B9428 /* MainViewHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FAC2CEF291A007B9428 /* MainViewHeader.swift */; };
 		F8183FAF2CEF4649007B9428 /* UserDataRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FAE2CEF4640007B9428 /* UserDataRepository.swift */; };
-		F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB02CEF4A64007B9428 /* BookmarkService.swift */; };
 		F8183FB52CEF507B007B9428 /* BookmarkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */; };
 		F8183FB72CF059EE007B9428 /* DefaultCampusRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */; };
-		F8183FB92CF0718E007B9428 /* DefaultCampusService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */; };
 		F8183FFA2CF0A539007B9428 /* CafeteriaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FF92CF0A534007B9428 /* CafeteriaRepository.swift */; };
 		F8183FFC2CF0A63D007B9428 /* NotionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8183FFB2CF0A637007B9428 /* NotionAPI.swift */; };
 		F81840012CF3069E007B9428 /* NotionRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F81840002CF30696007B9428 /* NotionRequest.swift */; };
@@ -68,10 +66,12 @@
 		F8334D6F2BE4C9B1000B85E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8334D582BE4C7E9000B85E9 /* Assets.xcassets */; };
 		F8334D882BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */; };
 		F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EC2B4400CA00BEA743 /* Ext+Font.swift */; };
+		F86EF99F2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF99E2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift */; };
+		F86EF9A12DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF9A02DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift */; };
+		F86EF9A62DEC74DD00A126AB /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF9A32DEC74DD00A126AB /* CategoryTests.swift */; };
+		F86EF9A72DEC74DD00A126AB /* WeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F86EF9A42DEC74DD00A126AB /* WeekTests.swift */; };
 		F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2832C6B7AC20025F1FE /* Cafeteria.swift */; };
 		F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */; };
-		F87FCC632D1170E4007B480D /* CategoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FCC622D116E2A007B480D /* CategoryTests.swift */; };
-		F87FCC652D117939007B480D /* WeekTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F87FCC642D117933007B480D /* WeekTests.swift */; };
 		F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */; };
 		F88F35DA2B43FC6600BEA743 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35D92B43FC6600BEA743 /* Assets.xcassets */; };
 		F88F35DD2B43FC6600BEA743 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */; };
@@ -79,6 +79,16 @@
 		F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35EA2B43FFBE00BEA743 /* Ext+Color.swift */; };
 		F88F35EF2B44033400BEA743 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */; };
 		F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F88F35F32B4434BE00BEA743 /* MainView.swift */; };
+		F8BB64302DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB642F2DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift */; };
+		F8BB64322DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB64312DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift */; };
+		F8BB64352DE9CC56008AE6E5 /* BookmarkUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB64342DE9CC56008AE6E5 /* BookmarkUseCases.swift */; };
+		F8BB64372DE9CE1B008AE6E5 /* BookmarkUseCasesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB64362DE9CE12008AE6E5 /* BookmarkUseCasesImpl.swift */; };
+		F8BB64392DE9D57A008AE6E5 /* StubBookmarkUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB64382DE9D57A008AE6E5 /* StubBookmarkUseCases.swift */; };
+		F8BB643C2DE9D7E9008AE6E5 /* DefaultCampusUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB643B2DE9D7E9008AE6E5 /* DefaultCampusUseCases.swift */; };
+		F8BB643E2DE9DBC1008AE6E5 /* StubDefaultCampusUseCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB643D2DE9DBC1008AE6E5 /* StubDefaultCampusUseCases.swift */; };
+		F8BB64402DE9DBD3008AE6E5 /* DefaultCampusUseCasesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB643F2DE9DBD3008AE6E5 /* DefaultCampusUseCasesImpl.swift */; };
+		F8BB64432DEC4340008AE6E5 /* FetchCafeteriaUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB64422DEC4340008AE6E5 /* FetchCafeteriaUseCaseTests.swift */; };
+		F8BB64452DEC4409008AE6E5 /* MockCafeteriaRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8BB64442DEC4409008AE6E5 /* MockCafeteriaRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,7 +139,7 @@
 		F8045AD92CE3639900277BC7 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		F8045ADB2CE363A100277BC7 /* CancelBag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CancelBag.swift; sourceTree = "<group>"; };
 		F8045ADD2CE363AA00277BC7 /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
-		F8045AE42CE3676400277BC7 /* CafeteriaService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaService.swift; sourceTree = "<group>"; };
+		F8045AE42CE3676400277BC7 /* CafeteriaUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaUseCases.swift; sourceTree = "<group>"; };
 		F8045AE72CE368DE00277BC7 /* NotionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRepository.swift; sourceTree = "<group>"; };
 		F8045AEC2CE488AD00277BC7 /* CampusTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CampusTab.swift; sourceTree = "<group>"; };
 		F8045AF32CE4A57B00277BC7 /* WeekTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTab.swift; sourceTree = "<group>"; };
@@ -146,10 +156,8 @@
 		F8183FA52CEF14A2007B9428 /* MenuContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuContent.swift; sourceTree = "<group>"; };
 		F8183FAC2CEF291A007B9428 /* MainViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewHeader.swift; sourceTree = "<group>"; };
 		F8183FAE2CEF4640007B9428 /* UserDataRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataRepository.swift; sourceTree = "<group>"; };
-		F8183FB02CEF4A64007B9428 /* BookmarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkService.swift; sourceTree = "<group>"; };
 		F8183FB42CEF507B007B9428 /* BookmarkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkRepository.swift; sourceTree = "<group>"; };
 		F8183FB62CF059DF007B9428 /* DefaultCampusRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusRepository.swift; sourceTree = "<group>"; };
-		F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusService.swift; sourceTree = "<group>"; };
 		F8183FF92CF0A534007B9428 /* CafeteriaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaRepository.swift; sourceTree = "<group>"; };
 		F8183FFB2CF0A637007B9428 /* NotionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionAPI.swift; sourceTree = "<group>"; };
 		F81840002CF30696007B9428 /* NotionRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionRequest.swift; sourceTree = "<group>"; };
@@ -185,11 +193,13 @@
 		F8334D5B2BE4C7E9000B85E9 /* PpuDaeSikWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikWidgetBundle.swift; sourceTree = "<group>"; };
 		F8334D872BE4E85C000B85E9 /* PpuDaeSikWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = PpuDaeSikWidget.intentdefinition; sourceTree = "<group>"; };
 		F8334D8E2BE4F4BD000B85E9 /* Intents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Intents.framework; path = System/Library/Frameworks/Intents.framework; sourceTree = SDKROOT; };
+		F86EF99E2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ext+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		F86EF9A02DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChechDeploymentCafeteriaUseCaseTests.swift; sourceTree = "<group>"; };
+		F86EF9A32DEC74DD00A126AB /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
+		F86EF9A42DEC74DD00A126AB /* WeekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTests.swift; sourceTree = "<group>"; };
 		F874F2832C6B7AC20025F1FE /* Cafeteria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cafeteria.swift; sourceTree = "<group>"; };
 		F874F2862C6CBA580025F1FE /* CafeteriaResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaResponse.swift; sourceTree = "<group>"; };
 		F87FCC562D116CBF007B480D /* PpuDaeSikTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PpuDaeSikTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F87FCC622D116E2A007B480D /* CategoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTests.swift; sourceTree = "<group>"; };
-		F87FCC642D117933007B480D /* WeekTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTests.swift; sourceTree = "<group>"; };
 		F88F35D22B43FC6500BEA743 /* PpuDaeSik.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PpuDaeSik.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PpuDaeSikApp.swift; sourceTree = "<group>"; };
 		F88F35D92B43FC6600BEA743 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -200,6 +210,16 @@
 		F88F35EE2B44033400BEA743 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		F88F35F02B44056400BEA743 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F88F35F32B4434BE00BEA743 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F8BB642F2DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafeteriaUseCasesImpl.swift; sourceTree = "<group>"; };
+		F8BB64312DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubCafeteriaUseCases.swift; sourceTree = "<group>"; };
+		F8BB64342DE9CC56008AE6E5 /* BookmarkUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUseCases.swift; sourceTree = "<group>"; };
+		F8BB64362DE9CE12008AE6E5 /* BookmarkUseCasesImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkUseCasesImpl.swift; sourceTree = "<group>"; };
+		F8BB64382DE9D57A008AE6E5 /* StubBookmarkUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubBookmarkUseCases.swift; sourceTree = "<group>"; };
+		F8BB643B2DE9D7E9008AE6E5 /* DefaultCampusUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusUseCases.swift; sourceTree = "<group>"; };
+		F8BB643D2DE9DBC1008AE6E5 /* StubDefaultCampusUseCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StubDefaultCampusUseCases.swift; sourceTree = "<group>"; };
+		F8BB643F2DE9DBD3008AE6E5 /* DefaultCampusUseCasesImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCampusUseCasesImpl.swift; sourceTree = "<group>"; };
+		F8BB64422DEC4340008AE6E5 /* FetchCafeteriaUseCaseTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCafeteriaUseCaseTests.swift; sourceTree = "<group>"; };
+		F8BB64442DEC4409008AE6E5 /* MockCafeteriaRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCafeteriaRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,16 +276,6 @@
 				F8183FAE2CEF4640007B9428 /* UserDataRepository.swift */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		F8045ADF2CE3673C00277BC7 /* Serivces */ = {
-			isa = PBXGroup;
-			children = (
-				F8045AE42CE3676400277BC7 /* CafeteriaService.swift */,
-				F8183FB02CEF4A64007B9428 /* BookmarkService.swift */,
-				F8183FB82CF0718E007B9428 /* DefaultCampusService.swift */,
-			);
-			path = Serivces;
 			sourceTree = "<group>";
 		};
 		F8045AE62CE3689B00277BC7 /* Repositories */ = {
@@ -459,11 +469,20 @@
 			path = PpuDaeSikWidget;
 			sourceTree = "<group>";
 		};
+		F86EF9A52DEC74DD00A126AB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				F86EF9A32DEC74DD00A126AB /* CategoryTests.swift */,
+				F86EF9A42DEC74DD00A126AB /* WeekTests.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		F87FCC602D116CD7007B480D /* PpuDaeSikTests */ = {
 			isa = PBXGroup;
 			children = (
-				F87FCC622D116E2A007B480D /* CategoryTests.swift */,
-				F87FCC642D117933007B480D /* WeekTests.swift */,
+				F8BB64412DEC42A3008AE6E5 /* Cafeteria */,
+				F86EF9A52DEC74DD00A126AB /* Model */,
 			);
 			path = PpuDaeSikTests;
 			sourceTree = "<group>";
@@ -494,7 +513,7 @@
 			children = (
 				F88F35D52B43FC6500BEA743 /* PpuDaeSikApp.swift */,
 				F8183F9C2CEF10C2007B9428 /* Presentation */,
-				F8045ADF2CE3673C00277BC7 /* Serivces */,
+				F8BB642D2DE9B247008AE6E5 /* UseCases */,
 				F8045AD62CE3638000277BC7 /* Utilities */,
 				F8045AD12CE3633700277BC7 /* System */,
 				F8045AD02CE3631400277BC7 /* Injected */,
@@ -513,6 +532,7 @@
 				F88F35E82B43FDF300BEA743 /* Ext+UIScreen.swift */,
 				F81129512C41A74600F71C03 /* Ext+DateFormatter.swift */,
 				F81129542C41A80B00F71C03 /* Ext+Calendar.swift */,
+				F86EF99E2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -526,6 +546,56 @@
 				F88F35DC2B43FC6600BEA743 /* Preview Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		F8BB642D2DE9B247008AE6E5 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				F8BB64332DE9CBA5008AE6E5 /* Bookmark */,
+				F8BB642E2DE9B25D008AE6E5 /* Cafeteria */,
+				F8BB643A2DE9D7D2008AE6E5 /* DefaultCampus */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		F8BB642E2DE9B25D008AE6E5 /* Cafeteria */ = {
+			isa = PBXGroup;
+			children = (
+				F8045AE42CE3676400277BC7 /* CafeteriaUseCases.swift */,
+				F8BB642F2DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift */,
+				F8BB64312DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift */,
+			);
+			path = Cafeteria;
+			sourceTree = "<group>";
+		};
+		F8BB64332DE9CBA5008AE6E5 /* Bookmark */ = {
+			isa = PBXGroup;
+			children = (
+				F8BB64342DE9CC56008AE6E5 /* BookmarkUseCases.swift */,
+				F8BB64362DE9CE12008AE6E5 /* BookmarkUseCasesImpl.swift */,
+				F8BB64382DE9D57A008AE6E5 /* StubBookmarkUseCases.swift */,
+			);
+			path = Bookmark;
+			sourceTree = "<group>";
+		};
+		F8BB643A2DE9D7D2008AE6E5 /* DefaultCampus */ = {
+			isa = PBXGroup;
+			children = (
+				F8BB643B2DE9D7E9008AE6E5 /* DefaultCampusUseCases.swift */,
+				F8BB643F2DE9DBD3008AE6E5 /* DefaultCampusUseCasesImpl.swift */,
+				F8BB643D2DE9DBC1008AE6E5 /* StubDefaultCampusUseCases.swift */,
+			);
+			path = DefaultCampus;
+			sourceTree = "<group>";
+		};
+		F8BB64412DEC42A3008AE6E5 /* Cafeteria */ = {
+			isa = PBXGroup;
+			children = (
+				F8BB64422DEC4340008AE6E5 /* FetchCafeteriaUseCaseTests.swift */,
+				F86EF9A02DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift */,
+				F8BB64442DEC4409008AE6E5 /* MockCafeteriaRepository.swift */,
+			);
+			path = Cafeteria;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -698,8 +768,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F87FCC632D1170E4007B480D /* CategoryTests.swift in Sources */,
-				F87FCC652D117939007B480D /* WeekTests.swift in Sources */,
+				F86EF9A62DEC74DD00A126AB /* CategoryTests.swift in Sources */,
+				F86EF9A72DEC74DD00A126AB /* WeekTests.swift in Sources */,
+				F86EF9A12DEC6F9E00A126AB /* ChechDeploymentCafeteriaUseCaseTests.swift in Sources */,
+				F8BB64452DEC4409008AE6E5 /* MockCafeteriaRepository.swift in Sources */,
+				F8BB64432DEC4340008AE6E5 /* FetchCafeteriaUseCaseTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -716,11 +789,13 @@
 				F88F35F42B4434BE00BEA743 /* MainView.swift in Sources */,
 				F874F2872C6CBA580025F1FE /* CafeteriaResponse.swift in Sources */,
 				F8183FAD2CEF291A007B9428 /* MainViewHeader.swift in Sources */,
+				F8BB64372DE9CE1B008AE6E5 /* BookmarkUseCasesImpl.swift in Sources */,
 				F8183FA62CEF14A5007B9428 /* MenuContent.swift in Sources */,
-				F8045AE52CE3676600277BC7 /* CafeteriaService.swift in Sources */,
+				F8045AE52CE3676600277BC7 /* CafeteriaUseCases.swift in Sources */,
 				F8183FAF2CEF4649007B9428 /* UserDataRepository.swift in Sources */,
 				F820CBA92C70E5F7008694EC /* CafeteriaView.swift in Sources */,
 				F8183FB72CF059EE007B9428 /* DefaultCampusRepository.swift in Sources */,
+				F8BB643C2DE9D7E9008AE6E5 /* DefaultCampusUseCases.swift in Sources */,
 				F8183FB52CEF507B007B9428 /* BookmarkRepository.swift in Sources */,
 				F874F2842C6B7AC20025F1FE /* Cafeteria.swift in Sources */,
 				F811295C2C429FA800F71C03 /* WeekComponent.swift in Sources */,
@@ -729,15 +804,20 @@
 				F8045ADC2CE363A200277BC7 /* CancelBag.swift in Sources */,
 				F81840062CF30DFC007B9428 /* NotionAPIError.swift in Sources */,
 				F811295A2C429F9B00F71C03 /* Campus.swift in Sources */,
-				F8183FB92CF0718E007B9428 /* DefaultCampusService.swift in Sources */,
 				F815E4162C77453C00D25149 /* LoadingView.swift in Sources */,
 				F88F35EB2B43FFBE00BEA743 /* Ext+Color.swift in Sources */,
+				F8BB64302DE9B281008AE6E5 /* CafeteriaUseCasesImpl.swift in Sources */,
 				F8334D9F2BE5F033000B85E9 /* Ext+Font.swift in Sources */,
 				F820CBAB2C70EE2A008694EC /* CafeteriaHeader.swift in Sources */,
+				F8BB64392DE9D57A008AE6E5 /* StubBookmarkUseCases.swift in Sources */,
 				F8045AE82CE3696100277BC7 /* NotionRepository.swift in Sources */,
 				F8045ADE2CE363AB00277BC7 /* Loadable.swift in Sources */,
 				F8045AD52CE3637600277BC7 /* DependencyInjector.swift in Sources */,
+				F8BB643E2DE9DBC1008AE6E5 /* StubDefaultCampusUseCases.swift in Sources */,
 				F820CBA72C6FAD1E008694EC /* DayComponent.swift in Sources */,
+				F8BB64352DE9CC56008AE6E5 /* BookmarkUseCases.swift in Sources */,
+				F8BB64402DE9DBD3008AE6E5 /* DefaultCampusUseCasesImpl.swift in Sources */,
+				F86EF99F2DEC6DA900A126AB /* Ext+CustomStringConvertible.swift in Sources */,
 				F8045AD82CE3638F00277BC7 /* AppState.swift in Sources */,
 				F81840012CF3069E007B9428 /* NotionRequest.swift in Sources */,
 				F8045AED2CE488B100277BC7 /* CampusTab.swift in Sources */,
@@ -746,7 +826,7 @@
 				F80781712CF854C300E061E6 /* CacheRepository.swift in Sources */,
 				F88F35D62B43FC6500BEA743 /* PpuDaeSikApp.swift in Sources */,
 				F8183FFA2CF0A539007B9428 /* CafeteriaRepository.swift in Sources */,
-				F8183FB12CEF4A72007B9428 /* BookmarkService.swift in Sources */,
+				F8BB64322DE9B2D7008AE6E5 /* StubCafeteriaUseCases.swift in Sources */,
 				F81840082CF31529007B9428 /* Deployment.swift in Sources */,
 				F81129552C41A80B00F71C03 /* Ext+Calendar.swift in Sources */,
 			);

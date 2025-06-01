@@ -7,7 +7,12 @@
 
 import SwiftUI
 
-struct CafeteriaRepository: NotionRepository {
+protocol CafeteriaRepositoryProtocol: NotionRepository {
+    func fetch<T: Codable>(_ api: NotionAPIAble) async -> T
+    func cancleAllRequest()
+}
+
+struct CafeteriaRepository: CafeteriaRepositoryProtocol {
     let session: URLSession
     
     func fetch<T>(_ api: NotionAPIAble) async -> T where T: Codable {

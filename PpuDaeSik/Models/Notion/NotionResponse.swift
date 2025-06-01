@@ -23,7 +23,7 @@ struct DeploymentResponse: NotionResponseAble {
     var results: [Result<resultType>]
 }
 
-struct RestaurantResponse: NotionResponseAble, CustomStringConvertible {
+struct RestaurantResponse: NotionResponseAble {
     typealias resultType = RestaurantProperties
     
     var results: [Result<resultType>]
@@ -49,13 +49,9 @@ struct RestaurantResponse: NotionResponseAble, CustomStringConvertible {
         guard let cafeteria, let category else { return nil }
         return CafeteriaResponse(cafeteria: cafeteria, date: date, category: category, title: title, content: content, breakfastTime: breakfastTime, lunchTime: lunchTime, dinnerTime: dinnerTime)
     }
-    
-    var description: String {
-        "\(results)"
-    }
 }
 
-struct DormitoryResponse: NotionResponseAble, CafeteriaAble, CustomStringConvertible {
+struct DormitoryResponse: NotionResponseAble, CafeteriaAble {
     typealias resultType = DomitoryProperties
     
     var results: [Result<resultType>]
@@ -77,38 +73,22 @@ struct DormitoryResponse: NotionResponseAble, CafeteriaAble, CustomStringConvert
         guard let cafeteria, let category else { return nil }
         return CafeteriaResponse(cafeteria: cafeteria, date: date, category: category, content: content)
     }
-    
-    var description: String {
-        "\(results)"
-    }
 }
 
-struct NotionResponse<T: Codable>: Codable, CustomStringConvertible {
+struct NotionResponse<T: Codable>: Codable {
     let results: [Result<T>]
-    
-    var description: String {
-        "\(results)"
-    }
 }
 
-struct Result<T: Codable>: Codable, CustomStringConvertible {
+struct Result<T: Codable>: Codable {
     let properties: T
-    
-    var description: String {
-        "\(properties)"
-    }
 }
 
-struct DeploymentProperties: Codable, CustomStringConvertible {
+struct DeploymentProperties: Codable {
     let DB: Title
     let Status: Property
-    
-    var description: String {
-        "DB: \(DB), Status: \(Status)"
-    }
 }
 
-struct RestaurantProperties: Codable, CustomStringConvertible {
+struct RestaurantProperties: Codable {
     let restaurantCode, menuTitle, menuDate, menuType, menuContent: Property
     let breakfastTime, lunchTime, dinnerTime: Property?
     
@@ -122,49 +102,29 @@ struct RestaurantProperties: Codable, CustomStringConvertible {
         case lunchTime = "LUNCH_TIME"
         case dinnerTime = "DINNER_TIME"
     }
-    
-    var description: String {
-        "RESTAURANT_CODE: \(restaurantCode), MENU_TITLE: \(menuTitle), MENU_DATE: \(menuDate), MENU_TYPE: \(menuType), MENU_CONTENT: \(menuContent), breakfastTime: \(breakfastTime), lunchTime: \(lunchTime), dinnerTime: \(dinnerTime)"
-    }
 }
 
-struct DomitoryProperties: Codable, CustomStringConvertible {
+struct DomitoryProperties: Codable {
     let no: Title
     let mealDate, mealKindGcd, mealNm: Property
-    
-    var description: String {
-        "no: \(no), mealDate: \(mealDate), mealkindGcd: \(mealKindGcd), mealNm: \(mealNm)"
-    }
 }
 
-struct Title: Codable, CustomStringConvertible {
+struct Title: Codable {
     let title: [RichText]
-    
-    var description: String {
-        title.map(\.description).joined(separator: ", ")
-    }
 }
 
-struct Property: Codable, CustomStringConvertible {
+struct Property: Codable {
     let richText: [RichText]
     
     enum CodingKeys: String, CodingKey {
         case richText = "rich_text"
     }
-    
-    var description: String {
-        richText.map(\.description).joined(separator: ", ")
-    }
 }
 
-struct RichText: Codable, CustomStringConvertible {
+struct RichText: Codable {
     let plainText: String
     
     enum CodingKeys: String, CodingKey {
         case plainText = "plain_text"
-    }
-    
-    var description: String {
-        plainText
     }
 }

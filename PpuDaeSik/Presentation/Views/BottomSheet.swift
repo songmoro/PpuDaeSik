@@ -63,14 +63,14 @@ extension BottomSheet {
         
         func bind() {
             let appState = container.appState
+            let defaultCampusUseCases = container.useCases.defaultCampus
             
             cancelBag.collect {
                 $defaultCampus
                     .removeDuplicates()
                     .sink {
                         appState[\.userData.defaultCampus] = $0
-                        self.container.services
-                            .defaultCampusService.save(defaultCampus: $0)
+                        defaultCampusUseCases.save.execute(defaultCampus: $0)
                     }
             }
         }

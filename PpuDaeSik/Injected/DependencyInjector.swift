@@ -9,49 +9,43 @@ import SwiftUI
 
 struct DIContainer: EnvironmentKey {
     let appState: Store<AppState>
-    let services: Services
+    let useCases: UseCases
     
-    init(appState: Store<AppState>, services: DIContainer.Services) {
+    init(appState: Store<AppState>, useCases: DIContainer.UseCases) {
         self.appState = appState
-        self.services = services
+        self.useCases = useCases
     }
     
-    init(appState: AppState, services: DIContainer.Services) {
-        self.init(appState: Store(appState), services: services)
+    init(appState: AppState, useCases: DIContainer.UseCases) {
+        self.init(appState: Store(appState), useCases: useCases)
     }
 
     static var defaultValue: Self { Self.default }
-    private static let `default` = Self(appState: AppState(), services: .stub)
-}
-
-extension DIContainer {
-    struct Services {
-        let cafeteriaService: CafeteriaService
-        let bookmarkService: BookmarkService
-        let defaultCampusService: DefaultCampusService
-        
-        init(cafeteriaService: CafeteriaService, bookmarkService: BookmarkService, defaultCampusService: DefaultCampusService) {
-            self.cafeteriaService = cafeteriaService
-            self.bookmarkService = bookmarkService
-            self.defaultCampusService = defaultCampusService
-        }
-        
-        static var stub: Self {
-            .init(
-                cafeteriaService: StubCafeteriaService(),
-                bookmarkService: StubBookmarkService(),
-                defaultCampusService: StubDefaultCampusService()
-            )
-        }
-    }
+    private static let `default` = Self(appState: AppState(), useCases: .stub)
 }
 
 extension DIContainer {
     struct Repositories {
-        let cafeteriaRepository: CafeteriaRepository
+        let cafeteriaRepository: CafeteriaRepositoryProtocol
         let bookmarkRepository: BookmarkRepository
         let defaultCampusRepository: DefaultCampusRepository
         let cacheRepositories: [Campus: CacheRepository]
+    }
+}
+
+extension DIContainer {
+    struct UseCases {
+        let cafeteria: CafeteriaUseCases
+        let bookmark: BookmarkUseCases
+        let defaultCampus: DefaultCampusUseCases
+        
+        static var stub: Self {
+            .init(
+                cafeteria: StubCafeteriaUseCases(),
+                bookmark: StubBookmarkUseCases(),
+                defaultCampus: StubDefaultCampusUseCases()
+            )
+        }
     }
 }
 
@@ -64,6 +58,7 @@ extension DIContainer {
 
 extension DIContainer {
     static var preview: Self {
-        .init(appState: AppState.preview, services: .stub)
+//        .init(appState: AppState.preview, services: .stub, useCases: .stub)
+        .init(appState: AppState.preview, useCases: .stub)
     }
 }

@@ -43,13 +43,21 @@ extension CafeteriaHeader {
         
         // MARK: functions
         func isBookmarked() -> Bool {
-            container.services
-                .bookmarkService.isBookmarked(cafeteria)
+            let appState = container.appState
+            let bookmark = appState[\.userData.bookmark]
+            
+            return bookmark.contains(cafeteria)
         }
         
         func bookmarkAction() {
-            container.services
-                .bookmarkService.action(cafeteria: cafeteria)
+            let appState = container.appState
+            let bookmarkUseCases = container.useCases.bookmark
+            let bookmark = appState[\.userData.bookmark]
+            
+            let newBookmark = bookmarkUseCases.action.execute(bookmark: bookmark, cafeteria: cafeteria)
+            bookmarkUseCases.save.execute(bookmark: newBookmark)
+            let loadedBookmark = bookmarkUseCases.load.execute()
+            appState[\.userData.bookmark] = loadedBookmark
         }
     }
 }

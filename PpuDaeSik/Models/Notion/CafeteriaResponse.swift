@@ -8,7 +8,7 @@
 import Foundation
 
 /// 기숙사, 학생 식당 응답
-struct CafeteriaResponse: Hashable, CustomStringConvertible {
+struct CafeteriaResponse: Hashable {
     internal init(
         cafeteria: Cafeteria,
         date: String,
@@ -48,12 +48,21 @@ struct CafeteriaResponse: Hashable, CustomStringConvertible {
     let lunchTime: String?
     /// 석식 운영시간
     let dinnerTime: String?
-    
-    var description: String {
-        "cafeteria: \(cafeteria), date: \(date), category: \(category), title: \(title ?? "nil") content: \(content), breakfastTime: \(breakfastTime ?? "nil"), lunchTime: \(lunchTime ?? "nil"), dinnerTime: \(dinnerTime ?? "nil")"
-    }
 }
 
 extension CafeteriaResponse: Codable {
     
+}
+
+extension CafeteriaResponse: Equatable {
+    static func == (lhs: CafeteriaResponse, rhs: CafeteriaResponse) -> Bool {
+        return lhs.cafeteria == rhs.cafeteria &&
+        lhs.date == rhs.date &&
+        lhs.category == rhs.category &&
+        lhs.title == rhs.title &&
+        lhs.content == rhs.content &&
+        lhs.breakfastTime == rhs.breakfastTime &&
+        lhs.lunchTime == rhs.lunchTime &&
+        lhs.dinnerTime == rhs.dinnerTime
+    }
 }
