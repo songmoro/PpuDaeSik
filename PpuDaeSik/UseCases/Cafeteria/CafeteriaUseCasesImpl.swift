@@ -21,9 +21,9 @@ struct CafeteriaUseCasesImpl: CafeteriaUseCases {
 
 // MARK: Impl
 struct CancleAllCafeteriaUseCaseImpl: CancleAllCafeteriaUseCase {
-    private let cafeteriaRepository: CafeteriaRepository
+    private let cafeteriaRepository: CafeteriaRepositoryProtocol
     
-    init(cafeteriaRepository: CafeteriaRepository) {
+    init(cafeteriaRepository: CafeteriaRepositoryProtocol) {
         self.cafeteriaRepository = cafeteriaRepository
     }
     
@@ -33,9 +33,9 @@ struct CancleAllCafeteriaUseCaseImpl: CancleAllCafeteriaUseCase {
 }
 
 struct FetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
-    private let cafeteriaRepository: CafeteriaRepository
+    private let cafeteriaRepository: CafeteriaRepositoryProtocol
     
-    init(cafeteriaRepository: CafeteriaRepository) {
+    init(cafeteriaRepository: CafeteriaRepositoryProtocol) {
         self.cafeteriaRepository = cafeteriaRepository
     }
     
@@ -56,9 +56,9 @@ struct FetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
 }
 
 struct CheckDeploymentUseCaseImpl: CheckDeploymentUseCase {
-    private let cafeteriaRepository: CafeteriaRepository
+    private let cafeteriaRepository: CafeteriaRepositoryProtocol
     
-    init(cafeteriaRepository: CafeteriaRepository) {
+    init(cafeteriaRepository: CafeteriaRepositoryProtocol) {
         self.cafeteriaRepository = cafeteriaRepository
     }
     

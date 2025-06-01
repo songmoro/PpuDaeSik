@@ -26,7 +26,7 @@ struct DIContainer: EnvironmentKey {
 
 extension DIContainer {
     struct Repositories {
-        let cafeteriaRepository: CafeteriaRepository
+        let cafeteriaRepository: CafeteriaRepositoryProtocol
         let bookmarkRepository: BookmarkRepository
         let defaultCampusRepository: DefaultCampusRepository
         let cacheRepositories: [Campus: CacheRepository]
