@@ -6,7 +6,7 @@ let project = Project(
         .target(
             name: "App",
             destinations: [.iPhone],
-            product: .staticFramework,
+            product: .app,
             bundleId: "com.moro.PpuDaeSik",
             deploymentTargets: .iOS("17.0"),
             infoPlist: .default,
@@ -14,15 +14,5 @@ let project = Project(
             resources: ["Resources/**"],
             dependencies: []
         )
-//        .target(
-//            name: "PpuDaeSikTests",
-//            destinations: .iOS,
-//            product: .unitTests,
-//            bundleId: "io.tuist.PpuDaeSikTests",
-//            infoPlist: .default,
-//            sources: ["PpuDaeSik/Tests/**"],
-//            resources: [],
-//            dependencies: [.target(name: "PpuDaeSik")]
-//        ),
     ]
 )

@@ -1,13 +1,13 @@
 import ProjectDescription
 
 let project = Project(
-    name: "Shared",
+    name: "Features",
     targets: [
         .target(
-            name: "Shared",
+            name: "Features",
             destinations: [.iPhone],
             product: .staticFramework,
-            bundleId: "com.moro.PpuDaeSik.Shared",
+            bundleId: "com.moro.PpuDaeSik.Features",
             deploymentTargets: .iOS("17.0"),
             infoPlist: .default,
             sources: ["Sources/**"],

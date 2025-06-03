@@ -7,6 +7,8 @@ let workspace = Workspace(
         "Projects/Widget",
         "Projects/Core",
         "Projects/Features",
+        "Projects/WidgetFeatures",
+        "Projects/Tests",
         "Projects/Shared"
     ]
 )
