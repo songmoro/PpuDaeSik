@@ -6,33 +6,38 @@
 //
 
 // MARK: Provider
-struct DefaultCampusUseCasesImpl: DefaultCampusUseCases {
-    var save: SaveDefaultCampusUseCase
-    var load: LoadDefaultCampusUseCase
+public struct DefaultCampusUseCasesImpl: DefaultCampusUseCases {
+    public var save: SaveDefaultCampusUseCase
+    public var load: LoadDefaultCampusUseCase
+    
+    public init(save: SaveDefaultCampusUseCase, load: LoadDefaultCampusUseCase) {
+        self.save = save
+        self.load = load
+    }
 }
 //:-
 
 // MARK: Impl
-struct SaveDefaultCampusUseCaseImpl: SaveDefaultCampusUseCase {
+public struct SaveDefaultCampusUseCaseImpl: SaveDefaultCampusUseCase {
     private let defaultCampusRepository: DefaultCampusRepository
     
-    init(defaultCampusRepository: DefaultCampusRepository) {
+    public init(defaultCampusRepository: DefaultCampusRepository) {
         self.defaultCampusRepository = defaultCampusRepository
     }
     
-    func execute(defaultCampus: Campus) {
+    public func execute(defaultCampus: Campus) {
         defaultCampusRepository.save(value: defaultCampus.rawValue)
     }
 }
 
-struct LoadDefaultCampusUseCaseImpl: LoadDefaultCampusUseCase {
+public struct LoadDefaultCampusUseCaseImpl: LoadDefaultCampusUseCase {
     private let defaultCampusRepository: DefaultCampusRepository
     
-    init(defaultCampusRepository: DefaultCampusRepository) {
+    public init(defaultCampusRepository: DefaultCampusRepository) {
         self.defaultCampusRepository = defaultCampusRepository
     }
     
-    func execute() -> Campus {
+    public func execute() -> Campus {
         let rawValue: String? = defaultCampusRepository.load()
         
         if let rawValue = rawValue, let defaultCampus = Campus(rawValue) {

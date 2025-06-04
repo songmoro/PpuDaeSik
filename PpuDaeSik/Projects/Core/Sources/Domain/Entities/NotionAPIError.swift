@@ -5,7 +5,7 @@
 //  Created by 송재훈 on 11/24/24.
 //
 
-enum NotionAPIError: Error {
+public enum NotionAPIError: Error {
     case invalidJSON(description: String)
     case invalidRequestURL(description: String)
     case invalidRequest(description: String)
@@ -45,7 +45,7 @@ enum NotionAPIError: Error {
     }
 }
 
-extension NotionAPIError {
+public extension NotionAPIError {
     static func from(statusCode: Int, errorCode: String, message: String) -> NotionAPIError {
         return switch (statusCode, errorCode) {
         case (400, "invalid_json"): .invalidJSON(description: message)

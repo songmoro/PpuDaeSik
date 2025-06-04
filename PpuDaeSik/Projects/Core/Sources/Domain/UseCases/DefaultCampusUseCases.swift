@@ -8,18 +8,18 @@
 import Foundation
 
 // MARK: Provider
-protocol DefaultCampusUseCases {
+public protocol DefaultCampusUseCases {
     var save: SaveDefaultCampusUseCase { get }
     var load: LoadDefaultCampusUseCase { get }
 }
 //:-
 
 // MARK: UseCases
-protocol SaveDefaultCampusUseCase {
+public protocol SaveDefaultCampusUseCase {
     func execute(defaultCampus: Campus)
 }
 
-protocol LoadDefaultCampusUseCase {
+public protocol LoadDefaultCampusUseCase {
     func execute() -> Campus
 }
 //:-

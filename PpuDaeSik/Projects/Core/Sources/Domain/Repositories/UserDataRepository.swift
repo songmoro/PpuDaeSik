@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol UserDataRepository {
+public protocol UserDataRepository {
     var key: String { get }
     
     func save<T>(value: T)
     func load<T>() -> T?
 }
 
-extension UserDataRepository {
+public extension UserDataRepository {
     func save<T>(value: T) {
         UserDefaults.standard.setValue(value, forKey: key)
     }

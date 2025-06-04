@@ -5,7 +5,7 @@
 //  Created by 송재훈 on 11/24/24.
 //
 
-struct Deployment {
+public struct Deployment {
     let database: DeploymentType
     let isUpdating: Bool
     

@@ -5,6 +5,10 @@
 //  Created by 송재훈 on 11/28/24.
 //
 
-struct CacheRepository: UserDataRepository {
-    let key: String
+public struct CacheRepository: UserDataRepository {
+    public let key: String
+    
+    public init(key: String) {
+        self.key = key
+    }
 }

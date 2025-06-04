@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-protocol CafeteriaRepositoryProtocol: NotionRepository {
+public protocol CafeteriaRepositoryProtocol: NotionRepository {
     func fetch<T: Codable>(_ api: NotionAPIAble) async -> T
     func cancleAllRequest()
 }
 
-struct CafeteriaRepository: CafeteriaRepositoryProtocol {
-    let session: URLSession
+public struct CafeteriaRepository: CafeteriaRepositoryProtocol {
+    public let session: URLSession
     
-    func fetch<T>(_ api: NotionAPIAble) async -> T where T: Codable {
+    public init(session: URLSession) {
+        self.session = session
+    }
+    
+    public func fetch<T>(_ api: NotionAPIAble) async -> T where T: Codable {
         let request = api.request()
         let decoder = JSONDecoder()
         
@@ -44,7 +48,7 @@ struct CafeteriaRepository: CafeteriaRepositoryProtocol {
         }
     }
     
-    func cancleAllRequest() {
+    public func cancleAllRequest() {
         session.invalidateAndCancel()
     }
 }

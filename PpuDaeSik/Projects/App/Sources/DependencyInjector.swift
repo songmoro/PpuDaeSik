@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Core
+import Shared
 
 struct DIContainer: EnvironmentKey {
     let appState: Store<AppState>

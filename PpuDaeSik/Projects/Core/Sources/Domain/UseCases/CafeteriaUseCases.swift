@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Shared
 
 // MARK: Provider
-protocol CafeteriaUseCases {
+public protocol CafeteriaUseCases {
     var cancleAll: CancleAllCafeteriaUseCase { get }
     var fetch: FetchCafeteriaUseCase { get }
     var checkDeployment: CheckDeploymentUseCase { get }
@@ -20,31 +21,31 @@ protocol CafeteriaUseCases {
 //:-
 
 // MARK: UseCase
-protocol CancleAllCafeteriaUseCase {
+public protocol CancleAllCafeteriaUseCase {
     func execute()
 }
 
-protocol FetchCafeteriaUseCase {
+public protocol FetchCafeteriaUseCase {
     func execute(isUpdating: Bool, campus: Campus, for type: DeploymentType) async -> [CafeteriaResponse]
 }
 
-protocol CheckDeploymentUseCase {
+public protocol CheckDeploymentUseCase {
     func execute(for type: DeploymentType) async -> Bool
 }
 
-protocol LoadCafeteriaUseCase {
+public protocol LoadCafeteriaUseCase {
     func execute(campus: Campus) -> [CafeteriaResponse]?
 }
 
-protocol SaveCafeteriaUseCase {
+public protocol SaveCafeteriaUseCase {
     func execute(campus: Campus, response: [CafeteriaResponse])
 }
 
-protocol OrderCafeteriaUseCase {
+public protocol OrderCafeteriaUseCase {
     func execute(campus: Campus, bookmark: [Cafeteria]) -> [Cafeteria]
 }
 
-protocol FilterCafeteriaUseCase {
+public protocol FilterCafeteriaUseCase {
     func execute(response: Loadable<[CafeteriaResponse]>, campus: Campus, weekComponent: WeekComponent) -> [CafeteriaResponse]
 }
 //:-

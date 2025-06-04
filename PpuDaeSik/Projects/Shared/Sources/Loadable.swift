@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Loadable<T> {
+public enum Loadable<T> {
     case notRequested
     case isLoading
     case loaded(T)
@@ -21,14 +21,14 @@ enum Loadable<T> {
     }
 }
 
-extension Loadable {
+public extension Loadable {
     mutating func setIsLoading() {
         self = .isLoading
     }
 }
 
 extension Loadable: Equatable where T: Equatable {
-    static func == (lhs: Loadable<T>, rhs: Loadable<T>) -> Bool {
+    public static func == (lhs: Loadable<T>, rhs: Loadable<T>) -> Bool {
         switch (lhs, rhs) {
         case (.notRequested, .notRequested): return true
         case (.isLoading, .isLoading): return true

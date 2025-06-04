@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-protocol NotionRepository {
+public protocol NotionRepository {
     var session: URLSession { get }
     
     func fetch<T: Codable>(_ api: NotionAPIAble) async -> T
     func extractErrorCode(from data: Data) -> String
 }
 
-extension NotionRepository {
+public extension NotionRepository {
     func extractErrorCode(from data: Data) -> String {
         guard let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
               let errorCode = json["code"] as? String else {

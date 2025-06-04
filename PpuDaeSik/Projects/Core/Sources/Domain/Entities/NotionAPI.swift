@@ -6,8 +6,9 @@
 //
 
 import SwiftUI
+import Shared
 
-protocol NotionAPIAble {
+public protocol NotionAPIAble {
     var id: String { get }
     var path: String { get }
     var baseUrl: String { get }
@@ -17,17 +18,17 @@ protocol NotionAPIAble {
     func request() -> URLRequest
 }
 
-enum DeploymentType {
+public enum DeploymentType {
     case restaurant
     case dormitory
 }
 
-enum NotionAPI: NotionAPIAble {
+public enum NotionAPI: NotionAPIAble {
     case status(type: DeploymentType)
     case restaurant(campus: Campus, isUpdating: Bool)
     case dormitory(campus: Campus, isUpdating: Bool)
     
-    var id: String {
+    public var id: String {
         switch self {
         case .status: "233f1075520f4e38b9fb8350901219fb"
         case .restaurant(_, let isUpdating):
@@ -37,23 +38,23 @@ enum NotionAPI: NotionAPIAble {
         }
     }
     
-    var path: String {
+    public var path: String {
         "/databases/" + self.id + "/query"
     }
     
-    var baseUrl: String {
+    public var baseUrl: String {
         "https://api.notion.com/v1"
     }
     
-    var url: URL {
+    public var url: URL {
         URL(string: baseUrl + path)!
     }
     
-    var method: String {
+    public var method: String {
         "POST"
     }
     
-    var headers: [String: String]? {
+    public var headers: [String: String]? {
         [
             "Content-Type": "application/json",
             "Notion-Version": "2022-02-22",
@@ -61,7 +62,7 @@ enum NotionAPI: NotionAPIAble {
         ]
     }
     
-    var body: Data? {
+    public var body: Data? {
         switch self {
         case .status(let type):
             let body: SingleFilter
@@ -115,7 +116,7 @@ enum NotionAPI: NotionAPIAble {
         }
     }
     
-    func request() -> URLRequest {
+    public func request() -> URLRequest {
         var request = URLRequest(url: self.url)
         request.httpMethod = self.method
         request.allHTTPHeaderFields = self.headers

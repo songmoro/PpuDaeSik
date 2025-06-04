@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: Provider
-protocol BookmarkUseCases {
+public protocol BookmarkUseCases {
     var action: ActionBookmarkUseCase { get }
     var save: SaveBookmarkUseCase { get }
     var load: LoadBookmarkUseCase { get }
@@ -16,15 +16,15 @@ protocol BookmarkUseCases {
 //:-
 
 // MARK: UseCase
-protocol ActionBookmarkUseCase {
+public protocol ActionBookmarkUseCase {
     func execute(bookmark: [Cafeteria], cafeteria: Cafeteria) -> [Cafeteria]
 }
 
-protocol SaveBookmarkUseCase {
+public protocol SaveBookmarkUseCase {
     func execute(bookmark: [Cafeteria])
 }
 
-protocol LoadBookmarkUseCase {
+public protocol LoadBookmarkUseCase {
     func execute() -> [Cafeteria]
 }
 //:-

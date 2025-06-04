@@ -5,6 +5,10 @@
 //  Created by 송재훈 on 11/22/24.
 //
 
-struct DefaultCampusRepository: UserDataRepository {
-    let key: String
+public struct DefaultCampusRepository: UserDataRepository {
+    public let key: String
+    
+    public init(key: String) {
+        self.key = key
+    }
 }

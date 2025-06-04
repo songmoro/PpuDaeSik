@@ -7,6 +7,8 @@
 
 import Combine
 import Foundation
+import Core
+import Shared
 
 struct AppEnvironment {
     let container: DIContainer

@@ -7,26 +7,28 @@
 
 
 // MARK: Stub
-struct StubBookmarkUseCases: BookmarkUseCases {
-    var action: ActionBookmarkUseCase = StubActionBookmarkUseCaseImpl()
-    var save: SaveBookmarkUseCase = StubSaveBookmarkUseCaseImpl()
-    var load: LoadBookmarkUseCase = StubLoadBookmarkUseCaseImpl()
+public struct StubBookmarkUseCases: BookmarkUseCases {
+    public var action: ActionBookmarkUseCase = StubActionBookmarkUseCaseImpl()
+    public var save: SaveBookmarkUseCase = StubSaveBookmarkUseCaseImpl()
+    public var load: LoadBookmarkUseCase = StubLoadBookmarkUseCaseImpl()
+    
+    public init() { }
 }
 
-struct StubActionBookmarkUseCaseImpl: ActionBookmarkUseCase {
-    func execute(bookmark: [Cafeteria], cafeteria: Cafeteria) -> [Cafeteria] {
+public struct StubActionBookmarkUseCaseImpl: ActionBookmarkUseCase {
+    public func execute(bookmark: [Cafeteria], cafeteria: Cafeteria) -> [Cafeteria] {
         return []
     }
 }
 
-struct StubSaveBookmarkUseCaseImpl: SaveBookmarkUseCase {
-    func execute(bookmark: [Cafeteria]) {
+public struct StubSaveBookmarkUseCaseImpl: SaveBookmarkUseCase {
+    public func execute(bookmark: [Cafeteria]) {
         
     }
 }
 
-struct StubLoadBookmarkUseCaseImpl: LoadBookmarkUseCase {
-    func execute() -> [Cafeteria] {
+public struct StubLoadBookmarkUseCaseImpl: LoadBookmarkUseCase {
+    public func execute() -> [Cafeteria] {
         return []
     }
 }

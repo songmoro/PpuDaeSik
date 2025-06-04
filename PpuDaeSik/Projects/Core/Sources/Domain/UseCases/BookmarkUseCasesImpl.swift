@@ -9,16 +9,24 @@
 import SwiftUI
 
 // MARK: Provider
-struct BookmarkUseCasesImpl: BookmarkUseCases {
-    var action: ActionBookmarkUseCase
-    var save: SaveBookmarkUseCase
-    var load: LoadBookmarkUseCase
+public struct BookmarkUseCasesImpl: BookmarkUseCases {
+    public var action: ActionBookmarkUseCase
+    public var save: SaveBookmarkUseCase
+    public var load: LoadBookmarkUseCase
+    
+    public init(action: ActionBookmarkUseCase, save: SaveBookmarkUseCase, load: LoadBookmarkUseCase) {
+        self.action = action
+        self.save = save
+        self.load = load
+    }
 }
 //:-
 
 // MARK: Impl
-struct ActionBookmarkUseCaseImpl: ActionBookmarkUseCase {
-    func execute(bookmark: [Cafeteria], cafeteria: Cafeteria) -> [Cafeteria] {
+public struct ActionBookmarkUseCaseImpl: ActionBookmarkUseCase {
+    public init() { }
+    
+    public func execute(bookmark: [Cafeteria], cafeteria: Cafeteria) -> [Cafeteria] {
         var bookmark = bookmark
         
         if bookmark.contains(cafeteria) {
@@ -32,26 +40,26 @@ struct ActionBookmarkUseCaseImpl: ActionBookmarkUseCase {
     }
 }
 
-struct SaveBookmarkUseCaseImpl: SaveBookmarkUseCase {
+public struct SaveBookmarkUseCaseImpl: SaveBookmarkUseCase {
     private let bookmarkRepository: BookmarkRepository
     
-    init(bookmarkRepository: BookmarkRepository) {
+    public init(bookmarkRepository: BookmarkRepository) {
         self.bookmarkRepository = bookmarkRepository
     }
     
-    func execute(bookmark: [Cafeteria]) {
+    public func execute(bookmark: [Cafeteria]) {
         bookmarkRepository.save(value: bookmark.map { $0.name })
     }
 }
 
-struct LoadBookmarkUseCaseImpl: LoadBookmarkUseCase {
+public struct LoadBookmarkUseCaseImpl: LoadBookmarkUseCase {
     private let bookmarkRepository: BookmarkRepository
     
-    init(bookmarkRepository: BookmarkRepository) {
+    public init(bookmarkRepository: BookmarkRepository) {
         self.bookmarkRepository = bookmarkRepository
     }
     
-    func execute() -> [Cafeteria] {
+    public func execute() -> [Cafeteria] {
         let bookmark: [String]? = bookmarkRepository.load()
         
         if let bookmark = bookmark {

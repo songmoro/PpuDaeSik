@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Campus: String, CaseIterable, Codable {
+public enum Campus: String, CaseIterable, Codable {
     case 부산, 밀양, 양산
     
     init?(_ rawValue: String) {

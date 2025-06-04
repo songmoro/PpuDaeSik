@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum DayComponent: String, CaseIterable {
+public enum DayComponent: String, CaseIterable {
     case 일, 월, 화, 수, 목, 금, 토
 
     var calendarWeekdayIndex: Int {

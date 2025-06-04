@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-enum Category: String, CaseIterable, Hashable, Codable {
+public enum Category: String, CaseIterable, Hashable, Codable {
     case 조기, 조식, 중식, 석식
     
     init?(_ rawValue: String) {
@@ -34,7 +34,7 @@ enum Category: String, CaseIterable, Hashable, Codable {
 }
 
 extension Category: Comparable {
-    static func < (lhs: Category, rhs: Category) -> Bool {
+    public static func < (lhs: Category, rhs: Category) -> Bool {
         lhs.toInt() < rhs.toInt()
     }
     

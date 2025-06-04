@@ -8,7 +8,7 @@
 import Foundation
 
 /// 기숙사, 학생 식당 응답
-struct CafeteriaResponse: Hashable {
+public struct CafeteriaResponse: Hashable {
     internal init(
         cafeteria: Cafeteria,
         date: String,
@@ -55,7 +55,7 @@ extension CafeteriaResponse: Codable {
 }
 
 extension CafeteriaResponse: Equatable {
-    static func == (lhs: CafeteriaResponse, rhs: CafeteriaResponse) -> Bool {
+    public static func == (lhs: CafeteriaResponse, rhs: CafeteriaResponse) -> Bool {
         return lhs.cafeteria == rhs.cafeteria &&
         lhs.date == rhs.date &&
         lhs.category == rhs.category &&

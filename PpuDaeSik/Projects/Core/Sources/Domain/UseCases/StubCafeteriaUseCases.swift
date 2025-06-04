@@ -5,15 +5,19 @@
 //  Created by 송재훈 on 5/30/25.
 //
 
+import Shared
+
 // MARK: Stub
-struct StubCafeteriaUseCases: CafeteriaUseCases {
-    let cancleAll: CancleAllCafeteriaUseCase = StubCancleAllCafeteriaUseCaseImpl()
-    let fetch: FetchCafeteriaUseCase = StubFetchCafeteriaUseCaseImpl()
-    let checkDeployment: CheckDeploymentUseCase = StubCheckDeploymentUseCaseImpl()
-    let load: LoadCafeteriaUseCase = StubLoadCafeteriaUseCaseImpl()
-    let save: SaveCafeteriaUseCase = StubSaveCafeteriaUseCaseImpl()
-    let order: OrderCafeteriaUseCase = StubOrderCafeteriaUseCaseImpl()
-    let filter: FilterCafeteriaUseCase = StubFilterCafeteriaUseCaseImpl()
+public struct StubCafeteriaUseCases: CafeteriaUseCases {
+    public let cancleAll: CancleAllCafeteriaUseCase = StubCancleAllCafeteriaUseCaseImpl()
+    public let fetch: FetchCafeteriaUseCase = StubFetchCafeteriaUseCaseImpl()
+    public let checkDeployment: CheckDeploymentUseCase = StubCheckDeploymentUseCaseImpl()
+    public let load: LoadCafeteriaUseCase = StubLoadCafeteriaUseCaseImpl()
+    public let save: SaveCafeteriaUseCase = StubSaveCafeteriaUseCaseImpl()
+    public let order: OrderCafeteriaUseCase = StubOrderCafeteriaUseCaseImpl()
+    public let filter: FilterCafeteriaUseCase = StubFilterCafeteriaUseCaseImpl()
+    
+    public init() { }
 }
 
 struct StubCancleAllCafeteriaUseCaseImpl: CancleAllCafeteriaUseCase {

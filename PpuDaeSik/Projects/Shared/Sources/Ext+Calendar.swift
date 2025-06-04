@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Calendar {
+public extension Calendar {
     init() {
         self = Calendar.current
         self.locale = Locale(identifier: "ko_KR")

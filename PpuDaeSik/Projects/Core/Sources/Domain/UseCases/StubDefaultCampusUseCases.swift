@@ -6,9 +6,11 @@
 //
 
 // MARK: Stub
-struct StubDefaultCampusUseCases: DefaultCampusUseCases {
-    var save: SaveDefaultCampusUseCase = StubSaveDefaultCampusUseCaseImpl()
-    var load: LoadDefaultCampusUseCase = StubLoadDefaultCampusUseCaseImpl()
+public struct StubDefaultCampusUseCases: DefaultCampusUseCases {
+    public var save: SaveDefaultCampusUseCase = StubSaveDefaultCampusUseCaseImpl()
+    public var load: LoadDefaultCampusUseCase = StubLoadDefaultCampusUseCaseImpl()
+    
+    public init() { }
 }
 
 struct StubSaveDefaultCampusUseCaseImpl: SaveDefaultCampusUseCase {

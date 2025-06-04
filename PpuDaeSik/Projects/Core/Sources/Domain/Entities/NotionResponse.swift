@@ -7,26 +7,26 @@
 
 import SwiftUI
 
-protocol NotionResponseAble: Codable {
+public protocol NotionResponseAble: Codable {
     associatedtype resultType: Codable
     
     var results: [Result<resultType>] { get }
 }
 
-protocol CafeteriaAble {
+public protocol CafeteriaAble {
     func convertToCafeteria() -> [CafeteriaResponse]
 }
 
-struct DeploymentResponse: NotionResponseAble {
-    typealias resultType = DeploymentProperties
+public struct DeploymentResponse: NotionResponseAble {
+    public typealias resultType = DeploymentProperties
     
-    var results: [Result<resultType>]
+    public var results: [Result<resultType>]
 }
 
-struct RestaurantResponse: NotionResponseAble {
-    typealias resultType = RestaurantProperties
+public struct RestaurantResponse: NotionResponseAble {
+    public typealias resultType = RestaurantProperties
     
-    var results: [Result<resultType>]
+    public var results: [Result<resultType>]
     
     func convertToCafeteria() -> [CafeteriaResponse] {
         results.compactMap {
@@ -51,12 +51,12 @@ struct RestaurantResponse: NotionResponseAble {
     }
 }
 
-struct DormitoryResponse: NotionResponseAble, CafeteriaAble {
-    typealias resultType = DomitoryProperties
+public struct DormitoryResponse: NotionResponseAble, CafeteriaAble {
+    public typealias resultType = DomitoryProperties
     
-    var results: [Result<resultType>]
+    public var results: [Result<resultType>]
     
-    func convertToCafeteria() -> [CafeteriaResponse] {
+    public func convertToCafeteria() -> [CafeteriaResponse] {
         results.compactMap {
             convert(properties: $0.properties)
         }
@@ -75,20 +75,20 @@ struct DormitoryResponse: NotionResponseAble, CafeteriaAble {
     }
 }
 
-struct NotionResponse<T: Codable>: Codable {
+public struct NotionResponse<T: Codable>: Codable {
     let results: [Result<T>]
 }
 
-struct Result<T: Codable>: Codable {
+public struct Result<T: Codable>: Codable {
     let properties: T
 }
 
-struct DeploymentProperties: Codable {
+public struct DeploymentProperties: Codable {
     let DB: Title
     let Status: Property
 }
 
-struct RestaurantProperties: Codable {
+public struct RestaurantProperties: Codable {
     let restaurantCode, menuTitle, menuDate, menuType, menuContent: Property
     let breakfastTime, lunchTime, dinnerTime: Property?
     
@@ -104,16 +104,16 @@ struct RestaurantProperties: Codable {
     }
 }
 
-struct DomitoryProperties: Codable {
+public struct DomitoryProperties: Codable {
     let no: Title
     let mealDate, mealKindGcd, mealNm: Property
 }
 
-struct Title: Codable {
+public struct Title: Codable {
     let title: [RichText]
 }
 
-struct Property: Codable {
+public struct Property: Codable {
     let richText: [RichText]
     
     enum CodingKeys: String, CodingKey {
@@ -121,7 +121,7 @@ struct Property: Codable {
     }
 }
 
-struct RichText: Codable {
+public struct RichText: Codable {
     let plainText: String
     
     enum CodingKeys: String, CodingKey {

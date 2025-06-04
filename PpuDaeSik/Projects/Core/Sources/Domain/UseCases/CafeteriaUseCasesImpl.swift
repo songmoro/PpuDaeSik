@@ -6,40 +6,51 @@
 //
 
 import SwiftUI
+import Shared
 
 // MARK: Provider
-struct CafeteriaUseCasesImpl: CafeteriaUseCases {
-    let cancleAll: CancleAllCafeteriaUseCase
-    let fetch: FetchCafeteriaUseCase
-    let checkDeployment: CheckDeploymentUseCase
-    let load: LoadCafeteriaUseCase
-    let save: SaveCafeteriaUseCase
-    let order: OrderCafeteriaUseCase
-    let filter: FilterCafeteriaUseCase
+public struct CafeteriaUseCasesImpl: CafeteriaUseCases {
+    public let cancleAll: CancleAllCafeteriaUseCase
+    public let fetch: FetchCafeteriaUseCase
+    public let checkDeployment: CheckDeploymentUseCase
+    public let load: LoadCafeteriaUseCase
+    public let save: SaveCafeteriaUseCase
+    public let order: OrderCafeteriaUseCase
+    public let filter: FilterCafeteriaUseCase
+    
+    public init(cancleAll: CancleAllCafeteriaUseCase, fetch: FetchCafeteriaUseCase, checkDeployment: CheckDeploymentUseCase, load: LoadCafeteriaUseCase, save: SaveCafeteriaUseCase, order: OrderCafeteriaUseCase, filter: FilterCafeteriaUseCase) {
+        self.cancleAll = cancleAll
+        self.fetch = fetch
+        self.checkDeployment = checkDeployment
+        self.load = load
+        self.save = save
+        self.order = order
+        self.filter = filter
+    }
 }
 //:-
 
 // MARK: Impl
-struct CancleAllCafeteriaUseCaseImpl: CancleAllCafeteriaUseCase {
+public struct CancleAllCafeteriaUseCaseImpl: CancleAllCafeteriaUseCase {
     private let cafeteriaRepository: CafeteriaRepositoryProtocol
     
-    init(cafeteriaRepository: CafeteriaRepositoryProtocol) {
+    public init(cafeteriaRepository: CafeteriaRepositoryProtocol) {
         self.cafeteriaRepository = cafeteriaRepository
     }
     
-    func execute() {
+    public func execute() {
         cafeteriaRepository.cancleAllRequest()
     }
 }
 
-struct FetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
+public struct FetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
     private let cafeteriaRepository: CafeteriaRepositoryProtocol
     
-    init(cafeteriaRepository: CafeteriaRepositoryProtocol) {
+    public init(cafeteriaRepository: CafeteriaRepositoryProtocol) {
         self.cafeteriaRepository = cafeteriaRepository
     }
     
-    func execute(isUpdating: Bool, campus: Campus, for type: DeploymentType) async -> [CafeteriaResponse] {
+    public func execute(isUpdating: Bool, campus: Campus, for type: DeploymentType) async -> [CafeteriaResponse] {
         let response: [CafeteriaResponse]
         
         switch type {
@@ -55,14 +66,14 @@ struct FetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
     }
 }
 
-struct CheckDeploymentUseCaseImpl: CheckDeploymentUseCase {
+public struct CheckDeploymentUseCaseImpl: CheckDeploymentUseCase {
     private let cafeteriaRepository: CafeteriaRepositoryProtocol
     
-    init(cafeteriaRepository: CafeteriaRepositoryProtocol) {
+    public init(cafeteriaRepository: CafeteriaRepositoryProtocol) {
         self.cafeteriaRepository = cafeteriaRepository
     }
     
-    func execute(for type: DeploymentType) async -> Bool {
+    public func execute(for type: DeploymentType) async -> Bool {
         let response: NotionResponse<DeploymentProperties> = await cafeteriaRepository.fetch(NotionAPI.status(type: type))
         let deploymentStatus = Deployment(response: response.results.first!.properties)
         
@@ -70,14 +81,14 @@ struct CheckDeploymentUseCaseImpl: CheckDeploymentUseCase {
     }
 }
 
-struct LoadCafeteriaUseCaseImpl: LoadCafeteriaUseCase {
+public struct LoadCafeteriaUseCaseImpl: LoadCafeteriaUseCase {
     private let cacheRepositories: [Campus: CacheRepository]
     
-    init(cacheRepositories: [Campus : CacheRepository]) {
+    public init(cacheRepositories: [Campus : CacheRepository]) {
         self.cacheRepositories = cacheRepositories
     }
     
-    func execute(campus: Campus) -> [CafeteriaResponse]? {
+    public func execute(campus: Campus) -> [CafeteriaResponse]? {
         let cacheRepository = cacheRepositories[campus]
         guard let cacheRepository = cacheRepository else { return nil }
         
@@ -91,14 +102,14 @@ struct LoadCafeteriaUseCaseImpl: LoadCafeteriaUseCase {
     }
 }
 
-struct SaveCafeteriaUseCaseImpl: SaveCafeteriaUseCase {
+public struct SaveCafeteriaUseCaseImpl: SaveCafeteriaUseCase {
     private let cacheRepositories: [Campus: CacheRepository]
     
-    init(cacheRepositories: [Campus : CacheRepository]) {
+    public init(cacheRepositories: [Campus : CacheRepository]) {
         self.cacheRepositories = cacheRepositories
     }
     
-    func execute(campus: Campus, response: [CafeteriaResponse]) {
+    public func execute(campus: Campus, response: [CafeteriaResponse]) {
         let cacheRepository = cacheRepositories[campus]
         guard let cacheRepository = cacheRepository else { return }
         
@@ -109,8 +120,10 @@ struct SaveCafeteriaUseCaseImpl: SaveCafeteriaUseCase {
     }
 }
 
-struct OrderCafeteriaUseCaseImpl: OrderCafeteriaUseCase {
-    func execute(campus: Campus, bookmark: [Cafeteria]) -> [Cafeteria] {
+public struct OrderCafeteriaUseCaseImpl: OrderCafeteriaUseCase {
+    public init() { }
+    
+    public func execute(campus: Campus, bookmark: [Cafeteria]) -> [Cafeteria] {
         var newCafeteria: (bookmarked: [Cafeteria], unbookmarked: [Cafeteria]) = ([], [])
         
         Cafeteria.allCases.forEach {
@@ -124,8 +137,10 @@ struct OrderCafeteriaUseCaseImpl: OrderCafeteriaUseCase {
     }
 }
 
-struct FilterCafeteriaUseCaseImpl: FilterCafeteriaUseCase {
-    func execute(response: Loadable<[CafeteriaResponse]>, campus: Campus, weekComponent: WeekComponent) -> [CafeteriaResponse] {
+public struct FilterCafeteriaUseCaseImpl: FilterCafeteriaUseCase {
+    public init() { }
+    
+    public func execute(response: Loadable<[CafeteriaResponse]>, campus: Campus, weekComponent: WeekComponent) -> [CafeteriaResponse] {
         if case .loaded(let allResponse) = response {
             let newResponse: [CafeteriaResponse]
             

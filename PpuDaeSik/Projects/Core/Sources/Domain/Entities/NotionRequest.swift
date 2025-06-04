@@ -5,16 +5,16 @@
 //  Created by 송재훈 on 11/24/24.
 //
 
-protocol ConditionOperator: CustomStringConvertible { }
+public protocol ConditionOperator: CustomStringConvertible { }
 
-struct SingleFilter: CustomStringConvertible {
+public struct SingleFilter: CustomStringConvertible {
     let filter: any ConditionOperator
     
     init(_ filter: any ConditionOperator) {
         self.filter = filter
     }
     
-    var description: String {
+    public var description: String {
         """
         {
             "filter": \(filter)
@@ -23,10 +23,10 @@ struct SingleFilter: CustomStringConvertible {
     }
 }
 
-struct MultiFilter: CustomStringConvertible {
+public struct MultiFilter: CustomStringConvertible {
     let filter: [any ConditionOperator]
     
-    var description: String {
+    public var description: String {
         """
         {
             "filter": [ \(filter.map { $0.description + ",\n" }) ]
@@ -35,14 +35,14 @@ struct MultiFilter: CustomStringConvertible {
     }
 }
 
-struct And: ConditionOperator, CustomStringConvertible {
+public struct And: ConditionOperator, CustomStringConvertible {
     let and: [any ConditionOperator]
     
     init(_ and: [any ConditionOperator]) {
         self.and = and
     }
     
-    var description: String {
+    public var description: String {
         """
         {
             "and": \(and)
@@ -51,14 +51,14 @@ struct And: ConditionOperator, CustomStringConvertible {
     }
 }
 
-struct Or: ConditionOperator, CustomStringConvertible {
+public struct Or: ConditionOperator, CustomStringConvertible {
     let or: [any ConditionOperator]
     
     init(_ or: [any ConditionOperator]) {
         self.or = or
     }
     
-    var description: String {
+    public var description: String {
         """
         {
             "or": \(or)
@@ -67,7 +67,7 @@ struct Or: ConditionOperator, CustomStringConvertible {
     }
 }
 
-struct RichTextExpression: ConditionOperator, CustomStringConvertible {
+public struct RichTextExpression: ConditionOperator, CustomStringConvertible {
     let property: String
     let rich_text: RichText
     
@@ -80,7 +80,7 @@ struct RichTextExpression: ConditionOperator, CustomStringConvertible {
         let equals: String
     }
     
-    var description: String {
+    public var description: String {
         """
         {
             "property": "\(property)",

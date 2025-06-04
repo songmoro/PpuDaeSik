@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-extension Font {
+public extension Font {
     static func setFontSize() -> Double {
         return switch UIScreen.screenHeight {
         case 480.0:

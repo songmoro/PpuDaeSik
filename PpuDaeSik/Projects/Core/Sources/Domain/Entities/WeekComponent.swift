@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct WeekComponent {
+public struct WeekComponent {
     let dayComponent: DayComponent
     let date: Date
 
@@ -16,7 +16,7 @@ struct WeekComponent {
     }
 }
 
-extension WeekComponent {
+public extension WeekComponent {
     /// 오늘을 기준으로 현재 날짜의 WeekComponent를 반환
     static func getToday(using calendar: Calendar = .current, from date: Date = Date()) -> WeekComponent {
         let weekday = calendar.component(.weekday, from: date)
@@ -58,11 +58,11 @@ extension WeekComponent {
 }
 
 extension WeekComponent: Equatable, Comparable {
-    static func == (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
+    public static func == (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
         lhs.dayComponent.calendarWeekdayIndex == rhs.dayComponent.calendarWeekdayIndex
     }
     
-    static func < (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
+    public static func < (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
         lhs.dayComponent.calendarWeekdayIndex < rhs.dayComponent.calendarWeekdayIndex
     }
 }
