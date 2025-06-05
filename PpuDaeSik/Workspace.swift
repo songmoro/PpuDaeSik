@@ -5,9 +5,14 @@ let workspace = Workspace(
     projects: [
         "Projects/App",
         "Projects/Widget",
-        "Projects/Core",
-        "Projects/Features",
-        "Projects/WidgetFeatures",
+        "Projects/Domain/Entities",
+        "Projects/Domain/UseCases",
+        "Projects/Domain/UseCasesImpls",
+        "Projects/Presentation",
+        "Projects/Data/Repositories",
+        "Projects/Data/RepositoriesImpls",
+        "Projects/Data/DTOs",
+        "Projects/Data/Mappers",
         "Projects/Tests",
         "Projects/Shared"
     ]

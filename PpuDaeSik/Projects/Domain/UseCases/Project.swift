@@ -7,7 +7,7 @@ let project = Project(
             name: "UseCases",
             destinations: [.iPhone],
             product: .staticFramework,
-            bundleId: "com.moro.PpuDaeSik.UseCases",
+            bundleId: "com.moro.PpuDaeSik.Domain.UseCases",
             deploymentTargets: .iOS("17.0"),
             infoPlist: .default,
             sources: ["Sources/**"],

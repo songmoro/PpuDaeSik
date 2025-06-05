@@ -1,13 +1,13 @@
 import ProjectDescription
 
 let project = Project(
-    name: "RepositoriesImpls",
+    name: "Widget",
     targets: [
         .target(
-            name: "RepositoriesImpls",
+            name: "Widget",
             destinations: [.iPhone],
-            product: .staticFramework,
-            bundleId: "com.moro.PpuDaeSik.Data.RepositoriesImpls",
+            product: .appExtension,
+            bundleId: "com.moro.PpuDaeSik.PpuDaeSikWidget",
             deploymentTargets: .iOS("17.0"),
             infoPlist: .default,
             sources: ["Sources/**"],

@@ -7,7 +7,7 @@ let project = Project(
             name: "Repositories",
             destinations: [.iPhone],
             product: .staticFramework,
-            bundleId: "com.moro.PpuDaeSik.Repositories",
+            bundleId: "com.moro.PpuDaeSik.Data.Repositories",
             deploymentTargets: .iOS("17.0"),
             infoPlist: .default,
             sources: ["Sources/**"],

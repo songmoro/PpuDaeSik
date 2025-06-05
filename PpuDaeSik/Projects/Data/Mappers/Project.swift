@@ -7,7 +7,7 @@ let project = Project(
             name: "Mappers",
             destinations: [.iPhone],
             product: .staticFramework,
-            bundleId: "com.moro.PpuDaeSik.Mappers",
+            bundleId: "com.moro.PpuDaeSik.Data.Mappers",
             deploymentTargets: .iOS("17.0"),
             infoPlist: .default,
             sources: ["Sources/**"],
