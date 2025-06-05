@@ -13,8 +13,8 @@ let project = Project(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
-                .project(target: "Core", path: "../Core", status: .required, condition: .none),
-                .project(target: "Shared", path: "../Shared", status: .required, condition: .none)
+//                .project(target: "Core", path: "../Core", status: .required, condition: .none),
+//                .project(target: "Shared", path: "../Shared", status: .required, condition: .none)
             ]
         )
     ]
