@@ -5,6 +5,10 @@
 //  Created by 송재훈 on 5/30/25.
 //
 
+import Entities
+import UseCases
+import Repositories
+
 // MARK: Provider
 public struct DefaultCampusUseCasesImpl: DefaultCampusUseCases {
     public var save: SaveDefaultCampusUseCase
@@ -26,7 +30,7 @@ public struct SaveDefaultCampusUseCaseImpl: SaveDefaultCampusUseCase {
     }
     
     public func execute(defaultCampus: Campus) {
-        defaultCampusRepository.save(value: defaultCampus.rawValue)
+        defaultCampusRepository.saveDefaultCampus(defaultCampus: defaultCampus)
     }
 }
 
@@ -38,9 +42,17 @@ public struct LoadDefaultCampusUseCaseImpl: LoadDefaultCampusUseCase {
     }
     
     public func execute() -> Campus {
-        let rawValue: String? = defaultCampusRepository.load()
+//        let rawValue: String? = defaultCampusRepository.load()
+//        
+//        if let rawValue = rawValue, let defaultCampus = Campus(rawValue) {
+//            return defaultCampus
+//        }
+//        else {
+//            return .부산
+//        }
+        let defaultCampus = defaultCampusRepository.loadDefaultCampus()
         
-        if let rawValue = rawValue, let defaultCampus = Campus(rawValue) {
+        if let defaultCampus = defaultCampus {
             return defaultCampus
         }
         else {

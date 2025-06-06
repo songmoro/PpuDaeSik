@@ -11,7 +11,7 @@ public struct WeekComponent {
     let dayComponent: DayComponent
     let date: Date
 
-    var dayValue: Int {
+    public var dayValue: Int {
         Calendar.current.component(.day, from: date)
     }
 }
@@ -37,24 +37,6 @@ public extension WeekComponent {
             return WeekComponent(dayComponent: dayComponent, date: date)
         }
     }
-//    static func calculateCurrentWeek(using date: Date = Date()) -> [WeekComponent] {
-//        let calendar = Calendar()
-//        
-//        let weekArray = zip(DayComponent.allCases, calendar.interval()).reduce(into: [WeekComponent]()) { partialResult, weekday in
-//            guard let dateComponent = calendar.date(byAdding: .day, value: weekday.1, to: date) else { return }
-//            
-//            let day = weekday.0
-//            let dayComponent = calendar.component(.day, from: dateComponent)
-//            
-//            partialResult += [WeekComponent(dayComponent: day, dayValue: dayComponent)]
-//        }
-//        
-//        guard weekArray.count == 7, weekArray.map({ $0.dayComponent }) == DayComponent.allCases else {
-//            fatalError("Failed to calculate a full week.")
-//        }
-//        
-//        return weekArray
-//    }
 }
 
 extension WeekComponent: Equatable, Comparable {

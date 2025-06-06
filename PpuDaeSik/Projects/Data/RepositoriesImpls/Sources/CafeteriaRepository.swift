@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Repositories
 
 public protocol CafeteriaRepositoryProtocol: NotionRepository {
     func fetch<T: Codable>(_ api: NotionAPIAble) async -> T

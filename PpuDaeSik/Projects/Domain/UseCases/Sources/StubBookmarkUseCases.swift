@@ -5,6 +5,7 @@
 //  Created by 송재훈 on 5/30/25.
 //
 
+import Entities
 
 // MARK: Stub
 public struct StubBookmarkUseCases: BookmarkUseCases {

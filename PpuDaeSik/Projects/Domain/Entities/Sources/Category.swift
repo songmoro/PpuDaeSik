@@ -23,14 +23,14 @@ public enum Category: String, CaseIterable, Hashable, Codable {
         self = category
     }
     
-    func openingHours(by response: CafeteriaResponse) -> String {
-        switch self {
-        case .조기: ""
-        case .조식: response.breakfastTime ?? ""
-        case .중식: response.lunchTime ?? ""
-        case .석식: response.dinnerTime ?? ""
-        }
-    }
+//    func openingHours(by response: CafeteriaResponse) -> String {
+//        switch self {
+//        case .조기: ""
+//        case .조식: response.breakfastTime ?? ""
+//        case .중식: response.lunchTime ?? ""
+//        case .석식: response.dinnerTime ?? ""
+//        }
+//    }
 }
 
 extension Category: Comparable {

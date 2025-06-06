@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Entities
 
 // MARK: Provider
 public protocol BookmarkUseCases {

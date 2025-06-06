@@ -15,7 +15,7 @@ public enum Cafeteria: Codable, CaseIterable {
     case 진리관, 웅비관, 자유관, 비마관, 행림관
     
     /// 건물 구분 코드
-    var code: String {
+    public var code: String {
         switch self {
         case .금정회관교직원식당: "PG001"
         case .금정회관학생식당: "PG002"
@@ -33,7 +33,7 @@ public enum Cafeteria: Codable, CaseIterable {
     }
     
     /// 짧은 식당 이름
-    var shortName: String {
+    public var shortName: String {
         switch self {
         case .금정회관교직원식당: "금정 교직원"
         case .금정회관학생식당: "금정 학생"
@@ -51,7 +51,7 @@ public enum Cafeteria: Codable, CaseIterable {
     }
     
     /// 식당 이름
-    var name: String {
+    public var name: String {
         switch self {
         case .금정회관교직원식당: "금정회관 교직원 식당"
         case .금정회관학생식당: "금정회관 학생 식당"
@@ -69,7 +69,7 @@ public enum Cafeteria: Codable, CaseIterable {
     }
     
     /// 캠퍼스 위치
-    var campus: Campus {
+    public var campus: Campus {
         switch self {
         case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당, .진리관, .웅비관, .자유관:
             Campus.부산

@@ -12,7 +12,9 @@ let project = Project(
             infoPlist: .default,
             sources: ["Sources/**"],
             resources: ["Resources/**"],
-            dependencies: []
+            dependencies: [
+                .project(target: "Entities", path: "../Entities", status: .required, condition: .none)
+            ]
         )
     ]
 )

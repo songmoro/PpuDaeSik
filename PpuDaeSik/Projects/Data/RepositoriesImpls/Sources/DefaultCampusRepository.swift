@@ -5,6 +5,8 @@
 //  Created by 송재훈 on 11/22/24.
 //
 
+import Repositories
+
 public struct DefaultCampusRepository: UserDataRepository {
     public let key: String
     
