@@ -5,21 +5,20 @@
 //  Created by 송재훈 on 6/6/25.
 //
 
-public struct CafeteriaMenu: Equatable {
+public struct CafeteriaMenu: Equatable, Codable {
     public let cafeteria: Cafeteria
     public let date: String
     public let category: Category
-    public let meals: Meals
+    public let title: String?
+    public let content: String
+    public let time: String?
     
-    public struct Meals: Equatable {
-        public let breakfast: Meal?
-        public let lunch: Meal?
-        public let dinner: Meal?
-        
-        public struct Meal: Equatable {
-            public let title: String?
-            public let content: String
-            public let time: String?
-        }
+    public init(cafeteria: Cafeteria, date: String, category: Category, title: String? = nil, content: String, time: String? = nil) {
+        self.cafeteria = cafeteria
+        self.date = date
+        self.category = category
+        self.title = title
+        self.content = content
+        self.time = time
     }
 }

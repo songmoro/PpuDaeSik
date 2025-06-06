@@ -1,8 +1,8 @@
 //
 //  NotionAPIError.swift
-//  PpuDaeSik
+//  DTOs
 //
-//  Created by 송재훈 on 11/24/24.
+//  Created by 송재훈 on 6/6/25.
 //
 
 public enum NotionAPIError: Error {

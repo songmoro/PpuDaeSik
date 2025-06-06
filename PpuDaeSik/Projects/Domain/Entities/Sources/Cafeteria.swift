@@ -81,7 +81,7 @@ public enum Cafeteria: Codable, CaseIterable {
     }
     
     /// 옵셔널 초기화
-    init?(_ code: String) {
+    public init?(_ code: String) {
         let cafeteria: Cafeteria? = switch code {
         case "PG001": .금정회관교직원식당
         case "PG002": .금정회관학생식당

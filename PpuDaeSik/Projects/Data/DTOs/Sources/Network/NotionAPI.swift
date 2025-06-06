@@ -1,27 +1,13 @@
 //
 //  NotionAPI.swift
-//  PpuDaeSik
+//  DTOs
 //
-//  Created by 송재훈 on 11/22/24.
+//  Created by 송재훈 on 6/6/25.
 //
 
-import SwiftUI
+import Foundation
+import Entities
 import Shared
-
-public protocol NotionAPIAble {
-    var id: String { get }
-    var path: String { get }
-    var baseUrl: String { get }
-    var url: URL { get }
-    var method: String { get }
-    var headers: [String: String]? { get }
-    func request() -> URLRequest
-}
-
-public enum DeploymentType {
-    case restaurant
-    case dormitory
-}
 
 public enum NotionAPI: NotionAPIAble {
     case status(type: DeploymentType)

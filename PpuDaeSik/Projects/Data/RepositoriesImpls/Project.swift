@@ -13,7 +13,11 @@ let project = Project(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
-                .project(target: "Repositories", path: "../../Domain/Repositories", status: .required, condition: .none)
+                .project(target: "Entities", path: "../../Domain/Entities", status: .required, condition: .none),
+                .project(target: "Repositories", path: "../../Domain/Repositories", status: .required, condition: .none),
+                .project(target: "DTOs", path: "../DTOs", status: .required, condition: .none),
+                .project(target: "Mappers", path: "../Mappers", status: .required, condition: .none),
+                .project(target: "Shared", path: "../../Shared", status: .required, condition: .none)
             ]
         )
     ]
