@@ -18,6 +18,16 @@ public struct BookmarkRepositoryImpl: BookmarkRepository {
     }
     
     public func loadBookmarks() -> [Cafeteria]? {
-        return UserDefaults.standard.value(forKey: key) as? [Cafeteria]
+        let bookmark = UserDefaults.standard.value(forKey: key) as? [String]
+        
+        let cafeteria: [Cafeteria]?
+        if let bookmark = bookmark {
+            cafeteria = Cafeteria.allCases.filter({ bookmark.contains($0.name) })
+        }
+        else {
+            cafeteria = nil
+        }
+        
+        return cafeteria
     }
 }
