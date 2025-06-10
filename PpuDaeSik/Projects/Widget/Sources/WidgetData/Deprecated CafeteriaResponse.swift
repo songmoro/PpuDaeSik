@@ -1,0 +1,38 @@
+////
+////  CafeteriaResponse.swift
+////  PpuDaeSikWidgetExtension
+////
+////  Created by 송재훈 on 11/25/24.
+////
+//
+//import Foundation
+//import Entities
+//
+///// 기숙사, 학생 식당 응답
+//struct CafeteriaResponse: Hashable, CustomStringConvertible {
+//    internal init(cafeteria: Cafeteria, date: String, category: Entities.Category, title: String? = nil, content: String) {
+//        self.cafeteria = cafeteria
+//        self.date = date
+//        self.category = category
+//        self.title = title
+//        self.content = content
+//    }
+//    
+//    var uuid = UUID()
+//    /// 기숙사, 학생 식당 기본 정보
+//    let cafeteria: Cafeteria
+//    /// 식단 날짜
+//    let date: String
+//    /// 식단 타입(조기, 조식, 중식, 석식)
+//    /// 기숙사: 조기, 조식, 중식, 석식
+//    /// 학생 식당: 조식, 중식, 석식
+//    let category: Entities.Category
+//    /// 학생 식당 식단 명
+//    let title: String?
+//    /// 식단
+//    let content: String
+//    
+//    var description: String {
+//        "cafeteria: \(cafeteria), date: \(date), category: \(category), \(title != nil ? "title: \(title!), " : "") content: \(content)"
+//    }
+//}

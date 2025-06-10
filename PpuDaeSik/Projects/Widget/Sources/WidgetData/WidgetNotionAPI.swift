@@ -1,28 +1,15 @@
 //
-//  NotionAPIAble.swift
-//  PpuDaeSikWidgetExtension
+//  WidgetNotionAPI.swift
+//  Widget
 //
-//  Created by 송재훈 on 11/25/24.
+//  Created by 송재훈 on 6/10/25.
 //
 
-import SwiftUI
+import Foundation
+import Entities
+import DTOs
 
-protocol NotionAPIAble {
-    var id: String { get }
-    var path: String { get }
-    var baseUrl: String { get }
-    var url: URL { get }
-    var method: String { get }
-    var headers: [String: String]? { get }
-    func request() -> URLRequest
-}
-
-enum DeploymentType {
-    case restaurant
-    case dormitory
-}
-
-enum NotionAPI: NotionAPIAble {
+enum WidgetNotionAPI: NotionAPIAble {
     case status(type: DeploymentType)
     case restaurant(cafeteria: Cafeteria, category: String, isUpdating: Bool)
     case dormitory(cafeteria: Cafeteria, category: String, isUpdating: Bool)

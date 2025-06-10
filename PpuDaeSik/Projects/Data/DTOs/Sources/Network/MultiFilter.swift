@@ -6,7 +6,11 @@
 //
 
 public struct MultiFilter: CustomStringConvertible {
-    let filter: [any ConditionOperator]
+    public let filter: [any ConditionOperator]
+    
+    public init(filter: [any ConditionOperator]) {
+        self.filter = filter
+    }
     
     public var description: String {
         """

@@ -1,35 +1,48 @@
 import ProjectDescription
 
 let infoPlist: [String: Plist.Value] = [
+    "CFBundleDisplayName": .string("뿌대식"),
     "UISupportedInterfaceOrientations": .array([
         .string("UIInterfaceOrientationPortrait")
     ]),
     "UILaunchScreen": .dictionary([
         "UILaunchScreen": .dictionary([:])
-    ])  
-//    "UIAppFonts": .array([
-//        .string("Pretendard-Regular.otf")
-//    ])
-//    "Bundle name": "$(PRODUCT_NAME)",
-//    "Bundle identifier": "$(PRODUCT_BUNDLE_IDENTIFIER)",
-//    "InfoDictionary version": "6.0",
-//    "App Category": "Food & Drink",
-//    "Bundle version": "$(CURRENT_PROJECT_VERSION)",
-//    "Application supports indirect input events": .boolean(true),
-//    "Executable file": "$(EXECUTABLE_NAME)",
-//    "Application requires iPhone environment": .boolean(true),
-//    "Application Scene Manifest": .dictionary([
-//        "Enable Multiple Windows": .boolean(true),
-//        "Scene Configuration": .dictionary([:])
-//    ]),
-//    "Supported interface orientations": .array(["Portrait (bottom home button)"]),
-//    "Bundle display name": .string("뿌대식"),
-//    "Fonts provided by application": "Pretendard-Regular.otf",
-//    "Bundle OS Type code": "$(PRODUCT_BUNDLE_PACKAGE_TYPE)",
-//    "Launch Screen": .dictionary(["UILaunchScreen": .dictionary([:])]),
-//    "Default localization": "$(DEVELOPMENT_LANGUAGE)",
-//    "Bundle version string (short)": "$(MARKETING_VERSION)"
+    ])
 ]
+
+let widgetTarget: Target = .target(
+    name: "Widget",
+    destinations: [.iPhone],
+    product: .appExtension,
+    bundleId: "com.moro.PpuDaeSik.PpuDaeSikWidget",
+    deploymentTargets: .iOS("17.0"),
+    infoPlist: .extendingDefault(with: [
+        "CFBundleDisplayName": "$(PRODUCT_NAME)",
+        "NSExtension": .dictionary([
+            "NSExtensionPointIdentifier": .string("com.apple.widgetkit-extension")
+        ])
+    ]),
+    sources: ["../Widget/Sources/**"],
+    resources: ["../Widget/Resources/**"],
+    dependencies: [
+        .project(target: "Entities", path: "../Domain/Entities", status: .required, condition: .none),
+        .project(target: "DTOs", path: "../Data/DTOs", status: .required, condition: .none),
+        .project(target: "Mappers", path: "../Data/Mappers", status: .required, condition: .none),
+        .project(target: "Shared", path: "../Shared", status: .required, condition: .none)
+    ],
+    settings: .settings(
+        base: [
+            "DEVELOPMENT_TEAM": "VA3J8597P8",
+            "INFOPLIST_KEY_CFBundleDisplayName": "PpuDaeSikWidget",
+            "INFOPLIST_KEY_NSHumanReadableCopyright": "",
+            "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
+            "MARKETING_VERSION": "1.8",
+            "PRODUCT_BUNDLE_IDENTIFIER": "com.moro.PpuDaeSik.PpuDaeSikWidget",
+            "PRODUCT_NAME": "$(TARGET_NAME)"
+        ],
+        defaultSettings: .recommended
+    )
+)
 
 let project = Project(
     name: "App",
@@ -44,6 +57,7 @@ let project = Project(
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: [
+                .target(widgetTarget),
                 .project(target: "UseCasesImpls", path: "../Domain/UseCasesImpls", status: .required, condition: .none),
                 .project(target: "Presentation", path: "../Presentation", status: .required, condition: .none),
                 .project(target: "RepositoriesImpls", path: "../Data/RepositoriesImpls", status: .required, condition: .none),
@@ -76,6 +90,7 @@ let project = Project(
                 ],
                 defaultSettings: .recommended
             )
-        )
+        ),
+        widgetTarget
     ]
 )

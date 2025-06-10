@@ -6,9 +6,9 @@
 //
 
 public struct SingleFilter: CustomStringConvertible {
-    let filter: any ConditionOperator
+    public let filter: any ConditionOperator
     
-    init(_ filter: any ConditionOperator) {
+    public init(_ filter: any ConditionOperator) {
         self.filter = filter
     }
     

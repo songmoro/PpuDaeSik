@@ -13,9 +13,16 @@ struct MainViewHeader: View {
     
     var body: some View {
         HStack {
-            Image(viewModel.settingSheet ? "LogoEye" : "Logo")
-                .resizable()
-                .frame(width: UIScreen.getWidth(50), height: UIScreen.getWidth(50))
+            if viewModel.settingSheet {
+                SharedAsset.logoEye.swiftUIImage
+                    .resizable()
+                    .frame(width: UIScreen.getWidth(50), height: UIScreen.getWidth(50))
+            }
+            else {
+                SharedAsset.logo.swiftUIImage
+                    .resizable()
+                    .frame(width: UIScreen.getWidth(50), height: UIScreen.getWidth(50))
+            }
             
             Text("뿌대식")
                 .font(.largeTitle())

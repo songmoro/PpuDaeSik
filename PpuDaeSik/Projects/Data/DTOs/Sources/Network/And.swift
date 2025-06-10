@@ -6,9 +6,9 @@
 //
 
 public struct And: ConditionOperator, CustomStringConvertible {
-    let and: [any ConditionOperator]
+    public let and: [any ConditionOperator]
     
-    init(_ and: [any ConditionOperator]) {
+    public init(_ and: [any ConditionOperator]) {
         self.and = and
     }
     

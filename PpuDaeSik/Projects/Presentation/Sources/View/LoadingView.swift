@@ -16,10 +16,19 @@ struct LoadingView: View {
             Spacer()
             
             ZStack {
-                Image("Logo")
+                //                Image("Logo")
+                SharedAsset.logo.swiftUIImage
                     .resizable()
-                Image(isAnimate ? "LogoEye" : "LogoClosedEye")
-                    .resizable()
+                
+                //                Image(isAnimate ? "LogoEye" : "LogoClosedEye")
+                if isAnimate {
+                    SharedAsset.logoEye.swiftUIImage
+                        .resizable()
+                }
+                else {
+                    SharedAsset.logoClosedEye.swiftUIImage
+                        .resizable()
+                }
             }
             .frame(width: 50, height: 50)
             .animation(.easeOut(duration: 0.6).repeatForever(autoreverses: false), value: isAnimate)

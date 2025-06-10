@@ -7,12 +7,14 @@
 
 import WidgetKit
 import SwiftUI
+import Shared
 
 struct PpuDaeSikWidget: Widget {
     let kind: String = "PpuDaeSikWidget"
+    let provider: Provider = Provider(widgetRepository: WidgetRepositoryImpl(session: URLSession.shared))
     
     var body: some WidgetConfiguration {
-        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: Provider()) { entry in
+        IntentConfiguration(kind: kind, intent: ConfigurationIntent.self, provider: provider) { entry in
             PpuDaeSikWidgetEntryView(entry: entry)
                 .containerBackground(for: .widget) {
                     Color.gray100.ignoresSafeArea()
@@ -40,8 +42,8 @@ struct PpuDaeSikShortCutWidget: Widget {
     }
 }
 
-//#Preview(as: .systemSmall) {
-//    PpuDaeSikWidget()
-//} timeline: {
-//    SimpleEntry(configuration: ConfigurationIntent(), date: Date(), name: "금정회관", category: "중식", meal: "탄탄면\n마카로니콘샐러드\n단무지")
-//}
+#Preview(as: .systemSmall) {
+    PpuDaeSikWidget()
+} timeline: {
+    SimpleEntry(configuration: ConfigurationIntent(), date: Date(), name: "금정회관", category: "중식", meal: "탄탄면\n마카로니콘샐러드\n단무지")
+}
