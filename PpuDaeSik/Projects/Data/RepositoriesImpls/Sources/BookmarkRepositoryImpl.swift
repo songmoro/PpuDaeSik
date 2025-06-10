@@ -9,14 +9,6 @@ import Foundation
 import Entities
 import Repositories
 
-//public struct BookmarkRepository: UserDataRepository {
-//    public let key: String
-//    
-//    public init(key: String) {
-//        self.key = key
-//    }
-//}
-
 public struct BookmarkRepositoryImpl: BookmarkRepository {
     private let key: String = "bookmark"
     public init() {}

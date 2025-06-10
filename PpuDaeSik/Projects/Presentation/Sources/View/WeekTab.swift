@@ -53,5 +53,3 @@ struct WeekTab: View {
         .padding(.bottom, UIScreen.getHeight(2))
     }
 }
-
-

@@ -50,5 +50,3 @@ struct CampusTab: View {
         .padding(.bottom, UIScreen.getHeight(8))
     }
 }
-
-

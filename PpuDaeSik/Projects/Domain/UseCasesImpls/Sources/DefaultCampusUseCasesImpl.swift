@@ -42,14 +42,6 @@ public struct LoadDefaultCampusUseCaseImpl: LoadDefaultCampusUseCase {
     }
     
     public func execute() -> Campus {
-//        let rawValue: String? = defaultCampusRepository.load()
-//        
-//        if let rawValue = rawValue, let defaultCampus = Campus(rawValue) {
-//            return defaultCampus
-//        }
-//        else {
-//            return .부산
-//        }
         let defaultCampus = defaultCampusRepository.loadDefaultCampus()
         
         if let defaultCampus = defaultCampus {

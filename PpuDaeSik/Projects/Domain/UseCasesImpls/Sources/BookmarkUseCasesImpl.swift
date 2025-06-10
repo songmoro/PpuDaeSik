@@ -43,22 +43,13 @@ public struct ActionBookmarkUseCaseImpl: ActionBookmarkUseCase {
 }
 
 public struct SaveBookmarkUseCaseImpl: SaveBookmarkUseCase {
-//    private let bookmarkRepository: BookmarkRepository
     private let bookmarkRepository: BookmarkRepository
-    
-//    public init(bookmarkRepository: BookmarkRepository) {
-//        self.bookmarkRepository = bookmarkRepository
-//    }
     
     public init(bookmarkRepository: BookmarkRepository) {
         self.bookmarkRepository = bookmarkRepository
     }
     
-//    public func execute(bookmark: [Cafeteria]) {
-//        bookmarkRepository.save(value: bookmark.map { $0.name })
-//    }
     public func execute(bookmark: [Cafeteria]) {
-//        saveRepository.execute(value: bookmark.map { $0.name })
         bookmarkRepository.saveBookmarks(bookmark)
     }
 }
@@ -71,7 +62,6 @@ public struct LoadBookmarkUseCaseImpl: LoadBookmarkUseCase {
     }
     
     public func execute() -> [Cafeteria] {
-//        let bookmark: [String]? = bookmarkRepository.load()
         let bookmark: [Cafeteria]? = bookmarkRepository.loadBookmarks()
         
         if let bookmark = bookmark {

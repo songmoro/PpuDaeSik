@@ -9,14 +9,6 @@ import Foundation
 import Entities
 import Repositories
 
-//public struct DefaultCampusRepository: UserDataRepository {
-//    public let key: String
-//    
-//    public init(key: String) {
-//        self.key = key
-//    }
-//}
-
 public struct DefaultCampusRepositoryImpl: DefaultCampusRepository {
     private let key: String = "defaultCampus"
     public init() {}
