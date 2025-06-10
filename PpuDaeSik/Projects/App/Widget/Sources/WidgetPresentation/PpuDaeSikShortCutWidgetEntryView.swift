@@ -15,14 +15,9 @@ struct PpuDaeSikShortCutWidgetEntryView : View {
         ZStack {
             Color.blue100.ignoresSafeArea()
             
-            //            Image("Logo")
             SharedAsset.logo.swiftUIImage
                 .resizable()
                 .frame(width: 60, height: 60)
         }
     }
-}
-
-#Preview {
-    PpuDaeSikShortCutWidgetEntryView(entry: .init(date: Date()))
 }
