@@ -1,5 +1,9 @@
 import ProjectDescription
 
+let appVersion = "1.8"
+let buildNumber = "6"
+let deploymentTargets = "17.0"
+
 let widgetInfoPlist: [String: Plist.Value] = [
     "CFBundleDisplayName": "$(PRODUCT_NAME)",
     "NSExtension": .dictionary([
@@ -11,8 +15,9 @@ let widgetSettingsDictionary: SettingsDictionary = [
     "DEVELOPMENT_TEAM": "VA3J8597P8",
     "INFOPLIST_KEY_CFBundleDisplayName": "PpuDaeSikWidget",
     "INFOPLIST_KEY_NSHumanReadableCopyright": "",
-    "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
-    "MARKETING_VERSION": "1.8",
+    "MARKETING_VERSION": .string(appVersion),
+    "CURRENT_PROJECT_VERSION": .string(buildNumber),
+    "IPHONEOS_DEPLOYMENT_TARGET": .string(deploymentTargets),
     "PRODUCT_BUNDLE_IDENTIFIER": "com.moro.PpuDaeSik.PpuDaeSikWidget",
     "PRODUCT_NAME": "$(TARGET_NAME)"
 ]
@@ -22,7 +27,7 @@ let widgetTarget: Target = .target(
     destinations: [.iPhone],
     product: .appExtension,
     bundleId: "com.moro.PpuDaeSik.PpuDaeSikWidget",
-    deploymentTargets: .iOS("17.0"),
+    deploymentTargets: .iOS(deploymentTargets),
     infoPlist: .extendingDefault(with: widgetInfoPlist),
     sources: ["../App/Widget/Sources/**"],
     resources: ["../App/Widget/Resources/**"],
@@ -53,7 +58,6 @@ let appSettingsDictionary: SettingsDictionary = [
     "ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME": "AccentColor",
     "ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS": "NO",
     "CODE_SIGN_STYLE": "Automatic",
-    "CURRENT_PROJECT_VERSION": "1",
     "DEVELOPMENT_TEAM": "VA3J8597P8",
     "ENABLE_PREVIEWS": "YES",
     "INFOPLIST_KEY_CFBundleDisplayName": "뿌대식",
@@ -62,8 +66,9 @@ let appSettingsDictionary: SettingsDictionary = [
     "INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents": "YES",
     "INFOPLIST_KEY_UILaunchScreen_Generation": "YES",
     "INFOPLIST_KEY_UISupportedInterfaceOrientations": "UIInterfaceOrientationPortrait",
-    "IPHONEOS_DEPLOYMENT_TARGET": "17.0",
-    "MARKETING_VERSION": "1.8",
+    "MARKETING_VERSION": .string(appVersion),
+    "CURRENT_PROJECT_VERSION": .string(buildNumber),
+    "IPHONEOS_DEPLOYMENT_TARGET": .string(deploymentTargets),
     "PRODUCT_BUNDLE_IDENTIFIER": "com.moro.PpuDaeSik",
     "SUPPORTED_PLATFORMS": "iphoneos iphonesimulator",
     "SUPPORTS_MACCATALYST": "NO",
@@ -78,7 +83,7 @@ let appTarget: Target = .target(
     destinations: [.iPhone],
     product: .app,
     bundleId: "com.moro.PpuDaeSik",
-    deploymentTargets: .iOS("17.0"),
+    deploymentTargets: .iOS(deploymentTargets),
     infoPlist: .extendingDefault(with: appInfoPlist),
     sources: ["Sources/**"],
     resources: ["Resources/**"],
