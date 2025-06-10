@@ -11,7 +11,7 @@ let project = Project(
             deploymentTargets: .iOS("17.0"),
             infoPlist: .default,
             sources: ["Sources/**"],
-            resources: ["Resources/**"],
+//            resources: ["Resources/**"],
             dependencies: [
                 .project(target: "UseCases", path: "../UseCases", status: .required, condition: .none),
                 .project(target: "Repositories", path: "../Repositories", status: .required, condition: .none)

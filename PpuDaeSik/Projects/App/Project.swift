@@ -19,7 +19,7 @@ let widgetSettingsDictionary: SettingsDictionary = [
     "CURRENT_PROJECT_VERSION": .string(buildNumber),
     "IPHONEOS_DEPLOYMENT_TARGET": .string(deploymentTargets),
     "PRODUCT_BUNDLE_IDENTIFIER": "com.moro.PpuDaeSik.PpuDaeSikWidget",
-    "PRODUCT_NAME": "$(TARGET_NAME)"
+    "PRODUCT_NAME": "뿌대식"
 ]
 
 let widgetTarget: Target = .target(
