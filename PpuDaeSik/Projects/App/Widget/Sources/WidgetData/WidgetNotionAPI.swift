@@ -24,30 +24,6 @@ enum WidgetNotionAPI: NotionAPIAble {
         }
     }
     
-    var path: String {
-        "/databases/" + self.id + "/query"
-    }
-    
-    var baseUrl: String {
-        "https://api.notion.com/v1"
-    }
-    
-    var url: URL {
-        URL(string: baseUrl + path)!
-    }
-    
-    var method: String {
-        "POST"
-    }
-    
-    var headers: [String: String]? {
-        [
-            "Content-Type": "application/json",
-            "Notion-Version": "2022-02-22",
-            "Authorization": "Bearer secret_pjqPKFig0CIkvnm5BwFC8NWueGnV7MuXOYM0qXJeOzr"
-        ]
-    }
-    
     var body: Data? {
         switch self {
         case .status(let type):
