@@ -5,7 +5,10 @@
 //  Created by 송재훈 on 6/6/25.
 //
 
-public struct CafeteriaMenu: Equatable, Codable {
+import Foundation
+
+public struct CafeteriaMenu: Hashable, Equatable, Codable {
+    public var uuid = UUID()
     public let cafeteria: Cafeteria
     public let date: String
     public let category: Category

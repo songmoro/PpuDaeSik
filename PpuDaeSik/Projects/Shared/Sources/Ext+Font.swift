@@ -30,22 +30,27 @@ public extension Font {
     }
     
     static func largeTitle() -> Font {
-        Font.custom("Pretendard-Regular", size: 26 * setFontSize())
+//        Font.custom("Pretendard-Regular", size: 26 * setFontSize())
+        SharedFontFamily.Pretendard.regular.swiftUIFont(size: 26 * setFontSize())
     }
     
     static func title() -> Font {
-        Font.custom("Pretendard-Regular", size: 22 * setFontSize())
+//        Font.custom("Pretendard-Regular", size: 22 * setFontSize())
+        SharedFontFamily.Pretendard.regular.swiftUIFont(size: 22 * setFontSize())
     }
     
     static func headline() -> Font {
-        Font.custom("Pretendard-Regular", size: 20 * setFontSize())
+//        Font.custom("Pretendard-Regular", size: 20 * setFontSize())
+        SharedFontFamily.Pretendard.regular.swiftUIFont(size: 20 * setFontSize())
     }
     
     static func subhead() -> Font {
-        Font.custom("Pretendard-Regular", size: 19 * setFontSize())
+//        Font.custom("Pretendard-Regular", size: 19 * setFontSize())
+        SharedFontFamily.Pretendard.regular.swiftUIFont(size: 19 * setFontSize())
     }
     
     static func body() -> Font {
-        Font.custom("Pretendard-Regular", size: 17 * setFontSize())
+//        Font.custom("Pretendard-Regular", size: 17 * setFontSize())
+        SharedFontFamily.Pretendard.regular.swiftUIFont(size: 17 * setFontSize())
     }
 }

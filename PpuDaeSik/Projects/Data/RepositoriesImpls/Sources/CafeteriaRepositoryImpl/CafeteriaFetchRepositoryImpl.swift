@@ -1,4 +1,5 @@
-//
+
+ //
 //  CafeteriaFetchRepositoryImpl.swift
 //  RepositoriesImpls
 //
@@ -13,9 +14,11 @@ import Mappers
 import Shared
 
 public struct CafeteriaFetchRepositoryImpl: CafeteriaFetchRepository {
-    private let session: URLSession = URLSession.shared
+    private let session: URLSession
     private let mapper = Mapper.shared
-    public init() {}
+    public init(session: URLSession) {
+        self.session = session
+    }
     
     public func fetch(campus: Campus) async -> [CafeteriaMenu] {
         self.cancleAllRequest()
@@ -36,7 +39,7 @@ public struct CafeteriaFetchRepositoryImpl: CafeteriaFetchRepository {
         
         let (restaurantResponses, dormitoryResponses): (RestaurantResponse, DormitoryResponse) = await (
             fetch(NotionAPI.restaurant(campus: campus, isUpdating: restaurantDeploymentStatus.isUpdating)),
-            fetch(NotionAPI.restaurant(campus: campus, isUpdating: dormitoryDeploymentStatus.isUpdating))
+            fetch(NotionAPI.dormitory(campus: campus, isUpdating: dormitoryDeploymentStatus.isUpdating))
         )
         let cafeteriaMenus: [CafeteriaMenu] = mapper.mapRestaurantResponse(response: restaurantResponses.results) + mapper.mapDormitoryResponse(response: dormitoryResponses.results)
         
@@ -60,15 +63,23 @@ public struct CafeteriaFetchRepositoryImpl: CafeteriaFetchRepository {
                 throw NotionAPIError.from(statusCode: httpResponse.statusCode, errorCode: errorCode, message: errorMessage)
             }
             
-            return try! decoder.decode(T.self, from: data)
+            do {
+                let decoded = try decoder.decode(T.self, from: data)
+                return decoded
+            } catch {
+                print("Decoding Error \(T.self) 디코딩 실패")
+                print("에러: \(error)")
+                print("원본 JSON:")
+                print(String(data: data, encoding: .utf8) ?? "디코딩 불가능한 데이터")
+                throw error
+            }
         }
-        catch(let error) {
-            if error is NotionAPIError {
-                fatalError((error as! NotionAPIError).localizedDescription)
-            }
-            else {
-                fatalError(error.localizedDescription)
-            }
+        catch let error as NotionAPIError {
+            fatalError(error.localizedDescription)
+        }
+        catch {
+            print("기타 네트워크 에러: \(error.localizedDescription)")
+            fatalError(error.localizedDescription)
         }
     }
     

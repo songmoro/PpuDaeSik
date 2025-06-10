@@ -7,7 +7,10 @@
 
 import Combine
 import Foundation
-import Core
+//import Entities
+import RepositoriesImpls
+import UseCasesImpls
+import Presentation
 import Shared
 
 struct AppEnvironment {
@@ -26,40 +29,42 @@ extension AppEnvironment {
     }
     
     private static func configuredRepositories(session: URLSession) -> DIContainer.Repositories {
-        let cafeteriaRepository = CafeteriaRepository(session: session)
-        let bookmarkRepository = BookmarkRepository(key: "bookmark")
-        let defaultCampusRepository = DefaultCampusRepository(key: "defaultCampus")
-        let cacheRepositories = [Campus.부산: CacheRepository(key: "pusanCachedResponse"), Campus.밀양: CacheRepository(key: "milyangCachedResponse"), Campus.양산: CacheRepository(key: "yangsanCachedResponse")]
+        let cafeteriaFetchRepository = CafeteriaFetchRepositoryImpl(session: session)
+        let cafeteriaCacheRepository = CafeteriaCacheRepositoryImpl()
+        let bookmarkRepository = BookmarkRepositoryImpl()
+        let defaultCampusRepository = DefaultCampusRepositoryImpl()
         
         return .init(
-            cafeteriaRepository: cafeteriaRepository,
+            cafeteriaFetchRepository: cafeteriaFetchRepository,
+            cafeteriaCacheRepository: cafeteriaCacheRepository,
             bookmarkRepository: bookmarkRepository,
-            defaultCampusRepository: defaultCampusRepository,
-            cacheRepositories: cacheRepositories
+            defaultCampusRepository: defaultCampusRepository
         )
     }
     
     private static func configuredUseCases(appState: Store<AppState>, repositories: DIContainer.Repositories) -> DIContainer.UseCases {
-        let cafeteriaUseCases = CafeteriaUseCasesImpl(
-            cancleAll: CancleAllCafeteriaUseCaseImpl(cafeteriaRepository: repositories.cafeteriaRepository),
-            fetch: FetchCafeteriaUseCaseImpl(cafeteriaRepository: repositories.cafeteriaRepository),
-            checkDeployment: CheckDeploymentUseCaseImpl(cafeteriaRepository: repositories.cafeteriaRepository),
-            load: LoadCafeteriaUseCaseImpl(cacheRepositories: repositories.cacheRepositories),
-            save: SaveCafeteriaUseCaseImpl(cacheRepositories: repositories.cacheRepositories),
+        let cafeteria = CafeteriaUseCasesImpl(
+            fetch: FetchCafeteriaUseCaseImpl(cafeteriaRepository: repositories.cafeteriaFetchRepository),
+            save: SaveCafeteriaUseCaseImpl(cafeteriaRepository: repositories.cafeteriaCacheRepository),
+            load: LoadCafeteriaUseCaseImpl(cafeteriaRepository: repositories.cafeteriaCacheRepository),
             order: OrderCafeteriaUseCaseImpl(),
             filter: FilterCafeteriaUseCaseImpl()
         )
-        let bookmarkUseCases = BookmarkUseCasesImpl(
+        let bookmark = BookmarkUseCasesImpl(
             action: ActionBookmarkUseCaseImpl(),
             save: SaveBookmarkUseCaseImpl(bookmarkRepository: repositories.bookmarkRepository),
             load: LoadBookmarkUseCaseImpl(bookmarkRepository: repositories.bookmarkRepository)
         )
-        let defaultCampusUseCases = DefaultCampusUseCasesImpl(
+        let defaultCampus = DefaultCampusUseCasesImpl(
             save: SaveDefaultCampusUseCaseImpl(defaultCampusRepository: repositories.defaultCampusRepository),
             load: LoadDefaultCampusUseCaseImpl(defaultCampusRepository: repositories.defaultCampusRepository)
         )
         
-        return .init(cafeteria: cafeteriaUseCases, bookmark: bookmarkUseCases, defaultCampus: defaultCampusUseCases)
+        return .init(
+            cafeteria: cafeteria,
+            bookmark: bookmark,
+            defaultCampus: defaultCampus
+        )
     }
     
     private static func configuredURLSession() -> URLSession {

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shared
 
 /// 월-금 일과 요일 탭을 나타내는 뷰
 struct WeekTab: View {
@@ -53,51 +54,4 @@ struct WeekTab: View {
     }
 }
 
-extension WeekTab {
-    class ViewModel: ObservableObject {
-        @Published var selectedWeekComponent: WeekComponent
-        
-        /// 1주
-        /// - 일, 월, 화, 수, 목, 금, 토
-        /// - n, n+1, ..., n+5, n+6일
-        let weekComponentArray: [WeekComponent]
-        
-        let container: DIContainer
-        let cancelBag = CancelBag()
-        
-        init(container: DIContainer) {
-            self.container = container
-            let appState = container.appState
-            
-            self._selectedWeekComponent = .init(initialValue: appState.value.tab.weekComponent)
-            self.weekComponentArray = WeekComponent.calculateCurrentWeek()
-            
-            bind()
-        }
-        
-        func bind() {
-            let appState = container.appState
-            
-            cancelBag.collect {
-                $selectedWeekComponent
-                    .removeDuplicates()
-                    .sink {
-                        appState[\.tab.weekComponent] = $0
-                    }
-            }
-        }
-        
-        // MARK: functions
-        func changeSelectedWeekComponent(to weekComponent: WeekComponent) {
-            selectedWeekComponent = weekComponent
-        }
-        
-        func isSelected(_ weekComponent: WeekComponent) -> Bool {
-            selectedWeekComponent == weekComponent
-        }
-        
-        func isToday(_ weekComponent: WeekComponent) -> Bool {
-            WeekComponent.getToday() == weekComponent
-        }
-    }
-}
+

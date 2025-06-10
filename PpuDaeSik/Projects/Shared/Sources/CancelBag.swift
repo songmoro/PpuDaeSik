@@ -11,7 +11,11 @@ import Combine
 public final class CancelBag {
     fileprivate(set) var subscriptions = Set<AnyCancellable>()
     
-    func collect(@Builder _ cancellables: () -> [AnyCancellable]) {
+    public init(subscriptions: Set<AnyCancellable> = Set<AnyCancellable>()) {
+        self.subscriptions = subscriptions
+    }
+    
+    public func collect(@Builder _ cancellables: () -> [AnyCancellable]) {
         subscriptions.formUnion(cancellables())
     }
     
@@ -20,8 +24,8 @@ public final class CancelBag {
     }
     
     @resultBuilder
-    struct Builder {
-        static func buildBlock(_ cancellables: AnyCancellable...) -> [AnyCancellable] {
+    public struct Builder {
+        public static func buildBlock(_ cancellables: AnyCancellable...) -> [AnyCancellable] {
             return cancellables
         }
     }

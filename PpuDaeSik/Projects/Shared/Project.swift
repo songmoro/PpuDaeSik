@@ -1,5 +1,11 @@
 import ProjectDescription
 
+let infoPlist: [String: Plist.Value] = [
+    "UIAppFonts": .array([
+        .string("Pretendard-Regular.otf")
+    ])
+]
+
 let project = Project(
     name: "Shared",
     targets: [
@@ -9,7 +15,7 @@ let project = Project(
             product: .staticFramework,
             bundleId: "com.moro.PpuDaeSik.Shared",
             deploymentTargets: .iOS("17.0"),
-            infoPlist: .default,
+            infoPlist: .extendingDefault(with: infoPlist),
             sources: ["Sources/**"],
             resources: ["Resources/**"],
             dependencies: []

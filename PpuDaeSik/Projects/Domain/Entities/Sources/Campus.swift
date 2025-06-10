@@ -10,7 +10,7 @@ import SwiftUI
 public enum Campus: String, CaseIterable, Codable {
     case 부산, 밀양, 양산
     
-    init?(_ rawValue: String) {
+    public init?(_ rawValue: String) {
         let campus: Campus? = switch rawValue {
         case "부산": .부산
         case "밀양": .밀양

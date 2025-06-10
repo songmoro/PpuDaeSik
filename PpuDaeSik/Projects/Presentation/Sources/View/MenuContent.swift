@@ -6,21 +6,23 @@
 //
 
 import SwiftUI
+import Entities
+import Shared
 
 struct MenuContent: View {
-    let response: CafeteriaResponse
+    let menu: CafeteriaMenu
     
     var body: some View {
         VStack(alignment: .leading) {
-            if let title = response.title, !title.isEmpty {
+            if let title = menu.title, !title.isEmpty {
                 Text(title)
                     .font(.subhead())
                     .foregroundColor(.black100)
                     .padding(.bottom, UIScreen.getHeight(2))
             }
             
-            if !response.content.isEmpty {
-                Text(response.content)
+            if !menu.content.isEmpty {
+                Text(menu.content)
                     .font(.body())
                     .foregroundColor(.black100)
                     .padding(.bottom, UIScreen.getHeight(2))

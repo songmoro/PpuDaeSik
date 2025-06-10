@@ -22,7 +22,7 @@ public struct DefaultCampusRepositoryImpl: DefaultCampusRepository {
     public init() {}
     
     public func saveDefaultCampus(defaultCampus: Campus) {
-        UserDefaults.standard.setValue(defaultCampus, forKey: key)
+        UserDefaults.standard.setValue(defaultCampus.rawValue, forKey: key)
     }
     
     public func loadDefaultCampus() -> Campus? {

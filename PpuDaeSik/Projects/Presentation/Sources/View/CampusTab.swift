@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Entities
+import Shared
 
 struct CampusTab: View {
     @Namespace var namespace
@@ -49,41 +51,4 @@ struct CampusTab: View {
     }
 }
 
-extension CampusTab {
-    class ViewModel: ObservableObject {
-        @Published var selectedCampus: Campus
-        
-        let container: DIContainer
-        let cancelBag = CancelBag()
-        
-        init(container: DIContainer) {
-            self.container = container
-            let appState = container.appState
-            
-            self._selectedCampus = .init(initialValue: appState.value.tab.campus)
-            
-            bind()
-        }
-        
-        func bind() {
-            let appState = container.appState
-            
-            cancelBag.collect {
-                $selectedCampus
-                    .removeDuplicates()
-                    .sink {
-                        appState[\.tab.campus] = $0
-                    }
-            }
-        }
-        
-        // MARK: functions
-        func changeSelectedCampus(to campus: Campus) {
-            selectedCampus = campus
-        }
-        
-        func isSelected(_ campus: Campus) -> Bool {
-            selectedCampus == campus
-        }
-    }
-}
+

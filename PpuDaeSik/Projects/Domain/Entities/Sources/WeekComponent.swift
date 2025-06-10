@@ -8,7 +8,7 @@
 import SwiftUI
 
 public struct WeekComponent {
-    let dayComponent: DayComponent
+    public let dayComponent: DayComponent
     let date: Date
 
     public var dayValue: Int {

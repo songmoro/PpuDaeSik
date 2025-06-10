@@ -6,19 +6,20 @@
 //
 
 import SwiftUI
+import Presentation
+import Combine
 
 @main
 struct PpuDaeSikApp: App {
-//    let environment: AppEnvironment
+    let environment: AppEnvironment
     
-//    init() {
-//        environment = AppEnvironment.bootstrap()
-//    }
+    init() {
+        environment = AppEnvironment.bootstrap()
+    }
     
     var body: some Scene {
         WindowGroup {
-            Text("Hello World")
-//            MainView(viewModel: .init(container: environment.container))
+            MainView(viewModel: .init(container: environment.container))
         }
     }
 }

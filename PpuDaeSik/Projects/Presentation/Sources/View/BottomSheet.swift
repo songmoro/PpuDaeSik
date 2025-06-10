@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Entities
+import Shared
 
 struct BottomSheet: View {
     @ObservedObject private(set) var viewModel: ViewModel
@@ -45,41 +47,9 @@ struct BottomSheet: View {
     }
 }
 
-extension BottomSheet {
-    class ViewModel: ObservableObject {
-        @Published var defaultCampus: Campus
-        
-        let container: DIContainer
-        let cancelBag = CancelBag()
-        
-        init(container: DIContainer) {
-            self.container = container
-            let appState = container.appState
-            
-            _defaultCampus = .init(initialValue: appState.value.userData.defaultCampus)
-            
-            bind()
-        }
-        
-        func bind() {
-            let appState = container.appState
-            let defaultCampusUseCases = container.useCases.defaultCampus
-            
-            cancelBag.collect {
-                $defaultCampus
-                    .removeDuplicates()
-                    .sink {
-                        appState[\.userData.defaultCampus] = $0
-                        defaultCampusUseCases.save.execute(defaultCampus: $0)
-                    }
-            }
-        }
-    }
-}
-
-#Preview {
-    Text("")
-        .sheet(isPresented: .constant(true)) {
-            BottomSheet(viewModel: .init(container: .preview))
-        }
-}
+//#Preview {
+//    Text("")
+//        .sheet(isPresented: .constant(true)) {
+//            BottomSheet(viewModel: .init(container: .preview))
+//        }
+//}

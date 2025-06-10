@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Shared
 
 struct LoadingView: View {
     @State var isAnimate: Bool = false
