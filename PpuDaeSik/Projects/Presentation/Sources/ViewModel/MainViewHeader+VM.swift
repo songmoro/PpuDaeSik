@@ -34,17 +34,18 @@ extension MainViewHeader {
                     .removeDuplicates()
                     .assign(to: \.settingSheet, on: self)
                 
-                $settingSheet
-                    .removeDuplicates()
-                    .sink {
-                        self.appState[\.routing.mainViewRouting.settingSheet] = $0
-                    }
+//                $settingSheet
+//                    .removeDuplicates()
+//                    .receive(on: DispatchQueue.main)
+//                    .sink {
+//                        self.appState[\.routing.mainViewRouting.settingSheet] = $0
+//                    }
             }
         }
         
         // MARK: functions
         func showSettingSheet() {
-            settingSheet = true
+            self.appState[\.routing.mainViewRouting.settingSheet] = true
         }
     }
 }

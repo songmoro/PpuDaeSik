@@ -19,7 +19,7 @@ public struct AppState {
 
 extension AppState {
     struct ViewRouting: Equatable {
-        var mainViewRouting = MainView.Routing()
+        var mainViewRouting = MainView.Routing(settingSheet: false)
         
         public init() { }
     }

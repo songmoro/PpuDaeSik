@@ -13,9 +13,9 @@ import Shared
 
 public extension MainView {
     struct Routing: Equatable {
-        var settingSheet = false
+        public var settingSheet: Bool
         
-        public init(settingSheet: Bool = false) {
+        public init(settingSheet: Bool) {
             self.settingSheet = settingSheet
         }
     }
@@ -94,6 +94,12 @@ public extension MainView {
                     .sink {
                         self.cafeteriaMenus = $0
                         self.filterResponse()
+                    }
+                
+                $routingState
+                    .removeDuplicates()
+                    .sink {
+                        self.appState[\.routing.mainViewRouting] = $0
                     }
             }
         }
