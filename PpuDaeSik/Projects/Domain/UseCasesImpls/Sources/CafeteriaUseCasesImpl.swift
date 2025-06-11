@@ -30,7 +30,6 @@ public struct CafeteriaUseCasesImpl: CafeteriaUseCases {
 
 // MARK: Impl
 public struct FetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
-//    private let cafeteriaRepository: CafeteriaRepositoryProtocol
     private let cafeteriaRepository: CafeteriaFetchRepository
     
     public init(cafeteriaRepository: CafeteriaFetchRepository) {

@@ -7,10 +7,10 @@
 
 import XCTest
 import SwiftUI
-@testable import PpuDaeSik
+@testable import Entities
 
 final class CategoryTests: XCTestCase {
-    typealias Category = PpuDaeSik.Category
+    typealias Category = Entities.Category
     
     func test_카테고리_init() {
         // Arrange
@@ -50,5 +50,18 @@ final class CategoryTests: XCTestCase {
         
         // Assert
         XCTAssertTrue(expected == sortedCategories, "카테고리 정렬이 일치하지 않음")
+    }
+    
+    func test_initWithCode() {
+        XCTAssertEqual(Category("01"), .조기)
+        XCTAssertEqual(Category("B"), .조식)
+        XCTAssertEqual(Category("L"), .중식)
+        XCTAssertEqual(Category("D"), .석식)
+        XCTAssertNil(Category("ZZ"))
+    }
+
+    func test_categorySorting() {
+        let sorted = [Category.석식, Category.조기, Category.중식].sorted()
+        XCTAssertEqual(sorted, [.조기, .중식, .석식])
     }
 }

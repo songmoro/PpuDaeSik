@@ -1,15 +1,16 @@
 //
-//  WeekTests.swift
-//  PpuDaeSik
+//  WeekComponentTests.swift
+//  Tests
 //
-//  Created by 송재훈 on 12/17/24.
+//  Created by 송재훈 on 6/11/25.
 //
 
-import SwiftUI
+
 import XCTest
-@testable import PpuDaeSik
+import Foundation
+@testable import Entities
 
-final class WeekTests: XCTestCase {
+final class WeekComponentTests: XCTestCase {
     let calendar = Calendar(identifier: .gregorian)
 
     func test_이번_주_계산() {
@@ -83,5 +84,22 @@ final class WeekTests: XCTestCase {
 
         // Assert
         XCTAssertNotEqual(currentWeekday, notExpected, "올바르지 않은 값이 정상으로 표현됨.")
+    }
+    
+    func test_todayIsCorrectlyCalculated() {
+        let today = WeekComponent.getToday()
+        XCTAssertEqual(today.dayComponent, DayComponent.from(weekday: Calendar.current.component(.weekday, from: Date())))
+    }
+
+    func test_currentWeekHasSevenDays() {
+        let week = WeekComponent.calculateCurrentWeek()
+        XCTAssertEqual(week.count, 7)
+    }
+
+    func test_weekComponentComparison() {
+        let week = WeekComponent.calculateCurrentWeek()
+        for i in 0..<6 {
+            XCTAssertLessThan(week[i], week[i+1])
+        }
     }
 }
