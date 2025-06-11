@@ -34,14 +34,14 @@ jobs:
           xcodebuild clean build \
             -workspace PpuDaeSik.xcworkspace \
             -scheme App \
-            -destination "platform=iphonesimulator,OS=18.0,name=iPhone 15 Pro" \
+            -destination "platform=iOS Simulator,OS=18.0,name=iPhone 16 Pro" \
             -resultBundlePath ResultBundle \
             | tee build.log \
             | xcpretty
 
           zip -r build-log.zip build.log
           zip -r ResultBundle.zip ResultBundle
-
+          
       - name: Upload Build Log
         if: always()
         uses: actions/upload-artifact@v4
