@@ -1,7 +1,7 @@
 import ProjectDescription
 
 let appVersion = "1.8"
-let buildNumber = "6"
+let buildNumber = "15"
 let deploymentTargets = "17.0"
 
 let widgetInfoPlist: [String: Plist.Value] = [
@@ -12,6 +12,7 @@ let widgetInfoPlist: [String: Plist.Value] = [
 ]
 
 let widgetSettingsDictionary: SettingsDictionary = [
+    "CODE_SIGN_STYLE": "Automatic",
     "DEVELOPMENT_TEAM": "VA3J8597P8",
     "INFOPLIST_KEY_CFBundleDisplayName": "PpuDaeSikWidget",
     "INFOPLIST_KEY_NSHumanReadableCopyright": "",
