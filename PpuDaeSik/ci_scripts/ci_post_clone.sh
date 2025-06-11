@@ -1,7 +1,13 @@
 #!/bin/sh
-curl https://mise.jdx.dev/install.sh | sh
+set -e
+
+curl -s https://mise.jdx.dev/install.sh | bash
+export PATH="$HOME/.local/bin:$PATH"
+
+eval "$(mise activate bash)"
+
 mise install
 
 cd ..
-
-mise exec -- tuist generate --no-open
+tuist clean
+tuist generate --no-open
