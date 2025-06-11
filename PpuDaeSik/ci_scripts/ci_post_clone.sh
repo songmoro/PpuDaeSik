@@ -3,7 +3,7 @@
 brew install tuist
 tuist version
 
-cd PpuDaeSik
+cd ..
 
 tuist clean
 tuist generate --no-open
