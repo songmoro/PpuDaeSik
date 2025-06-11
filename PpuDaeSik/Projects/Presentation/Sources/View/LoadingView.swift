@@ -16,11 +16,9 @@ struct LoadingView: View {
             Spacer()
             
             ZStack {
-                //                Image("Logo")
                 SharedAsset.logo.swiftUIImage
                     .resizable()
                 
-                //                Image(isAnimate ? "LogoEye" : "LogoClosedEye")
                 if isAnimate {
                     SharedAsset.logoEye.swiftUIImage
                         .resizable()

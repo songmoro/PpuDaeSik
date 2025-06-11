@@ -33,13 +33,6 @@ extension MainViewHeader {
                 appState.map(\.routing.mainViewRouting.settingSheet)
                     .removeDuplicates()
                     .assign(to: \.settingSheet, on: self)
-                
-//                $settingSheet
-//                    .removeDuplicates()
-//                    .receive(on: DispatchQueue.main)
-//                    .sink {
-//                        self.appState[\.routing.mainViewRouting.settingSheet] = $0
-//                    }
             }
         }
         
