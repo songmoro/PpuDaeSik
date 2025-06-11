@@ -18,7 +18,7 @@ jobs:
       - name: Install Tuist via Homebrew
         run: |
           brew install tuist
-          tuist --version
+          tuist version
 
       - name: Tuist Generate
         working-directory: ./PpuDaeSik
