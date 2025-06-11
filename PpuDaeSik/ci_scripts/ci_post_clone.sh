@@ -4,9 +4,9 @@ eval "$(~/.local/bin/mise activate zsh)"
 
 mise install tuist
 mise --version
-tuist version
+mise x -- tuist version
 
 cd ..
 
-tuist clean
-tuist generate --no-open
+mise x -- tuist clean
+mise x -- tuist generate --no-open
