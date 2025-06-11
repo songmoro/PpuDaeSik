@@ -1,8 +1,12 @@
 #!/bin/sh
 curl https://mise.jdx.dev/install.sh | sh
-~/.local/bin/mise install
+eval "$(~/.local/bin/mise activate zsh)"
+
+mise install tuist
+mise --version
+tuist version
 
 cd ..
 
-~/.local/bin/mise x -- tuist clean
-~/.local/bin/mise x -- tuist generate --no-open
+tuist clean
+tuist generate --no-open
