@@ -9,22 +9,36 @@ on:
 jobs:
   build:
     name: Build and analyse default scheme using xcodebuild command
-    runs-on: macos-latest
+    runs-on: macos-15
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set Default Scheme
+
+      - name: Install Tuist via Homebrew
         run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default | cat >default
-          echo Using default scheme: $default
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
+          brew install tuist
+          tuist version
+
+      - name: Tuist Generate
+        working-directory: ./PpuDaeSik
         run: |
-          if [ $scheme = default ]; then scheme=$(cat default); fi
-          if [ "`ls -A | grep -i \\.xcworkspace\$`" ]; then filetype_parameter="workspace" && file_to_build="`ls -A | grep -i \\.xcworkspace\$`"; else filetype_parameter="project" && file_to_build="`ls -A | grep -i \\.xcodeproj\$`"; fi
-          file_to_build=`echo $file_to_build | awk '{$1=$1;print}'`
-          xcodebuild clean build analyze -scheme "$scheme" -destination "platform=iphonesimulator,OS=18.0,name=iPhone 15 Pro" -"$filetype_parameter" "$file_to_build" | xcpretty && exit ${PIPESTATUS[0]}
+          tuist generate --no-open
+
+      # === (1) tuist generate and build test ===
+      - name: Build App target from xcworkspace
+        working-directory: ./PpuDaeSik
+        run: |
+          set -o pipefail
+
+          xcodebuild clean build \
+            -workspace PpuDaeSik.xcworkspace \
+            -scheme App \
+            -destination "platform=iOS Simulator,OS=18.0,name=iPhone 16 Pro" \
+            | xcpretty
+
+      # === (2) tuist test ===
+      - name: Run Tests with Tuist
+        working-directory: ./PpuDaeSik
+        run: |
+          tuist test --platform ios
