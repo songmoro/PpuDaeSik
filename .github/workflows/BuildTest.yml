@@ -23,7 +23,6 @@ jobs:
       - name: Tuist Generate
         working-directory: ./PpuDaeSik
         run: |
-          tuist fetch
           tuist generate --no-open
 
       # === (1) tuist generate and build test ===
