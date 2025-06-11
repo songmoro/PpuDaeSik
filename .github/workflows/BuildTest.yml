@@ -35,26 +35,7 @@ jobs:
             -workspace PpuDaeSik.xcworkspace \
             -scheme App \
             -destination "platform=iOS Simulator,OS=18.0,name=iPhone 16 Pro" \
-            -resultBundlePath ResultBundle \
-            | tee build.log \
             | xcpretty
-
-          zip -r build-log.zip build.log
-          zip -r ResultBundle.zip ResultBundle
-          
-      - name: Upload Build Log
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: build-log
-          path: build-log.zip
-
-      - name: Upload Result Bundle
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: result-bundle
-          path: ResultBundle.zip
 
       # === (2) tuist test ===
       - name: Run Tests with Tuist
