@@ -27,6 +27,7 @@ jobs:
 
       # === (1) tuist generate and build test ===
       - name: Build App target from xcworkspace
+        working-directory: ./PpuDaeSik
         run: |
           set -o pipefail
 
