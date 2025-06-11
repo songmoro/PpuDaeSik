@@ -1,9 +1,7 @@
-#!/bin/bash
-
-brew install tuist
-tuist version
+#!/bin/sh
+curl https://mise.jdx.dev/install.sh | sh
+mise install
 
 cd ..
 
-tuist clean
-tuist generate --no-open
+mise exec -- tuist generate --no-open
