@@ -15,46 +15,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set Default Scheme
+      - name: Install Tuist
         run: |
-          scheme_list=$(xcodebuild -list -json | tr -d "\n")
-          default=$(echo $scheme_list | ruby -e "require 'json'; puts JSON.parse(STDIN.gets)['project']['targets'][0]")
-          echo $default > default
-          echo "Using default scheme: $default"
+          curl -Ls https://install.tuist.io | bash
+          echo "$HOME/.tuist/bin" >> $GITHUB_PATH
 
-      - name: Build
-        env:
-          scheme: ${{ 'default' }}
+      - name: Tuist Generate
+        working-directory: ./PpuDaeSik
+        run: |
+          tuist fetch
+          tuist generate --no-open
+
+      # === (1) tuist generate and build test ===
+      - name: Build App target from xcworkspace
         run: |
           set -o pipefail
 
-          if [ "$scheme" = "default" ]; then scheme=$(cat default); fi
+          xcodebuild clean build \
+            -workspace PpuDaeSik.xcworkspace \
+            -scheme App \
+            -destination "platform=iphonesimulator,OS=18.0,name=iPhone 15 Pro" \
+            -resultBundlePath ResultBundle \
+            | tee build.log \
+            | xcpretty
 
-          if [ "$(ls -A | grep -i \.xcworkspace$)" ]; then
-            filetype_parameter="workspace"
-            file_to_build="$(ls -A | grep -i \.xcworkspace$)"
-          else
-            filetype_parameter="project"
-            file_to_build="$(ls -A | grep -i \.xcodeproj$)"
-          fi
-          file_to_build=$(echo "$file_to_build" | awk '{$1=$1;print}')
-
-          echo "Building $filetype_parameter: $file_to_build with scheme: $scheme" | tee build.log
-
-          xcodebuild clean build analyze \
-            -scheme "$scheme" \
-            -destination "platform=iOS Simulator,OS=18.0,name=iPhone 16" \
-            -"$filetype_parameter" "$file_to_build" \
-            -resultBundlePath ./ResultBundle \
-          | tee -a build.log \
-          | xcpretty
-
-          BUILD_EXIT_CODE=${PIPESTATUS[0]}
-
-          zip -r ResultBundle.zip ResultBundle
           zip -r build-log.zip build.log
-
-          exit $BUILD_EXIT_CODE
+          zip -r ResultBundle.zip ResultBundle
 
       - name: Upload Build Log
         if: always()
@@ -69,3 +55,9 @@ jobs:
         with:
           name: result-bundle
           path: ResultBundle.zip
+
+      # === (2) tuist test ===
+      - name: Run Tests with Tuist
+        working-directory: ./PpuDaeSik
+        run: |
+          tuist test --platform ios
