@@ -1,11 +1,16 @@
 import ProjectDescription
 
 let appVersion = "1.8"
-let buildNumber = "15"
+let buildNumber = "16"
 let deploymentTargets = "17.0"
 
 let widgetInfoPlist: [String: Plist.Value] = [
-    "CFBundleDisplayName": "$(PRODUCT_NAME)",
+    "CFBundleDevelopmentRegion": .string("ko"),
+    "CFBundleDisplayName": .string("PpuDaeSikWidget"),
+    "CFBundleName": .string("PpuDaeSikWidgetExtension"),
+    "CFBundleIdentifier": .string("com.moro.PpuDaeSik.PpuDaeSikWidget"),
+    "CFBundleExecutable": .string("PpuDaeSikWidgetExtension"),
+    "CFBundleShortVersionString": .string(appVersion),
     "NSExtension": .dictionary([
         "NSExtensionPointIdentifier": .string("com.apple.widgetkit-extension")
     ])
@@ -20,7 +25,7 @@ let widgetSettingsDictionary: SettingsDictionary = [
     "CURRENT_PROJECT_VERSION": .string(buildNumber),
     "IPHONEOS_DEPLOYMENT_TARGET": .string(deploymentTargets),
     "PRODUCT_BUNDLE_IDENTIFIER": "com.moro.PpuDaeSik.PpuDaeSikWidget",
-    "PRODUCT_NAME": "뿌대식"
+    "PRODUCT_NAME": "PpuDaeSikWidgetExtension"
 ]
 
 let widgetTarget: Target = .target(
