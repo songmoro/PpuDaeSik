@@ -1,7 +1,7 @@
 import ProjectDescription
 
-let appVersion = "1.8"
-let buildNumber = "16"
+let appVersion = "1.9"
+let buildNumber = "1"
 let deploymentTargets = "17.0"
 
 let widgetInfoPlist: [String: Plist.Value] = [
@@ -51,6 +51,7 @@ let widgetTarget: Target = .target(
 
 let appInfoPlist: [String: Plist.Value] = [
     "CFBundleDisplayName": .string("뿌대식"),
+    "CFBundleShortVersionString": .string(appVersion),
     "UISupportedInterfaceOrientations": .array([
         .string("UIInterfaceOrientationPortrait")
     ]),
@@ -85,7 +86,7 @@ let appSettingsDictionary: SettingsDictionary = [
 ]
 
 let appTarget: Target = .target(
-    name: "App",
+    name: "PpuDaeSik",
     destinations: [.iPhone],
     product: .app,
     bundleId: "com.moro.PpuDaeSik",
