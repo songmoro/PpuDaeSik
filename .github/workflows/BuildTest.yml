@@ -33,7 +33,7 @@ jobs:
 
           xcodebuild clean build \
             -workspace PpuDaeSik.xcworkspace \
-            -scheme App \
+            -scheme PpuDaeSik \
             -destination "platform=iOS Simulator,OS=18.0,name=iPhone 16 Pro" \
             | xcpretty
 
