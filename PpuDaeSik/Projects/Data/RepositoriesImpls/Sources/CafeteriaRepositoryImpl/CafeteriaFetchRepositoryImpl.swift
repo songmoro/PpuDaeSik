@@ -20,29 +20,6 @@ public struct CafeteriaFetchRepositoryImpl: CafeteriaFetchRepository {
         self.session = session
     }
     
-//    public func fetch(campus: Campus) async throws -> [CafeteriaMenu] {
-//        self.cancleAllRequest()
-//             
-//        let (restaurantDeploymentResponse, dormitoryDeploymentResponse): (NotionResponse<DeploymentProperties>, NotionResponse<DeploymentProperties>) = try await (
-//            fetch(NotionAPI.status(type: .restaurant)),
-//            fetch(NotionAPI.status(type: .dormitory))
-//        )
-//        
-//        guard let restaurantDeploymentStatus = mapper.mapDeploymentResponse(response: restaurantDeploymentResponse.results),
-//            let dormitoryDeploymentStatus = mapper.mapDeploymentResponse(response: dormitoryDeploymentResponse.results)
-//        else {
-//            throw NotionAPIError.validationError(description: "배포 상태 정보 매핑 실패")
-//        }
-//        
-//        let (restaurantResponses, dormitoryResponses): (RestaurantResponse, DormitoryResponse) = try await (
-//            fetch(NotionAPI.restaurant(campus: campus, isUpdating: restaurantDeploymentStatus.isUpdating)),
-//            fetch(NotionAPI.dormitory(campus: campus, isUpdating: dormitoryDeploymentStatus.isUpdating))
-//        )
-//
-//        let menus: [CafeteriaMenu] = mapper.mapRestaurantResponse(response: restaurantResponses.results) + mapper.mapDormitoryResponse(response: dormitoryResponses.results)
-//        return menus
-//    }
-    
     public func fetch(campus: Campus) async throws -> [CafeteriaMenu] {
         self.cancleAllRequest()
 

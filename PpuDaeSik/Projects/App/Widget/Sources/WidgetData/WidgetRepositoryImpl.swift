@@ -60,47 +60,6 @@ public struct WidgetRepositoryImpl: WidgetRepository {
         }
     }
     
-//    public func fetch(cafeteria: Cafeteria, category: String) async -> CafeteriaMenu? {
-//        self.cancleAllRequest()
-//        
-//        let deploymentResponse: NotionResponse<DeploymentProperties>
-//        
-//        switch cafeteria {
-//        case .금정회관교직원식당, .금정회관학생식당, .샛벌회관식당, .학생회관학생식당, .학생회관밀양학생식당, .학생회관밀양교직원식당, .편의동2층양산식당:
-//            deploymentResponse = await fetch(WidgetNotionAPI.status(type: .restaurant))
-//            let deploymentStatus = try! mapper.mapDeploymentResponse(response: deploymentResponse.results)
-////            guard let deploymentStatus = deploymentStatus else { return nil }
-//            
-//            let restaurantResponses: RestaurantResponse = await fetch(
-//                WidgetNotionAPI.restaurant(
-//                    cafeteria: cafeteria,
-//                    category: category,
-//                    isUpdating: deploymentStatus.isUpdating
-//                )
-//            )
-//            let menus = try! mapper.mapRestaurantResponse(response: restaurantResponses.results)
-//            let menu = menus.first
-//            
-//            return menu
-//        case .진리관, .웅비관, .자유관, .비마관, .행림관:
-//            deploymentResponse = await fetch(WidgetNotionAPI.status(type: .dormitory))
-//            let deploymentStatus = try! mapper.mapDeploymentResponse(response: deploymentResponse.results)
-////            guard let deploymentStatus = deploymentStatus else { return nil }
-//            
-//            let dormitoryResponses: DormitoryResponse = await fetch(
-//                WidgetNotionAPI.dormitory(
-//                    cafeteria: cafeteria,
-//                    category: category,
-//                    isUpdating: deploymentStatus.isUpdating
-//                )
-//            )
-//            let menus = try! mapper.mapDormitoryResponse(response: dormitoryResponses.results)
-//            let menu = menus.first
-//            
-//            return menu
-//        }
-//    }
-    
     private func fetch<T>(_ api: NotionAPIAble) async throws -> T where T: Codable {
         let request = api.request()
         let (data, response): (Data, URLResponse)
