@@ -36,9 +36,9 @@ public struct FetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
         self.cafeteriaRepository = cafeteriaRepository
     }
     
-    public func execute(campus: Campus) async -> [CafeteriaMenu] {
+    public func execute(campus: Campus) async throws -> [CafeteriaMenu] {
         async let menus: [CafeteriaMenu] = cafeteriaRepository.fetch(campus: campus)
-        return await menus
+        return try await menus
     }
 }
 
