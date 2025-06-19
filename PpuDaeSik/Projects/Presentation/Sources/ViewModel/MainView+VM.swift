@@ -28,6 +28,8 @@ public extension MainView {
         let appState: Store<AppState>
         let useCases: DIContainer.UseCases
         
+        var count = 0
+        
         /// 현재 선택된 요일
         @Published var selectedWeekComponent: WeekComponent = .getToday()
         
@@ -129,12 +131,17 @@ public extension MainView {
             }
             
             Task {
-                let cafeteriaMenus = await useCases.cafeteria.fetch.execute(campus: campus)
-                let currentCampus = self.selectedCampus
-                
-                if cachedMenus != cafeteriaMenus, campus == currentCampus {
-                    appState[\.cafeteria.menus] = .loaded(cafeteriaMenus)
-                    useCases.cafeteria.save.execute(campus: currentCampus, menus: cafeteriaMenus)
+                do {
+                    let cafeteriaMenus = try await useCases.cafeteria.fetch.execute(campus: campus)
+                    let currentCampus = self.selectedCampus
+                    
+                    if cachedMenus != cafeteriaMenus, campus == currentCampus {
+                        appState[\.cafeteria.menus] = .loaded(cafeteriaMenus)
+                        useCases.cafeteria.save.execute(campus: currentCampus, menus: cafeteriaMenus)
+                    }
+                }
+                catch let error {
+                    appState[\.cafeteria.menus] = .failed(error)
                 }
             }
         }

@@ -13,6 +13,8 @@ struct ReloadView: View {
     
     var body: some View {
         VStack {
+            Spacer()
+            
             SharedAsset.logoClosedSadEye.swiftUIImage
                 .resizable()
                 .frame(width: 50, height: 50)
@@ -26,6 +28,8 @@ struct ReloadView: View {
                 Image(systemName: "arrow.circlepath")
                     .font(.largeTitle)
             }
+            
+            Spacer()
         }
     }
 }
