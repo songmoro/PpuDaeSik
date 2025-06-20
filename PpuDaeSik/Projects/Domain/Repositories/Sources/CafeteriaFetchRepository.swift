@@ -8,5 +8,5 @@
 import Entities
 
 public protocol CafeteriaFetchRepository {
-    func fetch(campus: Campus) async -> [CafeteriaMenu]
+    func fetch(campus: Campus) async throws -> [CafeteriaMenu]
 }

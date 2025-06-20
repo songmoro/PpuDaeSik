@@ -10,11 +10,14 @@ import XCTest
 @testable import Repositories
 
 final class CafeteriaFetchRepositoryMock: CafeteriaFetchRepository {
-    var fetchCalled = false
+    var errorToThrow: Error?
     var menusToReturn: [CafeteriaMenu] = []
 
-    func fetch(campus: Campus) async -> [CafeteriaMenu] {
-        fetchCalled = true
+    func fetch(campus: Campus) async throws -> [CafeteriaMenu] {
+        if let error = errorToThrow {
+            throw error
+        }
+        
         return menusToReturn
     }
 }
