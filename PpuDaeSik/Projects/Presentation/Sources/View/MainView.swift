@@ -53,11 +53,8 @@ public struct MainView: View {
             LoadingView()
         case .loaded:
             CafeteriaView(viewModel: .init(container: viewModel.container))
-        case .failed(let error):
+        case .failed:
             ReloadView(onRetry: viewModel.fetch)
-                .onAppear {
-                    print(error.localizedDescription)
-                }
         }
     }
 }

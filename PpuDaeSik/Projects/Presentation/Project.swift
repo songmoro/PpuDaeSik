@@ -14,7 +14,8 @@ let project = Project(
             dependencies: [
                 .project(target: "Entities", path: "../Domain/Entities", status: .required, condition: .none),
                 .project(target: "UseCases", path: "../Domain/UseCases", status: .required, condition: .none),
-                .project(target: "Shared", path: "../Shared", status: .required, condition: .none)
+                .project(target: "Shared", path: "../Shared", status: .required, condition: .none),
+                .project(target: "Logger", path: "../Logger", status: .required, condition: .none)
             ]
         )
     ]

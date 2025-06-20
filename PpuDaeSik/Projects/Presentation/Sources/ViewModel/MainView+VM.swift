@@ -10,6 +10,7 @@ import Combine
 import Entities
 import UseCases
 import Shared
+import Logger
 
 public extension MainView {
     struct Routing: Equatable {
@@ -27,8 +28,6 @@ public extension MainView {
         let container: DIContainer
         let appState: Store<AppState>
         let useCases: DIContainer.UseCases
-        
-        var count = 0
         
         /// 현재 선택된 요일
         @Published var selectedWeekComponent: WeekComponent = .getToday()
@@ -66,6 +65,7 @@ public extension MainView {
             cancelBag.collect {
                 appState.map(\.tab.campus)
                     .removeDuplicates()
+                    .dropFirst()
                     .sink {
                         self.selectedCampus = $0
                         self.filterCafeteria()
@@ -142,6 +142,10 @@ public extension MainView {
                 }
                 catch let error {
                     appState[\.cafeteria.menus] = .failed(error)
+                    Task {
+                        let log = "App: [\(container.appState.value.description)]"
+                        Logger.shared.send(error: error, log: log)
+                    }
                 }
             }
         }
