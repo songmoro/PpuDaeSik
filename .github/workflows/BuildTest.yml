@@ -10,7 +10,9 @@ jobs:
   build:
     name: Build and analyse default scheme using xcodebuild command
     runs-on: macos-15
-
+    env:
+      SECRET_XCCONFIG_PATH: ./Projects/Logger/Configurations/Secrets.xcconfig
+      
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -24,6 +26,10 @@ jobs:
         working-directory: ./PpuDaeSik
         run: |
           tuist generate --no-open
+
+      - name: Create Secrets
+        run: |
+          echo "${{ secrets.SECRETS_XCCONFIG }}" > ${{ env.SECRET_XCCONFIG_PATH }}
 
       # === (1) tuist generate and build test ===
       - name: Build App target from xcworkspace
