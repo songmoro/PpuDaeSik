@@ -1,6 +1,6 @@
 import ProjectDescription
 
-let appVersion = "1.9"
+let appVersion = "2.0"
 let buildNumber = "1"
 let deploymentTargets = "17.0"
 
