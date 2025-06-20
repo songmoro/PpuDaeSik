@@ -6,12 +6,19 @@ let project = Project(
         .target(
             name: "Logger",
             destinations: [.iPhone],
-            product: .staticFramework,
+            product: .framework,
             bundleId: "com.moro.PpuDaeSik.Logger",
             deploymentTargets: .iOS("17.0"),
-            infoPlist: .default,
+            infoPlist: .extendingDefault(with: ["LOGGER_API_KEY":"$(LOGGER_API_KEY)"]),
             sources: ["Sources/**"],
-            dependencies: []
+            dependencies: [],
+            settings: .settings(
+                base: [:],
+                configurations: [
+                    .debug(name: "Debug", xcconfig: .relativeToCurrentFile("Configurations/Secrets.xcconfig")),
+                    .release(name: "Release", xcconfig: .relativeToCurrentFile("Configurations/Secrets.xcconfig")),
+                ]
+            )
         )
     ]
 )
