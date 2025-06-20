@@ -13,7 +13,7 @@ public enum Loadable<T> {
     case loaded(T)
     case failed(Error)
 
-    var value: T? {
+    public var value: T? {
         switch self {
         case let .loaded(value): return value
         default: return nil

@@ -20,66 +20,57 @@ public struct CafeteriaFetchRepositoryImpl: CafeteriaFetchRepository {
         self.session = session
     }
     
-    public func fetch(campus: Campus) async -> [CafeteriaMenu] {
+    public func fetch(campus: Campus) async throws -> [CafeteriaMenu] {
         self.cancleAllRequest()
-             
-        let (restaurantDeploymentResponse, dormitoryDeploymentResponse): (NotionResponse<DeploymentProperties>, NotionResponse<DeploymentProperties>) = await (
+
+        let (restaurantDeploymentResponse, dormitoryDeploymentResponse): (NotionResponse<DeploymentProperties>, NotionResponse<DeploymentProperties>) = try await (
             fetch(NotionAPI.status(type: .restaurant)),
             fetch(NotionAPI.status(type: .dormitory))
         )
-        let (restaurantDeploymentStatus, dormitoryDeploymentStatus) = (
-            mapper.mapDeploymentResponse(response: restaurantDeploymentResponse.results),
-            mapper.mapDeploymentResponse(response: dormitoryDeploymentResponse.results)
-        )
-        
-        guard let restaurantDeploymentStatus = restaurantDeploymentStatus,
-              let dormitoryDeploymentStatus = dormitoryDeploymentStatus else {
-            return []
-        }
-        
-        let (restaurantResponses, dormitoryResponses): (RestaurantResponse, DormitoryResponse) = await (
+
+        let restaurantDeploymentStatus = try mapper.mapDeploymentResponse(response: restaurantDeploymentResponse.results)
+        let dormitoryDeploymentStatus = try mapper.mapDeploymentResponse(response: dormitoryDeploymentResponse.results)
+
+        let (restaurantResponses, dormitoryResponses): (RestaurantResponse, DormitoryResponse) = try await (
             fetch(NotionAPI.restaurant(campus: campus, isUpdating: restaurantDeploymentStatus.isUpdating)),
             fetch(NotionAPI.dormitory(campus: campus, isUpdating: dormitoryDeploymentStatus.isUpdating))
         )
-        let cafeteriaMenus: [CafeteriaMenu] = mapper.mapRestaurantResponse(response: restaurantResponses.results) + mapper.mapDormitoryResponse(response: dormitoryResponses.results)
+
+        let restaurantMenus: [CafeteriaMenu] = try mapper.mapRestaurantResponse(response: restaurantResponses.results)
+        let dormitoryMenus: [CafeteriaMenu] = try mapper.mapDormitoryResponse(response: dormitoryResponses.results)
         
+        let cafeteriaMenus = restaurantMenus + dormitoryMenus
         return cafeteriaMenus
     }
     
-    private func fetch<T>(_ api: NotionAPIAble) async -> T where T: Codable {
+    private func fetch<T>(_ api: NotionAPIAble) async throws -> T where T: Codable {
         let request = api.request()
-        let decoder = JSONDecoder()
+        let (data, response): (Data, URLResponse)
         
         do {
-            let (data, response) = try await session.data(for: request)
-            
-            guard let httpResponse = response as? HTTPURLResponse else {
-                throw URLError(.badServerResponse)
-            }
-            
-            guard httpResponse.statusCode == 200 else {
-                let errorMessage = String(data: data, encoding: .utf8) ?? "No error message"
-                let errorCode = extractErrorCode(from: data)
-                throw NotionAPIError.from(statusCode: httpResponse.statusCode, errorCode: errorCode, message: errorMessage)
-            }
-            
-            do {
-                let decoded = try decoder.decode(T.self, from: data)
-                return decoded
-            } catch {
-                print("Decoding Error \(T.self) 디코딩 실패")
-                print("에러: \(error)")
-                print("원본 JSON:")
-                print(String(data: data, encoding: .utf8) ?? "디코딩 불가능한 데이터")
-                throw error
-            }
+            (data, response) = try await session.data(for: request)
+        } catch {
+            throw NotionAPIError.serviceUnavailable(description: error.localizedDescription)
         }
-        catch let error as NotionAPIError {
-            fatalError(error.localizedDescription)
+        
+        guard let httpResponse = response as? HTTPURLResponse else {
+            throw NotionAPIError.internalServerError(description: "Invalid response type")
         }
-        catch {
-            print("기타 네트워크 에러: \(error.localizedDescription)")
-            fatalError(error.localizedDescription)
+
+        guard httpResponse.statusCode == 200 else {
+            let message = String(data: data, encoding: .utf8) ?? "No message"
+            let errorCode = extractErrorCode(from: data)
+            throw NotionAPIError.from(statusCode: httpResponse.statusCode, errorCode: errorCode, message: message)
+        }
+
+        do {
+            let decoded = try JSONDecoder().decode(T.self, from: data)
+            return decoded
+        } catch {
+            print("Decoding Error: \(T.self)")
+            print("Error: \(error)")
+            print("Raw JSON: \(String(data: data, encoding: .utf8) ?? "N/A")")
+            throw NotionAPIError.invalidJSON(description: "Decoding failed: \(error.localizedDescription)")
         }
     }
     

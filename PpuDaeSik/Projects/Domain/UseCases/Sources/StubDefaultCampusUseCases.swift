@@ -15,14 +15,18 @@ public struct StubDefaultCampusUseCases: DefaultCampusUseCases {
     public init() { }
 }
 
-struct StubSaveDefaultCampusUseCaseImpl: SaveDefaultCampusUseCase {
-    func execute(defaultCampus: Campus) {
+public struct StubSaveDefaultCampusUseCaseImpl: SaveDefaultCampusUseCase {
+    public init() { }
+    
+    public func execute(defaultCampus: Campus) {
         
     }
 }
 
-struct StubLoadDefaultCampusUseCaseImpl: LoadDefaultCampusUseCase {
-    func execute() -> Campus {
+public struct StubLoadDefaultCampusUseCaseImpl: LoadDefaultCampusUseCase {
+    public init() { }
+    
+    public func execute() -> Campus {
         return .부산
     }
 }

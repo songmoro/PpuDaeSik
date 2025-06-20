@@ -24,12 +24,16 @@ public enum Category: String, CaseIterable, Hashable, Codable {
     }
 }
 
-extension Category: Comparable {
+extension Category: Equatable, Comparable {
+    public static func == (lhs: Category, rhs: Category) -> Bool {
+        lhs.toInt() == rhs.toInt()
+    }
+    
     public static func < (lhs: Category, rhs: Category) -> Bool {
         lhs.toInt() < rhs.toInt()
     }
     
-    func toInt() -> Int {
+    private func toInt() -> Int {
         switch self {
         case .조기: 0
         case .조식: 1

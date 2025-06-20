@@ -20,7 +20,7 @@ public protocol CafeteriaUseCases {
 
 // MARK: UseCase
 public protocol FetchCafeteriaUseCase {
-    func execute(campus: Campus) async -> [CafeteriaMenu]
+    func execute(campus: Campus) async throws -> [CafeteriaMenu]
 }
 
 public protocol SaveCafeteriaUseCase {

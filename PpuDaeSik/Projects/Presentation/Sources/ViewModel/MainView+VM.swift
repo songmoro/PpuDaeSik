@@ -10,6 +10,7 @@ import Combine
 import Entities
 import UseCases
 import Shared
+import Logger
 
 public extension MainView {
     struct Routing: Equatable {
@@ -64,6 +65,7 @@ public extension MainView {
             cancelBag.collect {
                 appState.map(\.tab.campus)
                     .removeDuplicates()
+                    .dropFirst()
                     .sink {
                         self.selectedCampus = $0
                         self.filterCafeteria()
@@ -129,12 +131,21 @@ public extension MainView {
             }
             
             Task {
-                let cafeteriaMenus = await useCases.cafeteria.fetch.execute(campus: campus)
-                let currentCampus = self.selectedCampus
-                
-                if cachedMenus != cafeteriaMenus, campus == currentCampus {
-                    appState[\.cafeteria.menus] = .loaded(cafeteriaMenus)
-                    useCases.cafeteria.save.execute(campus: currentCampus, menus: cafeteriaMenus)
+                do {
+                    let cafeteriaMenus = try await useCases.cafeteria.fetch.execute(campus: campus)
+                    let currentCampus = self.selectedCampus
+                    
+                    if cachedMenus != cafeteriaMenus, campus == currentCampus {
+                        appState[\.cafeteria.menus] = .loaded(cafeteriaMenus)
+                        useCases.cafeteria.save.execute(campus: currentCampus, menus: cafeteriaMenus)
+                    }
+                }
+                catch let error {
+                    appState[\.cafeteria.menus] = .failed(error)
+                    Task {
+                        let log = "App: [\(container.appState.value.description)]"
+                        Logger.shared.send(error: error, log: log)
+                    }
                 }
             }
         }

@@ -1,6 +1,6 @@
 import ProjectDescription
 
-let appVersion = "1.9"
+let appVersion = "2.0"
 let buildNumber = "1"
 let deploymentTargets = "17.0"
 
@@ -41,7 +41,8 @@ let widgetTarget: Target = .target(
         .project(target: "Entities", path: "../Domain/Entities", status: .required, condition: .none),
         .project(target: "DTOs", path: "../Data/DTOs", status: .required, condition: .none),
         .project(target: "Mappers", path: "../Data/Mappers", status: .required, condition: .none),
-        .project(target: "Shared", path: "../Shared", status: .required, condition: .none)
+        .project(target: "Shared", path: "../Shared", status: .required, condition: .none),
+        .project(target: "Logger", path: "../Logger", status: .required, condition: .none)
     ],
     settings: .settings(
         base: widgetSettingsDictionary,

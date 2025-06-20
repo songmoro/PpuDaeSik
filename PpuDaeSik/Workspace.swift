@@ -13,6 +13,7 @@ let workspace = Workspace(
         "Projects/Data/DTOs",
         "Projects/Data/Mappers",
         "Projects/Tests",
-        "Projects/Shared"
+        "Projects/Shared",
+        "Projects/Logger"
     ]
 )
