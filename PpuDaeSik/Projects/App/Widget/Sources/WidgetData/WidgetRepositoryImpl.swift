@@ -9,6 +9,7 @@ import Foundation
 import Entities
 import DTOs
 import Mappers
+import Logger
 
 public struct WidgetRepositoryImpl: WidgetRepository {
     private let session: URLSession
@@ -55,7 +56,10 @@ public struct WidgetRepositoryImpl: WidgetRepository {
             }
 
         } catch {
-            print("Widget Fetch 실패: \(error.localizedDescription)")
+            Task {
+                let log = "widget: [cafeteria: \(cafeteria) category: \(category) date: \(Date())]"
+                Logger.shared.send(error: error, log: log)
+            }
             return nil
         }
     }

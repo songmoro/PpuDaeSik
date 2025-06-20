@@ -53,6 +53,12 @@ extension AppState {
     }
 }
 
+extension AppState: CustomStringConvertible {
+    public var description: String {
+        "AppState(\(self.routing), \(self.cafeteria), \(self.tab), \(self.userData))"
+    }
+}
+
 extension AppState {
     public static var preview: AppState {
         let state = AppState()
