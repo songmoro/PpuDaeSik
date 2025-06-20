@@ -18,32 +18,42 @@ public struct StubCafeteriaUseCases: CafeteriaUseCases {
     public init() { }
 }
 
-struct StubFetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
-    func execute(campus: Campus) async -> [CafeteriaMenu] {
+public struct StubFetchCafeteriaUseCaseImpl: FetchCafeteriaUseCase {
+    public init() { }
+    
+    public func execute(campus: Campus) async -> [CafeteriaMenu] {
         return []
     }
 }
 
-struct StubLoadCafeteriaUseCaseImpl: LoadCafeteriaUseCase {
-    func execute(campus: Campus) -> [CafeteriaMenu]? {
+public struct StubLoadCafeteriaUseCaseImpl: LoadCafeteriaUseCase {
+    public init() { }
+    
+    public func execute(campus: Campus) -> [CafeteriaMenu]? {
         return []
     }
 }
 
-struct StubSaveCafeteriaUseCaseImpl: SaveCafeteriaUseCase {
-    func execute(campus: Campus, menus: [CafeteriaMenu]) {
+public struct StubSaveCafeteriaUseCaseImpl: SaveCafeteriaUseCase {
+    public init() { }
+    
+    public func execute(campus: Campus, menus: [CafeteriaMenu]) {
         
     }
 }
 
-struct StubOrderCafeteriaUseCaseImpl: OrderCafeteriaUseCase {
-    func execute(campus: Campus, bookmark: [Cafeteria]) -> [Cafeteria] {
+public struct StubOrderCafeteriaUseCaseImpl: OrderCafeteriaUseCase {
+    public init() { }
+    
+    public func execute(campus: Campus, bookmark: [Cafeteria]) -> [Cafeteria] {
         return []
     }
 }
 
-struct StubFilterCafeteriaUseCaseImpl: FilterCafeteriaUseCase {
-    func execute(menus: [CafeteriaMenu], campus: Campus, weekComponent: WeekComponent) -> [CafeteriaMenu] {
+public struct StubFilterCafeteriaUseCaseImpl: FilterCafeteriaUseCase {
+    public init() { }
+    
+    public func execute(menus: [CafeteriaMenu], campus: Campus, weekComponent: WeekComponent) -> [CafeteriaMenu] {
         return []
     }
 }

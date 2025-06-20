@@ -17,12 +17,16 @@ public struct StubBookmarkUseCases: BookmarkUseCases {
 }
 
 public struct StubActionBookmarkUseCaseImpl: ActionBookmarkUseCase {
+    public init() { }
+    
     public func execute(bookmark: [Cafeteria], cafeteria: Cafeteria) -> [Cafeteria] {
         return []
     }
 }
 
 public struct StubSaveBookmarkUseCaseImpl: SaveBookmarkUseCase {
+    public init() { }
+    
     public func execute(bookmark: [Cafeteria]) {
         
     }

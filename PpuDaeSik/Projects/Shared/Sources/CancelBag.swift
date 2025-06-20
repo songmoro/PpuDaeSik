@@ -19,7 +19,7 @@ public final class CancelBag {
         subscriptions.formUnion(cancellables())
     }
     
-    func cancel() {
+    private func cancel() {
         subscriptions.removeAll()
     }
     

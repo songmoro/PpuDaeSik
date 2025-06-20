@@ -9,8 +9,13 @@ import SwiftUI
 
 public struct WeekComponent {
     public let dayComponent: DayComponent
-    let date: Date
-
+    public let date: Date
+    
+    public init(dayComponent: DayComponent, date: Date) {
+        self.dayComponent = dayComponent
+        self.date = date
+    }
+    
     public var dayValue: Int {
         Calendar.current.component(.day, from: date)
     }
@@ -41,10 +46,10 @@ public extension WeekComponent {
 
 extension WeekComponent: Equatable, Comparable {
     public static func == (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
-        lhs.dayComponent.calendarWeekdayIndex == rhs.dayComponent.calendarWeekdayIndex
+        lhs.dayComponent == rhs.dayComponent
     }
     
     public static func < (lhs: WeekComponent, rhs: WeekComponent) -> Bool {
-        lhs.dayComponent.calendarWeekdayIndex < rhs.dayComponent.calendarWeekdayIndex
+        lhs.dayComponent < rhs.dayComponent
     }
 }
