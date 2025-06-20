@@ -9,7 +9,12 @@ import SwiftUI
 
 public struct WeekComponent {
     public let dayComponent: DayComponent
-    private let date: Date
+    public let date: Date
+    
+    public init(dayComponent: DayComponent, date: Date) {
+        self.dayComponent = dayComponent
+        self.date = date
+    }
     
     public var dayValue: Int {
         Calendar.current.component(.day, from: date)
