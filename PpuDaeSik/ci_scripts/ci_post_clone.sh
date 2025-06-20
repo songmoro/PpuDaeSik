@@ -1,4 +1,10 @@
 #!/bin/sh
+mkdir -p "$SECRET_XCCONFIG_PATH"
+
+cat > "$SECRET_XCCONFIG_FILE" <<EOF
+LOGGER_API_KEY=${SECRETS_XCCONFIG}
+EOF
+
 curl https://mise.jdx.dev/install.sh | sh
 eval "$(~/.local/bin/mise activate zsh)"
 
