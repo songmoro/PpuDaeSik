@@ -11,7 +11,7 @@ jobs:
     name: Build and analyse default scheme using xcodebuild command
     runs-on: macos-15
     env:
-      SECRET_XCCONFIG_PATH: ./Projects/Logger/Configurations/Secrets.xcconfig
+      SECRET_XCCONFIG_PATH: PpuDaeSik/Projects/Logger/Configurations/Secrets.xcconfig
       
     steps:
       - name: Checkout
