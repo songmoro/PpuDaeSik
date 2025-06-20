@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import UseCasesImpls
+@testable import DTOs
 @testable import Entities
 
 final class CafeteriaUseCasesTests: XCTestCase {
@@ -15,11 +16,29 @@ final class CafeteriaUseCasesTests: XCTestCase {
         mock.menusToReturn = [CafeteriaMenu.init(cafeteria: .학생회관학생식당, date: "2025-06-05", category: .중식, title: "일품 - 4,000원", content: "꼬지어묵우동\r\n군만두\r\n배추김치\r\n")]
 
         let useCase = FetchCafeteriaUseCaseImpl(cafeteriaRepository: mock)
-        let result = await useCase.execute(campus: .부산)
+        
+        let result = try! await useCase.execute(campus: .부산)
 
-        XCTAssertTrue(mock.fetchCalled)
         XCTAssertEqual(result.count, 1)
         XCTAssertEqual(result[0].cafeteria, .학생회관학생식당)
+    }
+    
+    func testFetchCafeteriaMenusThrowsError() async {
+        let mock = CafeteriaFetchRepositoryMock()
+        mock.errorToThrow = NotionAPIError.serviceUnavailable(description: "테스트 에러")
+
+        let useCase = FetchCafeteriaUseCaseImpl(cafeteriaRepository: mock)
+
+        do {
+            _ = try await useCase.execute(campus: .부산)
+            XCTFail("에러가 발생해야 하는데 성공함")
+        } catch {
+            XCTAssertTrue(error is NotionAPIError)
+            XCTAssertEqual(
+                (error as? NotionAPIError)?.localizedDescription,
+                NotionAPIError.serviceUnavailable(description: "테스트 에러").localizedDescription
+            )
+        }
     }
 
     func testSaveCafeteriaMenusSavesCorrectly() {
