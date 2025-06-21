@@ -126,7 +126,7 @@ public extension MainView {
             appState[\.cafeteria.filterByDay] = []
             
             let cachedMenus = useCases.cafeteria.load.execute(campus: campus)
-            if let cachedMenus = cachedMenus, cachedMenus.first?.cafeteria.campus == campus {
+            if let cachedMenus = cachedMenus, cachedMenus.allSatisfy({ $0.isValid(campus) }) {
                 appState[\.cafeteria.menus] = .loaded(cachedMenus)
             }
             
@@ -143,7 +143,7 @@ public extension MainView {
                 catch let error {
                     appState[\.cafeteria.menus] = .failed(error)
                     Task {
-                        let log = "App: [\(container.appState.value.description)]"
+                        let log = "UseCases: [\(container.useCases)]"
                         Logger.shared.send(error: error, log: log)
                     }
                 }
