@@ -25,3 +25,20 @@ public struct CafeteriaMenu: Hashable, Equatable, Codable {
         self.time = time
     }
 }
+
+extension CafeteriaMenu {
+    public func isValid(_ campus: Campus, _ date: Date = Date()) -> Bool {
+        guard let menuDate = Self.dateFormatter.date(from: self.date) else { return false }
+        
+        return Calendar.current.isDate(menuDate, equalTo: date, toGranularity: .weekOfYear) &&
+        cafeteria.campus == campus
+    }
+
+    private static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd"
+        formatter.locale = Locale(identifier: "ko_KR")
+        formatter.timeZone = .current
+        return formatter
+    }()
+}

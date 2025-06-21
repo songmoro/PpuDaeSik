@@ -29,7 +29,7 @@ public struct Logger {
     ) {
         let request = LogRequest(file: file, function: function, line: line, error: error, log: log).makeRequest()
         
-        URLSession.shared.dataTask(with: request) { data, response, error in
+        session.dataTask(with: request) { data, response, error in
             if let error = error {
                 print("Notion 로깅 실패:", error)
                 return
