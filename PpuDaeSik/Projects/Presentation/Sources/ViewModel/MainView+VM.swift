@@ -143,7 +143,7 @@ public extension MainView {
                 catch let error {
                     appState[\.cafeteria.menus] = .failed(error)
                     Task {
-                        let log = "App: [\(container.appState.value.description)]"
+                        let log = "UseCases: [\(container.useCases)]"
                         Logger.shared.send(error: error, log: log)
                     }
                 }
