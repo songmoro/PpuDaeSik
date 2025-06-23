@@ -1,6 +1,5 @@
 ### 프로젝트 구성
-<img width="800" alt="image" src="https://github.com/user-attachments/assets/756bcaae-8e2f-4c83-90bf-0ece306ea535">
-
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/ce5f3ec8-b303-4eb1-a316-0100a35c13d1">
 
 ### 뿌대식 인 앱 스크린샷
 <img width="300" alt="image" src="https://github.com/user-attachments/assets/35fc1b58-5e57-4d3e-aa46-ecf6e3e1f34e">
