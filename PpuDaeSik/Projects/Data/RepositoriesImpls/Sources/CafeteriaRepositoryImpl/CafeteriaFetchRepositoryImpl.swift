@@ -14,33 +14,40 @@ import Mappers
 import Shared
 
 public struct CafeteriaFetchRepositoryImpl: CafeteriaFetchRepository {
+    private typealias NTDeploymentResp = NotionResponse<DeploymentProperties>
     private let session: URLSession
     private let mapper = Mapper.shared
+    
     public init(session: URLSession) {
         self.session = session
     }
     
     public func fetch(campus: Campus) async throws -> [CafeteriaMenu] {
         self.cancleAllRequest()
-
-        let (restaurantDeploymentResponse, dormitoryDeploymentResponse): (NotionResponse<DeploymentProperties>, NotionResponse<DeploymentProperties>) = try await (
-            fetch(NotionAPI.status(type: .restaurant)),
-            fetch(NotionAPI.status(type: .dormitory))
-        )
-
-        let restaurantDeploymentStatus = try mapper.mapDeploymentResponse(response: restaurantDeploymentResponse.results)
-        let dormitoryDeploymentStatus = try mapper.mapDeploymentResponse(response: dormitoryDeploymentResponse.results)
-
-        let (restaurantResponses, dormitoryResponses): (RestaurantResponse, DormitoryResponse) = try await (
-            fetch(NotionAPI.restaurant(campus: campus, isUpdating: restaurantDeploymentStatus.isUpdating)),
-            fetch(NotionAPI.dormitory(campus: campus, isUpdating: dormitoryDeploymentStatus.isUpdating))
-        )
-
-        let restaurantMenus: [CafeteriaMenu] = try mapper.mapRestaurantResponse(response: restaurantResponses.results)
-        let dormitoryMenus: [CafeteriaMenu] = try mapper.mapDormitoryResponse(response: dormitoryResponses.results)
         
-        let cafeteriaMenus = restaurantMenus + dormitoryMenus
-        return cafeteriaMenus
+        async let restaurantMenus: [CafeteriaMenu] = {
+            let dpReq: NotionAPI = .status(type: .restaurant)
+            let dbResp: NTDeploymentResp = try await fetch(dpReq)
+            let dbStat = try mapper.mapDeploymentResponse(response: dbResp.results)
+            
+            let restaurantReq: NotionAPI = .restaurant(campus: campus, isUpdating: dbStat.isUpdating)
+            let restaurantResp: RestaurantResponse = try await fetch(restaurantReq)
+            
+            return try mapper.mapRestaurantResponse(response: restaurantResp.results)
+        }()
+        
+        async let dormitoryMenus: [CafeteriaMenu] = {
+            let dpReq: NotionAPI = .status(type: .dormitory)
+            let dbResp: NTDeploymentResp = try await fetch(dpReq)
+            let dbStat = try mapper.mapDeploymentResponse(response: dbResp.results)
+
+            let dormitoryReq: NotionAPI = .dormitory(campus: campus, isUpdating: dbStat.isUpdating)
+            let dormitoryResp: DormitoryResponse = try await fetch(dormitoryReq)
+            
+            return try mapper.mapDormitoryResponse(response: dormitoryResp.results)
+        }()
+        
+        return try await restaurantMenus + dormitoryMenus
     }
     
     private func fetch<T>(_ api: NotionAPIAble) async throws -> T where T: Codable {
